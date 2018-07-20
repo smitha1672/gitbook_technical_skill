@@ -1,7 +1,5 @@
 # Started
 
-## GIT PUSH TEST
-
 ##  awk
 
 ```text
@@ -223,17 +221,12 @@ $ cat ubuntu.tar | sudo docker import - test/ubuntu:v1.0
 
 ##  How To Install Node.js on Ubuntu 16.04
 
-> [https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04)
+> [how-to-install-node-js-on-ubuntu-16-04](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04)
 
 ## How to Install gitbook on Ubuntu 16.04
 
-{% hint style="info" %}
-[https://blog.csdn.net/lj1404536198/article/details/78423671](https://blog.csdn.net/lj1404536198/article/details/78423671)
-{% endhint %}
-
-{% hint style="info" %}
-[http://samwhelp.github.io/blog/read/platform/gitbook/start/](http://samwhelp.github.io/blog/read/platform/gitbook/start/)
-{% endhint %}
+> [how-to-install-node-js-on-ubuntu-16-04](https://blog.csdn.net/lj1404536198/article/details/78423671)
+> [git-book-start](http://samwhelp.github.io/blog/read/platform/gitbook/start/)
 
 ## Trouble Shooting
 
