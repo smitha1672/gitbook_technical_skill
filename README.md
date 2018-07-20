@@ -77,7 +77,7 @@ Keyboard Shortcuts:
 
   If you load up two files in splits (:vs or :sp), you can do 
   :diffthis 
-  
+
   on each window and achieve a diff of files that were already loaded in buffers
   :diffoff can be used to turn off the diff mode.
 
@@ -118,7 +118,7 @@ $ vim file1 file2 file3
 3      "file3"                        line 0
 
 跳至特定編輯緩衝區可使用 :[N]buffer 命令，如:
-:2buffer 
+:2buffer
 or
 :buffer 2
 
