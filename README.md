@@ -225,7 +225,7 @@ $ cat ubuntu.tar | sudo docker import - test/ubuntu:v1.0
 
 ## How to Install gitbook on Ubuntu 16.04
 
-> [how-to-install-node-js-on-ubuntu-16-04](https://blog.csdn.net/lj1404536198/article/details/78423671)
+> [how-to-install-node-js-on-ubuntu-16-04; ](https://blog.csdn.net/lj1404536198/article/details/78423671)
 > [git-book-start](http://samwhelp.github.io/blog/read/platform/gitbook/start/)
 
 ## Trouble Shooting
