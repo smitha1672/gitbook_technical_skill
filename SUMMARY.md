@@ -1,4 +1,5 @@
-# Table of contents
+# Summary
 
-* [Started](README.md)
+* [Introduction](README.md)
+* [Ubuntu Note](content/ubuntu_note/note.md)
 
