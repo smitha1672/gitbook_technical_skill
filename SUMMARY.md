@@ -6,7 +6,7 @@
 * [Data Structure in C]
 * [LeetCode]
 * [Ubuntu Note](content/ubuntu_note/note.md)
-* [GIT Usage](content/gitgit_note.md)
+* [GIT Usage](content/git/git_note.md)
 * [Linux Shell Script](content/linux_shell_script/linux_sh.md)
 * [Teraterm TTL]
 * [Android AOSP Building Guide]
