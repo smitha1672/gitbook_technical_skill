@@ -33,9 +33,8 @@ $vim file1 file2 file3
 TODO
 
 ## Docker
-[Ubuntu Docker Install](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/)
-[Learn Docker](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/)
-[Docker Command Line](https://docs.docker.com/engine/reference/commandline/docker/)
+Refer as:
+[Ubuntu Docker Install](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/), [Learn Docker](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/) and [Docker Command Line](https://docs.docker.com/engine/reference/commandline/docker/)
 
 + **Docker Install**
 > Install
@@ -104,6 +103,40 @@ How to edit [Markdown](https://markdown.tw/#em)
 Preview your [MD file](https://stackedit.io/app#)
 
 ## Samba
+Refer as:
+[samba setting on Ubuntu](https://www.arthurtoday.com/2015/04/ubuntu-server-share-folder-samba.html) and [samba directory on Windows](https://noob.tw/samba/)
+
++ **Samba setting on Ubuntu**
+> Install
+```bash
+sudo apt-get install samba
+```
+> Add a samba user
+```bash
+sudo adduser smbuser --shell /bin/false #smbusr can be anyone, Smith
+```
+> Add a samba user password
+```bash
+sudo smbpasswd -a 123456
+```
+> Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
+```bash
+[public]              #"public" 名稱可以自行變更
+path = /home/smbuser  #這個是要分享的資料夾路徑
+available = yes
+valid users = smbuser #這個是可以使用這個分享資料夾的使用者，要具有 path 所指定的路徑的權限才行
+read only = no
+browseable = yes
+public = yes
+writable = yes
+```
+> Restart Samba serve
+```bash
+sudo service smbd restart
+```
++ *Other Samba Configuration*
+![Alt text](samba_setting_share.jpg)
+
 **TODO**
 
 ## Ubuntu Update
@@ -135,7 +168,7 @@ sudo apt-get remove --purge texlive-full
 [ref.](http://blog.lyhdev.com/2013/01/ubuntu-linux-apt-get.html)
 
 ## Trouble Shooting
-**sudo must be owned by uid 0 and have the setuid bit set**
+**sudo must be owned by uid 0 and have the setuid bit set**  <br>
 You shouldn’t have a /usr/local/bin/sudo,
 that’s what’s breaking things (not the password change). Move it out of the way:
 ```bash
@@ -147,7 +180,7 @@ hash -r
 ```
 That will restore the sudo functionality you’re used to. shareimprove this answer
 
-**Screen needs mode 777 with systemd service**
+**Screen needs mode 777 with systemd service**  <br>
 The directory needs full permissions to read, write, and execute.
 You can do this command
 ```bash
@@ -161,9 +194,9 @@ chown -R $USER:$USER /var/run/screen
 ```
 This will allow a typical user/or group full access, and will be more secure
 
-#### 
+####
 
-#### 
+####
 
 
 
