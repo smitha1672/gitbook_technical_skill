@@ -134,9 +134,32 @@ writable = yes
 ```bash
 sudo service smbd restart
 ```
-+ *Other Samba Configuration*
-![Alt text](samba_setting_share.jpg)
++ **Other Samba Configuration**
+**/etc/samba/smb.conf**:
+首先先找到設定檔裡面的 **workgroup**, 大約在29行附近，把 workgroup
+設成和Windows 系統的一樣(可以到控制台\系統及安全性\系統查看)。
+**Change this to the workgroup/NT-domain name your Samba server will part of**,
+**workgroup = NOOBTW**有關安全性問題，預設 Samba 會使用 Linux 帳號的密碼，
+一般來說會建議保持原設定即可；如果要關掉 Samba 的認證，可以在裡面加上：
+**security = share** 上面大概是 Samba 的一些基本測試，重頭戲在下面，
+如何設定要分享的資料夾？首先我們以**www**資料夾為例，直接將這段放在**smb.conf**
+的最下面即可：
+```text
+[www]
+comment = www
+path = /var/www
+browseable = yes
+read only = no
+create mask = 777
+directory mask = 777
+```
++ [www] 指的是要分享的資料夾的名稱，comment 則是描述，path 是 Linux 資料夾的路徑，
+browseable 是可否瀏覽，read only 是是否唯讀，剩下兩個 mask 則是檔案預設的權限。
+最後請離開 smb.conf，我們要設定可以使用 Samba 的用戶。
 
++ **Samba setting on Windows**
+![Alt text](samba_setting_windows.jpg)
+<img src="samba_setting_windows.jpg" width="200px" />
 **TODO**
 
 ## Ubuntu Update
