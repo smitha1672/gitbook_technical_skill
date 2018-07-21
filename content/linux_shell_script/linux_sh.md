@@ -40,14 +40,14 @@ grep -rn --include=*.c 'pattern' ./
 grep -rl --include=*.{c,h} 'SENS*' ./
 grep -Ern --include=*.{c,h} 'pattern1|pattern2' ./ # Multi-pattern match
 ```
-**[-R, -r, --recursive]**
-**[-n, --line-number]**
-**[-L, --files-without-match]**
-**[-l, --files-with-matches]**
-**[-w, --word-regexp]** - whole word has been match
-**[-c, --count]**
-**[-v, --invert-match]**
-**[--exclude-dir=DIR]**
+**[-R, -r, --recursive]**  <br>
+**[-n, --line-number]**   <br>
+**[-L, --files-without-match]**   <br>
+**[-l, --files-with-matches]**    <br>
+**[-w, --word-regexp]** - whole word has been match   <br>
+**[-c, --count]**   <br>
+**[-v, --invert-match]**    <br>
+**[--exclude-dir=DIR]**   <br>
 
 ## awk
 ```bash
