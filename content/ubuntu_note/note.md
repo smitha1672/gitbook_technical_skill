@@ -29,148 +29,137 @@ $vim file1 file2 file3
 ```text
 :badd path/to/file4
 ```
-
-
-## ZIP/ UNZIP
-#### unzip
-[Linux man page](https://linux.die.net/man/1/unzip)
-```bash
-unzip letters
-```
-To use unzip to extract all members of the archive letters.zip into the **current directory** and **subdirectories**, creating any subdirectories as necessary
-
-```bash
-unzip -j letters
-```
-To extract all members of letters.zip into **the current directory only**
-
-```bash
-unzip -tq letters
-```
-To test letters.zip, **printing only a summary message indicating** whether the archive is OK or not:
-
-```bash
-unzip -tq \*.zip
-```
-To test all zipfiles in **the current directory**, printing only the summaries:
-
-
-To do a singly quiet listing:
-```bash
-unzip -l file.zip #To do a singly quiet listing
-unzip -ql file.zip #To do a doubly quiet listing
-```
-
-## Ubuntu Update
-
-```bash
-$ sudo apt-get update
-$ sudo apt-get -y dist-upgrade
-$ sudo apt-get clean
-$ sudo apt-get autoremove
-```
-
-## Ubuntu Uninstall
-
-```text
-$ sudo apt-get remove texlive-full
-#但由於先前安裝此套件，會一併自動安裝相依套件（dependencies），所以需要再用 autoremove 清理。
-$ sudo apt-get autoremove
-or
-$ sudo apt-get remove --auto-remove
-
-#但是這樣還不夠乾淨，因為預設的 remove 行為，會保留一些設定檔之類的遺物。
-所以需要用 purge 的方式移除。針對單一套件使用 purge 方式徹底移除：
-$ sudo apt-get purge texlive-full
-or
-$ sudo apt-get remove --purge texlive-full
-
-ref.
-http://blog.lyhdev.com/2013/01/ubuntu-linux-apt-get.html
-
-```
-
-## Others
-
- Copy folder structure \(sans files\) from one location to another
-
-```bash
-find . -type d > dirs.txt #to create the list of directories, then
-xargs mkdir -p < dirs.txt #to create the directories on the destination.
-```
+## Screen
+TODO
 
 ## Docker
+[Ubuntu Docker Install](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/)
+[Learn Docker](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/)
+[Docker Command Line](https://docs.docker.com/engine/reference/commandline/docker/)
 
-> [https://blog.longwin.com.tw/2017/01/docker-learn-initial-command-cheat-sheet-2017/](https://blog.longwin.com.tw/2017/01/docker-learn-initial-command-cheat-sheet-2017/)
++ **Docker Install**
+> Install
+```bash
+sudo apt-get install docker.io
+```
+> Serve Checking
+```bash
+service docker status
+```
+> Add my account to docker group
+```bash
+sudo usermod -aG docker smith
+```
+> Checking Verion
+```bash
+docker version
+```
 
-> [https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/)
++ Docker pull **ubuntu 16.04 or latest**
+```bash
+docker pull ubuntu:16.04 #or ubuntu:latest
+```
 
++ List images
+```bash
+docker images
+```
 ```text
-Docker 抓取 Image
-docker pull ubuntu # 抓所有 ubuntu image 回來, tag 可於後面附加上去
-docker pull ubuntu:16.04 # 只抓取 Ubuntu 16.04 的 Image
-docker pull debian:jessie
-docker pull debian:latest # library/debian - Docker Hub，latest 只會抓最新版 (Debain Docker 官方版)
-docker pull ubuntu:latest # library/ubuntu - Docker Hub
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              16.04               e13f3d529b1a        4 days ago          115 MB
+```
 
-#如果要匯出本地某個容器，可以使用 docker export 命令。
++ Export/Import a container
+> List contains
+```text
 $ sudo docker ps -a
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                    PORTS               NAMES
 7691a814370e        ubuntu:14.04        "/bin/bash"         36 hours ago        Exited (0) 21 hours ago                       test
-
-$ sudo docker export 7691a814370e > ubuntu.tar
-
-#可以使用 docker import 從容器快照檔案中再匯入為映像檔，例如
-$ cat ubuntu.tar | sudo docker import - test/ubuntu:v1.0
-
-# docker: create a image (at first time)
-      1. docker run -t -i --name="name" container:tag bash
-      2. docker export "name" > "name".tar
- # docker: import a docker image
-      1. docker import "name:.tar "container name":"tag name"
- sudo docker run -itv /home/smith/workspace/project:/home/mt2523 ubuntu/14.04:linkit_gfx bash
-
+```
+> export the container
+```bash
+sudo docker export 7691a814370e > ubuntu.tar #ubuntu.tar is a example
+```
+> import a image file to image
+```bash
+ docker import ubuntu.tar unbuntu16.04:v1.0 # ubuntu.tar unbuntu16.04:v1.0 is a example
 ```
 
-##  How To Install Node.js on Ubuntu 16.04
++ Run a image
+```bash
+sudo docker run -itv /home/smith/workspace/project:/home/mt2523 ubuntu/14.04:linkit_gfx bash
+# /home/smith/workspace/project meaning is local directory.
+# /home/mt2523 meaning is container directory
+# -v: if local directory doest not exist, "-v" is able to remove
+```
 
-> [how-to-install-node-js-on-ubuntu-16-04](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04)
+## Gitbook
+You have to install **Node.js**, **npm**, **gitbook**
++ 2 reference URLs:
+[how to install node.js on ubuntu 16.04:Native](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04)
+[git-book-start](http://samwhelp.github.io/blog/read/platform/gitbook/start/)
 
-## How to Install gitbook on Ubuntu 16.04
-
-> [how-to-install-node-js-on-ubuntu-16-04; ](https://blog.csdn.net/lj1404536198/article/details/78423671)
-> [git-book-start](http://samwhelp.github.io/blog/read/platform/gitbook/start/)
+If you want a **pdf** file, you have to install **calibre**
+How to edit [Markdown](https://markdown.tw/#em)
+Preview your [MD file](https://stackedit.io/app#)
 
 ## Samba
+**TODO**
+
+## Ubuntu Update
+```bash
+sudo apt-get update
+sudo apt-get -y dist-upgrade
+sudo apt-get clean
+sudo apt-get autoremove
+```
+
+## Ubuntu Uninstall
+Remove **texlive-full**
+```bash
+sudo apt-get remove texlive-full
+```
+但由於先前安裝此套件，會一併自動安裝相依套（dependencies),
+所以需要再用**autoremove**清理。
+
+```bash
+sudo apt-get autoremove #or
+sudo apt-get remove --auto-remove
+```
+但是這樣還不夠乾淨，因為預設的 remove 行為，會保留一些設定檔之類的遺物。
+所以需要用 purge 的方式移除。針對單一套件使用 purge 方式徹底移除：
+```bash
+sudo apt-get purge texlive-full #or
+sudo apt-get remove --purge texlive-full
+```
+[ref.](http://blog.lyhdev.com/2013/01/ubuntu-linux-apt-get.html)
 
 ## Trouble Shooting
-
-```text
-#sudo must be owned by uid 0 and have the setuid bit set
-
-You shouldn’t have a /usr/local/bin/sudo, 
+**sudo must be owned by uid 0 and have the setuid bit set**
+You shouldn’t have a /usr/local/bin/sudo,
 that’s what’s breaking things (not the password change). Move it out of the way:
-
+```bash
 /usr/bin/sudo mv /usr/local/bin/sudo{,2}
+```
 and then tell your shell about it:
-
+```bash
 hash -r
-That will restore the sudo functionality you’re used to.
-
-shareimprove this answer
 ```
+That will restore the sudo functionality you’re used to. shareimprove this answer
 
-```text
-#Screen needs mode 777 with systemd service
+**Screen needs mode 777 with systemd service**
 The directory needs full permissions to read, write, and execute.
-You can do this command chmod -R 777 /var/run/screen
-
-Which will recursively change all folders/files permissions to 777, 
-though typically less secure.
-You can also run sudo chown -R $USER:$USER /var/run/screen
-
-This will allow a typical user/or group full access, and will be more secure
+You can do this command
+```bash
+chmod -R 777 /var/run/screen
 ```
+Which will **recursively** change all folders/files permissions to 777,
+though typically less secure.
+You can also run sudo
+```bash
+chown -R $USER:$USER /var/run/screen
+```
+This will allow a typical user/or group full access, and will be more secure
 
 #### 
 

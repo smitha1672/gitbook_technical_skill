@@ -1,3 +1,12 @@
+## find
+### Copy folder structure \(sans files\) from one location to another
+```bash
+find . -type d > dirs.txt #to create the list of directories, then
+xargs mkdir -p < dirs.txt #to create the directories on the destination.
+```
+
+## grep
+
 ##  awk
 ```bash
 awk '{print $1}' filename.txt
@@ -11,7 +20,7 @@ awk '{print $1,$2}' filename.txt
 awk '/<pattern>/{print $1,$2}' filename
 ```
 
-## dd, shell script
+## dd
 To crate a 0x00 data file
 ```bash
 dd if=/dev/zero bs=1 of=/tmp/file bs=2M count=2000
@@ -74,3 +83,7 @@ zip -j source -@
 find ./chre/firmware -type f -name "os.checked.*" -print | \
 zip -j w2_cmh1000_fw_v15_1804Bxxx -@ #-j: junk-path
 ```
+
+#### 
+
+#### 
