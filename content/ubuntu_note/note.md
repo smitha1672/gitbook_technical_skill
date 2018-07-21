@@ -157,8 +157,8 @@ directory mask = 777
 browseable 是可否瀏覽，read only 是是否唯讀，剩下兩個 mask 則是檔案預設的權限。
 最後請離開 smb.conf，我們要設定可以使用 Samba 的用戶。
 
-+ **Samba setting on Windows**
-As Below:
++ **Samba setting on Windows**  <br>
+As Below:  <br>
 ![SettingOnWindows](samba_setting_windows.jpg)
 
 ## Ubuntu Update
