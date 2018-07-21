@@ -30,7 +30,7 @@ $vim file1 file2 file3
 :badd path/to/file4
 ```
 ## Screen
-TODO
+**TODO**
 
 ## Docker
 Refer as:
@@ -158,9 +158,8 @@ browseable 是可否瀏覽，read only 是是否唯讀，剩下兩個 mask 則�
 最後請離開 smb.conf，我們要設定可以使用 Samba 的用戶。
 
 + **Samba setting on Windows**
-![Alt text](samba_setting_windows.jpg)
-<img src="samba_setting_windows.jpg" width="1000px" />
-**TODO**
+As Below:
+![SettingOnWindows](samba_setting_windows.jpg)
 
 ## Ubuntu Update
 ```bash
