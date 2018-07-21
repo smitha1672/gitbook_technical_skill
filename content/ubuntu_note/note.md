@@ -1,151 +1,64 @@
-# Started
-
-##  awk
-
-```text
-awk '{print $1}' filename.txt: simply output
-awk '{print $1,$2}' filename.txt: ouput more items
-awk '/<pattern>/{print $1,$2}' filename: if pattern is matched, output $1 and $2
-```
-
-## dd
-
-```text
-#create a 0x00 file:
-$ dd if=/dev/zero bs=1 of=/tmp/file bs=2M count=2000
- #bs: block size, 1次讀取與寫入 BYTES 位元組的資料，此選項會覆蓋 ibs 與 obs 的設定
-  count=N：只處理 N 個輸入區塊，每個區塊的大小為 ibs。
-
-#padding zero bytes into a end of file
-$ dd if=/dev/zero bs count=2148 >> file
-  
-#create a 0xff file:
-$ dd if=/dev/zero bs=1k count=100 | tr "\000" "\377" >paddedFile.bin
-```
-
-## vimgrep
-
-```text
-ref.: https://blog.easwy.com/archives/advanced-vim-skills-quickfix-mode/
-As follows:
-    :vim[grep][!] /{pattern}/[g][j] {file} ..
-  Recursive search:
-    :vimgrep /dostuff()/j ../**/*.c
-  Dotfiles:
-    :vimgrep /pattern/ ./.*
-  :cw
-  :copen
-    These commands all fill a list with the results of their search.
-    "grep" and "vimgrep" fill the "quickfix list",
-    which can be opened with :cw or :copen
-  
-  ref.: https://blog.csdn.net/zqiang_55/article/details/30715961
-  vimgrep /匹配模式/[g][j] 要搜索的文件/范围
-  g：表示是否把每一行的多个匹配结果都加入
-  j：表示是否搜索完后定位到第一个匹配位置
-
-  vimgrep /pattern/ %           在当前打开文件中查找
-  vimgrep /pattern/ *           在当前目录下查找所有
-  vimgrep /pattern/ **          在当前目录及子目录下查找所有
-  vimgrep /pattern/ *.c         查找当前目录下所有.c文件
-  vimgrep /pattern/ **/*        只查找子目录
-
-  cn                            查找下一个
-  cp                            查找上一个
-  copen                         打开quickfix
-  cw                            打开quickfix
-  cclose                        关闭qucikfix
-  help vimgrep                  查看vimgrep帮助
-
-  ref.: https://blog.csdn.net/icbm/article/details/71036168
-  files 参数举例：
-  % 表示在当前缓冲区文件中查找。
-  *.cpp 表示在当前目录中的 .cpp 文件中搜索。
-  **/*.cpp 表示在当前目录及子目录中 .cpp 文件中搜索。
-  **/*.cpp **/*.h 表示在当前目录及子目录中 .cpp、.h 文件中搜索。
-```
-
-## vimdiff
-
-```text
-Keyboard Shortcuts:
-  do - Get changes from other window into the current window.
-  dp - Put the changes from current window into the other window.
-  ]c - Jump to the next change.
-  [c - Jump to the previous change.
-  Ctrl W + Ctrl W - Switch to the other split window.
-
-  If you load up two files in splits (:vs or :sp), you can do 
-  :diffthis 
-
-  on each window and achieve a diff of files that were already loaded in buffers
-  :diffoff can be used to turn off the diff mode.
-
-  "update diff"
-  :diffupdate
-
-  zo: 顯示隱藏 / 折疊的文字區塊
-  zc: 將目前游標所在位置文字區塊隱藏 / 折疊
-  zr: 將兩份文件都完全折疊
-  
-  reference linking:
-  http://vimdoc.sourceforge.net/htmldoc/diff.html
-```
-
 ## VIM
+### operation
++ **:so ~/.vimrc**: Import vimrc setting
++ **:%!xxd**: show binary file
++ copy more lines in register, and then paste to a place
+  example:
+  1. **V** is for a section would be like to copy.
+  2. **"kyy** copy the section in register
+  3. **"kp"** paste the section to your destnation place
++ **:line_number,$s/string.a/string.b/gc**" Replace from string.a to string.b
 
+### [vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
+open a few files to vim buffers
+```bash
+$vim file1 file2 file3
+```
+**:ls** - it show as below
 ```text
-"import .vimrc file":
-:so ~/.vimrc
-  
-"show binary file":
-:%!xxd
-  
-"copy more lines in register, and then paste to a place"
-  1. "V" is for a section would be like to copy.
-  2. "kyy
-  3. "kp"
-"replace from string.a to string.b"
-  :1,$s/string.a/string.b/gc
-
-ref.: https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows
-編輯緩衝區 (Buffers)
-$ vim file1 file2 file3
-
 :buffers (:ls or :files)
 1 %a   "file1"                        line 1
 2      "file2"                        line 0
 3      "file3"                        line 0
-
-跳至特定編輯緩衝區可使用 :[N]buffer 命令，如:
-:2buffer
-or
-:buffer 2
-
-若要新增其他檔案進編輯緩衝區，可使用 :badd 命令:
+```
+**:[N]buffer** - Jump to particular file
+```text
+:2buffer or :buffer 2
+```
+**:badd** - Add a file to buffer
+```text
 :badd path/to/file4
 ```
 
-## Zip/ Unzip
 
-```text
-$ unzip -u test.zip
-$ unzip -j test.zip 
-    #-j: it only unzip files that doesn't include directory
-$ unzip test.zip -d mydir 
-    #-d: it means destnation directory
-$ unzip -l test.zip 
-    #-l: show achive's content
+## ZIP/ UNZIP
+#### unzip
+[Linux man page](https://linux.die.net/man/1/unzip)
+```bash
+unzip letters
+```
+To use unzip to extract all members of the archive letters.zip into the **current directory** and **subdirectories**, creating any subdirectories as necessary
 
-Command format. The basic command format is:
-$ zip options archive inpath inpath ...
-  
-# archive all the source files in the current directory and its subdirectories:
-$ find ./out/mt2523_watch/watch_ref_design -maxdepth 1 -type f -print | \
-zip -j source -@
-$ find ./chre/firmware -type f -name "os.checked.*" -print | \
-zip -j w2_cmh1000_fw_v15_1804Bxxx -@
-    #-j: junk-path
+```bash
+unzip -j letters
+```
+To extract all members of letters.zip into **the current directory only**
+
+```bash
+unzip -tq letters
+```
+To test letters.zip, **printing only a summary message indicating** whether the archive is OK or not:
+
+```bash
+unzip -tq \*.zip
+```
+To test all zipfiles in **the current directory**, printing only the summaries:
+
+
+To do a singly quiet listing:
+```bash
+unzip -l file.zip #To do a singly quiet listing
+unzip -ql file.zip #To do a doubly quiet listing
 ```
 
 ## Ubuntu Update
@@ -157,7 +70,7 @@ $ sudo apt-get clean
 $ sudo apt-get autoremove
 ```
 
-## Ubuntu uninstall
+## Ubuntu Uninstall
 
 ```text
 $ sudo apt-get remove texlive-full
@@ -227,6 +140,8 @@ $ cat ubuntu.tar | sudo docker import - test/ubuntu:v1.0
 
 > [how-to-install-node-js-on-ubuntu-16-04; ](https://blog.csdn.net/lj1404536198/article/details/78423671)
 > [git-book-start](http://samwhelp.github.io/blog/read/platform/gitbook/start/)
+
+## Samba
 
 ## Trouble Shooting
 

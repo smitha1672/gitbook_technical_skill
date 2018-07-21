@@ -7,7 +7,7 @@
 * [LeetCode]
 * [Ubuntu Note](content/ubuntu_note/note.md)
 * [GIT Usage]
-* [Linux Shell Script]
+* [Linux Shell Script](content/linux_shell_script/linux_sh.md)
 * [Teraterm TTL]
 * [Android AOSP Building Guide]
 * [Building Root]
