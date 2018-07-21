@@ -1,27 +1,70 @@
+## Shell Script
+**variable**
+```bash
+myname="OLS3"
+echo Hi${myname}kkkk  #有其他字申, 需用${XXX} 隔開
+```
+
+**command and variable**
+```bash
+fc=$(cat /etc/password)
+echo "$fc"
+```
+
+## echo
+```bash
+echo -n "Hello World" # -n, 不需要自動換行
+echo -e "I am the king\nof the world" # -e, 讓字串中的特殊字元有作用, \n, 代表換行
+```
+
+## xxd
+###TODO
+
 ## find
 ### Copy folder structure \(sans files\) from one location to another
 ```bash
 find . -type d > dirs.txt #to create the list of directories, then
 xargs mkdir -p < dirs.txt #to create the directories on the destination.
 ```
+### cp particular files
+```bash
+find $SRC_DIR -type f \( -name at_command_cmh1000.c \) | xargs -I {} cp -rf --parents {} $DEST_DIR
+find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h -or -name sensor_manager_driver.c -or -name sensor_alg_interface.h \) | xargs -I {} cp -rf --parents {} $DEST_DIR
+cp -f --parents $SRC_DIR/project/mt2523_hdk/apps/phicomm_w2/src/sys_init.c $DEST_DIR
+```
 
 ## grep
+### Usually, I search with
+```bash
+grep -rn --include=*.c 'pattern' ./
+grep -rl --include=*.{c,h} 'SENS*' ./
+grep -Ern --include=*.{c,h} 'pattern1|pattern2' ./ # Multi-pattern match
+```
+**[-R, -r, --recursive]**
+**[-n, --line-number]**
+**[-L, --files-without-match]**
+**[-l, --files-with-matches]**
+**[-w, --word-regexp]** - whole word has been match
+**[-c, --count]**
+**[-v, --invert-match]**
+**[--exclude-dir=DIR]**
 
-##  awk
+## awk
 ```bash
 awk '{print $1}' filename.txt
 ```
-+ ouput more items
+
+### ouput more items
 ```bash
 awk '{print $1,$2}' filename.txt
 ```
-+ if pattern is matched, output $1 and $2
+### if pattern is matched, output $1 and $2
 ```bash
 awk '/<pattern>/{print $1,$2}' filename
 ```
 
 ## dd
-To crate a 0x00 data file
+### To crate a 0x00 data file
 ```bash
 dd if=/dev/zero bs=1 of=/tmp/file bs=2M count=2000
 ```
@@ -29,16 +72,47 @@ dd if=/dev/zero bs=1 of=/tmp/file bs=2M count=2000
   會覆蓋 **ibs** 與 **obs** 的設定.
   count=N:只處理N個輸入區塊,每個區塊的大小為 ibs。
 
-**ex:** Padding zero bytes into a end of file
+### Padding zero bytes into a end of file
 ```bash
 dd if=/dev/zero bs count=2148 >> file
 ```
-**ex**: create a 0xff file:
+### Create a 0xff file
 ```bash
 dd if=/dev/zero bs=1k count=100 | \
 tr "\000" "\377" > paddedFile.bin
 ```
-  "\377" meaning 0xFF of octal.
+  **\377** meaning 0xFF of octal.
+
+### Padding a few 0x00 dummy bytes in the particalur file
+```bash
+#! /bin/sh
+DRAM_FILE_NAME=os.checked.dram.0x40000400
+IRAM_FILE_NAME=os.checked.iram.0x40080000
+
+DRAM_FILE_SIZE=$(stat -c%s "$DRAM_FILE_NAME")
+IRAM_FILE_SIZE=$(stat -c%s "$IRAM_FILE_NAME")
+
+dram_chunk=$(($DRAM_FILE_SIZE / 256))
+dram_unchunk=$(($DRAM_FILE_SIZE % 256))
+iram_chunk=$(($IRAM_FILE_SIZE / 256))
+iram_unchunk=$(($IRAM_FILE_SIZE % 256))
+
+if [ $dram_unchunk -ne 0 ]; then
+  dram_chunk=$(($dram_chunk + 1))
+  size=$(($dram_chunk * 256))
+  dram_pad_size=$(($size-$DRAM_FILE_SIZE))
+  dd if=/dev/zero bs=1 count=$dram_pad_size >> $DRAM_FILE_NAME
+  echo "Pad $dram_pad_size ZERO bytes to $DRAM_FILE_NAME"
+fi
+
+if [ $iram_unchunk -ne 0 ]; then
+  iram_chunk=$(($iram_chunk + 1))
+  size=$(($iram_chunk * 256))
+  iram_pad_size=$(($size-$IRAM_FILE_SIZE))
+  dd if=/dev/zero bs=1 count=$iram_pad_size >> $IRAM_FILE_NAME
+  echo "Pad $iram_pad_size ZERO bytes to $IRAM_FILE_NAME"
+fi
+```
 
 ## ZIP/ UNZIP
 #### unzip
@@ -61,10 +135,10 @@ To test letters.zip, **printing only a summary message indicating** whether the 
 ```bash
 unzip -tq \*.zip
 ```
-To test all zipfiles in **the current directory**, printing only the summaries:
+To test all zipfiles in **the current directory**, printing only the summaries
 
 
-To do a singly quiet listing:
+To do a singly quiet listing
 ```bash
 unzip -l file.zip #To do a singly quiet listing
 unzip -ql file.zip #To do a doubly quiet listing
@@ -74,7 +148,7 @@ unzip -ql file.zip #To do a doubly quiet listing
 Command format. The basic command format is:
 zip options archive inpath inpath ...
 
-# shell script - archive all the source files in the current directory and its subdirectories:
+##### archive all the source files in the current directory and its subdirectories
 ```bash
 find ./out/mt2523_watch/watch_ref_design -maxdepth 1 -type f -print | \
 zip -j source -@
@@ -82,6 +156,29 @@ zip -j source -@
 ```bash
 find ./chre/firmware -type f -name "os.checked.*" -print | \
 zip -j w2_cmh1000_fw_v15_1804Bxxx -@ #-j: junk-path
+```
+
+##### Achive 2 image files in zip file
+```bash
+GIT_TAG=$1
+
+achive_fw_image()
+{
+  GIT_TAG_NUMBER=$(git tag -l --sort=-taggerdate | grep $GIT_TAG | head -1)
+  if [ -z "$GIT_TAG_NUMBER" ]; then
+    echo "GIT TAG: $1 is not existing"
+  else
+    rm -f sensorhub_fw_$GIT_TAG_NUMBER.zip
+    echo -e "Create sensorhub_fw_$GIT_TAG_NUMBER.zip\n"
+    find ./chre/firmware -type f -name "os.checked.*" -print | zip -qj sensorhub_fw_$GIT_TAG_NUMBER.zip -@
+  fi
+}
+
+if [ -z "$GIT_TAG" ]; then
+  echo "ERROR: \$1 is empty, you have to fill GIT tag keyword is similar \"04B\", \"08D\"...etc"
+else
+  achive_fw_image
+fi
 ```
 
 #### 
