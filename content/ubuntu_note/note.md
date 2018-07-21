@@ -159,7 +159,7 @@ browseable 是可否瀏覽，read only 是是否唯讀，剩下兩個 mask 則�
 
 + **Samba setting on Windows**
 ![Alt text](samba_setting_windows.jpg)
-<img src="samba_setting_windows.jpg" width="200px" />
+<img src="samba_setting_windows.jpg" width="1000px" />
 **TODO**
 
 ## Ubuntu Update
