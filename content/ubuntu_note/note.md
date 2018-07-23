@@ -1,12 +1,27 @@
 ## Applications Installation
 openssh-server  <br>
+samba-server  <br>
+screen, .screenrc   <br>
 vim, .vimrc, vim color-minimalist.vim   <br>
 git .gitconfig  <br>
-screen, .screenrc   <br>
 docker  <br>
-samba-server  <br>
+
+## Open SSH Server
+剛灌好系統先讓系統可以SSH
+```bash
+sudo apt install openssh-server
+```
+重新啟動
+```bash
+sudo systemctl restart sshd.service
+sudo systemctl restart sshd
+```
+### [Reference](http://hsu.logdown.com/posts/2016/05/19/ubuntu-server-1604-lts-notes)
 
 ## VIM
+### Vimrc Instance
+[Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
+
 ### Operation
 + **:so ~/.vimrc**: Import vimrc setting
 + **:%!xxd**: show binary file
@@ -19,7 +34,7 @@ samba-server  <br>
 + [vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
 open a few files to vim buffers
 ```bash
-$vim file1 file2 file3
+vim file1 file2 file3
 ```
 **:ls** - it show as below
 ```text
@@ -36,8 +51,73 @@ $vim file1 file2 file3
 ```text
 :badd path/to/file4
 ```
-### Vimrc Instance
-[Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
+
+## Samba
+Refer as:
+[samba setting on Ubuntu](https://www.arthurtoday.com/2015/04/ubuntu-server-share-folder-samba.html) and [samba directory on Windows](https://noob.tw/samba/)
+
++ **Samba setting on Ubuntu**
+> Install
+```bash
+sudo apt-get install samba
+```
+> Add a samba user
+```bash
+sudo adduser smbuser --shell /bin/false #smbusr can be anyone, Smith
+```
+> Add a samba user password
+```bash
+sudo smbpasswd -a smbuser
+```
+> Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
+```bash
+[public]              #"public" 名稱可以自行變更
+path = /home/smbuser  #這個是要分享的資料夾路徑
+available = yes
+valid users = smbuser #這個是可以使用這個分享資料夾的使用者，要具有 path 所指定的路徑的權限才行
+read only = no
+browseable = yes
+public = yes
+writable = yes
+```
+> Restart Samba serve
+```bash
+sudo service smbd restart
+```
++ **Other Samba Configuration**
+**/etc/samba/smb.conf**:
+首先先找到設定檔裡面的 **workgroup**, 大約在29行附近，把 workgroup
+設成和Windows 系統的一樣(可以到控制台\系統及安全性\系統查看)。
+**Change this to the workgroup/NT-domain name your Samba server will part of**,
+**workgroup = NOOBTW**有關安全性問題，預設 Samba 會使用 Linux 帳號的密碼，
+一般來說會建議保持原設定即可；如果要關掉 Samba 的認證，可以在裡面加上：
+**security = share** 上面大概是 Samba 的一些基本測試，重頭戲在下面，
+如何設定要分享的資料夾？首先我們以**www**資料夾為例，直接將這段放在**smb.conf**
+的最下面即可：
+```text
+[www]
+comment = www
+path = /var/www
+browseable = yes
+read only = no
+create mask = 777
+directory mask = 777
+```
++ [www] 指的是要分享的資料夾的名稱，comment 則是描述，path 是 Linux 資料夾的路徑，
+browseable 是可否瀏覽，read only 是是否唯讀，剩下兩個 mask 則是檔案預設的權限。
+最後請離開 smb.conf，我們要設定可以使用 Samba 的用戶。
+
++ **Samba setting on Windows**  <br>
+As Below:  <br>
+![SettingOnWindows](samba_setting_windows.jpg)
+
+## Ubuntu Update
+```bash
+sudo apt-get update
+sudo apt-get -y dist-upgrade
+sudo apt-get clean
+sudo apt-get autoremove
+```
 
 ## Screen
 ### [Installation](https://blog.gtwang.org/linux/screen-command-examples-to-manage-linux-terminals/)
@@ -123,66 +203,8 @@ If you want a **pdf** file, you have to install **calibre**
 How to edit [Markdown](https://markdown.tw/#em)
 Preview your [MD file](https://stackedit.io/app#)
 
-## Samba
-Refer as:
-[samba setting on Ubuntu](https://www.arthurtoday.com/2015/04/ubuntu-server-share-folder-samba.html) and [samba directory on Windows](https://noob.tw/samba/)
-
-+ **Samba setting on Ubuntu**
-> Install
-```bash
-sudo apt-get install samba
-```
-> Add a samba user
-```bash
-sudo adduser smbuser --shell /bin/false #smbusr can be anyone, Smith
-```
-> Add a samba user password
-```bash
-sudo smbpasswd -a smbuser
-```
-> Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
-```bash
-[public]              #"public" 名稱可以自行變更
-path = /home/smbuser  #這個是要分享的資料夾路徑
-available = yes
-valid users = smbuser #這個是可以使用這個分享資料夾的使用者，要具有 path 所指定的路徑的權限才行
-read only = no
-browseable = yes
-public = yes
-writable = yes
-```
-> Restart Samba serve
-```bash
-sudo service smbd restart
-```
-+ **Other Samba Configuration**
-**/etc/samba/smb.conf**:
-首先先找到設定檔裡面的 **workgroup**, 大約在29行附近，把 workgroup
-設成和Windows 系統的一樣(可以到控制台\系統及安全性\系統查看)。
-**Change this to the workgroup/NT-domain name your Samba server will part of**,
-**workgroup = NOOBTW**有關安全性問題，預設 Samba 會使用 Linux 帳號的密碼，
-一般來說會建議保持原設定即可；如果要關掉 Samba 的認證，可以在裡面加上：
-**security = share** 上面大概是 Samba 的一些基本測試，重頭戲在下面，
-如何設定要分享的資料夾？首先我們以**www**資料夾為例，直接將這段放在**smb.conf**
-的最下面即可：
-```text
-[www]
-comment = www
-path = /var/www
-browseable = yes
-read only = no
-create mask = 777
-directory mask = 777
-```
-+ [www] 指的是要分享的資料夾的名稱，comment 則是描述，path 是 Linux 資料夾的路徑，
-browseable 是可否瀏覽，read only 是是否唯讀，剩下兩個 mask 則是檔案預設的權限。
-最後請離開 smb.conf，我們要設定可以使用 Samba 的用戶。
-
-+ **Samba setting on Windows**  <br>
-As Below:  <br>
-![SettingOnWindows](samba_setting_windows.jpg)
-
 ## Ubuntu Update
+### apt-get update
 ```bash
 sudo apt-get update
 sudo apt-get -y dist-upgrade
@@ -190,7 +212,7 @@ sudo apt-get clean
 sudo apt-get autoremove
 ```
 
-## Ubuntu Uninstall
+### apt-get remove
 Remove **texlive-full**
 ```bash
 sudo apt-get remove texlive-full
@@ -211,7 +233,7 @@ sudo apt-get remove --purge texlive-full
 [ref.](http://blog.lyhdev.com/2013/01/ubuntu-linux-apt-get.html)
 
 ## Trouble Shooting
-**sudo must be owned by uid 0 and have the setuid bit set**  <br>
+### sudo must be owned by uid 0 and have the setuid bit set
 You shouldn’t have a /usr/local/bin/sudo,
 that’s what’s breaking things (not the password change). Move it out of the way:
 ```bash
@@ -223,7 +245,7 @@ hash -r
 ```
 That will restore the sudo functionality you’re used to. shareimprove this answer
 
-**Screen needs mode 777 with systemd service**  <br>
+### Screen needs mode 777 with systemd service
 The directory needs full permissions to read, write, and execute.
 You can do this command
 ```bash
@@ -236,10 +258,4 @@ You can also run sudo
 chown -R $USER:$USER /var/run/screen
 ```
 This will allow a typical user/or group full access, and will be more secure
-
-####
-
-####
-
-
 
