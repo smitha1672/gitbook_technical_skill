@@ -2,7 +2,7 @@
 openssh-server  <br>
 samba-server  <br>
 screen, .screenrc   <br>
-vim, .vimrc, vim color-minimalist.vim   <br>
+vim, .vimrc, vim color: minimalist.vim   <br>
 docker  <br>
 
 ## Open SSH Server
