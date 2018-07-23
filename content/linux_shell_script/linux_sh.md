@@ -119,7 +119,7 @@ sudo mount -t cifs -o username=smith.hu,password=123456 //172.16.3.220/cwm_rd_na
 ```
 
 ## ZIP/ UNZIP
-#### unzip
+### unzip
 [Linux man page](https://linux.die.net/man/1/unzip)
 ```bash
 unzip letters
@@ -148,11 +148,11 @@ unzip -l file.zip #To do a singly quiet listing
 unzip -ql file.zip #To do a doubly quiet listing
 ```
 
-#### zip
+### zip
 Command format. The basic command format is:
 zip options archive inpath inpath ...
 
-##### archive all the source files in the current directory and its subdirectories
+#### archive all the source files in the current directory and its subdirectories
 ```bash
 find ./out/mt2523_watch/watch_ref_design -maxdepth 1 -type f -print | \
 zip -j source -@
@@ -162,7 +162,7 @@ find ./chre/firmware -type f -name "os.checked.*" -print | \
 zip -j w2_cmh1000_fw_v15_1804Bxxx -@ #-j: junk-path
 ```
 
-##### Achive 2 image files in zip file
+#### Achive 2 image files in zip file
 ```bash
 GIT_TAG=$1
 
