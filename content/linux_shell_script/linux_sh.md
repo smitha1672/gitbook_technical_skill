@@ -113,6 +113,10 @@ if [ $iram_unchunk -ne 0 ]; then
   echo "Pad $iram_pad_size ZERO bytes to $IRAM_FILE_NAME"
 fi
 ```
+## mount
+```bash
+sudo mount -t cifs -o username=smith.hu,password=123456 //172.16.3.220/cwm_rd_nasvr/Document_Center/AE/Personal/Smith/ ./mnt/ae/
+```
 
 ## ZIP/ UNZIP
 #### unzip
