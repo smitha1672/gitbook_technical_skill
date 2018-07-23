@@ -1,10 +1,10 @@
 ## Applications Installation
-openssh-server
-vim, .vimrc, vim color-minimalist.vim
-git .gitconfig
-screen, .screenrc
-docker
-samba-server
+openssh-server  <br>
+vim, .vimrc, vim color-minimalist.vim   <br>
+git .gitconfig  <br>
+screen, .screenrc   <br>
+docker  <br>
+samba-server  <br>
 
 ## VIM
 ### Operation
@@ -36,111 +36,21 @@ $vim file1 file2 file3
 ```text
 :badd path/to/file4
 ```
-### .vimrc instance
-```text
-set softtabstop=2
-" auto change line
-set wrap
-" set background
-set background=dark
-" set UTF-8 encoding
-set enc=utf-8
-set fenc=utf-8
-set termencoding=utf-8
-" disable vi compatibility (emulation of old bugs)
-set nocompatible
-" use indentation of previous line
-set autoindent
-" use intelligent indentation for C
-set smartindent
-" configure tabwidth and insert spaces instead of tabs
-set tabstop=2        " tab width is 4 spaces
-set shiftwidth=2     " indent also with 4 spaces
-set expandtab        " expand tabs to spaces
-" wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
-"set textwidth=80
-" turn syntax highlighting on
-set t_Co=256
-syntax on
-" colorscheme wombat256
-" turn line numbers on
-"set number
-" highlight matching braces
-set showmatch
-
-"link ctags
-"let Tlist_Ctags_Cmd='/usr/bin/ctags'
-
-"smith add
-"if &diff
-  colorscheme minimalist
-"endif
-
-" High light unwanted spaces in end of line
-"highlight ExtraWhitespace ctermbg=darkred guibg=darkcyan
-highlight ExtraWhitespace ctermbg=darkred guibg=darkcyan
-autocmd BufEnter * if &ft != 'help' | match ExtraWhitespace /\s\+$/ | endif
-autocmd BufEnter * if &ft == 'help' | match none /\s\+$/ | endif
-```
+### [\.vimrc instance] (https://github.com/smitha1672/note/blob/master/rc/.vimrc)
 
 ## Screen
-[screen installation and intance](https://blog.gtwang.org/linux/screen-command-examples-to-manage-linux-terminals/)
-
-### .screensrc instance
-```text
-# Start message
-startup_message off
-
-# Set hardstatus always on
-hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %M %d %0c:%s "
-
-# Set default encoding using utf8
-defutf8 on
-
-# Refresh the display when exiting programs
-altscreen on
-
-# Dynamic title
-shelltitle '$ |bash'
-
-# Disable vbell
-vbell off
-
-# Keboard binding
-# bind F11 to move to previous window
-bindkey -k F1 prev
-# bind F12 to move to next window
-bindkey -k F2 next
-# bind Alt`~= to screen0~12
-bindkey "^[`" select 0
-bindkey "^[1" select 1
-bindkey "^[2" select 2
-bindkey "^[3" select 3
-bindkey "^[4" select 4
-bindkey "^[5" select 5
-bindkey "^[6" select 6
-bindkey "^[7" select 7
-bindkey "^[8" select 8
-bindkey "^[9" select 9
-bindkey "^[0" select 10
-bindkey "^[-" select 11
-bindkey "^[=" select 12
-# bind F7 to detach screen session (to background)
-bindkey -k k7 detach
-# bind F8 to kill current screen window
-bindkey -k k8 kill
-# bind F9 to create a new screen
-bindkey -k k9 screen
-# bind F10 to rename current screen window
-bindkey -k k; title
-# ALT+S make a separate  window
-bindkey "^[s" split
-# ALT+f swith separate window
-bindkey "^[f" focus
-# ALT+q leave a separate window
-bindkey "^[q" only
-
+### [Installation](https://blog.gtwang.org/linux/screen-command-examples-to-manage-linux-terminals/)
+```bash
+sudo apt-get install screen
 ```
+### [\.screensrc instance](https://github.com/smitha1672/note/blob/master/rc/.screenrc)
+### Operation
++ **F7** -  to detach screen session (to background)   <br>
++ **F8** -  to kill current screen window    <br>
++ **F9** -  to create a new screen    <br>
++ **ALT+S** -  make a separate  window    <br>
++ **ALT+f** -  swith separate window    <br>
++ **ALT+q** - leave a separate window   <br>
 
 ## Docker
 Refer as:
