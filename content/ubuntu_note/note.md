@@ -36,7 +36,7 @@ $vim file1 file2 file3
 ```text
 :badd path/to/file4
 ```
-### [Vimrc Instance]
+### Vimrc Instance
 [Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
 
 ## Screen
