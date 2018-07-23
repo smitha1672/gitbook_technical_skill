@@ -132,7 +132,7 @@ sudo apt-get install screen
 Refer as:
 [Ubuntu Docker Install](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/), [Learn Docker](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/) and [Docker Command Line](https://docs.docker.com/engine/reference/commandline/docker/)
 
-+ **Docker Install**
+### Docker Install
 > Install
 ```bash
 sudo apt-get install docker.io
@@ -150,7 +150,7 @@ sudo usermod -aG docker smith
 docker version
 ```
 
-+ Docker pull **ubuntu 16.04 or latest**
+### Docker pull ubuntu 16.04 or latest
 ```bash
 docker pull ubuntu:16.04 #or ubuntu:latest
 ```
@@ -164,7 +164,7 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 ubuntu              16.04               e13f3d529b1a        4 days ago          115 MB
 ```
 
-+ Export/Import a container
+### Export/Import a container
 > List contains
 ```text
 $ sudo docker ps -a
@@ -180,7 +180,7 @@ sudo docker export 7691a814370e > ubuntu.tar #ubuntu.tar is a example
  docker import ubuntu.tar unbuntu16.04:v1.0 # ubuntu.tar unbuntu16.04:v1.0 is a example
 ```
 
-+ Run a image
+### Run a image
 ```bash
 sudo docker run -itv /home/smith/workspace/project:/home/mt2523 ubuntu/14.04:linkit_gfx bash
 # /home/smith/workspace/project meaning is local directory.
