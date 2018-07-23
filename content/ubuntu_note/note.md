@@ -7,6 +7,7 @@ docker  <br>
 gitbook
 
 ## Open SSH Server
+### Installation and Setting
 剛灌好系統先讓系統可以SSH
 ```bash
 sudo apt install openssh-server
@@ -16,20 +17,17 @@ sudo apt install openssh-server
 sudo systemctl restart sshd.service
 sudo systemctl restart sshd
 ```
-### [Reference](http://hsu.logdown.com/posts/2016/05/19/ubuntu-server-1604-lts-notes)
+[Reference](http://hsu.logdown.com/posts/2016/05/19/ubuntu-server-1604-lts-notes)
 
 ## Samba Server
-Refer as:
-[samba setting on Ubuntu](https://www.arthurtoday.com/2015/04/ubuntu-server-share-folder-samba.html) and [samba directory on Windows](https://noob.tw/samba/)
-
-+ **Samba setting on Ubuntu**
+### Samba Server Setting on Ubuntu
 > Install
 ```bash
 sudo apt-get install samba
 ```
 > Add a samba user
 ```bash
-sudo adduser smbuser --shell /bin/false #smbusr can be anyone, Smith
+sudo adduser smbuser #smbusr can be anyone, Smith
 ```
 > Add a samba user password
 ```bash
@@ -73,9 +71,12 @@ directory mask = 777
 browseable 是可否瀏覽，read only 是是否唯讀，剩下兩個 mask 則是檔案預設的權限。
 最後請離開 smb.conf，我們要設定可以使用 Samba 的用戶。
 
-+ **Samba setting on Windows**  <br>
+### Samba Client Setting on Windows
 As Below:  <br>
 ![SettingOnWindows](samba_setting_windows.jpg)
+
+**Refer as:**
+[samba setting on Ubuntu](https://www.arthurtoday.com/2015/04/ubuntu-server-share-folder-samba.html) and [samba directory on Windows](https://noob.tw/samba/)
 
 ## VIM
 ### Installation
