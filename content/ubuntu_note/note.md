@@ -36,7 +36,8 @@ $vim file1 file2 file3
 ```text
 :badd path/to/file4
 ```
-### [\.vimrc instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
+### [Vimrc Instance]
+[Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
 
 ## Screen
 ### [Installation](https://blog.gtwang.org/linux/screen-command-examples-to-manage-linux-terminals/)
