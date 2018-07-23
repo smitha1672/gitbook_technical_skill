@@ -132,7 +132,7 @@ sudo apt-get install screen
 Refer as:
 [Ubuntu Docker Install](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/), [Learn Docker](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/) and [Docker Command Line](https://docs.docker.com/engine/reference/commandline/docker/)
 
-### Docker Install
+### Installation
 > Install
 ```bash
 sudo apt-get install docker.io
@@ -150,7 +150,7 @@ sudo usermod -aG docker smith
 docker version
 ```
 
-### Docker pull ubuntu 16.04 or latest
+### Pull ubuntu 16.04 or latest
 ```bash
 docker pull ubuntu:16.04 #or ubuntu:latest
 ```
