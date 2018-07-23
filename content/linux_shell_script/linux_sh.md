@@ -18,19 +18,64 @@ echo -e "I am the king\nof the world" # -e, 讓字串中的特殊字元有作用
 ```
 
 ## xxd
-###TODO
+```bash
+#! /bin/sh
+DRAM_FILE_NAME=os.checked.dram.0x40000400
+IRAM_FILE_NAME=os.checked.iram.0x40080000
+
+DRAM_FILE_SIZE=$(stat -c%s "$DRAM_FILE_NAME")
+IRAM_FILE_SIZE=$(stat -c%s "$IRAM_FILE_NAME")
+
+echo "Size of $DRAM_FILE_NAME = $DRAM_FILE_SIZE bytes."
+echo "Size of $IRAM_FILE_NAME = $IRAM_FILE_SIZE bytes."
+
+dram_chunk=$(($DRAM_FILE_SIZE / 256))
+dram_unchunk=$(($DRAM_FILE_SIZE % 256))
+iram_chunk=$(($IRAM_FILE_SIZE / 256))
+iram_unchunk=$(($IRAM_FILE_SIZE % 256))
+
+if [ $dram_unchunk -ne 0 ]; then
+  dram_chunk=$(($dram_chunk + 1))
+  size=$(($dram_chunk * 256))
+  dram_pad_size=$(($size-$DRAM_FILE_SIZE))
+  dd if=/dev/zero bs=1 count=$dram_pad_size >> $DRAM_FILE_NAME
+  echo "Padding of $DRAM_FILE_NAME = $(stat -c%s "$DRAM_FILE_NAME") bytes."
+fi
+
+if [ $iram_unchunk -ne 0 ]; then
+  iram_chunk=$(($iram_chunk + 1))
+  size=$(($iram_chunk * 256))
+  iram_pad_size=$(($size-$IRAM_FILE_SIZE))
+  dd if=/dev/zero bs=1 count=$iram_pad_size >> $IRAM_FILE_NAME
+  echo "Padding of $IRAM_FILE_NAME = $(stat -c%s "$IRAM_FILE_NAME") bytes."
+fi
+
+export in_dram_img=os.checked.dram.0x40000400
+export in_iram_img=os.checked.iram.0x40080000
+export out_dram_h=cmh1000_dram_img.h
+export out_iram_h=cmh1000_iram_img.h
+
+rm -f  $out_dram_h $out_iram_h
+echo -e "/*The file is built on $(date '+%m-%d-%H-%M-%Y')*/ \n" > $out_dram_h
+xxd -i $in_dram_img | sed 's/unsigned/const static unsigned/g' >> $out_dram_h
+
+echo -e "/*The file is built on $(date '+%m-%d-%H-%M-%Y')*/ \n" > $out_iram_h
+xxd -i $in_iram_img | sed 's/unsigned/const static unsigned/g' >> $out_iram_h
+
+echo "generate CMH1000 firmware array header files $out_dram_h $out_iram_h"
+```
 
 ## find
 ### Copy folder structure \(sans files\) from one location to another
-```bash
-find . -type d > dirs.txt #to create the list of directories, then
-xargs mkdir -p < dirs.txt #to create the directories on the destination.
-```
+  ```bash
+  find . -type d > dirs.txt #to create the list of directories, then
+  xargs mkdir -p < dirs.txt #to create the directories on the destination.
+  ```
 ### cp particular files
-```bash
-find $SRC_DIR -type f \( -name at_command_cmh1000.c \) | xargs -I {} cp -rf --parents {} $DEST_DIR
-find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h -or -name sensor_manager_driver.c -or -name sensor_alg_interface.h \) | xargs -I {} cp -rf --parents {} $DEST_DIR
-cp -f --parents $SRC_DIR/project/mt2523_hdk/apps/phicomm_w2/src/sys_init.c $DEST_DIR
+  ```bash
+  find $SRC_DIR -type f \( -name at_command_cmh1000.c \) | xargs -I {} cp -rf --parents {} $DEST_DIR
+  find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h -or -name sensor_manager_driver.c -or -name sensor_alg_interface.h \) | xargs -I {} cp -rf --parents {} $DEST_DIR
+  cp -f --parents $SRC_DIR/project/mt2523_hdk/apps/phicomm_w2/src/sys_init.c $DEST_DIR
 ```
 
 ## grep
