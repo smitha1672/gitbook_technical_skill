@@ -1,9 +1,10 @@
-## Applications Installation
+## Applications:
 openssh-server  <br>
 samba-server  <br>
 screen, .screenrc   <br>
 vim, .vimrc, vim color: minimalist.vim   <br>
 docker  <br>
+gitbook
 
 ## Open SSH Server
 剛灌好系統先讓系統可以SSH
@@ -77,9 +78,11 @@ As Below:  <br>
 ![SettingOnWindows](samba_setting_windows.jpg)
 
 ## VIM
-### Vimrc Instance
-[Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
-
+### Installation
+```bash
+sudo apt-get install vim
+```
+### [\.vimrc Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
 ### Operation
 + **:so ~/.vimrc**: Import vimrc setting
 + **:%!xxd**: show binary file
@@ -202,7 +205,6 @@ sudo apt-get -y dist-upgrade
 sudo apt-get clean
 sudo apt-get autoremove
 ```
-
 ### apt-get remove
 Remove **texlive-full**
 ```bash
