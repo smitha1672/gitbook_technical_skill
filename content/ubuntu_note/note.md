@@ -3,7 +3,6 @@ openssh-server  <br>
 samba-server  <br>
 screen, .screenrc   <br>
 vim, .vimrc, vim color-minimalist.vim   <br>
-git .gitconfig  <br>
 docker  <br>
 
 ## Open SSH Server
@@ -18,41 +17,7 @@ sudo systemctl restart sshd
 ```
 ### [Reference](http://hsu.logdown.com/posts/2016/05/19/ubuntu-server-1604-lts-notes)
 
-## VIM
-### Vimrc Instance
-[Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
-
-### Operation
-+ **:so ~/.vimrc**: Import vimrc setting
-+ **:%!xxd**: show binary file
-+ copy more lines in register, and then paste to a place
-  example:
-  1. **V** is for a section would be like to copy.
-  2. **"kyy** copy the section in register
-  3. **"kp"** paste the section to your destnation place
-+ **:line_number,$s/string.a/string.b/gc**" Replace from string.a to string.b
-+ [vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
-open a few files to vim buffers
-```bash
-vim file1 file2 file3
-```
-**:ls** - it show as below
-```text
-:buffers (:ls or :files)
-1 %a   "file1"                        line 1
-2      "file2"                        line 0
-3      "file3"                        line 0
-```
-**:[N]buffer** - Jump to particular file
-```text
-:2buffer or :buffer 2
-```
-**:badd** - Add a file to buffer
-```text
-:badd path/to/file4
-```
-
-## Samba
+## Samba Server
 Refer as:
 [samba setting on Ubuntu](https://www.arthurtoday.com/2015/04/ubuntu-server-share-folder-samba.html) and [samba directory on Windows](https://noob.tw/samba/)
 
@@ -111,12 +76,38 @@ browseable 是可否瀏覽，read only 是是否唯讀，剩下兩個 mask 則�
 As Below:  <br>
 ![SettingOnWindows](samba_setting_windows.jpg)
 
-## Ubuntu Update
+## VIM
+### Vimrc Instance
+[Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
+
+### Operation
++ **:so ~/.vimrc**: Import vimrc setting
++ **:%!xxd**: show binary file
++ copy more lines in register, and then paste to a place
+  example:
+  1. **V** is for a section would be like to copy.
+  2. **"kyy** copy the section in register
+  3. **"kp"** paste the section to your destnation place
++ **:line_number,$s/string.a/string.b/gc**" Replace from string.a to string.b
++ [vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
+open a few files to vim buffers
 ```bash
-sudo apt-get update
-sudo apt-get -y dist-upgrade
-sudo apt-get clean
-sudo apt-get autoremove
+vim file1 file2 file3
+```
+**:ls** - it show as below
+```text
+:buffers (:ls or :files)
+1 %a   "file1"                        line 1
+2      "file2"                        line 0
+3      "file3"                        line 0
+```
+**:[N]buffer** - Jump to particular file
+```text
+:2buffer or :buffer 2
+```
+**:badd** - Add a file to buffer
+```text
+:badd path/to/file4
 ```
 
 ## Screen
