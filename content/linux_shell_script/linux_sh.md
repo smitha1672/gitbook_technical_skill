@@ -114,6 +114,7 @@ if [ $iram_unchunk -ne 0 ]; then
 fi
 ```
 ## mount
+### Mount a NAS directory
 ```bash
 sudo mount -t cifs -o username=smith.hu,password=123456 //172.16.3.220/cwm_rd_nasvr/Document_Center/AE/Personal/Smith/ ./mnt/ae/
 ```

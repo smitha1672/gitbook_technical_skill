@@ -1,5 +1,5 @@
-## Add all modication files
-```git
+## Adding All modication files
+```bash
 git add -u .
 ```
 
