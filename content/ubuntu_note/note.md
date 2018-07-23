@@ -1,3 +1,6 @@
+## Applications Installation
+openssh-server, vim, .vimrc, git .gitconfig, screen, .screenrc, docker, samba,
+
 ## VIM
 ### operation
 + **:so ~/.vimrc**: Import vimrc setting
@@ -117,7 +120,7 @@ sudo adduser smbuser --shell /bin/false #smbusr can be anyone, Smith
 ```
 > Add a samba user password
 ```bash
-sudo smbpasswd -a 123456
+sudo smbpasswd -a smbuser
 ```
 > Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
 ```bash
