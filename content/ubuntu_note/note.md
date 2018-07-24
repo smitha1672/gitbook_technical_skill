@@ -198,6 +198,19 @@ If you want a **pdf** file, you have to install **calibre**
 How to edit [Markdown](https://markdown.tw/#em)
 Preview your [MD file](https://stackedit.io/app#)
 
+## Write Markdown with ReText
+``` bash
+sudo apt-get update
+apt install retext
+```
+### Trouble Shooting
+```text
+bash: /home/smith/.local/bin/retext: No such file or directory
+fix:
+mkdir -p .local/bin
+sudo ln -s /usr/bin/retext .local/bin/retext
+```
+
 ## Ubuntu Update
 ### apt-get update
 ```bash
