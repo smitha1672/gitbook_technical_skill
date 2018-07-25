@@ -45,4 +45,11 @@ void main(void)
   rotate(nums, nums_size, 6);
   printArray(nums, nums_size, 101);
 }
-````
+```
+
+####
+
+####
+
+
+
