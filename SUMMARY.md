@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [Specification]
-* [System Programming]
+* [System Programming](content/cs_programming/cs_programming.md)
 * [C Language]
 * [LeetCode](content/leetcode/leetcode.md)
 * [Ubuntu Note](content/ubuntu_note/note.md)
