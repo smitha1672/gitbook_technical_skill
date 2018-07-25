@@ -190,14 +190,23 @@ sudo docker run -itv /home/smith/workspace/project:/home/mt2523 ubuntu/14.04:lin
 
 ## Gitbook
 You have to install **Node.js**, **npm**, **gitbook**
-+ 2 reference URLs:
++ 3 reference URLs:
 [GitBool Toolchain Documentation](https://toolchain.gitbook.com/examples.html)
 [how to install node.js on ubuntu 16.04:Native](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04)
-[git-book-start](http://samwhelp.github.io/blog/read/platform/gitbook/start/)
 
-If you want a **pdf** file, you have to install **calibre**
-How to edit [Markdown](https://markdown.tw/#em)
-Preview your [MD file](https://stackedit.io/app#)
+### Node.js, npm Installation
+```bash
+sudo apt-get update
+sudo apt-get install nodejs
+sudo apt-get install npm
+sudo npm install gitbook-cli -g
+```
++ Trouble Shooting
+Executing `gitbook init`, I got error message as
+```text
+/usr/bin/env: ‘node’: No such file or directory
+[fix] ln -s /usr/bin/nodejs /usr/bin/node
+```
 
 ## Write Markdown with ReText
 ``` bash
