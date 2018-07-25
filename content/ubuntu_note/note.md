@@ -227,6 +227,33 @@ sudo apt-get install nodejs
 sudo apt-get install npm
 sudo npm install gitbook-cli -g
 ```
+### Preview with Firfox
+```bash
+gitbook init ./directory
+cd ./directory
+gitbook build
+gitbook serve
+```
+There are available message
+```text
+Live reload server started on port: 35729
+Press CTRL+C to quit ...
+
+info: 7 plugins are installed 
+info: loading plugin "livereload"... OK 
+info: loading plugin "highlight"... OK 
+info: loading plugin "search"... OK 
+info: loading plugin "lunr"... OK 
+info: loading plugin "sharing"... OK 
+info: loading plugin "fontsettings"... OK 
+info: loading plugin "theme-default"... OK 
+info: found 7 pages 
+info: found 2 asset files 
+info: >> generation finished with success in 1.9s ! 
+
+Starting server ...
+Serving book on http://localhost:4000
+```
 #### Trouble Shooting
 Executing `gitbook init`, I got error message as
 ```text
