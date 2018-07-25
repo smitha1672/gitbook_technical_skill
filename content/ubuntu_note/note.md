@@ -107,6 +107,14 @@ sudo apt-get install vim
 # Replace from string.a to string.b
 :line_number,$s/string.a/string.b/gc
 ```
+```text
+# 每行的行首都添加一个字符串
+:%s/^/要插入的字符串
+
+#每行的行尾都添加一个字符串
+:%s/$/要插入的字符串
+```
+
 [vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
 ```text
 # Is showes as below
@@ -208,7 +216,7 @@ sudo docker run -itv /home/smith/workspace/project:/home/mt2523 ubuntu/14.04:lin
 ```
 
 ## Gitbook
-You have to install **Node.js**, **npm**, **gitbook**
+You have to install **Node.js**, **npm**, **tbook servegitbook**
 [GitBool Toolchain Documentation; ](https://toolchain.gitbook.com/examples.html)
 [how to install node.js on ubuntu 16.04:Native](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04)
 
