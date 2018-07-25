@@ -10,6 +10,32 @@ echo Hi${myname}kkkk  #有其他字申, 需用${XXX} 隔開
 fc=$(cat /etc/password)
 echo "$fc"
 ```
+## sed
+<br> sed [-OPTION] [ADD1][,ADD2] [COMMAND] [/PATTERN][/REPLACEMENT]/[FLAG] [FILE]
+### Modication String
+將字串〝is〞改為〝IS〞(單字前沒加空隔)
+```bash
+echo 'This is a book' | sed 's/is/IS/g'
+# +g: Replace all particalur string.a to string.b
+# -g: Replace first particalur string.a to string.b
+
+echo 'This is a book' | sed 's/ is/ IS/g'
+echo 'This is a book' | sed 's/\<is\>/IS/g'
+sed 's/\<is\>/IS/g' fileA
+sed 's/\<is\>/IS/g' fileA fileB fileC
+```
+將檔案"my_file.txt"中第 4-5 行中的字串"Google"改"Yahoo"並存檔為"new.txt"
+```bash
+cat my_file.txt | sed '4,5 s/Google/Yahoo/g' > new.txt
+sed '4,5 s/Google/Yahoo/g' < my_file.txt > new.txt
+```
+如要搜尋和取代的樣板不只一個,可用選項"-e"或管線再處理。
+```bash
+echo 'this is a apple' | sed 's/a/an/' | sed 's/apple/APPLE/'
+echo 'this is a apple' | sed -e 's/a/an/' -e 's/apple/APPLE/'
+```
+
+[ref.1](http://wanggen.myweb.hinet.net/ach3/ach3.html?MywebPageId=2018251532505598264#option)
 
 ## echo
 ```bash
@@ -18,7 +44,8 @@ echo -e "I am the king\nof the world" # -e, 讓字串中的特殊字元有作用
 ```
 
 ## xxd
-<pre>Create C header file from binary image files <code>
+Create C header file from binary image files
+<pre>#Create C header file from binary image files <code>
 # !/bin/sh
 DRAM_FILE_NAME=os.checked.dram.0x40000400
 IRAM_FILE_NAME=os.checked.iram.0x40080000
