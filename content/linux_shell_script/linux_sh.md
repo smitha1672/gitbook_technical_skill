@@ -18,8 +18,8 @@ echo -e "I am the king\nof the world" # -e, 讓字串中的特殊字元有作用
 ```
 
 ## xxd
-```bash
-#! /bin/sh
+<pre>Create C header file from binary image files <code>
+# !/bin/sh
 DRAM_FILE_NAME=os.checked.dram.0x40000400
 IRAM_FILE_NAME=os.checked.iram.0x40080000
 
@@ -63,16 +63,16 @@ echo -e "/*The file is built on $(date '+%m-%d-%H-%M-%Y')*/ \n" > $out_iram_h
 xxd -i $in_iram_img | sed 's/unsigned/const static unsigned/g' >> $out_iram_h
 
 echo "generate CMH1000 firmware array header files $out_dram_h $out_iram_h"
-```
+</code></pre>
 
 ## find
 ### Copy folder structure \(sans files\) from one location to another
-  ```bash
-  find . -type d > dirs.txt #to create the list of directories, then
-  xargs mkdir -p < dirs.txt #to create the directories on the destination.
-  ```
+```bash
+find . -type d > dirs.txt #to create the list of directories, then
+xargs mkdir -p < dirs.txt #to create the directories on the destination.
+```
 ### cp particular files
-  ```bash
+```bash
   find $SRC_DIR -type f \( -name at_command_cmh1000.c \) | xargs -I {} cp -rf --parents {} $DEST_DIR
   find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h -or -name sensor_manager_driver.c -or -name sensor_alg_interface.h \) | xargs -I {} cp -rf --parents {} $DEST_DIR
   cp -f --parents $SRC_DIR/project/mt2523_hdk/apps/phicomm_w2/src/sys_init.c $DEST_DIR

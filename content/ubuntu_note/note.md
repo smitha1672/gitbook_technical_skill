@@ -1,10 +1,10 @@
 ## Applications:
-openssh-server  <br>
-samba-server  <br>
-screen, .screenrc   <br>
-vim, .vimrc, vim color: minimalist.vim   <br>
-docker  <br>
-gitbook
+<br>openssh-server
+<br>samba-server
+<br>screen, .screenrc
+<br>vim, .vimrc, vim color: minimalist.vim
+<br>docker
+<br>gitbook
 
 ## Open SSH Server
 ### Installation and Setting
@@ -21,20 +21,20 @@ sudo systemctl restart sshd
 
 ## Samba Server
 ### Samba Server Setting on Ubuntu
-> Install
+Installation
 ```bash
 sudo apt-get install samba
 ```
-> Add a samba user
+Add a samba user
 ```bash
 sudo adduser smbuser #smbusr can be anyone, Smith
 ```
-> Add a samba user password
+Add a samba user password
 ```bash
 sudo smbpasswd -a smbuser
 ```
-> Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
-```bash
+Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
+```text
 [public]              #"public" 名稱可以自行變更
 path = /home/smbuser  #這個是要分享的資料夾路徑
 available = yes
@@ -44,20 +44,21 @@ browseable = yes
 public = yes
 writable = yes
 ```
-> Restart Samba serve
+Restart Samba serve
 ```bash
 sudo service smbd restart
 ```
 + **Other Samba Configuration**
+<!--- limiation line
+<br>---------------20------------------40-----------------60------------------80--------------
+-->
 **/etc/samba/smb.conf**:
-首先先找到設定檔裡面的 **workgroup**, 大約在29行附近，把 workgroup
-設成和Windows 系統的一樣(可以到控制台\系統及安全性\系統查看)。
-**Change this to the workgroup/NT-domain name your Samba server will part of**,
-**workgroup = NOOBTW**有關安全性問題，預設 Samba 會使用 Linux 帳號的密碼，
-一般來說會建議保持原設定即可；如果要關掉 Samba 的認證，可以在裡面加上：
-**security = share** 上面大概是 Samba 的一些基本測試，重頭戲在下面，
-如何設定要分享的資料夾？首先我們以**www**資料夾為例，直接將這段放在**smb.conf**
-的最下面即可：
+<br>首先先找到設定檔裡面的 **workgroup**, 大約在29行附近，把 workgroup設成和Windows 系統的一樣
+<br>(可以到控制台\系統及安全性\系統查看)。 Change this to the workgroup/NT-domain name your
+<br>Samba server will part of,  **workgroup = NOOBTW**有關安全性問題，預設 Samba 會使用 Linux
+<br>帳號的密碼, 一般來說會建議保持原設定即可；如果要關掉 Samba 的認證，可以在裡面加上:
+<br>**security = share** 上面大概是 Samba 的一些基本測試，重頭戲在下面, 如何設定要分享的資料夾?
+<br>首先我們以**www**資料夾為例，直接將這段放在**smb.conf**的最下面即可：
 ```text
 [www]
 comment = www
@@ -67,9 +68,12 @@ read only = no
 create mask = 777
 directory mask = 777
 ```
-+ [www] 指的是要分享的資料夾的名稱，comment 則是描述，path 是 Linux 資料夾的路徑，
-browseable 是可否瀏覽，read only 是是否唯讀，剩下兩個 mask 則是檔案預設的權限。
-最後請離開 smb.conf，我們要設定可以使用 Samba 的用戶。
+<!--- limiation line
+<br>---------------20------------------40-----------------60------------------80--------------
+-->
+[www] 指的是要分享的資料夾的名稱，comment 則是描述，path 是 Linux 資料夾的路徑，browseable
+<br>是可否瀏覽，read only 是是否唯讀，剩下兩個 mask 則是檔案預設的權限。最後請離開 smb.conf,我
+<br>們要設定可以使用 Samba 的用戶。
 
 ### Samba Client Setting on Windows
 As Below:  <br>
@@ -85,33 +89,46 @@ sudo apt-get install vim
 ```
 ### [\.vimrc Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
 ### Operation
-+ **:so ~/.vimrc**: Import vimrc setting
-+ **:%!xxd**: show binary file
-+ copy more lines in register, and then paste to a place
-  example:
-  1. **V** is for a section would be like to copy.
-  2. **"kyy** copy the section in register
-  3. **"kp"** paste the section to your destnation place
-+ **:line_number,$s/string.a/string.b/gc**" Replace from string.a to string.b
-+ [vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
-open a few files to vim buffers
-```bash
-vim file1 file2 file3
-```
-**:ls** - it show as below
 ```text
+# Import .vimrc setting
+:so ~/.vimrc
+```
+```text
+# Show binary file
+:%!xxd
+```
+```text
+# Copy more lines in register, and then paste to a place
+1. ctrl + V - It is for a section would be like to copy.
+2. shift + " + ay - "ay" copies the section in register
+3. shift + " +ap - "ap" pastes the section to your destnation place
+```
+```text
+# Replace from string.a to string.b
+:line_number,$s/string.a/string.b/gc
+```
+[vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
+```text
+# Is showes as below
+:ls
+
 :buffers (:ls or :files)
 1 %a   "file1"                        line 1
 2      "file2"                        line 0
 3      "file3"                        line 0
-```
-**:[N]buffer** - Jump to particular file
-```text
+
+# Jump to particular file
+:[N]buffer
+
+For instance
 :2buffer or :buffer 2
-```
-**:badd** - Add a file to buffer
-```text
+
+# Add a file to buffer
 :badd path/to/file4
+```
+open a few files to vim buffers
+```bash
+vim file1 file2 file3
 ```
 
 ## Screen
@@ -121,31 +138,33 @@ sudo apt-get install screen
 ```
 ### [\.screensrc instance](https://github.com/smitha1672/note/blob/master/rc/.screenrc)
 ### Operation
-+ **F7** -  to detach screen session (to background)   <br>
-+ **F8** -  to kill current screen window    <br>
-+ **F9** -  to create a new screen    <br>
-+ **ALT+S** -  make a separate  window    <br>
-+ **ALT+f** -  swith separate window    <br>
-+ **ALT+q** - leave a separate window   <br>
+```text
+F7 -  to detach screen session (to background)
+F8 -  to kill current screen window
+F9 -  to create a new screen
+ALT+S -  make a separate  window
+ALT+f -  swith separate window
+ALT+q - leave a separate window
+```
 
 ## Docker
 Refer as:
 [Ubuntu Docker Install](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/), [Learn Docker](https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/) and [Docker Command Line](https://docs.docker.com/engine/reference/commandline/docker/)
 
 ### Installation
-> Install
+Install
 ```bash
 sudo apt-get install docker.io
 ```
-> Serve Checking
+Serve Checking
 ```bash
 service docker status
 ```
-> Add my account to docker group
+Add my account to docker group
 ```bash
 sudo usermod -aG docker smith
 ```
-> Checking Verion
+Checking Verion
 ```bash
 docker version
 ```
@@ -155,7 +174,7 @@ docker version
 docker pull ubuntu:16.04 #or ubuntu:latest
 ```
 
-+ List images
+List images
 ```bash
 docker images
 ```
@@ -165,22 +184,22 @@ ubuntu              16.04               e13f3d529b1a        4 days ago          
 ```
 
 ### Export/Import a container
-> List contains
+List contains
 ```text
 $ sudo docker ps -a
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                    PORTS               NAMES
 7691a814370e        ubuntu:14.04        "/bin/bash"         36 hours ago        Exited (0) 21 hours ago                       test
 ```
-> export the container
+export the container
 ```bash
 sudo docker export 7691a814370e > ubuntu.tar #ubuntu.tar is a example
 ```
-> import a image file to image
+import a image file to image
 ```bash
  docker import ubuntu.tar unbuntu16.04:v1.0 # ubuntu.tar unbuntu16.04:v1.0 is a example
 ```
 
-### Run a image
+Run a image
 ```bash
 sudo docker run -itv /home/smith/workspace/project:/home/mt2523 ubuntu/14.04:linkit_gfx bash
 # /home/smith/workspace/project meaning is local directory.
@@ -190,8 +209,7 @@ sudo docker run -itv /home/smith/workspace/project:/home/mt2523 ubuntu/14.04:lin
 
 ## Gitbook
 You have to install **Node.js**, **npm**, **gitbook**
-+ 3 reference URLs:
-[GitBool Toolchain Documentation](https://toolchain.gitbook.com/examples.html)
+[GitBool Toolchain Documentation; ](https://toolchain.gitbook.com/examples.html)
 [how to install node.js on ubuntu 16.04:Native](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04)
 
 ### Node.js, npm Installation
@@ -201,24 +219,11 @@ sudo apt-get install nodejs
 sudo apt-get install npm
 sudo npm install gitbook-cli -g
 ```
-+ Trouble Shooting
+#### Trouble Shooting
 Executing `gitbook init`, I got error message as
 ```text
 /usr/bin/env: ‘node’: No such file or directory
 [fix] ln -s /usr/bin/nodejs /usr/bin/node
-```
-
-## Write Markdown with ReText
-``` bash
-sudo apt-get update
-apt install retext
-```
-### Trouble Shooting
-```text
-bash: /home/smith/.local/bin/retext: No such file or directory
-fix:
-mkdir -p .local/bin
-sudo ln -s /usr/bin/retext .local/bin/retext
 ```
 
 ## Ubuntu Update
@@ -249,7 +254,7 @@ sudo apt-get remove --purge texlive-full
 ```
 [ref.](http://blog.lyhdev.com/2013/01/ubuntu-linux-apt-get.html)
 
-## Trouble Shooting
+## Ubuntu Trouble Shooting
 ### sudo must be owned by uid 0 and have the setuid bit set
 You shouldn’t have a /usr/local/bin/sudo,
 that’s what’s breaking things (not the password change). Move it out of the way:
