@@ -1,15 +1,29 @@
 ## Shell Script
-**variable**
++ variable
 ```bash
 myname="OLS3"
 echo Hi${myname}kkkk  #有其他字申, 需用${XXX} 隔開
 ```
 
-**command and variable**
++ command and variable
+
 ```bash
 fc=$(cat /etc/password)
 echo "$fc"
 ```
+
++ if
+
+```bash
+if [ -z $1 ]; then
+  echo "if \$1 is empty
+fi
+
+if [ -n $1 ]; then
+  ehco "if \$1 is not empty
+fi
+```
+
 ## sed
 <br> sed [-OPTION] [ADD1][,ADD2] [COMMAND] [/PATTERN][/REPLACEMENT]/[FLAG] [FILE]
 ### Modication String
