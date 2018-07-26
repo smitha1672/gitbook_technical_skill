@@ -49,6 +49,11 @@ echo 'this is a apple' | sed 's/a/an/' | sed 's/apple/APPLE/'
 echo 'this is a apple' | sed -e 's/a/an/' -e 's/apple/APPLE/'
 ```
 
++ window path to linux path
+```bash
+echo '\project\w2\worktree\cmh1000_dev07e_w906\chre\firmware\src\drivers\cwm_algo\human\XPNANO\cwm_sedentary\T03.00.03_20180320' | sed 's/\\/\//g'
+```
+
 [ref.1](http://wanggen.myweb.hinet.net/ach3/ach3.html?MywebPageId=2018251532505598264#option)
 
 ## echo
