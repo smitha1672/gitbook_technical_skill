@@ -117,16 +117,26 @@ echo "generate CMH1000 firmware array header files $out_dram_h $out_iram_h"
 </code></pre>
 
 ## find
-### Copy folder structure \(sans files\) from one location to another
++ Find all file in particalur path or exclude particalur path
+
+```bash
+find . -path "*/04_pccm0117*" -type f
+find . -type f ! -path "*/04_pccm0117*"
+find . -type f -path "*/04_pccm0117*" -or -path "*/linaro/*"
+```
+
++ Copy folder structure \(sans files\) from one location to another
+
 ```bash
 find . -type d > dirs.txt #to create the list of directories, then
 xargs mkdir -p < dirs.txt #to create the directories on the destination.
 ```
-### cp particular files
++ Copy particular files
+
 ```bash
   find $SRC_DIR -type f \( -name at_command_cmh1000.c \) |\
   xargs -I {} cp -rf --parents {} $DEST_DIR
-  find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h -or -name sensor_manager_driver.c \) |\
+  find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h \) |\
   xargs -I {} cp -rf --parents {} $DEST_DIR
   cp -f --parents $SRC_DIR/project/mt2523_hdk/apps/phicomm_w2/src/sys_init.c $DEST_DIR
 ```
