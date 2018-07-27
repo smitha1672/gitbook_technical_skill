@@ -51,7 +51,12 @@ echo 'this is a apple' | sed -e 's/a/an/' -e 's/apple/APPLE/'
 
 + window path to linux path
 ```bash
-echo '\project\w2\worktree\cmh1000_dev07e_w906\chre\firmware\src\drivers\cwm_algo\human\XPNANO\cwm_sedentary\T03.00.03_20180320' | sed 's/\\/\//g'
+echo '\project\w2\worktree' | sed 's/\\/\//g'
+```
++ linux path to windows path
+
+```bash
+echo '/abc/wxy' | sed 's/\//\\/g'
 ```
 
 [ref.1](http://wanggen.myweb.hinet.net/ach3/ach3.html?MywebPageId=2018251532505598264#option)
@@ -119,8 +124,10 @@ xargs mkdir -p < dirs.txt #to create the directories on the destination.
 ```
 ### cp particular files
 ```bash
-  find $SRC_DIR -type f \( -name at_command_cmh1000.c \) | xargs -I {} cp -rf --parents {} $DEST_DIR
-  find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h -or -name sensor_manager_driver.c -or -name sensor_alg_interface.h \) | xargs -I {} cp -rf --parents {} $DEST_DIR
+  find $SRC_DIR -type f \( -name at_command_cmh1000.c \) |\
+  xargs -I {} cp -rf --parents {} $DEST_DIR
+  find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h -or -name sensor_manager_driver.c \) |\
+  xargs -I {} cp -rf --parents {} $DEST_DIR
   cp -f --parents $SRC_DIR/project/mt2523_hdk/apps/phicomm_w2/src/sys_init.c $DEST_DIR
 ```
 
