@@ -30,8 +30,8 @@ fi
 將字串〝is〞改為〝IS〞(單字前沒加空隔)
 ```bash
 echo 'This is a book' | sed 's/is/IS/g'
-# +g: Replace all particalur string.a to string.b
-# -g: Replace first particalur string.a to string.b
+# +g: Replace all particular string.a to string.b
+# -g: Replace first particular string.a to string.b
 
 echo 'This is a book' | sed 's/ is/ IS/g'
 echo 'This is a book' | sed 's/\<is\>/IS/g'
@@ -117,7 +117,7 @@ echo "generate CMH1000 firmware array header files $out_dram_h $out_iram_h"
 </code></pre>
 
 ## find
-+ Find all file in particalur path or exclude particalur path
++ Find all file in particular path or exclude particular path
 
 ```bash
 find . -path "*/04_pccm0117*" -type f
@@ -139,6 +139,21 @@ xargs mkdir -p < dirs.txt #to create the directories on the destination.
   find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h \) |\
   xargs -I {} cp -rf --parents {} $DEST_DIR
   cp -f --parents $SRC_DIR/project/mt2523_hdk/apps/phicomm_w2/src/sys_init.c $DEST_DIR
+```
++ Import \*.c; \*.h from particular path to vim
+
+```bash
+# !/bin/bash
+default_path=*/07_w906_zwcm0118/*
+
+if [ -z $1 ]; then
+  filelist=$(find . -path "$default_path" -type f \( -name "*.c" -or -name "*.h" \) | xargs)
+  vim $filelist
+else
+  $default_path=$1
+  filelist=$(find . -path "$default_path" -type f \( -name "*.c" -or -name "*.h" \) | xargs)
+  vim $filelist
+fi
 ```
 
 ## grep
@@ -191,7 +206,7 @@ tr "\000" "\377" > paddedFile.bin
 ```
   **\377** meaning 0xFF of octal.
 
-### Padding a few 0x00 dummy bytes in the particalur file
+### Padding a few 0x00 dummy bytes in the particular file
 ```bash
 #! /bin/sh
 DRAM_FILE_NAME=os.checked.dram.0x40000400
