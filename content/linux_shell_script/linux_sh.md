@@ -1,23 +1,37 @@
 ## Shell Script
-**variable**
++ variable
 ```bash
 myname="OLS3"
 echo Hi${myname}kkkk  #有其他字申, 需用${XXX} 隔開
 ```
 
-**command and variable**
++ command and variable
+
 ```bash
 fc=$(cat /etc/password)
 echo "$fc"
 ```
+
++ if
+
+```bash
+if [ -z $1 ]; then
+  echo "if \$1 is empty
+fi
+
+if [ -n $1 ]; then
+  ehco "if \$1 is not empty
+fi
+```
+
 ## sed
 <br> sed [-OPTION] [ADD1][,ADD2] [COMMAND] [/PATTERN][/REPLACEMENT]/[FLAG] [FILE]
 ### Modication String
 將字串〝is〞改為〝IS〞(單字前沒加空隔)
 ```bash
 echo 'This is a book' | sed 's/is/IS/g'
-# +g: Replace all particalur string.a to string.b
-# -g: Replace first particalur string.a to string.b
+# +g: Replace all particular string.a to string.b
+# -g: Replace first particular string.a to string.b
 
 echo 'This is a book' | sed 's/ is/ IS/g'
 echo 'This is a book' | sed 's/\<is\>/IS/g'
@@ -33,6 +47,16 @@ sed '4,5 s/Google/Yahoo/g' < my_file.txt > new.txt
 ```bash
 echo 'this is a apple' | sed 's/a/an/' | sed 's/apple/APPLE/'
 echo 'this is a apple' | sed -e 's/a/an/' -e 's/apple/APPLE/'
+```
+
++ window path to linux path
+```bash
+echo '\project\w2\worktree' | sed 's/\\/\//g'
+```
++ linux path to windows path
+
+```bash
+echo '/abc/wxy' | sed 's/\//\\/g'
 ```
 
 [ref.1](http://wanggen.myweb.hinet.net/ach3/ach3.html?MywebPageId=2018251532505598264#option)
@@ -93,16 +117,43 @@ echo "generate CMH1000 firmware array header files $out_dram_h $out_iram_h"
 </code></pre>
 
 ## find
-### Copy folder structure \(sans files\) from one location to another
++ Find all file in particular path or exclude particular path
+
+```bash
+find . -path "*/04_pccm0117*" -type f
+find . -type f ! -path "*/04_pccm0117*"
+find . -type f -path "*/04_pccm0117*" -or -path "*/linaro/*"
+```
+
++ Copy folder structure \(sans files\) from one location to another
+
 ```bash
 find . -type d > dirs.txt #to create the list of directories, then
 xargs mkdir -p < dirs.txt #to create the directories on the destination.
 ```
-### cp particular files
++ Copy particular files
+
 ```bash
-  find $SRC_DIR -type f \( -name at_command_cmh1000.c \) | xargs -I {} cp -rf --parents {} $DEST_DIR
-  find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h -or -name sensor_manager_driver.c -or -name sensor_alg_interface.h \) | xargs -I {} cp -rf --parents {} $DEST_DIR
+  find $SRC_DIR -type f \( -name at_command_cmh1000.c \) |\
+  xargs -I {} cp -rf --parents {} $DEST_DIR
+  find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h \) |\
+  xargs -I {} cp -rf --parents {} $DEST_DIR
   cp -f --parents $SRC_DIR/project/mt2523_hdk/apps/phicomm_w2/src/sys_init.c $DEST_DIR
+```
++ Import \*.c; \*.h from particular path to vim
+
+```bash
+# !/bin/bash
+default_path=*/07_w906_zwcm0118/*
+
+if [ -z $1 ]; then
+  filelist=$(find . -path "$default_path" -type f \( -name "*.c" -or -name "*.h" \) | xargs)
+  vim $filelist
+else
+  $default_path=$1
+  filelist=$(find . -path "$default_path" -type f \( -name "*.c" -or -name "*.h" \) | xargs)
+  vim $filelist
+fi
 ```
 
 ## grep
@@ -155,7 +206,7 @@ tr "\000" "\377" > paddedFile.bin
 ```
   **\377** meaning 0xFF of octal.
 
-### Padding a few 0x00 dummy bytes in the particalur file
+### Padding a few 0x00 dummy bytes in the particular file
 ```bash
 #! /bin/sh
 DRAM_FILE_NAME=os.checked.dram.0x40000400
@@ -255,6 +306,28 @@ if [ -z "$GIT_TAG" ]; then
   echo "ERROR: \$1 is empty, you have to fill GIT tag keyword is similar \"04B\", \"08D\"...etc"
 else
   achive_fw_image
+fi
+```
+
+```bash
+VER_NUM=$(echo "v15.$(cat chre/firmware/misc/variant/$1/Makefile | grep VARIANT | sed 's/FLAGS += -DVARIANT_VER=0x//')")
+VARIANT_MK_PATH="chre/firmware/misc/variant/$1/Makefile"
+
+achive_fw_image()
+{
+  rm -v sensorhub_fw_"${VER_NUM}".zip
+  echo -e "Create sensorhub_fw_"${VER_NUM}".zip\n"
+  find ./chre/firmware -type f -name "os.checked.*" -print | zip -qj sensorhub_fw_"${VER_NUM}".zip -@
+}
+
+if [ -f $VARIANT_MK_PATH ]; then
+  echo "Project name is: $1"
+  achive_fw_image
+else
+  echo "Error! Yours project name is empty: $1"
+  echo "You should fill that it like as \$ source achive_cmh1000fw.sh 07_w906_zwcm0118"
+  echo "Project name is as below:"
+  find . -path "*/misc/variant/*" -type d -print | sed 's/.\/chre\/firmware\/misc\/variant\///'
 fi
 ```
 
