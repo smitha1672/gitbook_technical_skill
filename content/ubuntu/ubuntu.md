@@ -47,7 +47,7 @@ sudo /etc/init.d/networking restart
 sudo reboot
 #or shutdown -r now
 ```
-
+[ref. link native](https://michael.mckinnon.id.au/2016/05/05/configuring-ubuntu-16-04-static-ip-address/)
 [ref. link](https://itw01.com/Y2ANE93.html)
 
 ### Open SSH Server
