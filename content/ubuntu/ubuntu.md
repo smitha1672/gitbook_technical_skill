@@ -7,7 +7,7 @@
 <br>gitbook
 
 ## SSH Server
-### Setting static ip
+### Setting Static IP
 + Showing route info:
 
 ```text
@@ -47,7 +47,7 @@ sudo /etc/init.d/networking restart
 sudo reboot
 #or shutdown -r now
 ```
-[ref. link native](https://michael.mckinnon.id.au/2016/05/05/configuring-ubuntu-16-04-static-ip-address/)
+[ref. link native; ](https://michael.mckinnon.id.au/2016/05/05/configuring-ubuntu-16-04-static-ip-address/)
 [ref. link](https://itw01.com/Y2ANE93.html)
 
 ### Open SSH Server
@@ -145,18 +145,43 @@ sudo apt-get install vim
 # Copy more lines in register, and then paste to a place
 1. ctrl + V - It is for a section would be like to copy.
 2. shift + " + ay - "ay" copies the section in register
-3. shift + " +ap - "ap" pastes the section to your destnation place
+3. shift + " + ap - "ap" pastes the section to your destnation place
+
+e/E - 將cursor移到字尾.
+b/E - 將cursor移到字首
+( - 將cursor移到上一句子開頭
+) - 將cursor移到下一句子開頭
+{ - 將cursor移到上一個段落開頭
+} - 將cursor移到下一個段落開頭
+I - 將文字插入到cursor position
+D/ d$ - After cursor position, End of content is deleted on one line.
+d0 - Before cursor position, Start of content is deleted on one line.
+U - 取消自上次移動到目前行以來所做的所有操作
+. - 將操作重覆執行 (輸入O > 打字 > 輸入.)
+M - 將cursor移到screen 的中間行.
+L - 將cursor移到screen 的最底行.
 ```
+
 ```text
 # Replace from string.a to string.b
-:line_number,$s/string.a/string.b/gc
-```
-```text
+:[range]s/string.a/string.b/gc #[range] is able be [line.start, line.end]
+
 # 每行的行首都添加一个字符串
 :%s/^/要插入的字符串
 
 #每行的行尾都添加一个字符串
 :%s/$/要插入的字符串
+
+# 替換以word開始的單字.
+:%s/\<buf/stat_buf/g
+
+# 寫新檔名
+:w test.c
+```
+
+```text
+# 開啟該程式中的所有原始檔, 並且將顯示位置停留在 main fucntion
+vi +/main *.h *.c
 ```
 
 [vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
@@ -283,17 +308,17 @@ There are available message
 Live reload server started on port: 35729
 Press CTRL+C to quit ...
 
-info: 7 plugins are installed 
-info: loading plugin "livereload"... OK 
-info: loading plugin "highlight"... OK 
-info: loading plugin "search"... OK 
-info: loading plugin "lunr"... OK 
-info: loading plugin "sharing"... OK 
-info: loading plugin "fontsettings"... OK 
-info: loading plugin "theme-default"... OK 
-info: found 7 pages 
-info: found 2 asset files 
-info: >> generation finished with success in 1.9s ! 
+info: 7 plugins are installed
+info: loading plugin "livereload"... OK
+info: loading plugin "highlight"... OK
+info: loading plugin "search"... OK
+info: loading plugin "lunr"... OK
+info: loading plugin "sharing"... OK
+info: loading plugin "fontsettings"... OK
+info: loading plugin "theme-default"... OK
+info: found 7 pages
+info: found 2 asset files
+info: >> generation finished with success in 1.9s !
 
 Starting server ...
 Serving book on http://localhost:4000
@@ -305,7 +330,7 @@ Executing `gitbook init`, I got error message as
 [fix] ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
-## Ubuntu Update
+## Usefual Ubuntu Command
 ### apt-get update
 ```bash
 sudo apt-get update
@@ -333,6 +358,17 @@ sudo apt-get remove --purge texlive-full
 ```
 [ref.](http://blog.lyhdev.com/2013/01/ubuntu-linux-apt-get.html)
 
+### ssh client
++ How to link SSH server to from a ubuntu system to the other ubuntu system
+
+```bash
+ssh smith@192.168.131.128
+```
+
+## windows + Ubuntu 安裝
+[ref.1 link](https://www.xmind.net/m/J5mt/)
+<br> [ref.2 link](https://read01.com/jND7m.html#.W1wvzdIzaUk)
+
 ## Ubuntu Trouble Shooting
 ### sudo must be owned by uid 0 and have the setuid bit set
 You shouldn’t have a /usr/local/bin/sudo,
@@ -359,4 +395,3 @@ You can also run sudo
 chown -R $USER:$USER /var/run/screen
 ```
 This will allow a typical user/or group full access, and will be more secure
-
