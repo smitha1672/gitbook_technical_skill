@@ -56,7 +56,7 @@ ifconfig ens33 up
 
 + Reboot Ubuntu
 
-```basd
+```bash
 reboot # shutdown -r now
 ```
 
