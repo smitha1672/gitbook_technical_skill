@@ -65,13 +65,35 @@ quantity q = {.weight=1.5};
 
 
 ## GCC(GNU Compiler Collection)
-+ Create a executable file
+<br> gcc -c/-S/-E/-o/-l/-L/-g
 
-```bash
-gcc -c *.c  # create \*.c to objective code
-gcc *.o -o executable # Link all objective code to a executable file
+```text
+# [-c] and [-o] - Create a executable file
+gcc -c test1.c test2.c test3.c -o test
+=> 等效於
+gcc -c test1.c test2.c test3.c
+gcc test1.o test2.o test3.o -o test
+
+:-c \*.c  # create \*.c to objective code
+:-o \*.o -# Link all objective code to a executable file
+
+# [-c] Create objective files
+gcc -c test1.c test2.c test3.c
+Noted: if -o exincludes, compiler cannot find out linking error.
+
+# [-S] Compile c file to ASM
+gcc -S test.c
+
+# [-E] 將原始檔案(*.c)作進行預先處理而不是進行compile
+可以用來展開marco, file include issue
+
+# [-l] include header file with particular path
+
+# [-L] 指定 library 路徑
+
+# [-g] it is used to gdb
+會產生符號表, 讓gdb 工具可以除錯
 ```
-+ gcc -L/ -I/ -E
 + nm
 + ar -t/-x/rcs
 
