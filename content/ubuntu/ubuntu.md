@@ -203,6 +203,53 @@ For instance
 # Add a file to buffer
 :badd path/to/file4
 ```
+
+vim grep
+
+```text
+[ref](https://blog.easwy.com/archives/advanced-vim-skills-quickfix-mode/)
+As follows:
+:vim[grep][!] /{pattern}/[g][j] {file} ..
+Recursive search:
+:vimgrep /dostuff()/j ../**/*.c
+
+Dotfiles:
+:vimgrep /pattern/ ./.*
+:cw
+:copen
+These commands all fill a list with the results of their search.
+"grep" and "vimgrep" fill the "quickfix list",
+which can be opened with :cw or :copen
+
+ref.: https://blog.csdn.net/zqiang_55/article/details/30715961
+vimgrep /匹配模式/[g][j] 要搜索的文件/范围
+g：表示是否把每一行的多个匹配结果都加入
+j：表示是否搜索完后定位到第一个匹配位置
+
+vimgrep /pattern/ %           在当前打开文件中查找
+vimgrep /pattern/ *           在当前目录下查找所有
+vimgrep /pattern/ **          在当前目录及子目录下查找所有
+vimgrep /pattern/ *.c         查找当前目录下所有.c文件
+vimgrep /pattern/ **/*        只查找子目录
+
+cn                            查找下一个
+cp                            查找上一个
+copen                         打开quickfix
+cw                            打开quickfix
+cclose                        关闭qucikfix
+help vimgrep                  查看vimgrep帮助
+
+ref.: https://blog.csdn.net/icbm/article/details/71036168
+files 参数举例：
+% 表示在当前缓冲区文件中查找。
+
+*.cpp 表示在当前目录中的 .cpp 文件中搜索。
+
+**/*.cpp 表示在当前目录及子目录中 .cpp 文件中搜索。
+
+**/*.cpp **/*.h 表示在当前目录及子目录中 .cpp、.h 文件中搜索。
+```
+
 open a few files to vim buffers
 ```bash
 vim file1 file2 file3
