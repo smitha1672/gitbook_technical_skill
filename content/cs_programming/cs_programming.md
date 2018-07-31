@@ -64,6 +64,7 @@ quantity q = {.weight=1.5};
 ```
 
 + array pointer
+
 ```c
 void print_pointer_array(int *p[])
 {
