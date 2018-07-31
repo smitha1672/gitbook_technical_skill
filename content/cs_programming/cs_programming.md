@@ -63,6 +63,29 @@ quantity q = {4}; //set 4 to count
 quantity q = {.weight=1.5};
 ```
 
++ array pointer
+```c
+void print_pointer_array(int *p[])
+{
+  for(int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      printf("p[%d][%d] = %d\n", i, j,  *(p[i] + j));
+    }
+  }
+}
+
+void main(void)
+{
+  int acc[3] = {1, 2, 3};
+  int gyro[3] = {4, 5, 6};
+  int mag[3] = {7, 8, 9};
+  int *p[3]= {NULL, };
+  p[0] = acc;
+  p[1] = gyro;
+  p[2] = mag;
+  print_pointer_array(p);
+}
+```
 
 ## GCC(GNU Compiler Collection)
 <br> gcc -c/-S/-E/-o/-l/-L/-g
