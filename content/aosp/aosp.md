@@ -25,7 +25,7 @@ Development Android
 
     sudo vim /etc/udev/rules.d/51-android.rules
 
-檔案尾端加入以下四行 
+檔案尾端加入以下四行
 
 "OWNER"請記得修改
 
@@ -33,7 +33,7 @@ Development Android
     SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="d00d", MODE="0600", OWNER="User"
     # adb protocol on Hikey Board
     SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="4ee7", MODE="0600", OWNER="User"
-    
+
 存檔完再重新載入規則
 
     sudo udevadm control --reload-rules
@@ -44,7 +44,7 @@ Development Android
     PATH=~/bin:$PATH
     curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
     chmod a+x ~/bin/repo
-    
+
 
 因為Android是由很多個git repository所組成的
 
@@ -147,3 +147,66 @@ For Android 6.0.1
     cd hikey-linaro
     make ARCH=arm64 hikey_defconfig
     make ARCH=arm64 CROSS_COMPILE=<AOSP_ROOT>/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android- -j4
+
+## AOSP6 Trouble Shooting
+### ERROR
+```text
+make: *** [out/host/common/obj/JAVA_LIBRARIES/guavalib_intermediates/javalib.jar] Error 41
+```
++ Fix: Add PPA for OpenJDK7
+<br>
+```text
+  $ apt-get install software-properties-common python-software-properties
+  $ apt remove openjdk-* icedtea-* icedtea6-*
+  [oracle openjdk ppa source]
+  $ add-apt-repository ppa:openjdk-r/ppa
+  $ apt-get update
+  $ apt-get install openjdk-7-jdk
+  [oracle java jdk ppa source]
+  $ add-apt-repository ppa:webupd8team/java
+  $ apt-get update
+  [JDK6]
+  $ apt-get install oracle-java6-installer
+  [JDK 7]
+  $ apt-get install oracle-java7-installer
+
+  Ref:
+    https://groups.google.com/forum/#!topic/android-building/WbFF6Zk8dqY
+    http://oopsmonk.github.io/blog/2016/06/07/android-build-error-on-ubuntu-16-04-lts
+    http://www.cnblogs.com/bluestorm/p/5677625.html
+
+  PS: If you have other java version in system, make sure your java version is correct.
+  sudo update-alternatives --config java
+  sudo update-alternatives --config javac
+  sudo update-alternatives --config javadoc
+  sudo update-alternatives --config javap
+  sudo update-alternatives --config javaws
+  sudo update-alternatives --config jar
+```
+
+### ERROR
+```text
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+build/core/host_shared_library_internal.mk:51: recipe for target 'out/host/linux-x86/obj32/lib/libart.so' failed
+make: *** [out/host/linux-x86/obj32/lib/libart.so] Error 1
+```
++ FIX:
+
+```text
+fix:
+./Android.common_build.mk
+ifneq ($(WITHOUT_HOST_CLANG),true)
+  # By default, host builds use clang for better warnings.
+  ART_HOST_CLANG := false
+endif
+
+build/core/base_rules.mk:559: recipe for target 'out/host/linux-x86/framework/jack.jar' failed
+USER: unbound variable
+
+Cause: Build with a docker system
+fix: Define the USER environment variable (not set by default), e.g. export USER=$(whoami)
+```
+
+## AOSP7 Trouble Shooting
+
+

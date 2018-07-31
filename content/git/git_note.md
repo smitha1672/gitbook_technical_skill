@@ -1,28 +1,29 @@
 
-## Adding All modication files
+## add
 ```bash
+# add all modification files.
 git add -u .
+
+# add untrack files
+git add -f file.o
 ```
 
-## Worktree
+## worktree
 ```text
 # List Worktree
-```bash
 git worktree list
 
 # Add a Worktree
-```bash
 git worktree add ../tmptree -b fix_bug
 
 # Removing a Worktree
-bash
 rm -rf /home/smith/worktree
 git worktree prun --dry--run
 git worktree purn --verbose
 git worktree list
 ```
 
-## Push
+## push
 ```text
 # Uploading local branch to origin branch
 git push origin foo
@@ -34,14 +35,22 @@ git push origin local/branch:remote/branch
 git push origin :foo
 ```
 
-## Pull
+## pull
 ```text
 # 下載origin 儲存庫上所有分支的變更內容
 git pull origin
 
-# Downloading foo branch of origi to local foo branch
+# Downloading foo branch of origin to local foo branch
 git origin fool
 
-# Downloading foo branch of origi to local bar branch
+# Downloading foo branch of origin to local bar branch
 git pull origin foo:bar
 ```
+
+## remote
+```text
+# add a url to remote
+git remote add "remote name" url_address
+```
+
+

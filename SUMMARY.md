@@ -1,14 +1,17 @@
 # Summary
 
-* [Introduction](README.md)
-* [Specification]
-* [System Programming](content/cs_programming/cs_programming.md)
-* [C Language]
-* [LeetCode](content/leetcode/leetcode.md)
-* [Ubuntu](content/ubuntu/ubuntu.md)
-* [GIT Usage](content/git/git_note.md)
-* [Linux Shell Script](content/linux_shell_script/linux_sh.md)
-* [Teraterm TTL]
-* [Android AOSP Building Guide](content/aosp/aosp.md)
-* [Building Root]
+<!--* [introduction]-->
+<!--* [specification]-->
+* [system programming](content/cs_programming/cs_programming.md)
+<!-- * [C skill] -->
+* [leetcode](content/leetcode/leetcode.md)
+* [ubuntu](content/ubuntu/ubuntu.md)
+<!-- [docker]-->
+* [vim](content/vim/vim.md)
+* [git](content/git/git_note.md)
+* [shell](content/linux_shell_script/linux_sh.md)
+* [docker](content/docker/docker.md)
+<!--* [Teraterm TTL]-->
+* [AOSP Building Guide](content/aosp/aosp.md)
+<!--* [Building Root]-->
 
