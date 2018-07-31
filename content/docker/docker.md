@@ -6,7 +6,7 @@ Refer as:
 <br>[Building a docker image](https://skychang.github.io/2015/07/30/%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84-Docker-image/)
 <br>[Share docker image](https://larrylu.blog/share-image-on-dockerhub-ccb7d9b26fa8)
 <br>[Entry docker](http://m.openfoundry.org/?action=news&page=/tw/tech-column/9319-docker-101)
-<br>
+<br>[other.1](https://philipzheng.gitbooks.io/docker_practice/content/install/ubuntu.html)
 ### Installation
 Install
 ```bash
