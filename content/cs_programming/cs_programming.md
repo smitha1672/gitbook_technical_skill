@@ -88,7 +88,15 @@ void main(void)
 ```
 
 ## GCC(GNU Compiler Collection)
+<!---
 <br> gcc -c/-S/-E/-o/-l/-L/-g
+-->
+<br> [reference link.1](https://wizardforcel.gitbooks.io/100-gcc-tips/content/syntax-only.html)
+<br> syntax checking
+
+```bash
+gcc -fsyntax-only foo.c
+```
 
 ```text
 # [-c] and [-o] - Create a executable file
