@@ -59,6 +59,19 @@ echo '\project\w2\worktree' | sed 's/\\/\//g'
 echo '/abc/wxy' | sed 's/\//\\/g'
 ```
 
++ svn export from directories
+
+```bash
+# ! bin/bash
+svn list --username smith.hu --password 123456 --non-interactive http://172.16.3.240/svn/common/Algorithm/CommonAlgo/XP_NANO/ > list_algo.log
+
+echo "# !/bin/bash" > svn_export.sh
+chmod u+x svn_export.sh
+cat list_algo.log | sed 's/\(^cwm\)/svn export --username smith.hu --password 123456 --non-interactive http:\/\/172.16.3.240\/svn\/common\/Algorithm\/CommonAlgo\/XP_NANO\/\1/g' >> svn_export.sh
+
+source svn_export.sh
+```
+
 [ref.1](http://wanggen.myweb.hinet.net/ach3/ach3.html?MywebPageId=2018251532505598264#option)
 
 ## echo
