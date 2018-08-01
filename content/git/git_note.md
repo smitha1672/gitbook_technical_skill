@@ -18,15 +18,15 @@ git worktree add ../tmptree -b fix_bug
 
 # Removing a Worktree
 rm -rf /home/smith/worktree
-git worktree prun --dry--run
-git worktree purn --verbose
+git worktree prune --dry-run
+git worktree prune --verbose
 git worktree list
 ```
 
 ## push
 ```text
 # Uploading local branch to origin branch
-git push origin foo
+git push origin local/foo
 
 # push local branch to remote branch
 git push origin local/branch:remote/branch
@@ -41,10 +41,10 @@ git push origin :foo
 git pull origin
 
 # Downloading foo branch of origin to local foo branch
-git origin fool
+git origin remote/foo
 
 # Downloading foo branch of origin to local bar branch
-git pull origin foo:bar
+git pull origin remote/foo:local/bar
 ```
 
 ## remote
