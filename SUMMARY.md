@@ -9,7 +9,7 @@
 <!-- [docker]-->
 * [vim](content/vim/vim.md)
 * [git](content/git/git_note.md)
-* [shell](content/linux_shell_script/linux_sh.md)
+* [shell](content/shell/shell.md)
 * [docker](content/docker/docker.md)
 <!--* [Teraterm TTL]-->
 * [AOSP Building Guide](content/aosp/aosp.md)

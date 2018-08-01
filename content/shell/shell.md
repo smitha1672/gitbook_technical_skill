@@ -25,7 +25,47 @@ fi
 ```
 
 ## sed
-<br> sed [-OPTION] [ADD1][,ADD2] [COMMAND] [/PATTERN][/REPLACEMENT]/[FLAG] [FILE]
+### 正規表示式
++ . 1點代表一個char
+
+```text
+.T.: 代表3個字元, 中間為T
+```
++ \^ 在列首
+
+```text
+^: 代表位置在列開頭; ^cwm: 代表cwm在列開頭.
+```
++ \$ 在尾部
+
+```text
+123$
+```
++ \\{...\\} 指定符合的個數
+
+```text
+\{3,5}\: 表示前面的字元有3~5個. [a-z]\{3,5\}: 以小寫字母組成長度3~5.
+```
++ \\(...\\) 把比對符合的字串暫時保存起來.
+
+```text
+H\(...\)Y 表示要保存H和Y之間的3個字元. \1 代表第1個保存的字串, \2代表第2個
+```
++ Pattern
+
+```text
+sed '樣式命令' 檔案
+sed -e '樣式命令1' -e '樣式命令2' -e '樣式命令3' -e '樣式命令4' 檔案
+sed -f 樣式命令檔 檔案
+```
+
+###用法
++ insert
+
+```text
+sed -n 's/\(La\)/\1Oo/p' file
+```
+
 ### Modication String
 將字串〝is〞改為〝IS〞(單字前沒加空隔)
 ```bash
@@ -63,7 +103,7 @@ echo '/abc/wxy' | sed 's/\//\\/g'
 
 ```bash
 # ! bin/bash
-svn list --username smith.hu --password 123456 --non-interactive http://172.16.3.240/svn/common/Algorithm/CommonAlgo/XP_NANO/ > list_algo.log
+svn list --username user --password xxxx --non-interactive http://172.16.3.240/svn/common/Algorithm/CommonAlgo/XP_NANO/ > list_algo.log
 
 echo "# !/bin/bash" > svn_export.sh
 chmod u+x svn_export.sh
