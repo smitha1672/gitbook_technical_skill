@@ -1,5 +1,6 @@
 ## Shell Script
 + variable
+
 ```bash
 myname="OLS3"
 echo Hi${myname}kkkk  #有其他字申, 需用${XXX} 隔開
@@ -11,7 +12,6 @@ echo Hi${myname}kkkk  #有其他字申, 需用${XXX} 隔開
 fc=$(cat /etc/password)
 echo "$fc"
 ```
-
 + if
 
 ```bash
@@ -23,6 +23,50 @@ if [ -n $1 ]; then
   ehco "if \$1 is not empty
 fi
 ```
+### 基礎正規表示法
+<br> [reference link](https://dywang.csie.cyut.edu.tw/dywang/linuxProgram/node33.html)
+```text
+^word 待搜尋的字串(word)在行首。
+#範例：grep -n '^#' re.txt
+搜尋行首為 # 開始的那一行。
+```
+```text
+word$ 待搜尋的字串(word)在行尾。
+#範例：grep -n '!$' re.txt
+將行尾為 ! 的那一行列印出來。
+```
+```text
+. 代表『任意一個』字符，一定是一個任意字符。
+#範例：grep -n 'e.e' re.txt
+搜尋的字串可以是 (eve)(eae)(eee)(e e), 但不能僅有 (ee).
+亦即e與e中間"一定"僅有一個字元,而空白字元也是字元.
+```
+```text
+\ 跳脫字符，將特殊符號的特殊意義去除。
+#範例：grep -n \' re.txt
+搜尋含有單引號 ' 的那一行。
+```
+```text
+\{n,m\} 連續 n 到 m 個的『前一個 RE 字符』
+若為 \{n\} 則是連續 n 個的前一個 RE 字符，
+若是 \{n,\} 則是連續 n 個以上的前一個 RE 字符。
+#範例：grep -n 'go\{2,3\}g' re.txt
+在 g 與 g 之間有 2 個到 3 個的 o 存在的字串，亦即 (goog)(gooog)
+```
+```text
+[ ] 在 [ ] 當中『謹代表一個待搜尋的字元』
+#範例：grep -n 'g[ld]' re.txt
+搜尋含有 (gl) 或 (gd) 的那一行
+
+#範例：grep -n '[0-9]' re.txt
+搜尋含有任意數字的那一行。
+在字元集合 [ ] 中的減號 - 是代表兩個字元之間的所有連續字元。
+[^]：^ 在 [ ] 內時， 代表的意義是『反向選擇』
+
+#範例：grep -n 'oo[^t]' re.txt
+搜尋的字串可以是 (oog) (ood) 但不能是 (oot)。
+```
+
 
 ## sed
 ### 正規表示式
