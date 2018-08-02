@@ -1,17 +1,16 @@
 ## Shell Script
 + variable
+
 ```bash
 myname="OLS3"
 echo Hi${myname}kkkk  #有其他字申, 需用${XXX} 隔開
 ```
-
 + command and variable
 
 ```bash
 fc=$(cat /etc/password)
 echo "$fc"
 ```
-
 + if
 
 ```bash
@@ -22,6 +21,60 @@ fi
 if [ -n $1 ]; then
   ehco "if \$1 is not empty
 fi
+```
+
+## getopts
+<br> [reference link](https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash)
+```bash
+#!/bin/bash
+
+usage() { echo "Usage: $0 [-s <45|90>] [-p <string>]" 1>&2; exit 1; }
+
+while getopts ":s:p:" o; do
+  case "${o}" in
+    s)
+      s=${OPTARG}
+      ((s == 45 || s == 90)) || usage
+      ;;
+    p)
+      p=${OPTARG}
+      ;;
+    *)
+      usage
+      ;;
+esac
+done
+shift $((OPTIND-1))
+
+if [ -z "${s}" ] || [ -z "${p}" ]; then
+  usage
+fi
+
+echo "s = ${s}"
+echo "p = ${p}"
+```
+<br> Example runs:
+
+```text
+$ ./myscript.sh
+Usage: ./myscript.sh [-s <45|90>] [-p <string>]
+
+$ ./myscript.sh -h
+Usage: ./myscript.sh [-s <45|90>] [-p <string>]
+
+$ ./myscript.sh -s "" -p ""
+Usage: ./myscript.sh [-s <45|90>] [-p <string>]
+
+$ ./myscript.sh -s 10 -p foo
+Usage: ./myscript.sh [-s <45|90>] [-p <string>]
+
+$ ./myscript.sh -s 45 -p foo
+s = 45
+p = foo
+
+$ ./myscript.sh -s 90 -p bar
+s = 90
+p = bar
 ```
 
 ## sed
