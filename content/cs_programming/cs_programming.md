@@ -129,7 +129,13 @@ gcc -S test.c
 + nm
 + ar -t/-x/rcs
 
-
 ## valgrid
 ## Makefile
+<br> Only output error message on screen
+
+```text
+make 1 > build.log
+1 meaning standard output
+2 meaning standard error output
+```
 ## nm
