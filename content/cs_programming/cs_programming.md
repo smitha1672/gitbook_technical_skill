@@ -38,6 +38,19 @@ classify = (input)? "postive": "negative";
 printf("x %p\n", &x); /*%p is meaning: showing x address as HEX format output*/
 ```
 
++ const int\*, const int \* const, and int const \*
+![Alt text][id1]
+[id1]: https://i.stack.imgur.com/Zt0G2.png "it is form stackoverflow"
+
+![Alt text][id2]
+[id2]: https://i.stack.imgur.com/kXH8P.png "it is form stackoverflow"
+
+![Alt text][id3]
+[id3]: https://i.stack.imgur.com/UeqZO.png "it is form stackoverflow"
+
+![Alt text][id4]
+[id4]: https://i.stack.imgur.com/f5ftV.png "it is form stackoverflow"
+
 + **(\*t).age != \*t.age**
 ```text
 (*t).age is not equal to *t.age
