@@ -45,10 +45,12 @@ sudo reboot
 ### Open SSH Server
 + Installation and Setting
 <br> 剛灌好系統先讓系統可以SSH
+
 ```bash
 sudo apt install openssh-server
 ```
 重新啟動
+
 ```bash
 sudo systemctl restart sshd.service
 sudo systemctl restart sshd
@@ -57,19 +59,23 @@ sudo systemctl restart sshd
 
 ## Samba Server
 ### Samba Server Setting on Ubuntu
-Installation
++ Installation
+
 ```bash
 sudo apt-get install samba
 ```
-Add a samba user
++ Add a samba user
+
 ```bash
 sudo adduser smbuser #smbusr can be anyone, Smith
 ```
-Add a samba user password
++ Add a samba user password
+
 ```bash
 sudo smbpasswd -a smbuser
 ```
-Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
++ Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
+
 ```text
 [public]              #"public" 名稱可以自行變更
 path = /home/smbuser  #這個是要分享的資料夾路徑
@@ -88,6 +94,7 @@ sudo service smbd restart
 <!--- limiation line
 <br>---------------20------------------40-----------------60------------------80--------------
 -->
+
 **/etc/samba/smb.conf**:
 <br>首先先找到設定檔裡面的 **workgroup**, 大約在29行附近，把 workgroup設成和Windows 系統的一樣
 <br>(可以到控制台\系統及安全性\系統查看)。 Change this to the workgroup/NT-domain name your
@@ -95,6 +102,7 @@ sudo service smbd restart
 <br>帳號的密碼, 一般來說會建議保持原設定即可；如果要關掉 Samba 的認證，可以在裡面加上:
 <br>**security = share** 上面大概是 Samba 的一些基本測試，重頭戲在下面, 如何設定要分享的資料夾?
 <br>首先我們以**www**資料夾為例，直接將這段放在**smb.conf**的最下面即可：
+
 ```text
 [www]
 comment = www
@@ -113,7 +121,12 @@ directory mask = 777
 
 ### Samba Client Setting on Windows
 As Below:  <br>
-![SettingOnWindows](samba_setting_windows.jpg)
+<img src="samba_setting_windows.jpg"
+width="400"
+height="300"
+alt="samba client"
+align=center />
+
 
 **Refer as:**
 [samba setting on Ubuntu](https://www.arthurtoday.com/2015/04/ubuntu-server-share-folder-samba.html) and [samba directory on Windows](https://noob.tw/samba/)
