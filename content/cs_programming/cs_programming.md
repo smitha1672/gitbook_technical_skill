@@ -44,31 +44,32 @@ printf("x %p\n", &x); /*%p is meaning: showing x address as HEX format output*/
 ```
 
 + const int\*, const int \* const, and int const \*
+
 <br>
 <img src="https://i.stack.imgur.com/Zt0G2.png"
-width="100%"
-height="100%"
+width="70%"
+height="70%"
 alt="const pointer to const int"
 align=center />
 
 <br>
 <img src="https://i.stack.imgur.com/kXH8P.png"
-width="100%"
-height="100%"
+width="70%"
+height="70%"
 alt="pointer to int const"
 align=center />
 
 <br>
 <img src="https://i.stack.imgur.com/UeqZO.png"
-width="100%"
-height="100%"
+width="70%"
+height="70%"
 alt="pointer to const int"
 align=center />
 
 <br>
 <img src="https://i.stack.imgur.com/f5ftV.png"
-width="100%"
-height="100%"
+width="70%"
+height="70%"
 alt="const pointer to int"
 align=center />
 
