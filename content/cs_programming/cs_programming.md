@@ -1,6 +1,11 @@
 ## Virtual Memory
-![Alt text][id]
-[id]: https://bayanbox.ir/view/581244719208138556/virtual-memory.jpg "It is form yousha.blog.ir"
+
+<img src="https://bayanbox.ir/view/581244719208138556/virtual-memory.jpg"
+width="100%"
+height="100%"
+alt="virtual memory"
+align=center />
+
 
 ## Basic C
 + while (some condition)
@@ -39,19 +44,36 @@ printf("x %p\n", &x); /*%p is meaning: showing x address as HEX format output*/
 ```
 
 + const int\*, const int \* const, and int const \*
-![Alt text][id1]
-[id1]: https://i.stack.imgur.com/Zt0G2.png "it is form stackoverflow"
+<br>
+<img src="https://i.stack.imgur.com/Zt0G2.png"
+width="100%"
+height="100%"
+alt="const pointer to const int"
+align=center />
 
-![Alt text][id2]
-[id2]: https://i.stack.imgur.com/kXH8P.png "it is form stackoverflow"
+<br>
+<img src="https://i.stack.imgur.com/kXH8P.png"
+width="100%"
+height="100%"
+alt="pointer to int const"
+align=center />
 
-![Alt text][id3]
-[id3]: https://i.stack.imgur.com/UeqZO.png "it is form stackoverflow"
+<br>
+<img src="https://i.stack.imgur.com/UeqZO.png"
+width="100%"
+height="100%"
+alt="pointer to const int"
+align=center />
 
-![Alt text][id4]
-[id4]: https://i.stack.imgur.com/f5ftV.png "it is form stackoverflow"
+<br>
+<img src="https://i.stack.imgur.com/f5ftV.png"
+width="100%"
+height="100%"
+alt="const pointer to int"
+align=center />
 
 + **(\*t).age != \*t.age**
+
 ```text
 (*t).age is not equal to *t.age
 (*t).age = t->age
