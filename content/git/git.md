@@ -36,6 +36,7 @@ git push origin :foo
 ```
 
 ## pull
+
 ```text
 # 下載origin 儲存庫上所有分支的變更內容
 git pull origin
@@ -48,9 +49,17 @@ git pull origin remote/foo:local/bar
 ```
 
 ## remote
+
 ```text
 # add a url to remote
 git remote add "remote name" url_address
 ```
 
+## 將多個提交合而為一之後在合併
+
+```bash
+git branch
+git merge --squash topic
+git commit
+```
 
