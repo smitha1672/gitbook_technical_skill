@@ -3,7 +3,8 @@
 ## [Build Kernal](https://www.raspberrypi.org/documentation/linux/kernel/building.md)
 ## [github resource](https://github.com/raspberrypi)
 ### sense hat source
-<br>
+
+[getting started with the sense hat](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat)
 ```text
 ./drivers/video/fbdev/rpisense-fb.c:2: * Raspberry Pi Sense HAT framebuffer driver
 ./drivers/video/fbdev/rpisense-fb.c:290:MODULE_DESCRIPTION("Raspberry Pi Sense HAT framebuffer driver");
