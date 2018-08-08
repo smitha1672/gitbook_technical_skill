@@ -61,6 +61,7 @@ ptr->field = (*ptr).field
 
 + union and sturct
 <br> **union**: 提供memory足以存放最大SIZE的空間
+<br> union initialize
 
 ```c
 typedef union {
@@ -74,6 +75,15 @@ quantity q = {4}; //set 4 to count
 
 /*set weight*/
 quantity q = {.weight=1.5};
+```
+<br> structure initialize
+
+```c
+struct bick_t {
+  const char* color;
+  int gears;
+  int height;
+} bick = {.height = 17, .gears = 21};
 ```
 
 + array pointer
