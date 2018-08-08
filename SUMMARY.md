@@ -8,7 +8,7 @@
 * [ubuntu](content/ubuntu/ubuntu.md)
 <!-- [docker]-->
 * [vim](content/vim/vim.md)
-* [git](content/git/git_note.md)
+* [git](content/git/git.md)
 * [shell](content/shell/shell.md)
 * [docker](content/docker/docker.md)
 <!--* [Teraterm TTL]-->
