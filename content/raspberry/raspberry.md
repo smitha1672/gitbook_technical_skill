@@ -2,6 +2,8 @@
 ## [Sense-HAT-V1.0 Hardware](https://www.raspberrypi.org/documentation/hardware/sense-hat/images/Sense-HAT-V1_0.pdf)
 ## [Build Kernal](https://www.raspberrypi.org/documentation/linux/kernel/building.md)
 ## [github resource](https://github.com/raspberrypi)
+## [exploring raspberry pi](http://porn.jules-aubert.info/cul/humble_ebooks/DIY%20Electronics/exploring_raspberry_pi.pdf)
+<br> [github source code](https://github.com/derekmolloy/exploringrpi)
 ### sense hat source
 [getting started with the sense hat](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat)
 <br> [sense hat user space example.1](https://github.com/moshegottlieb/libsense)
