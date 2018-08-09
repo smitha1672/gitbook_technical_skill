@@ -59,22 +59,22 @@ sudo systemctl restart sshd
 
 ## Samba Server
 ### Samba Server Setting on Ubuntu
-+ Installation
+Installation
 
 ```bash
 sudo apt-get install samba
 ```
-+ Add a samba user
+Add a samba user
 
 ```bash
 sudo adduser smbuser #smbusr can be anyone, Smith
 ```
-+ Add a samba user password
+Add a samba user password
 
 ```bash
 sudo smbpasswd -a smbuser
 ```
-+ Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
+Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
 
 ```text
 [public]              #"public" 名稱可以自行變更
@@ -87,6 +87,7 @@ public = yes
 writable = yes
 ```
 Restart Samba serve
+
 ```bash
 sudo service smbd restart
 ```
@@ -146,52 +147,6 @@ F9 -  to create a new screen
 ALT+S -  make a separate  window
 ALT+f -  swith separate window
 ALT+q - leave a separate window
-```
-
-## Gitbook
-You have to install **Node.js**, **npm**, **tbook servegitbook**
-[GitBool Toolchain Documentation; ](https://toolchain.gitbook.com/examples.html)
-[how to install node.js on ubuntu 16.04:Native](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04)
-
-### Node.js, npm Installation
-```bash
-sudo apt-get update
-sudo apt-get install nodejs
-sudo apt-get install npm
-sudo npm install gitbook-cli -g
-```
-### Preview with Firfox
-```bash
-gitbook init ./directory
-cd ./directory
-gitbook build
-gitbook serve
-```
-There are available message
-```text
-Live reload server started on port: 35729
-Press CTRL+C to quit ...
-
-info: 7 plugins are installed
-info: loading plugin "livereload"... OK
-info: loading plugin "highlight"... OK
-info: loading plugin "search"... OK
-info: loading plugin "lunr"... OK
-info: loading plugin "sharing"... OK
-info: loading plugin "fontsettings"... OK
-info: loading plugin "theme-default"... OK
-info: found 7 pages
-info: found 2 asset files
-info: >> generation finished with success in 1.9s !
-
-Starting server ...
-Serving book on http://localhost:4000
-```
-#### Trouble Shooting
-Executing `gitbook init`, I got error message as
-```text
-/usr/bin/env: ‘node’: No such file or directory
-[fix] ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
 ## Usefual Ubuntu Command
