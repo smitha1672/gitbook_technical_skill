@@ -6,12 +6,15 @@
 <!-- * [C skill] -->
 * [leetcode](content/leetcode/leetcode.md)
 * [ubuntu](content/ubuntu/ubuntu.md)
+* [gitbook](content/gitbook/gitbook.md)
+>>>>>>> change/company
 * [vim](content/vim/vim.md)
-* [git](content/git/git_note.md)
+* [git](content/git/git.md)
 * [shell](content/shell/shell.md)
 * [docker](content/docker/docker.md)
 <!--* [Teraterm TTL]-->
 * [aosp](content/aosp/aosp.md)
 * [raspberry pi3](content/raspberry/raspberry.md)
+<!--* [raspberry pi](content/rpi/rpi.md)-->
 <!--* [Building Root]-->
 
