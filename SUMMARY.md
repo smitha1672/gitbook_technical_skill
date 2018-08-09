@@ -7,7 +7,6 @@
 * [leetcode](content/leetcode/leetcode.md)
 * [ubuntu](content/ubuntu/ubuntu.md)
 * [gitbook](content/gitbook/gitbook.md)
->>>>>>> change/company
 * [vim](content/vim/vim.md)
 * [git](content/git/git.md)
 * [shell](content/shell/shell.md)
