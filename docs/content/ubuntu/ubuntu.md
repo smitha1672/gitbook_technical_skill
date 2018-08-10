@@ -59,22 +59,22 @@ sudo systemctl restart sshd
 
 ## Samba Server
 ### Samba Server Setting on Ubuntu
-Installation
++ Installation
 
 ```bash
 sudo apt-get install samba
 ```
-Add a samba user
++ Add a samba user
 
 ```bash
 sudo adduser smbuser #smbusr can be anyone, Smith
 ```
-Add a samba user password
++ Add a samba user password
 
 ```bash
 sudo smbpasswd -a smbuser
 ```
-Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
++ Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
 
 ```text
 [public]              #"public" 名稱可以自行變更
