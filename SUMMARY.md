@@ -14,5 +14,6 @@
 <!--* [Teraterm TTL]-->
 * [aosp](content/aosp/aosp.md)
 <!--* [raspberry pi](content/rpi/rpi.md)-->
+* [raspberry pi3](content/raspberry/raspberry.md)
 <!--* [Building Root]-->
 

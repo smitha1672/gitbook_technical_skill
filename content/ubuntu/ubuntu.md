@@ -59,22 +59,22 @@ sudo systemctl restart sshd
 
 ## Samba Server
 ### Samba Server Setting on Ubuntu
-Installation
++ Installation
 
 ```bash
 sudo apt-get install samba
 ```
-Add a samba user
++ Add a samba user
 
 ```bash
 sudo adduser smbuser #smbusr can be anyone, Smith
 ```
-Add a samba user password
++ Add a samba user password
 
 ```bash
 sudo smbpasswd -a smbuser
 ```
-Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
++ Setting samba configuration **/etc/samba/smb.conf** 檔案，然後，在檔案的尾巴加入下面這幾行後存檔離開。
 
 ```text
 [public]              #"public" 名稱可以自行變更
@@ -95,6 +95,7 @@ sudo service smbd restart
 <!--- limiation line
 <br>---------------20------------------40-----------------60------------------80--------------
 -->
+
 **/etc/samba/smb.conf**:
 <br>首先先找到設定檔裡面的 **workgroup**, 大約在29行附近，把 workgroup設成和Windows 系統的一樣
 <br>(可以到控制台\系統及安全性\系統查看)。 Change this to the workgroup/NT-domain name your
@@ -121,7 +122,12 @@ directory mask = 777
 
 ### Samba Client Setting on Windows
 As Below:  <br>
-![SettingOnWindows](samba_setting_windows.jpg)
+<img src="samba_setting_windows.jpg"
+width="400"
+height="300"
+alt="samba client"
+align=center />
+
 
 **Refer as:**
 [samba setting on Ubuntu](https://www.arthurtoday.com/2015/04/ubuntu-server-share-folder-samba.html) and [samba directory on Windows](https://noob.tw/samba/)
