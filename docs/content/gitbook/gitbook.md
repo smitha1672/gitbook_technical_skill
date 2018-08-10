@@ -3,6 +3,22 @@ You have to install **Node.js**, **npm**, **tbook servegitbook**
 [GitBool Toolchain Documentation; ](https://toolchain.gitbook.com/examples.html)
 [how to install node.js on ubuntu 16.04:Native](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04)
 
++ book.json
+
+```text
+{
+  "gitbook": "3.2.3",
+  "root":"./docs",
+  "plugins": ["fontsettings", "mermaid-gb3"], // add '-' meaning remove plugin
+  "pluginsConfig": {
+    "fontsettings": {
+      "theme": "white",
+      "family": "sans",
+      "size": 2
+    }
+}
+```
+
 ### ubuntu
 Node.js, npm Installation
 
