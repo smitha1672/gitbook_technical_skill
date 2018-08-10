@@ -161,6 +161,9 @@ sed -f 樣式命令檔 檔案
 
 ```text
 sed -n 's/\(La\)/\1Oo/p' file
+
+# Used to $var
+sed "s/\(^\)/$var\/\1/g"
 ```
 
 ### Modication String
