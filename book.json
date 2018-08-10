@@ -1,0 +1,12 @@
+{
+  "gitbook": "3.2.3",
+  "root":"./docs",
+  "plugins": ["fontsettings", "mermaid-gb3"],
+  "pluginsConfig": {
+    "fontsettings": {
+      "theme": "white",
+      "family": "sans",
+      "size": 2
+    }
+  }
+}
