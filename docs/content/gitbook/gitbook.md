@@ -19,6 +19,22 @@ You have to install **Node.js**, **npm**, **tbook servegitbook**
 }
 ```
 
++ Put a illustrated figure with markdown
+
+```text
+<img src="acti-sensorhub-figure-1.png"
+width="80%"
+height="80%"
+alt="acti-sensorhub-figure-1"
+align=center />
+
+<img src="https://bayanbox.ir/view/581244719208138556/virtual-memory.jpg"
+width="100%"
+height="100%"
+alt="virtual memory"
+align=center />
+```
+
 ### ubuntu
 Node.js, npm Installation
 
