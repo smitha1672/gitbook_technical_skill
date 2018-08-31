@@ -1,9 +1,29 @@
-## [Getting started with the Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started)
-## [Sense-HAT-V1.0 Hardware](https://www.raspberrypi.org/documentation/hardware/sense-hat/images/Sense-HAT-V1_0.pdf)
-## [Build Kernal](https://www.raspberrypi.org/documentation/linux/kernel/building.md)
-## [github resource](https://github.com/raspberrypi)
-## [exploring raspberry pi](http://porn.jules-aubert.info/cul/humble_ebooks/DIY%20Electronics/exploring_raspberry_pi.pdf)
+## Resource
+[Getting started with the Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started)
+<br> [Sense-HAT-V1.0 Hardware](https://www.raspberrypi.org/documentation/hardware/sense-hat/images/Sense-HAT-V1_0.pdf)
+<br> [Build Kernal](https://www.raspberrypi.org/documentation/linux/kernel/building.md)
+<br> [github resource](https://github.com/raspberrypi)
+<br> [exploring raspberry pi](http://porn.jules-aubert.info/cul/humble_ebooks/DIY%20Electronics/exploring_raspberry_pi.pdf)
 <br> [github source code](https://github.com/derekmolloy/exploringrpi)
+
+## exploring raspberry pi
+[The website for this book](http://exploringrpi.com/)
+<br> [derekmolly blog](www.derekmolloy.ie)
+<br> [github source code](https://github.com/derekmolloy/exploringrpi)
+
++ a port-scanning tool
+
+```text
+nmap -T4 -F 172.16.3.*
+```
++ Raspiberry ssh login
+
+```bash
+ssh pi@192.168.1.115
+pi@192.168.1.115's password: raspberry
+```
+
+
 ### sense hat source
 [getting started with the sense hat](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat)
 <br> [sense hat user space example.1](https://github.com/moshegottlieb/libsense)
@@ -20,4 +40,5 @@
 ./include/linux/mfd/rpisense/framebuffer.h:2: * Raspberry Pi Sense HAT framebuffer driver
 ./include/linux/mfd/rpisense/core.h:2: * Raspberry Pi Sense HAT core driver
 ```
+
 
