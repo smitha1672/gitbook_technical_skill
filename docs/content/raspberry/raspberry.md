@@ -1,15 +1,30 @@
 ## Resource
-[Getting started with the Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started)
-<br> [Sense-HAT-V1.0 Hardware](https://www.raspberrypi.org/documentation/hardware/sense-hat/images/Sense-HAT-V1_0.pdf)
-<br> [Build Kernal](https://www.raspberrypi.org/documentation/linux/kernel/building.md)
-<br> [github resource](https://github.com/raspberrypi)
-<br> [exploring raspberry pi](http://porn.jules-aubert.info/cul/humble_ebooks/DIY%20Electronics/exploring_raspberry_pi.pdf)
-<br> [github source code](https://github.com/derekmolloy/exploringrpi)
+[Getting started with the Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-starteda) <br>
+[Sense-HAT-V1.0 Hardware](https://www.raspberrypi.org/documentation/hardware/sense-hat/images/Sense-HAT-V1_0.pdf) <br>
+[Build Kernal](https://www.raspberrypi.org/documentation/linux/kernel/building.md)
 
-## exploring raspberry pi
-[The website for this book](http://exploringrpi.com/)
-<br> [derekmolly blog](www.derekmolloy.ie)
-<br> [github source code](https://github.com/derekmolloy/exploringrpi)
+## Exploring Raspberry pi
+[Book](http://porn.jules-aubert.info/cul/humble_ebooks/DIY%20Electronics/exploring_raspberry_pi.pdf) <br>
+[The website for this book](http://exploringrpi.com/) <br>
+[derekmolly blog](www.derekmolloy.ie) <br>
+[example](https://github.com/derekmolloy/exploringrpi)
+
+## Hardware Moudule/Equiement
+
++ [GPIO Extension Board](https://www.taiwaniot.com.tw/product/gpio-t-cobbler-plus/) <br>
+<img src="https://www.taiwaniot.com.tw/wp-content/uploads/2015/12/TB2Sf6UbXXXXXaXXXXXXXXXXXXX_811505400.jpg"
+width="50%"
+height="50%"
+alt="GPIO Extension Board"
+align=center />
+
++ [Digilent Analog Discovery 2](https://makehub.tw/spot/tol-13929) <br>
+<img src="https://cdn.sparkfun.com/assets/parts/1/1/6/0/0/13929-09.jpg"
+width="50%"
+height="50%"
+alt="GPIO Extension Board"
+align=center />
+
 
 + a port-scanning tool
 
@@ -23,10 +38,10 @@ ssh pi@192.168.1.115
 pi@192.168.1.115's password: raspberry
 ```
 
-
 ### sense hat source
-[getting started with the sense hat](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat)
-<br> [sense hat user space example.1](https://github.com/moshegottlieb/libsense)
+
++ [getting started with the sense hat](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat) <br>
++ [sense hat user space example.1](https://github.com/moshegottlieb/libsense)
 ```text
 ./drivers/video/fbdev/rpisense-fb.c:2: * Raspberry Pi Sense HAT framebuffer driver
 ./drivers/video/fbdev/rpisense-fb.c:290:MODULE_DESCRIPTION("Raspberry Pi Sense HAT framebuffer driver");
@@ -40,5 +55,8 @@ pi@192.168.1.115's password: raspberry
 ./include/linux/mfd/rpisense/framebuffer.h:2: * Raspberry Pi Sense HAT framebuffer driver
 ./include/linux/mfd/rpisense/core.h:2: * Raspberry Pi Sense HAT core driver
 ```
+
+## Topic
++ GPIO
 
 
