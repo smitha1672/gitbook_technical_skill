@@ -82,6 +82,28 @@ align=center />
 ptr->field = (*ptr).field
 ```
 
++ Get struct member size
+
+```c
+#define member_size(type, member) sizeof(((type *)0)->member)
+
+typedef struct
+{
+    float calc;
+    char text[255];
+    int used;
+} Parent;
+
+typedef struct
+{
+    char flag;
+    char text[member_size(Parent, text)];
+    int used;
+} Child;
+
+printf("%zu", member_size(Parent,text));
+```
+
 + union and sturct
 <br> **union**: 提供memory足以存放最大SIZE的空間
 <br> union initialize

@@ -25,7 +25,6 @@ height="50%"
 alt="GPIO Extension Board"
 align=center />
 
-
 + a port-scanning tool
 
 ```text
@@ -38,7 +37,7 @@ ssh pi@192.168.1.115
 pi@192.168.1.115's password: raspberry
 ```
 
-### sense hat source
+## sense hat source
 
 + [getting started with the sense hat](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat) <br>
 + [sense hat user space example.1](https://github.com/moshegottlieb/libsense)
@@ -56,7 +55,20 @@ pi@192.168.1.115's password: raspberry
 ./include/linux/mfd/rpisense/core.h:2: * Raspberry Pi Sense HAT core driver
 ```
 
-## Topic
-+ GPIO
+## Note
+
++ Bash script code to calcuate the execution duration of each program
+
+```bash
+Duration="5000000"
+echo -e "\nThe C/C++ Code Example"
+T="$(date +%s%N)"
+./n-body $Duration
+T="$(($(date +%s%N)-T))"
+T=$((T/1000000))
+echo "It took ${T} milliseconds to run the C/C++ test"
+```
+
++ 
 
 
