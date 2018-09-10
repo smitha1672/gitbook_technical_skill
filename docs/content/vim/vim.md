@@ -7,18 +7,20 @@ sudo apt-get install vim
 
 ### Open vim
 
-```text
-# 開啟該程式中的所有原始檔, 並且將顯示位置停留在 main fucntion
-vi +/main *.h *.c
++ 開啟該程式中的所有原始檔, 並且將顯示位置停留在 main fucntion
 
-# open a few files to vim buffers
+```bash
+vi +/main *.h *.c
+```
+
++ open a few files to vim buffers
+
 ```bash
 vim file1 file2 file3
 ```
 
-```
++  Meta Mode (type ESC)
 
-#### Meta Mode (type ESC)
 ```text
 e/E - 將cursor移到字尾.
 b/E - 將cursor移到字首
@@ -35,14 +37,16 @@ M - 將cursor移到screen 的中間行.
 L - 將cursor移到screen 的最底行.
 ```
 
++ Copy more lines in register, and then paste to a place
+
 ```text
-# Copy more lines in register, and then paste to a place
 1. ctrl + V - It is for a section would be like to copy.
 2. shift + " + ay - "ay" copies the section in register
 3. shift + " + ap - "ap" pastes the section to your destnation place
 ```
 
-### Command Mode (type :)
++  Command Mode (type :)
+
 ```text
 # Import .vimrc setting
 :so ~/.vimrc
@@ -71,7 +75,7 @@ L - 將cursor移到screen 的最底行.
 :syntax on(off)
 ```
 
-[vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
++ [vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
 ```text
 # Is showes as below
 :ls
@@ -91,7 +95,7 @@ For instance
 :badd path/to/file4
 ```
 
-## vim grep
++ vim grep
 <br>[ref.1 link](https://blog.easwy.com/archives/advanced-vim-skills-quickfix-mode/)
 <br>[ref.2 link](https://blog.csdn.net/zqiang_55/article/details/30715961)
 <br>
@@ -135,4 +139,13 @@ copen                         打开quickfix
 cw                            打开quickfix
 cclose                        关闭qucikfix
 help vimgrep                  查看vimgrep帮助
+```
+
+### vimdiff
+
++ Open/Close a compare by:
+
+```text
+:windo diffthis (:diffthis) # Open
+:windo diffoff (:diffoff) # Close
 ```
