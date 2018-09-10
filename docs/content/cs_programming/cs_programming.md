@@ -104,6 +104,12 @@ typedef struct
 printf("%zu", member_size(Parent,text));
 ```
 
++ Get array size
+
+```c
+#define ARRAY_SIZE(a)   (sizeof((a)) / sizeof((a)[0]))
+```
+
 + union and sturct
 <br> **union**: 提供memory足以存放最大SIZE的空間
 <br> union initialize
@@ -207,3 +213,20 @@ make 1 > build.log
 2 meaning standard error output
 ```
 ## nm
+
+## Astyle
+
+```text
+apt-get install astyle
+```
+
++ Normally usage
+
+```text
+astyle --style=linux -pHk3 *.c/*.h
+```
+
+[Quick Start](http://astyle.sourceforge.net/astyle.html#_Quick_Start)
+
+
+
