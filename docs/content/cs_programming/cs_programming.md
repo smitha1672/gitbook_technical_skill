@@ -192,6 +192,7 @@ gcc -S test.c
 
 # [-E] 將原始檔案(*.c)作進行預先處理而不是進行compile
 可以用來展開marco, file include issue
+gcc -E main.c -o maine.c
 
 # [-l] include header file with particular path
 
