@@ -1,3 +1,74 @@
+## Archive File (\*.a)
++ Create an archive with the ar command (archive command (ar))
+
+```text
+ar -rcs libhfsecurity.a encrypt.o checksum.o
+```
+<br>
+<img src="archive-2.png"
+width="80%"
+height="80%"
+alt="ar libhfsecurity.a"
+align=center />
+
++ Use an Archive File
+
+```text
+$ gcc test_code.c -lhfsecurity -o test_code
+-l: If you’re using several archivesyou can set several -l options.
+
+$ gcc test_code.c -L/my_lib -lhfsecurity -o test_code
+-L: To say which directories to search
+```
+
++ Can I extract a single object file from an archive?
+
+```text
+$ ar -x libhfsecurity.a encrypt.o
+```
+
++ If I’ve created a library archive, can I see what’s inside it?
+
+```text
+$ ar -t <filename>
+```
+
+## nm Linux Command
+
++ Look inside an archive (\*.a) <br>
+libl.a contains libmain.o and libyywrap.o
+
+```text
+$ nm liba.a #look inside an archive
+```
+<br>
+<img src="archive-1.png"
+width="80%"
+height="80%"
+alt="look inside with libl.a"
+align=center />
+
+
++ Display Object Files that Refer to a Symbol <br>
+[10 Practical Linux nm Command Examples](https://www.thegeekstuff.com/2012/03/linux-nm-command/) <br>
+[Linux nm Command Tutorial for Beginners (10 Examples)](https://www.howtoforge.com/linux-nm-command/) <br>
+
+The following command displays all the object files that refer to the symbol ‘func’ in my current directory
+
+```text
+$ nm  -A ./*.o | grep func
+
+./hello2.o:0000000000000000 T func_1
+./hello3.o:0000000000000000 T func_2
+./hello4.o:0000000000000000 T func_3
+./main.o:                   U func
+./reloc.o:                  U func
+./reloc.o:0000000000000000  T func1
+./test1.o:0000000000000000  T func
+./test.o:                   U func
+```
+
+
 ## Virtual Memory
 
 <img src="https://bayanbox.ir/view/581244719208138556/virtual-memory.jpg"
@@ -201,8 +272,6 @@ gcc -E main.c -o maine.c
 # [-g] it is used to gdb
 會產生符號表, 讓gdb 工具可以除錯
 ```
-+ nm
-+ ar -t/-x/rcs
 
 ## valgrid
 ## Makefile
@@ -213,7 +282,6 @@ make 1 > build.log
 1 meaning standard output
 2 meaning standard error output
 ```
-## nm
 
 ## Astyle
 
@@ -225,6 +293,47 @@ apt-get install astyle
 
 ```text
 astyle --style=linux -pHk3 *.c/*.h
+```
+
++ astylerc
+
+```text
+# this line is a comment
+--style=linux      # this is a line-end comment
+
+# Insert space padding around operators.
+--pad-oper
+
+# Insert space padding between a header (e.g. 'if', 'for', 'while'...)
+--pad-header
+
+# Attach a pointer or reference operator (*, &, or ^) to either the variable type (left) or variable name (right), or place it between the type and name (middle).
+--align-pointer=name
+
+# This option will align references separate from pointers.
+--align-reference=name
+
+# Do not retain a backup of the original file
+--suffix=none
+
+# Indent 'switch' blocks so that the 'case X:'
+--indent-switches
+
+# Indent using # spaces per indent.
+--indent=spaces=4
+
+# Delete empty lines within a function or method.
+--delete-empty-lines
+
+#Set the minimal indent that is added when a header is built of multiple lines.
+--min-conditional-indent=0
+
+# Indent a maximal # spaces in a continuous statement,
+--max-instatement-indent=40
+
+# The option max-code-length will break a line if the code exceeds # characters.
+--max-code-length=80
+--break-after-logical
 ```
 
 [Quick Start](http://astyle.sourceforge.net/astyle.html#_Quick_Start)
