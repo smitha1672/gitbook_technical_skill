@@ -1,6 +1,31 @@
+## Keyboard Shortcuts on Terminal <br>
+C-K (control-k): Pressed CTRL, and then press k <br>
+M-K (meta-k): Released ESC, and then press k
+
+```text
+CTRL + l            Clear screen
+CTRL + K            Cuts text from the cursor until the end of the line
+CTRL + u            Cuts text from the cursor until the beginning of the line
+META + d            From right direction of cursor, delete a word
+CTRL + w            From left direction of cursor, delete a word
+CTRL + e            Moves the cursor to the end of the line
+CTRL + a            Moves the cursor to the beginning of the line
+ALT  + f            Jumps forward to the next space
+ALT  + b            Skips back to the previous space
+CTRL + b            Moves the cursor to the next character
+CTRL + f            Moves the cursor to the pervious character
+
+CTRL + Y            Pastes text
+ALT  + Backspace    Deletes the previous word
+CTRL + W            Cuts the word behind the cursor
+Shift+ Insert       Pastes text into the terminal
+Ctrl + D            Logs you out
+```
+
 ## SSH Server
-### Setting Static IP
-+ Showing route info:
+There are 4 steps are for setting static ip.
++ Setting Static IP.1 <br>
+Showing route info:
 
 ```text
 route -n
@@ -11,9 +36,11 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 192.168.131.0   0.0.0.0         255.255.255.0   U     100    0        0 ens33
 ```
 
-+  sudo vi /etc/network/interfaces(set vmwarw ip as static)
++ Setting Static IP.2 <br>
+Set vmware IP as static
 
 ```text
+sudo vi /etc/network/interfaces #set vmware ip as static
 # interfaces(5) file used by ifup(8) and ifdown(8)
 auto lo
 iface lo inet loopback
@@ -26,14 +53,16 @@ gateway 192.168.131.2
 netmask 255.255.255.0
 dns-nameservers 8.8.8.8 8.8.4.4
 ```
-+ Restart Networking Service
++ Setting Static IP.3 <br>
+Restart Networking Service
 
 ```bash
 sudo /etc/init.d/networking restart
 #or systemctl restart networking
 ```
 
-+ Reboot Ubuntu
++ Setting Static IP.4 <br>
+Reboot Ubuntu
 
 ```bash
 sudo reboot
@@ -149,16 +178,18 @@ ALT+f -  swith separate window
 ALT+q - leave a separate window
 ```
 
-## Usefual Ubuntu Command
-### apt-get update
+## Useful Linux Command
++ Update Ubuntu
+
 ```bash
 sudo apt-get update
 sudo apt-get -y dist-upgrade
 sudo apt-get clean
 sudo apt-get autoremove
 ```
-### apt-get remove
-Remove **texlive-full**
++ Remove Application
+ex: Remove **texlive-full**
+
 ```bash
 sudo apt-get remove texlive-full
 ```
@@ -189,28 +220,33 @@ ssh smith@192.168.131.128
 <br> [ref.2 link](https://read01.com/jND7m.html#.W1wvzdIzaUk)
 
 ## Ubuntu Trouble Shooting
-### sudo must be owned by uid 0 and have the setuid bit set
++ sudo must be owned by uid 0 and have the setuid bit set <br>
 You shouldn’t have a /usr/local/bin/sudo,
 that’s what’s breaking things (not the password change). Move it out of the way:
+
 ```bash
 /usr/bin/sudo mv /usr/local/bin/sudo{,2}
 ```
 and then tell your shell about it:
+
 ```bash
 hash -r
 ```
 That will restore the sudo functionality you’re used to. shareimprove this answer
 
-### Screen needs mode 777 with systemd service
++ Screen needs mode 777 with systemd service <br>
 The directory needs full permissions to read, write, and execute.
 You can do this command
+
 ```bash
 chmod -R 777 /var/run/screen
 ```
 Which will **recursively** change all folders/files permissions to 777,
 though typically less secure.
 You can also run sudo
+
 ```bash
 chown -R $USER:$USER /var/run/screen
 ```
+
 This will allow a typical user/or group full access, and will be more secure

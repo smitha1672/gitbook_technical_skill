@@ -2,10 +2,9 @@
 
 <!--* [introduction]-->
 <!--* [specification]-->
-* [system programming](content/cs_programming/cs_programming.md)
+* [computer system](content/computer_system/cs.md)
 <!-- * [C skill] -->
 * [leetcode](content/leetcode/leetcode.md)
-* [ubuntu](content/ubuntu/ubuntu.md)
 * [gitbook](content/gitbook/gitbook.md)
 * [vim](content/vim/vim.md)
 * [git](content/git/git.md)
@@ -16,4 +15,5 @@
 <!--* [raspberry pi](content/rpi/rpi.md)-->
 * [raspberry pi3](content/raspberry/raspberry.md)
 <!--* [Building Root]-->
+* [others](content/others/others.md)
 
