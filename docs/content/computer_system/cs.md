@@ -79,6 +79,28 @@ align=center />
 
 
 ## Basic C
++ Bit Manipulation
+
+```c
+#define BIT_MASK(bitn) \
+    ((1U << (bitn)) - 1)
+
+#define BIT_SET(data, bitn) \
+    data |= (1UL << bitn)
+
+#define BIT_CLR(data, bitn) \
+    data &= ~(1UL << bitn)
+
+#define BIT_TOGGLE(data, bitn) \
+    data ^= (1UL << bitn)
+
+#define BIT_CHECKED(data, bitn) \
+    (data >> bitn) & 1U
+
+#define BIT_SET_NTH_BIT(data, bitn, binary) \
+    data ^= (-binary ^ data) & (1UL << bitn)
+```
+
 + while (some condition)
 
 ```c
