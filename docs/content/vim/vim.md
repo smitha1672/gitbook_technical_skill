@@ -5,7 +5,21 @@ sudo apt-get install vim
 ```
 <br>[\.vimrc Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
 
-### Open vim
+### Manipulation
+
++ To convert each tab in the file to two spaces
+
+```text
+:1,$s/\t/  /g
+\t: meaning TAB
+
+```
+
++ Change only whole words exactly matching 'foo' to 'bar'; ask for confirmation.
+
+```text
+:%s/\<foo\>/bar/gc
+```
 
 + 開啟該程式中的所有原始檔, 並且將顯示位置停留在 main fucntion
 
