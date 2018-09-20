@@ -7,12 +7,27 @@ sudo apt-get install vim
 
 ### Manipulation
 
++ Switching case of characters
+
+```text
+You can change the case of text:
+
+g~: Toggle case "HellO" to "hELLo"
+gU: Uppercase "HellO" to "HELLO"
+gu: Lowercase "HellO" to "hello"
+Alternatively, you can visually select text then press ~ to toggle case, or U to convert to uppercase, or u to convert
+to lowercase.
+```
+
++ Search patterns
+[linking](http://vim.wikia.com/wiki/Search_patterns)
+
 + To convert each tab in the file to two spaces
 
 ```text
 :1,$s/\t/  /g
 \t: meaning TAB
-
+\r: meaning newline
 ```
 
 + Change only whole words exactly matching 'foo' to 'bar'; ask for confirmation.
@@ -33,9 +48,31 @@ vi +/main *.h *.c
 vim file1 file2 file3
 ```
 
-+  Meta Mode (type ESC)
++  Moving Around
 
 ```text
+w: Move forward to the beginning of a word.
+3w: Move forward three words.
+W: Move forward a WORD (any non-whitespace characters).
+3b: Move backward three words.
+$: Move to the end of the line.
+0: Move to the beginning of the line.
+^: Move to the first non-blank character of the line.
+10j: Jump forward 10 lines
+k: Jump backward one line.
+10k: Jump backward 10 lines.
+10<PageUp> or 10<CTRL-B> : Move 10 pages up.
+5<PageDown> or 5<CTRL-F>: Move 5 pages down.
+G: Jump to end of file.
+1G: Jump to beginning of file (same as gg).
+50G: Jump to line 50.
+mx: Set mark x at the current cursor position.
+'x: Jump to the beginning of the line of mark x.
+`x: Jump to the cursor position of mark x.
+'': Return to the line where the cursor was before the latest jump. (Two single quotes.)
+``: Return to the cursor position before the latest jump (undo the jump). (Two back ticks. This is above the Tab key on some keyboards.)
+'.: Jump to the last-changed line.
+ %:  Jump to corresponding item, e.g. from an open brace to its matching closing brace. See Moving to matching braces for  more.
 e/E - 將cursor移到字尾.
 b/E - 將cursor移到字首
 ( - 將cursor移到上一句子開頭
@@ -160,6 +197,6 @@ help vimgrep                  查看vimgrep帮助
 + Open/Close a compare by:
 
 ```text
-:windo diffthis (:diffthis) # Open
-:windo diffoff (:diffoff) # Close
+:windo diffthis # Open
+:windo diffoff # Close
 ```
