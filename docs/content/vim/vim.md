@@ -7,6 +7,20 @@ sudo apt-get install vim
 
 ### Manipulation
 
++ How can I reload all buffers at once?
+
+```text
+See :help bufdo for what you want to do. It will execute a command in each buffer in the buffer list. For example:
+
+:bufdo e
+You may also want to look at :help noconfirm to disable the confirmation dialog before issueing the  bufdo command
+
+:set noconfirm
+and reenabling it after the bufdo command.
+
+:set confirm
+```
+
 + Switching case of characters
 
 ```text
@@ -199,4 +213,21 @@ help vimgrep                  查看vimgrep帮助
 ```text
 :windo diffthis # Open
 :windo diffoff # Close
+```
+
+## Tag list
++ Installation
+Tag list is able to dowload from the [linking](https://sourceforge.net/projects/vim-taglist/files/) and refer as
+[instance] (http://eeepage.info/tag-vim-source-insight/)
+
+```text
+$ sudo apt-get install exuberant-ctags
+```
+
++ manipulation
+
+```text
+$ ctags -R -h ".h.c...etc"
+# CTRL + ] :go to defintion
+# CTRL + t :go to back
 ```
