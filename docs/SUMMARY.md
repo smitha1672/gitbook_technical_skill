@@ -3,7 +3,7 @@
 <!--* [introduction]-->
 <!--* [I2C]-->
 <!--* [SPI]-->
-<!--* [windows cross-compiler]
+<!--* [windows cross-compiler]-->
 * [computer system](content/computer_system/cs.md)
 <!-- * [C skill] -->
 * [leetcode](content/leetcode/leetcode.md)
