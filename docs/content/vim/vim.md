@@ -1,11 +1,44 @@
-## VIM
-### Installation
+# VIM
+## Installation
 ```bash
 sudo apt-get install vim
 ```
 <br>[\.vimrc Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
 
-### Manipulation
+## Search patterns
+[linking](http://vim.wikia.com/wiki/Search_patterns)
+
++ To convert each tab in the file to two spaces
+
+```text
+:1,$s/\t/  /g
+\t: meaning TAB
+\r: meaning newline
+```
+
++ Change only whole words exactly matching 'foo' to 'bar'; ask for confirmation.
+
+```text
+:%s/\<foo\>/bar/gc
+```
+## Search and replace
+[linking](http://vim.wikia.com/wiki/Search_and_replace)
+
+```text
+# 每行的行首都添加一个字符串
+:%s/^/要插入的字符串
+
+#每行的行尾都添加一个字符串
+:%s/$/要插入的字符串
+
+# 替換以word開始的單字.
+:%s/\<buf/stat_buf/g
+```
+
+## Delete all line containing a pattern
+[linking](http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern)
+
+## Manipulation
 
 + How can I reload all buffers at once?
 
@@ -33,23 +66,6 @@ Alternatively, you can visually select text then press ~ to toggle case, or U to
 to lowercase.
 ```
 
-+ Search patterns
-[linking](http://vim.wikia.com/wiki/Search_patterns)
-
-+ To convert each tab in the file to two spaces
-
-```text
-:1,$s/\t/  /g
-\t: meaning TAB
-\r: meaning newline
-```
-
-+ Change only whole words exactly matching 'foo' to 'bar'; ask for confirmation.
-
-```text
-:%s/\<foo\>/bar/gc
-```
-
 + 開啟該程式中的所有原始檔, 並且將顯示位置停留在 main fucntion
 
 ```bash
@@ -59,7 +75,14 @@ vi +/main *.h *.c
 + open a few files to vim buffers
 
 ```bash
+# simple example
 vim file1 file2 file3
+# advance example for C
+files=$(find ./ -type -name "*.c" | xargs)
+vim $files
+# for more type files
+file=$(find . -type f \( -name "*.c" -or -name "*.h" \) | xargs)
+vim $file
 ```
 
 +  Moving Around
@@ -120,19 +143,8 @@ L - 將cursor移到screen 的最底行.
 # Show binary file
 :%!xxd
 ```
+
 ```text
-# Replace from string.a to string.b
-:[range]s/string.a/string.b/gc #[range] is able be [line.start, line.end]
-
-# 每行的行首都添加一个字符串
-:%s/^/要插入的字符串
-
-#每行的行尾都添加一个字符串
-:%s/$/要插入的字符串
-
-# 替換以word開始的單字.
-:%s/\<buf/stat_buf/g
-
 # 寫新檔名
 :w test.c
 
@@ -141,6 +153,7 @@ L - 將cursor移到screen 的最底行.
 ```
 
 + [vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
+
 ```text
 # Is showes as below
 :ls
@@ -164,6 +177,7 @@ For instance
 <br>[ref.1 link](https://blog.easwy.com/archives/advanced-vim-skills-quickfix-mode/)
 <br>[ref.2 link](https://blog.csdn.net/zqiang_55/article/details/30715961)
 <br>
+
 ```text
 As follows:
 :vim[grep][!] /{pattern}/[g][j] {file} ..
@@ -206,7 +220,7 @@ cclose                        关闭qucikfix
 help vimgrep                  查看vimgrep帮助
 ```
 
-### vimdiff
+## vimdiff
 
 + Open/Close a compare by:
 

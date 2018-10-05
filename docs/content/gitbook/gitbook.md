@@ -119,7 +119,7 @@ update [tag]              Update to the latest version of GitBook
 help                      List commands for GitBook
 *                         run a command with a specific gitbook version
 ```
-<br> `git build` and then `git serve`
+<br> `gitbook build` and then `gitbook serve`
 
 ```text
 Live reload server started on port: 35729
