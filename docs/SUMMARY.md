@@ -3,7 +3,6 @@
 <!--* [introduction]-->
 <!--* [I2C]-->
 <!--* [SPI]-->
-<!--* [windows cross compiler]-->
 * [computer system](content/computer_system/cs.md)
 <!-- * [C skill] -->
 * [leetcode](content/leetcode/leetcode.md)
@@ -17,5 +16,5 @@
 <!--* [raspberry pi](content/rpi/rpi.md)-->
 * [raspberry pi3](content/raspberry/raspberry.md)
 <!--* [Building Root]-->
+* [windows cross compiler](content/window_cross_compiler/window_cross_compiler.md)
 * [others](content/others/others.md)
-
