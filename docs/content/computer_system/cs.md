@@ -78,7 +78,18 @@ alt="virtual memory"
 align=center />
 
 
-## Basic C
+## C Technique
+
++ Setting a Start Address for the Array Used by Heap4
+
+```c
+/*Using GCC syntax*/
+uint8_t ucHeap[configTOTAL_HEAP_SIZE] __attribute__ ((section(".my_heap"))); /*.my_heap should exist in linker file*/
+
+/*Using IAR*/
+uint8_t ucHeap[configTOTAL_HEAP_SIZE ] @ 0x20000000;
+```
+
 + Bit Manipulation
 
 ```c
