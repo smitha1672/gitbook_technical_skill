@@ -1,11 +1,11 @@
 # Summary
 
 * [interview](content/interview/interview.md)
+* [hardware](content/hardware/hardware.md)
 <!--* [introduction]-->
 <!--* [I2C]-->
 <!--* [SPI]-->
 * [computer system](content/computer_system/cs.md)
-<!-- * [C skill] -->
 * [gitbook](content/gitbook/gitbook.md)
 * [vim](content/vim/vim.md)
 * [git](content/git/git.md)
