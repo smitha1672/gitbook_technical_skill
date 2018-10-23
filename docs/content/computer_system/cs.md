@@ -220,7 +220,6 @@ addTail(LinkedList* list, void* data)
     node->next = NULL;
     if (list->head == NULL)
         list->head = node;
-
     else
         list->tail->next = node;
     list->tail = node;
