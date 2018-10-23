@@ -69,8 +69,8 @@ $ nm  -A ./*.o | grep func
 ```
 ## OS
 
-+ spinlock, mutex, semaphore
-<!--* http://welkinchen.pixnet.net/blog/post/47071066-spinlock-%26-mutex-%26-semaphore-%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%8D%80%E5%88%A5-->
++ [spinlock, mutex,semaphore](http://welkinchen.pixnet.net/blog/post/47071066-spinlock-%26-mutex-%26-semaphore-%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%8D%80%E5%88%A5)
+
 ```text
 Mutex是一把鑰匙，一個人拿了就可進入一個房間，出來的時候把鑰匙交給隊列的第一個。一般的用法是用於串行化對critical
 section代碼的訪問，保證這段代碼不會被並行的運行。
@@ -94,8 +94,8 @@ section的訪問。但是mutex不能保護中斷的打斷，也不能在中斷�
 lock也一般沒有必要用於可以sleep的進程空間。
 ```
 
-+ Mutexes VS Semaphores 大揭秘
-<!--* http://swem.logdown.com/posts/177651-mutexes-and-semaphores-demystified-->
++ [Mutexes VS Semaphores大揭秘](http://swem.logdown.com/posts/177651-mutexes-and-semaphores-demystified)
+
 ```text
 Mutex 與 Semaphore 都是用在保護 critical section，確保多個 process
 平行運作並存取資源時，執行結果不會因為執行程序的時間先後的影響而導致錯誤。
@@ -121,9 +121,11 @@ binary semaphore，也才能夠用於保護資源，或是處理 multiple identi
 ```
 
 + Priority inversion
-<!--* http://blog.linux.org.tw/~jserv/archives/001299.html-->
-<!--* http://wen00072.github.io/blog/2014/03/05/note-priority-inversion-on-mars/-->
+
 ```text
+http://blog.linux.org.tw/~jserv/archives/001299.html
+http://wen00072.github.io/blog/2014/03/05/note-priority-inversion-on-mars/
+
 Bounded priority inversion
 高優先權的process/thread等待進入critical section，該critical
 section目前由低優先權的process/thread佔用中。因此只要低優先權的process/thread離開該critical
@@ -141,7 +143,6 @@ Priority inheritance
 section發現該section以被低優先權的process/thread佔用時，系統暫時將該低優先權的process/thread調整到高優先權直到該低優先權的process/thread離開critical
 section
 看來可以解Unbounded priority inversion，bounded priority inversion應該還是本質無法解掉？
-
 ```
 
 ## Virtual Memory
@@ -460,6 +461,7 @@ main(void)
 ```
 
 + Using a Union to Represent a Value in Multiple Ways
+
 ```c
 typedef union _conversion {
      float fNum;
