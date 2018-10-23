@@ -1,5 +1,5 @@
 # Leetcode
-## [8. String to Integer(atoi)] (https://leetcode.com/problems/string-to-integer-atoi/description/)
+## [8. String to Integer atoi](https://leetcode.com/problems/string-to-integer-atoi/description/)
 <!--- limiation line
 <br>---------------20------------------40-----------------60------------------80--------------
 -->
@@ -45,7 +45,7 @@ digit.
 Example 4:
 Input: "words and 987"
 Output: 0
-Explanation: The first non-whitespace character is 'w', which is not a numerical 
+Explanation: The first non-whitespace character is 'w', which is not a numerical
 digit or a +/- sign. Therefore no valid conversion could be performed.
 Example 5:
 
