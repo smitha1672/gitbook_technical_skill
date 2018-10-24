@@ -221,32 +221,3 @@ main(void)
     delete (&linkedList, node);
 }
 ```
-
-+ Using a Union to Represent a Value in Multiple Ways
-
-```c
-typedef union _conversion {
-     float fNum;
-      unsigned int uiNum;
-} Conversion;
-int isPositive1(float number) {
-    Conversion conversion = { . fNum =number};
-    return (conversion. uiNum & 0x80000000) == 0;
-}
-
-typedef union _conversion2 {
-    float *fNum;
-    unsigned int *uiNum;
-} Conversion2;
-int isPositive2(float number) {
-    Conversion2 conversion;
-    conversion.fNum =&number;
-    return (*conversion.uiNum & 0x80000000) == 0;
-}
-
-int isPositive3(float number) {
-    unsigned int *ptrValue = (unsigned int *)&number;
-    return (*ptrValue & 0x80000000) == 0;
-}
-
-```
