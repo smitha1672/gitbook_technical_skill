@@ -1,6 +1,82 @@
 #
 ## FreeRTOS
 ### Task Scheduling Algorithms
+
+Tasks that are in the Ready state are available to be selected by
+the scheduler as the task to enter the Running state. The scheduler
+will always choose the `highest priority Ready state task` to enter
+the Running state.
+
+Tasks can wait in the Blocked state `for an event` and are automatically
+moved back to the Ready state when the event occurs.
+For example:
+<br> 1. when `a block time expires`, and are normally used to implement `periodic` or `timeout` behavior.
+<br> 2. Synchronization events occur when a task or `interrupt service routine` sends information using
+a task notification, `queue`, `event group`, or one of the many types of `semaphore`. They are
+generally used to signal asynchronous activity, such as data arriving at a peripheral.
+
+The algorithm can be changed using the `configUSE_PREEMPTION` and `configUSE_TIME_SLICING`
+configuration constants. Both constants are defined in `FreeRTOSConfig.h`.
+
+A third configuration constant, `configUSE_TICKLESS_IDLE` is described in Chapter 10,
+`Low Power Support`.
+
++ Fixed Priority
+
+Scheduling algorithms described as `Fixed Priority` do not change the priority
+assigned to the tasks being scheduled, but also do not prevent the tasks
+themselves from changing their own priority, or that of other tasks.
+
++ Pre-emptive
+
+Pre-emptive scheduling algorithms will immediately `pre-empt` the Running
+state task if a task that has a priority higher than the Running state task
+enters the Ready state. Being pre-empted means being involuntarily (without
+explicitly yielding or blocking) moved out of the Running state and into the
+Ready state to allow a different task to enter the Running state.
+
++ Time Slicing
+
+Time slicing is used to `share processing time` between tasks of equal priority,
+even when the tasks do not explicitly yield or enter the Blocked state.
+Scheduling algorithms described as using `Time Slicing` will select a new task
+to enter the Running state at the end of each time slice if there are other
+Ready state tasks that have the same priority as the Running task. A time
+slice is equal to the time between two RTOS tick interrupts.
+
+#### Tasks have a unique priority
+
+configUSE_PREEMPTION 1
+<br> configUSE_TIME_SLICING 1
+
+<img src="figure26.png"
+width="90%"
+height="90%"
+alt=""
+align=center />
+
+#### 2 Tasks share a priority
+
+configUSE_PREEMPTION 1
+<br> configUSE_TIME_SLICING 1
+
+<img src="figure27.png"
+width="90%"
+height="90%"
+alt=""
+align=center />
+
+#### Prioritized Pre-emptive Scheduling (without Time Slicing)
+
+configUSE_PREEMPTION 1
+<br> configUSE_TIME_SLICING 0
+
+<img src="figure29.png"
+width="90%"
+height="90%"
+alt=""
+align=center />
+
 ### ARM Cortex-M, Interrupts and FreeRTOS
 
 <br> 1. vPortSVCHandler
