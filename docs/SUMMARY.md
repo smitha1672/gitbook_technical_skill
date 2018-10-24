@@ -1,11 +1,10 @@
 # Summary
 
-* [interview](content/interview/interview.md)
+* [OS](content/os/os.md)
+* [Data Structure](content/datastructure/ds.md)
+* [leetcode](content/leetcode/leetcode.md)
 * [hardware](content/hardware/hardware.md)
 * [ble](content/ble/ble.md)
-<!--* [introduction]-->
-<!--* [I2C]-->
-<!--* [SPI]-->
 * [computer system](content/computer_system/cs.md)
 * [gitbook](content/gitbook/gitbook.md)
 * [vim](content/vim/vim.md)
