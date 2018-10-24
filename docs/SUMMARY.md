@@ -2,6 +2,7 @@
 
 * [interview](content/interview/interview.md)
 * [hardware](content/hardware/hardware.md)
+* [ble](content/ble/ble.md)
 <!--* [introduction]-->
 <!--* [I2C]-->
 <!--* [SPI]-->

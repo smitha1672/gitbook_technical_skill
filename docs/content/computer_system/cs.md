@@ -155,11 +155,13 @@ align=center />
 
 
 ## C Technique
-<!--* http://mropengate.blogspot.com/2017/08/cc-c.html-->
-<!--* https://rmbconsulting.us/publications/a-c-test-the-0x10-best-questions-for-would-be-embedded-programmers/-->
+
 + volatile
 
 ```text
+http://mropengate.blogspot.com/2017/08/cc-c.html
+https://rmbconsulting.us/publications/a-c-test-the-0x10-best-questions-for-would-be-embedded-programmers/
+
 由於嵌入式系統常處理 I/O、中斷、即時操作系統 (RTOS) 相關的問題，因此在嵌入式系統開發中 volatile
 尤為重要。被 volatile 修飾的變數代表它可能會被不預期的更新，因此告知編譯器不對它涉及的地方做最佳化，
 並在每次操作它的時候都讀取該變數實體位址上最新的值，而不是讀取暫存器的值。
