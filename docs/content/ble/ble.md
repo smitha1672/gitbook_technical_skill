@@ -1,4 +1,20 @@
 #
+
+## Bluetooth Basic v.s Bluetooth Low Engergy
+
+<img src="blevsbtbasic_1.png"
+width="100%"
+height="100%"
+alt="ble vs basic bt 1"
+align=center />
+
+<img src="blevsbtbasic_2.png"
+width="90%"
+height="90%"
+alt="ble vs basic bt 2"
+align=center />
+
+
 ## Blooth Low Engery
 
 [ble-microchip](http://microchipdeveloper.com/wireless:ble-phy-layer)
@@ -200,7 +216,7 @@ specification.
 
 #### Generic Attribute Profile (GATT) Roles
 
-Bluetooth Low Energy (BLE) data communications are implemented in the Generic Attribute Profile
+Bluetooth Low Energy (BLE) `data communications` are implemented in the Generic Attribute Profile
 (GATT) layer using the Attribute Protocol (ATT), a simple client/server `stateless` protocol.
 
 The following GATT role pair is defined:
