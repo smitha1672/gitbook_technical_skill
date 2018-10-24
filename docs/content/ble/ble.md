@@ -11,14 +11,12 @@ height="70%"
 alt="ble protocol stack"
 align=center />
 
-### Physical Layer
+### Physical Layer-Controller
 
 + Frequency Bands
 
-```text
 The radio uses the 2.4 GHz ISM (Industrial, Scientific, and Medical) band to communicate and divides
 this band into 40 channels on 2 MHz spacing from 2.4000 GHz to 2.4835 GHz, starting at 2402 MHz:
-```
 
 <img src="https://microchip.wikidot.com/local--files/wireless:ble-phy-layer/ble-phy-channel-assignment.png"
 width="80%"
@@ -28,28 +26,21 @@ align=center />
 
 + Channel Arrangement
 
-```text
 The 40 channels are divided into 3 Advertising Channels (Ch. 37, 38, 39),
 and 37 Data Channels (Ch.0-36).
-```
 
 > Advertising Channel Usage
-```text
-Device Discovery
-Connection Establishment
-Broadcast Transmissions
-```
+<br> 1. Device Discovery
+<br> 2. Connection Establishment
+<br> 3. Broadcast Transmissions
 
 > Data Channel Usage
-```text
-Bidirectional communication between connected devices
-Adaptive frequency hopping used for subsequent connection events
-```
+<br> 1. Bidirectional communication between connected devices
+<br> 2. Adaptive frequency hopping used for subsequent connection events
 
 + Modulation & Data Rate
 
-```text
-When transmitting data, the BLE radio transmits at 1 Mbps, with 1 bit per symbol. The radio is
+When transmitting data, the BLE radio transmits at `1 Mbps`, with `1 bit per symbol`. The radio is
 optimized for sending small chunks of data quickly.
 
 The BLE radio uses Gaussian frequency-shift keying (GFSK), whereby the data pulses are filtered with
@@ -57,25 +48,20 @@ a Gaussian filter before being applied to alter the carrier frequency, in order 
 frequency transitions smoother.
 
 Note: BLE protocol overhead limits overall data throughput to significantly less than 1 Mbps.
-```
 
-### Link Layer
+### Link Layer-Controller
 To do this, it is primarily concerned with channels, packets, discovery, and connection procedures.
 
 #### Channels
 
 > Advertising Channel Usage
-```text
-Device Discovery
-Connection Establishment
-Broadcast Transmissions
-```
+<br> 1. Device Discovery
+<br> 2. Connection Establishment
+<br> 3. Broadcast Transmissions
 
 > Data Channel Usage
-```text
-Bidirectional communication between connected devices
-Adaptive frequency hopping used for subsequent connection events
-```
+<br> 1. Bidirectional communication between connected devices
+<br> 2. Adaptive frequency hopping used for subsequent connection events
 
 #### Roles and States
 
@@ -130,3 +116,120 @@ align=center />
 
 Each discovery/connection procedure must be performed using one of the two types and is specified by
 the host
+
+#### Packet Types
+
+Link Layer has only `one packet format` used for both `advertising channel` packets and `data
+channel`
+
+<img src="https://microchip.wikidot.com/local--files/wireless:ble-link-layer-packet-types/packet-format-top-level.png"
+width="80%"
+height="80%"
+alt="packet overview"
+align=center />
+
+> PUD: BLE packet Protocol Data Unit size in specification v4.0 and v4.1 is 2-39 bytes.
+
+#### Discovery(Advertising & Scanning)
+
+todo
+
+#### Connections
+
+todo
+
+#### Security
+
+todo
+
+### Generic Access Profile(GAP)-Host
+
+The Generic Access Profile (GAP) modes and procedures form the cornerstone for Bluetooth Low Energy
+(BLE) `control-plane` operations:
++ Discover and connect with peers
++ Broadcast data
++ Establish secure connections
+
+GAP defines these and other fundamental operations in a standard, universally understood manner.
+It's important to understand GAP, since most BLE implementations provide GAP APIs for applications
+wishing to use this functionality.
+
+#### Bluetooth Low Energy GAP Roles
+todo
+
+#### Bluetooth Low Energy GAP Modes and Procedures
+todo
+
+#### Bluetooth Low Energy Security Modes and Procedures
+todo
+
+### Generic Attribute Profile (GATT)-Host
+
+The Generic Attribute Profile (GATT) establishes `how data will be organized and exchanged` over a
+Bluetooth Low Energy (BLE) connection.
+
+Certain use-case-specific profiles (GATT-Based Profiles) are standardized by the Bluetooth Special
+Interest Group (SIG):
++ Heart Rate Profile
++ Proximity Profile
++ etc.
+
+For a GATT example, the following depicts a GATT Server having two services (one Public, one Private), with a GATT
+Client executing several GATT operations to read/write the data (characteristics) in those services.
+
+<img src="https://microchip.wikidot.com/local--files/wireless:ble-gatt-overview/gatt-example.png"
+width="80%"
+height="80%"
+alt=""
+align=center />
+
+#### Universally Unique Identifier (UUID)
+
+A universally unique identifier (UUID) is a globally unique 128-bit (16-byte) number that is used to
+identify Profiles, Services and Data Types in a Generic Attribute (GATT) Profile.
+
+For efficiency, the Bluetooth® Low Energy (BLE) specification adds support for shortened 16-bit
+UUIDs. These shortened formats can `only be used` with `Bluetooth SIG defined GATT profiles`.
+
+All UUIDs in BLE are 128-bits (i.e. a 16-bit SIG-approved UUID is actually just part of a 128 bit
+UUID. For example, the Client Configuration Descriptor UUID (2902) is actually
+00002902-0000-1000-8000–00805f9b34fb).
+
+Therefore, these shortened formats can only be used with UUIDs that are defined by the BLE
+specification.
+
+#### Generic Attribute Profile (GATT) Roles
+
+Bluetooth Low Energy (BLE) data communications are implemented in the Generic Attribute Profile
+(GATT) layer using the Attribute Protocol (ATT), a simple client/server `stateless` protocol.
+
+The following GATT role pair is defined:
++ Server
+<br> 1. Contains the resources (Data) to be monitored
+<br> 2. Organized as an Attribute Database
+<br> 3. Receives requests from a client and sends responses back
+<br> 4. Typically associated with the `Link Layer Slave` and `GAP Peripheral device` roles
+
++ Client
+<br> 1. Inquires about the presence and nature of the attributes on a server, Performs Service Discovery
+<br> 2. Sends requests to a server and receives responses
+<br> 3. Typically associated with the `Link Layer Master` and `GAP Central` device roles
+
+For example, The following depicts a GATT Server having two services (one Public, one Private), with
+a GATT Client executing several GATT operations to read/write the data (characteristics) in those
+services.
+
+<img src="https://microchip.wikidot.com/local--files/wireless:ble-gatt-roles/gatt-example-highlighted-roles.png"
+width="80%"
+height="80%"
+alt=""
+align=center />
+
+#### GATT Attributes
+
+todo
+
+#### Attribute and Data Hierarchy
+todo
+
+
