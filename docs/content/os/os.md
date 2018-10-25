@@ -157,12 +157,14 @@ not re-entrant and not thread-safe, the same task has exclusive access to the re
 the resource has been returned to a consistent state.
 
 + Basic Critical Sections
-<br>taskENTER_CRITICAL, taskEXIT_CRITICAL(), taskENTER_CRITICAL_FROM_ISR,
+
+taskENTER_CRITICAL, taskEXIT_CRITICAL(), taskENTER_CRITICAL_FROM_ISR,
 taskEXIT_CRITICAL_FROM_ISR.
 
 
 + Suspending (or Locking) the Scheduler
-<br>vTaskSuspendAll, xTaskResumeAll
+
+vTaskSuspendAll, xTaskResumeAll
 
 + Mutexes and Binary Semaphores
 
