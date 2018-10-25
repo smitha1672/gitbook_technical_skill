@@ -4,28 +4,28 @@
 <!--- limiation line
 <br>---------------20------------------40-----------------60------------------80--------------
 -->
-```text
+
 Implement atoi which converts a string to an integer.
 
 The function first discards as many whitespace characters as necessary until the first
-non-whitespace character is found. Then, starting from this character, takes an optional initial
-plus or minus sign followed by as many numerical digits as possible, and interprets them as a
-numerical value.
+non-whitespace character is found. Then, starting from this character, takes an optional
+initial plus or minus sign followed by as many numerical digits as possible, and interprets
+them as a numerical value.
 
-The string can contain additional characters after those that form the integral number, which are
-ignored and have no effect on the behavior of this function.
+The string can contain additional characters after those that form the integral number,
+which are ignored and have no effect on the behavior of this function.
 
-If the first sequence of non-whitespace characters in str is not a valid integral number, or if no
-such sequence exists because either str is empty or it contains only whitespace characters, no
-conversion is performed.
+If the first sequence of non-whitespace characters in str is not a valid integral number,
+or if no such sequence exists because either str is empty or it contains only whitespace
+characters, no conversion is performed.
 
 If no valid conversion could be performed, a zero value is returned.
 
 Note:
 Only the space character ' ' is considered as whitespace character.
-Assume we are dealing with an environment which could only store integers within the 32-bit signed
-integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values,
-INT_MAX (231 − 1) or INT_MIN (−231) is returned.
+Assume we are dealing with an environment which could only store integers within the 32-bit
+signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of
+representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.
 
 Example 1:
 Input: "42"
@@ -54,7 +54,6 @@ Input: "-91283472332"
 Output: -2147483648
 Explanation: The number "-91283472332" is out of the range of a 32-bit
 signed integer. Thefore INT_MIN (−231) is returned.
-```
 
 <br>**Answer**
 ```c
@@ -95,7 +94,7 @@ main (void)
 <!--- limiation line
 <br>---------------20------------------40-----------------60------------------80--------------
 -->
-```text
+
 Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
 
 Note:
@@ -108,7 +107,6 @@ Input:
 nums1 = [1,2,3,0,0,0], m = 3
 nums2 = [2,5,6],       n = 3
 Output: [1,2,2,3,5,6]
-```
 
 <br>**Answer**
 ```c
@@ -153,45 +151,63 @@ void main(void)
 <!--- limiation line
 <br>---------------20------------------40-----------------60------------------80--------------
 -->
-```text
-Given a string and an integer k, you need to reverse the first k characters for every 2k characters
-counting from the start of the string. If there are less than k characters left, reverse all of
-them. If there are less than 2k but greater than or equal to k characters, then reverse the first k
-characters and left the other as original.
+
+Given a string and an integer k, you need to reverse the first k characters for every 2k
+characters counting from the start of the string. If there are less than k characters left,
+reverse all of them. If there are less than 2k but greater than or equal to k characters,
+then reverse the first k characters and left the other as original.
+
 Example:
 Input: s = "abcdefg", k = 2
 Output: "bacdfeg"
 Restrictions:
 The string consists of lower English letters only.
 Length of the given string and k will in the range [1, 10000]
-```
 
 <br>**Answer**
 ```c
-#include <stdio.h>
-#include <limits.h>
-
-int reverse(int x)
+void
+reverse(int start, int end, char* s)
 {
-  long long val = 0;
-
-  do
-  {
-    val = val * 10 + x % 10;
-    x /= 10;
-  } while (x);
-
-  return (val > INT_MAX || val < INT_MIN) ? 0 : val;
+    char tmp;
+    while (start < end) {
+        tmp = s[end];
+        s[end--] = s[start];
+        s[start++] = tmp;
+    }
 }
 
-void main (void)
+char*
+reverseStr(char* s, int k)
 {
-  int input = -2147483648;
-  int output = 0;
+    size_t len = strlen(s);
+    if (len <= k) {
+        reverse(0, len-1, s);
+        return s;
+    }
+    for (int i = 0; i < len; i += (2*k)) {
+        if (i+(2*k) <= len)   /*at least 2k left*/
+            reverse(i, i+k-1, s);
+        else if ((len-i) >= k) { /*more than or equal to k left*/
+            reverse(i, i+k-1, s);
+            break;
+        } else if ((len-i) < k) { /*less than k,reverse i to len-1*/
+            reverse(i, i+k-1, s);
+            break;
+        }
+    }
+    return s;
+}
 
-  printf("input: %d\n", input);
-  output = reverse(input);
-  printf("out: %d\n", output);
+#define ITEM 10000
+void
+main(void)
+{
+    char s[] = "abcdefg";
+    int k = 2;
+    char* t = NULL;
+    reverseStr(s, k);
+    printf("s: %s\n", s);
 }
 ```
 ## [7. Reverse Integer](https://leetcode.com/problems/reverse-integer/)
@@ -213,9 +229,9 @@ Example 3:
 Input: 120
 Output: 21
 Note:
-Assume we are dealing with an environment which could only store integers within the 32-bit signed
-integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns
-0 when the reversed integer overflows.
+Assume we are dealing with an environment which could only store integers within the 32-bit
+signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your
+function returns 0 when the reversed integer overflows.
 ```
 
 <br>**Answer**
@@ -298,7 +314,7 @@ void main(void)
 <!--- limiation line
 <br>---------------20------------------40-----------------60------------------80--------------
 -->
-```text
+
 Given an array nums, write a function to move all 0's to the end of it while maintaining the
 relative order of the non-zero elements
 
@@ -310,7 +326,6 @@ Note:
   2. Minimize the total number of operations.
 Credits:
 Special thanks to @jianchao.li.fighter for adding this problem and creating all test cases.
-```
 
 <br>**Answer**
 ```c
@@ -351,11 +366,12 @@ void main (void)
            i, nums[i]);
 }
 ```
+
 ## [189. RotateArray](https://leetcode.com/problems/rotate-array/description/)
 <!--- limiation line
 <br>---------------20------------------40-----------------60------------------80--------------
 -->
-```text
+
 Given an array, rotate the array to the right by k steps, where k is non-negative.
 
 Example 1:
@@ -377,7 +393,6 @@ Note:
 Try to come up as many solutions as you can, there are at least 3 different ways
 to solve this problem.
 Could you do it in-place with O(1) extra space?
-```
 
 <br>**Answer**
 ```c
@@ -422,8 +437,7 @@ void main(void)
 <!--- limiation line
 <br>---------------20------------------40-----------------60------------------80--------------
 -->
-Question
-```text
+
 Given an array nums and a value val, remove all instances of that value in-place and return
 the new length.
 
@@ -458,7 +472,7 @@ int len = removeElement(nums, val);
 for (int i = 0; i < len; i++) {
       print(nums[i]);
 }
-```
+
 <br>**Answer**
 ```c
 #include <stdio.h>
