@@ -305,9 +305,10 @@ alt=""
 align=center />
 
 + Service
+
 A collection of data and associated behaviors to accomplish a particular function, defined as a
-Service Definition (i.e. a collection of characteristic attributes). Primary services are `discovered
-by a GATT Client` via a `GATT Primary Service Discovery Procedure`.
+Service Definition (i.e. a collection of characteristic attributes). Primary services are
+`discovered by a GATT Client` via a `GATT Primary Service Discovery Procedure`.
 
 Services are classified as `Public` or `Private`
 <br>`Public`, defined by the Bluetooth SIG (16-bit UUID)
@@ -325,3 +326,51 @@ of two attributes:
 >discoverable` by a Client.
 
 A Characteristic can optionally contain Descriptor Attributes, described below.
+
+
++ Characteristic Descriptors
+
+These are special attributes used to further expand the Metadata contained in the
+`Declaration Attribute`. `Common Descriptor Attributes` defined by GATT include:
+<br>`Extended Properties`, Contains additional declaration property bits
+<br>
+<br>`Characteristic User Description`, Contains a user-readable description for the characteristic in which it is placed
+(i.e. "Temperature in the Living Room").
+<br>
+<br>`Client Characteristic Configuration Descriptor (CCCD)`, A switch, enabling/disabling server-initiated updates.
+Client Characteristic Configuration Descriptor (CCCD), This is a very commonly used descriptor.
+
+The Client-Server nature of GATT data communications has a drawback in that the Client must
+typically poll for updates of a characteristic on a Server.
+
+`The CCCD provides a mechanism to enable Server-Initiated Updates`, whereby the Server can
+asynchronously push updated characteristic values to the Client, without the Client having to poll
+for it.
+
+There are two types of Server-Initiated updates:
+<br>`Notifications`(whereby the Client does not acknowledge receipt of the update)
+<br>
+<br>`Indications`(whereby the Client does acknowledge receipt of the update. Server cannot send
+further indications until received)
+
+>The Client must enable this Server-Initiated update mechanism by writing to the corresponding
+>CCCD before the Server can start sending them.
+
+##### GATT Profile Example
+
+The following diagram depicts the GATT Heart Rate Service.
+
+<img src="https://microchip.wikidot.com/local--files/wireless:ble-gatt-data-organization/gatt-heart-rate-service.png"
+width="80%"
+height="80%"
+alt=""
+align=center />
+
+Notes:
+<br> Service contains eight attribute data structures
+<br> Service contains three characteristics
+<br> "Heart Rate Measurement" characteristic contains three attributes, including a descriptor attribute
+(CCCD Type), set for Notifications.
+This is a Server-initiated update characteristic - the value will be sent to the Client whenever the
+value attribute is updated
+
