@@ -93,6 +93,8 @@ align=center />
 <br>---------------20------------------40-----------------60------------------80--------------
 -->
 
+### Critical Section
+
 ### Priority Inversion
 
 [ref.1](http://blog.linux.org.tw/~jserv/archives/001299.html), [ref.2](http://wen00072.github.io/blog/2014/03/05/note-priority-inversion-on-mars/)
@@ -110,25 +112,84 @@ height="60%"
 alt=""
 align=center />
 
+<br>
+Figure 65 demonstrates one of the potential pitfalls of using a mutex to provide mutual
+exclusion. The sequence of execution depicted shows the higher priority Task 2 having to wait
+for the lower priority Task 1 to give up control of the mutex. A higher priority task being
+delayed by a lower priority task in this manner is called `priority inversion`. This undesirable
+behavior would be exaggerated further if a medium priority task started to execute while the
+high priority task was waiting for the semaphore—the result would be a high priority task
+waiting for a low priority task—without the low priority task even being able to execute. This
+worst case scenario is shown in Figure 66.
+
+<br>
+Priority inversion can be a significant problem, but in small embedded systems it can often be
+avoided at system design time, by considering how resources are accessed.
+
 <br>`Bounded priority inversion`
-<br>高優先權的process/thread等待進入critical section，該critical
-section目前由低優先權的process/thread佔用中。因此只要低優先權的process/thread離開該critical
-section後高優先權的process/thread便可繼續執行
+<br>`高優先權`的process/thread等待進入critical section，該critical section目前由`低優先權`
+的process/thread佔用中。因此只要低優先權的process/thread離開該critical section後高優先權的
+process/thread便可繼續執行
 
 `Unbounded priority inversion`
-<br>高優先權的process/thread等待進入critical section，該critical
-section目前由低優先權的process/thread佔用中
-不幸的是，當低優先權process/thread還在critical
-section執行的時候，被切換到中優先權的process/thread由於高優先權的process/thread被block,
-而低優先權的process/thread一定會被中優先權的process/thread搶走執行權。最壞的狀況就是之後就只剩
-中優先權的process/thread被執行
+<br>`高優先權`的process/thread等待進入critical section，該critical section目前由`低優先權`的
+process/thread佔用中`不幸的是`，當`低優先權`process/thread還在critical section執行的時候，被切
+換到`中優先權`的process/thread由於`高優先權`的process/thread`被block`, 而`低優先權`的
+process/thread一定會被`中優先權`的process/thread搶走執行權。最壞的狀況就是之後就只剩`中優先權`的
+process/thread被執行
 
-解法？
-<br>Priority inheritance
-當高優先權的process/thread要進入critical
-section發現該section以被低優先權的process/thread佔用時，系統暫時將該低優先權的process/thread
-調整到高優先權直到該低優先權的process/thread離開critical section 看來可以解
-Unbounded priority inversion，bounded priority inversion應該還是本質無法解掉？
+### Priority Inheritance
+
+<img src="figure67.png"
+width="70%"
+height="70%"
+alt=""
+align=center />
+
+<br>
+Priority inheritance works by `temporarily raising the priority of the mutex holder` to the priority
+of the highest priority task that is attempting to obtain the same mutex. The low priority task that
+holds the mutex ‘inherits’ the priority of the task waiting for the mutex. This is demonstrated by
+Figure 67. The priority of the mutex holder is reset automatically to its original value when it
+gives the mutex back.
+
+As just seen, priority inheritance functionality effects the priority of tasks that are using the
+mutex. For that reason, `mutexes must not be used from an interrupt service routines`.
+
+<br>當高優先權的process/thread要進入critical section發現該section以被低優先權的process/thread佔用時,
+系統`暫時`將該低優先權的process/thread調整到`高優先權`直到該低優先權的process/thread離開critical
+section 看來可以解Unbounded priority inversion，bounded priority inversion應該還是本質無法解掉？
+
+### Deadlock
+
+Deadlock occurs when two tasks cannot proceed because they are both waiting for a resource
+that is held by the other. Consider the following scenario where Task A and Task B both need
+to acquire mutex X and mutex Y in order to perform an action:
+
+<br> 1. Task A executes and successfully takes mutex X.
+<br> 2. Task A is pre-empted by Task B.
+<br> 3. Task B successfully takes mutex Y before attempting to also take mutex X—but mutex
+X is held by Task A so is not available to Task B. Task B opts to enter the Blocked
+state to wait for mutex X to be released.
+<br> 4. Task A continues executing. It attempts to take mutex Y—but mutex Y is held by Task
+B, so is not available to Task A. Task A opts to enter the Blocked state to wait for
+mutex Y to be released.
+
+<br>
+At the end of this scenario, Task A is waiting for a mutex held by Task B, and Task B is waiting
+for a mutex held by Task A. Deadlock has occurred because neither task can proceed.
+
+<br>
+As with priority inversion, the best method of avoiding deadlock is to consider its potential at
+design time, and design the system to ensure that deadlock cannot occur.<br>In particular, and
+as previously stated in this book, it is normally bad practice for a task to wait indefinitely
+(without a time out) to obtain a mutex. Instead, `use a time out` that is a little longer than the
+maximum time it is expected to have to wait for the mutex—then failure to obtain the mutex
+within that time will be a symptom of a design error, which might be a deadlock.
+In practice, deadlock is not a big problem in small embedded systems, because the system
+designers can have a good understanding of the entire application, and so can identify and
+remove the areas where it could occur.
+
 
 ### [spinlock, mutex,semaphore](http://welkinchen.pixnet.net/blog/post/47071066-spinlock-%26-mutex-%26-semaphore-%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%8D%80%E5%88%A5)
 
