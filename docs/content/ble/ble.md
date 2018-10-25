@@ -364,6 +364,8 @@ The following diagram depicts the GATT Heart Rate Service.
 width="80%"
 height="80%"
 alt=""
+
+
 align=center />
 
 Notes:
@@ -374,3 +376,6 @@ Notes:
 This is a Server-initiated update characteristic - the value will be sent to the Client whenever the
 value attribute is updated
 
+## BLE OTA
+
+[reference](http://www.sunyouqun.com/2017/05/master-ble-ota/)
