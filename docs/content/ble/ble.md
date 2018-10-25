@@ -201,10 +201,10 @@ align=center />
 
 #### Universally Unique Identifier (UUID)
 
-A universally unique identifier (UUID) is a globally unique 128-bit (16-byte) number that is used to
+A universally unique identifier (UUID) is a globally `unique 128-bit (16-byte)` number that is used to
 identify Profiles, Services and Data Types in a Generic Attribute (GATT) Profile.
 
-For efficiency, the Bluetooth® Low Energy (BLE) specification adds support for shortened 16-bit
+For efficiency, the Bluetooth Low Energy (BLE) specification adds support for `shortened 16-bit`
 UUIDs. These shortened formats can `only be used` with `Bluetooth SIG defined GATT profiles`.
 
 All UUIDs in BLE are 128-bits (i.e. a 16-bit SIG-approved UUID is actually just part of a 128 bit
@@ -221,9 +221,9 @@ Bluetooth Low Energy (BLE) `data communications` are implemented in the Generic 
 
 The following GATT role pair is defined:
 + Server
-<br> 1. Contains the resources (Data) to be monitored
+<br> 1. Contains the `resources data` to be monitored
 <br> 2. Organized as an Attribute Database
-<br> 3. Receives requests from a client and sends responses back
+<br> 3. `Receives requests` from a `client` and sends `responses back`
 <br> 4. Typically associated with the `Link Layer Slave` and `GAP Peripheral device` roles
 
 + Client
@@ -231,7 +231,7 @@ The following GATT role pair is defined:
 <br> 2. Sends requests to a server and receives responses
 <br> 3. Typically associated with the `Link Layer Master` and `GAP Central` device roles
 
-For example, The following depicts a GATT Server having two services (one Public, one Private), with
+For example, The following depicts a GATT Server having two services `one Public`, `one Private`, with
 a GATT Client executing several GATT operations to read/write the data (characteristics) in those
 services.
 
@@ -243,9 +243,85 @@ align=center />
 
 #### GATT Attributes
 
-todo
+A GATT Server contains data organized in the form of Attributes. An Attribute is a piece of
+`labeled`, `addressable data`, or `metadata` about the attribute:
+<br>1. Contained within the Server
+<br>2. Accessed by the Client
+
+An Attribute has the following structure:
+<img src="https://microchip.wikidot.com/local--files/wireless:ble-gatt-attributes/attribute-structure.png"
+width="80%"
+height="80%"
+alt=""
+align=center />
+
++ Attribute Handle
+
+A unique 16-bit identifier
+<br> 1.Makes the attribute "addressable"
+<br> 2.Does not change
+Handle values grow in an ordered sequence on a server (gaps are allowed) and are discovered by the
+Client during `a Discovery Procedure`
+
++ Attribute Type (UUID)
+
+Determines the kind of data present in the value of the attribute. Uses a 2 or 16-byte universally
+unique identifier (UUID). Examples include:
+<br>1. Service UUID
+<br>2. Characteristic UUID
+<br>3. Profile UUID
+<br>4. Vendor-Specified UUID
+
++ Attribute Value
+
+Holds the `actual data content`, which is `accessible by a Client`. Can also hold `metadata` about the
+attribute (depending on the Type).
+
+There are no restrictions on the type of data it can contain, however, the maximum length is `limited
+to 512 bytes` by the BLE specification
+
++ Attribute Permissions
+
+These are `attribute metadata` that specify, ATT access operations allowed on the
+<br>Attribute Value
+<br>    1. Read Operations
+<br>    2. Write Operations
+<br>    3. No Operations
+<br>
+<br>Security requirements
+<br>    1. Encryption (level required)
+<br>    2. Authorization required (Yes/No)
 
 #### Attribute and Data Hierarchy
-todo
 
+Generic Attribute Profile (GATT) establishes a hierarchy to organize attributes. They are organized
+as a GATT Server Profile and are grouped into:
+> Services, containing, Characteristics, containing, Attributes (Declaration, Value, Descriptor (Optional))
 
+<img src="https://microchip.wdfiles.com/local--files/wireless:ble-gatt-data-organization/attribute-hierarchy.png"
+width="50%"
+height="50%"
+alt=""
+align=center />
+
++ Service
+A collection of data and associated behaviors to accomplish a particular function, defined as a
+Service Definition (i.e. a collection of characteristic attributes). Primary services are `discovered
+by a GATT Client` via a `GATT Primary Service Discovery Procedure`.
+
+Services are classified as `Public` or `Private`
+<br>`Public`, defined by the Bluetooth SIG (16-bit UUID)
+<br>`Private`, vendor-defined (128-bit UUID)
+
++ Characteristics
+
+As depicted above, characteristics are essentially `containers for user data`. They contain a minimum
+of two attributes:
+<br> Characteristic Declaration Attribute, Metadata for `the Value Attribute`.
+<br>
+<br> Characteristic Value Attribute, Contains the data value itself
+
+>Declaration attribute permissions are always set to `Read with No Encryption` so as to be `always
+>discoverable` by a Client.
+
+A Characteristic can optionally contain Descriptor Attributes, described below.
