@@ -171,7 +171,64 @@ It's important to understand GAP, since most BLE implementations provide GAP API
 wishing to use this functionality.
 
 #### Bluetooth Low Energy GAP Roles
-todo
+
+Bluetooth Low Energy (BLE) `devices` can operate in `one or more Generic Access Profile (GAP)` roles at
+the same time (provided the Link Layer supports this):
+> 1. Broadcaster
+> 2. Observer
+> 3. Peripheral
+> 4. Central
+
+The role imposes restrictions and enforces behavior, so it is generally fixed in the design stage of
+the device.
+
+Two role pairs are defined, allowing devices to communicate with each other.
+
++ Broadcaster/Observer
+
+This role pair implements unidirectional, connection-less communications.
+
++ Broadcaster
+
+> 1. Periodically sends advertising packets with data
+> 2. Uses the Link Layer Advertiser role
+
++ Observer
+
+> 1. Scans for broadcasters, listening for advertising data
+> 2. Uses the Link Layer Scanner role
+
++ Network Topology
+
+<img src="https://microchip.wikidot.com/local--files/wireless:ble-gap-roles/topology-broadcast.png"
+width="80%"
+height="80%"
+alt=""
+align=center />
+
++ Peripheral/Central
+
+This role pair implements bidirectional, connection-oriented communications.
+
++ Peripheral
+
+1. Link Layer Slave role
+2. Advertises by using connectable advertising packets
+3. Optimized to consume the least amount of processing power and memory; Enables a low-cost design
+
++ Central
+
+1. Link Layer Master role
+2. Capable of establishing and managing a connection
+3. May be connected to various devices simultaneously
+
++ Network Topology
+
+<img src="https://microchip.wikidot.com/local--files/wireless:ble-gap-roles/topology-unicast.png"
+width="80%"
+height="80%"
+alt=""
+align=center />
 
 #### Bluetooth Low Energy GAP Modes and Procedures
 todo
@@ -322,8 +379,8 @@ of two attributes:
 <br>
 <br> Characteristic Value Attribute, Contains the data value itself
 
->Declaration attribute permissions are always set to `Read with No Encryption` so as to be `always
->discoverable` by a Client.
+> Declaration attribute permissions are always set to `Read with No Encryption` so as to be `always
+> discoverable` by a Client.
 
 A Characteristic can optionally contain Descriptor Attributes, described below.
 
@@ -348,13 +405,12 @@ asynchronously push updated characteristic values to the Client, without the Cli
 for it.
 
 There are two types of Server-Initiated updates:
-<br>`Notifications`(whereby the Client does not acknowledge receipt of the update)
-<br>
-<br>`Indications`(whereby the Client does acknowledge receipt of the update. Server cannot send
+> `Notifications`(whereby the Client does not acknowledge receipt of the update)
+> `Indications`(whereby the Client does acknowledge receipt of the update. Server cannot send
 further indications until received)
 
->The Client must enable this Server-Initiated update mechanism by writing to the corresponding
->CCCD before the Server can start sending them.
+> The Client must enable this Server-Initiated update mechanism by writing to the corresponding
+> CCCD before the Server can start sending them.
 
 ##### GATT Profile Example
 
@@ -364,16 +420,13 @@ The following diagram depicts the GATT Heart Rate Service.
 width="80%"
 height="80%"
 alt=""
-
-
 align=center />
 
 Notes:
-<br> Service contains eight attribute data structures
-<br> Service contains three characteristics
-<br> "Heart Rate Measurement" characteristic contains three attributes, including a descriptor attribute
-(CCCD Type), set for Notifications.
-This is a Server-initiated update characteristic - the value will be sent to the Client whenever the
+> 1. Service contains eight attribute data structures
+> 2. Service contains three characteristics
+> 3. "Heart Rate Measurement" characteristic contains three attributes, including a descriptor attribute
+(CCCD Type), set for Notifications. This is a Server-initiated update characteristic - the value will be sent to the Client whenever the
 value attribute is updated
 
 ## BLE OTA
