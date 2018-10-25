@@ -148,15 +148,15 @@ align=center />
 
 #### Discovery(Advertising & Scanning)
 
-todo
+[Discovery Process](http://microchipdeveloper.com/wireless:ble-link-layer-discovery)
 
 #### Connections
 
-todo
+[Connection Process](http://microchipdeveloper.com/wireless:ble-link-layer-connections)
 
 #### Security
 
-todo
+[Security Features](http://microchipdeveloper.com/wireless:ble-link-layer-security)
 
 ### Generic Access Profile(GAP)-Host
 
@@ -231,6 +231,7 @@ alt=""
 align=center />
 
 #### Bluetooth Low Energy GAP Modes and Procedures
+todo
 
 #### Bluetooth Low Energy Security Modes and Procedures
 todo
