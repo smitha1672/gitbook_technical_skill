@@ -212,15 +212,15 @@ This role pair implements bidirectional, connection-oriented communications.
 
 + Peripheral
 
-1. Link Layer Slave role
-2. Advertises by using connectable advertising packets
-3. Optimized to consume the least amount of processing power and memory; Enables a low-cost design
+> 1. Link Layer Slave role
+> 2. Advertises by using connectable advertising packets
+> 3. Optimized to consume the least amount of processing power and memory; Enables a low-cost design
 
 + Central
 
-1. Link Layer Master role
-2. Capable of establishing and managing a connection
-3. May be connected to various devices simultaneously
+> 1. Link Layer Master role
+> 2. Capable of establishing and managing a connection
+> 3. May be connected to various devices simultaneously
 
 + Network Topology
 
