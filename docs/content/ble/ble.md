@@ -231,7 +231,6 @@ alt=""
 align=center />
 
 #### Bluetooth Low Energy GAP Modes and Procedures
-todo
 
 #### Bluetooth Low Energy Security Modes and Procedures
 todo
