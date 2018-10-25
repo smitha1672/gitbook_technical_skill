@@ -93,7 +93,78 @@ align=center />
 <br>---------------20------------------40-----------------60------------------80--------------
 -->
 
-### Critical Section
+### Resource Management
+
+In a multitasking system there is potential for error if one task starts to access a resource, but
+does not complete its access before being transitioned out of the Running state. If the task
+leaves the resource in an inconsistent state, then access to the same resource by any other
+task or interrupt could result in data corruption, or other similar issue.
+<br>
+Following are some examples:
+
++ Accessing Peripherals
+
+Consider the following scenario where two tasks attempt to write to an Liquid Crystal
+Display (LCD).
+<br>1. Task A executes and starts to write the string "Hello world" to the LCD.
+<br>2. Task A is pre-empted by Task B after outputting just the beginning of the string—
+"Hello w".
+<br>3. Task B writes “Abort, Retry, Fail?” to the LCD before entering the Blocked state.
+<br>4. Task A continues from the point at which it was pre-empted, and completes
+outputting the remaining characters of its string—"orld".
+The LCD now displays the corrupted string "Hello wAbort, Retry, Fail?orld?.
+
++ Read, Modify, Write Operations
+
+Listing 111 shows a line of C code, and an example of how the C code would typically be
+translated into assembly code. It can be seen that the value of PORTA is first read from
+memory into a register, modified within the register, and then written back to memory. This
+is called a read, modify, write operation.
+
+```c
+/* The C code being compiled. */
+PORTA |= 0x01;
+/* The assembly code produced when the C code is compiled. */
+LOAD R1,[#PORTA]    ;Read a value from PORTA into R1
+MOVE R2,#0x01       ;Move the absolute constant 1 into R2
+OR  R1,R2           ;Bitwise OR R1 (PORTA) with R2 (constant 1)
+STORE R1,[#PORTA]   ;Store the new value back to PORTA
+```
+<br>
+This is a `non-atomi` operation because it takes more than one instruction to complete, and
+`can be interrupted`. Consider the following scenario where two tasks attempt to update a
+memory mapped register called PORTA.
+<br>1. Task A loads the value of PORTA into a register—the read portion of the operation.
+<br>2. Task A is pre-empted by Task B before it completes the modify and write portions of
+the same operation.
+<br>3. Task B updates the value of PORTA, then enters the Blocked state.
+<br>4. Task A continues from the point at which it was pre-empted. It modifies the copy of
+the PORTA value that it already holds in a register, before writing the updated value
+back to PORTA.
+<br>
+In this scenario, Task A updates and writes back an out of date value for PORTA. Task B
+modifies PORTA after Task A takes a copy of the PORTA value, and before Task A writes
+its modified value back to the PORTA register. When Task A writes to PORTA, it
+overwrites the modification that has already been performed by Task B, effectively
+`corrupting` the PORTA register value.
+
+#### Critial Section
+
+To ensure data consistency is maintained at all times access to a resource that is shared
+between tasks, or between tasks and interrupts, must be managed using a ‘mutual exclusion’
+technique. The goal is to ensure that, once a task starts to access a shared resource that is
+not re-entrant and not thread-safe, the same task has exclusive access to the resource until
+the resource has been returned to a consistent state.
+
++ Basic Critical Sections
+<br>taskENTER_CRITICAL, taskEXIT_CRITICAL(), taskENTER_CRITICAL_FROM_ISR,
+taskEXIT_CRITICAL_FROM_ISR.
+
+
++ Suspending (or Locking) the Scheduler
+<br>vTaskSuspendAll, xTaskResumeAll
+
++ Mutexes and Binary Semaphores
 
 ### Priority Inversion
 
@@ -121,17 +192,14 @@ behavior would be exaggerated further if a medium priority task started to execu
 high priority task was waiting for the semaphore—the result would be a high priority task
 waiting for a low priority task—without the low priority task even being able to execute. This
 worst case scenario is shown in Figure 66.
-
 <br>
 Priority inversion can be a significant problem, but in small embedded systems it can often be
 avoided at system design time, by considering how resources are accessed.
-
 <br>`Bounded priority inversion`
 <br>`高優先權`的process/thread等待進入critical section，該critical section目前由`低優先權`
 的process/thread佔用中。因此只要低優先權的process/thread離開該critical section後高優先權的
 process/thread便可繼續執行
-
-`Unbounded priority inversion`
+<br>`Unbounded priority inversion`
 <br>`高優先權`的process/thread等待進入critical section，該critical section目前由`低優先權`的
 process/thread佔用中`不幸的是`，當`低優先權`process/thread還在critical section執行的時候，被切
 換到`中優先權`的process/thread由於`高優先權`的process/thread`被block`, 而`低優先權`的
@@ -152,11 +220,11 @@ of the highest priority task that is attempting to obtain the same mutex. The lo
 holds the mutex ‘inherits’ the priority of the task waiting for the mutex. This is demonstrated by
 Figure 67. The priority of the mutex holder is reset automatically to its original value when it
 gives the mutex back.
-
+<br>
 As just seen, priority inheritance functionality effects the priority of tasks that are using the
 mutex. For that reason, `mutexes must not be used from an interrupt service routines`.
-
-<br>當高優先權的process/thread要進入critical section發現該section以被低優先權的process/thread佔用時,
+<br>
+當高優先權的process/thread要進入critical section發現該section以被低優先權的process/thread佔用時,
 系統`暫時`將該低優先權的process/thread調整到`高優先權`直到該低優先權的process/thread離開critical
 section 看來可以解Unbounded priority inversion，bounded priority inversion應該還是本質無法解掉？
 
@@ -165,7 +233,6 @@ section 看來可以解Unbounded priority inversion，bounded priority inversion
 Deadlock occurs when two tasks cannot proceed because they are both waiting for a resource
 that is held by the other. Consider the following scenario where Task A and Task B both need
 to acquire mutex X and mutex Y in order to perform an action:
-
 <br> 1. Task A executes and successfully takes mutex X.
 <br> 2. Task A is pre-empted by Task B.
 <br> 3. Task B successfully takes mutex Y before attempting to also take mutex X—but mutex
@@ -174,11 +241,9 @@ state to wait for mutex X to be released.
 <br> 4. Task A continues executing. It attempts to take mutex Y—but mutex Y is held by Task
 B, so is not available to Task A. Task A opts to enter the Blocked state to wait for
 mutex Y to be released.
-
 <br>
 At the end of this scenario, Task A is waiting for a mutex held by Task B, and Task B is waiting
 for a mutex held by Task A. Deadlock has occurred because neither task can proceed.
-
 <br>
 As with priority inversion, the best method of avoiding deadlock is to consider its potential at
 design time, and design the system to ensure that deadlock cannot occur.<br>In particular, and
