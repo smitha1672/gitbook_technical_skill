@@ -70,7 +70,102 @@ $ nm  -A ./*.o | grep func
 
 ## C Technique
 
-+ volatile
++ [Structure and Pointer](https://www.programiz.com/c-programming/c-structures-pointers)
+
+Referencing pointer to another address to access the memory
+
+```c
+#include <stdio.h>
+typedef struct person
+{
+    int age;
+    float weight;
+};
+
+int main()
+{
+    struct person *personPtr, person1;
+    personPtr = &person1; // Referencing pointer to memory address of person1
+
+    printf("Enter integer: ");
+    scanf("%d",&(*personPtr).age);
+
+    printf("Enter number: ");
+    scanf("%f",&(*personPtr).weight);
+
+    printf("Displaying: ");
+    printf("%d%f",(*personPtr).age,(*personPtr).weight);
+
+    return 0;
+}
+```
+
+Using -> operator to access structure pointer member
+
+```text
+(*personPtr).age is same as personPtr->age
+(*personPtr).weight is same as personPtr->weight
+```
+
+Accessing structure member through pointer using dynamic memory allocation
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+struct person {
+int age;
+    float weight;
+    char name[30];
+};
+
+int main()
+{
+    struct person *ptr;
+    int i, num;
+
+    printf("Enter number of persons: ");
+    scanf("%d", &num);
+
+    ptr = (struct person*) malloc(num * sizeof(struct person));
+    // Above statement allocates the memory for n structures with pointer
+    // personPtr pointing to base address */
+
+    for(i = 0; i < num; ++i)
+    {
+        printf("Enter name, age and weight of the person
+                respectively:\n");
+        scanf("%s%d%f", &(ptr+i)->name, &(ptr+i)->age,
+                &(ptr+i)->weight);
+    }
+
+    printf("Displaying Infromation:\n");
+    for(i = 0; i < num; ++i)
+    printf("%s\t%d\t%.2f\n",
+            (ptr+i)->name, (ptr+i)->age,
+            (ptr+i)->weight);
+
+    return 0;
+}
+```
+
+Output
+
+```text
+Enter number of persons: 2
+Enter name, age and weight of the person respectively:
+Adam
+2
+3.2
+Enter name, age and weight of the person respectively:
+Eve
+6
+2.3
+Displaying Information:
+Adam    2   3.20
+Eve 6   2.30
+```
+
+volatile
 
 ```text
 http://mropengate.blogspot.com/2017/08/cc-c.html
@@ -181,7 +276,6 @@ int isPositive3(float number) {
     unsigned int *ptrValue = (unsigned int *)&number;
     return (*ptrValue & 0x80000000) == 0;
 }
-
 ```
 
 + Strict Aliasing Keyword
@@ -344,15 +438,6 @@ width="70%"
 height="70%"
 alt="const pointer to int"
 align=center />
-
-+ **(\*t).age != \*t.age**
-
-```text
-(*t).age is not equal to *t.age
-(*t).age = t->age
-*t.age = *(t.age) # it refer as memory address
-ptr->field = (*ptr).field
-```
 
 + Get struct member size
 
