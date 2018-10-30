@@ -304,7 +304,7 @@ while (...) {
 ```
 ### for
 
-+ for (initial variable; judge expression; execute code)
+for (initial variable; judge expression; execute code)
 
 ```c
 for (int counter = 1; counter < 11; counter ++)
@@ -453,8 +453,10 @@ void foo(void) {
 ```
 ```text
 unsigned int的答案是輸出是 "> 6".
-當表達式中存在有符號類型和無符號類型時所有的操作數都自動轉換為無符號類型(unsigned)。因此-20變成了一個非常大的正整數，所以該表達式計算出的結果大於6.
-這一點對於應當頻繁用到無符號數據類型的嵌入式系統來說是非常重要的。如果你答錯了這個問題，你也就到了得不到這份工作的邊緣。
+當表達式中存在有符號類型和無符號類型時所有的操作數都自動轉換為無符號類型(unsigned)。
+因此-20變成了一個非常大的正整數，所以該表達式計算出的結果大於6.
+這一點對於應當頻繁用到無符號數據類型的嵌入式系統來說是非常重要的。
+如果你答錯了這個問題，你也就到了得不到這份工作的邊緣。
 ```
 
 + Question.2
@@ -486,13 +488,19 @@ int main(void)
 }
 ```
 sizeof(A) = ?
-Ans: 4
+```text
+4
+```
 
 在little endian cpu中, A.y[1]的值將會是?
-Ans: 0x33
+```text
+0x33
+```
 
 在big endian cpu中, A.y[1]的值將會是?
-Ans: 0x22
+```text
+0x22
+```
 
 + Question.3
 
@@ -510,14 +518,20 @@ int main(void)
 }
 ```
 
-i 的值將會是?
-Ans: 41
+i的值將會是?
+```text
+41
+```
 
 請將上題的CALC 改用inline function實作, 請寫出實作?
+```c
 inline int CALC(int x, int y) { return (x*y); }
+```
 
 使用inline function後, i 的值將會是?
-ANS: 120
+```c
+120
+```
 
 + Question.4
 
@@ -549,13 +563,13 @@ int main (void)
 }
 ```
 
-1. 麻煩將a這個函式指標陣列的宣告補上
+麻煩將a這個函式指標陣列的宣告補上?
 
 ```c
 int (*a[2]) (int x);
 ```
 
-2. 請問兩個printf的結果是?
+請問兩個printf的結果是?
 
 ```text
 8
@@ -583,17 +597,14 @@ int main(void)
 }
 ```
 
-1. 請問在"32bit cpu,有開啟Alignment"功能的狀況下,sizeof(struct Alignment)的值將會是多少?
+請問在"32bit cpu,有開啟Alignment"功能的狀況下,sizeof(struct Alignment)的值將會是多少?
 ```text
 12
 ```
 
-2. 請問該如何disable alignment?
+請問該如何disable alignment?
 ```text
 In GCC you can use __attribute__((packed))
-```
-
-```c
 struct Alignment
 {
     char a;
@@ -604,7 +615,7 @@ struct Alignment
 } __attribute__((packed));
 ```
 
-3. Disable alignment後, sizeof(struct Alignment)的值是多少?
+Disable alignment後, sizeof(struct Alignment)的值是多少?
 ```text
 9
 ```
