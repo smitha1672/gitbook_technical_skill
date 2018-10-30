@@ -550,11 +550,17 @@ int main (void)
 ```
 
 1. 麻煩將a這個函式指標陣列的宣告補上
-Ans: int (*a[2]) (int x);
+
+```c
+int (*a[2]) (int x);
+```
+
 2. 請問兩個printf的結果是?
-Ans:
+
+```text
 8
 10
+```
 
 + Question.5
 
@@ -578,9 +584,14 @@ int main(void)
 ```
 
 1. 請問在"32bit cpu,有開啟Alignment"功能的狀況下,sizeof(struct Alignment)的值將會是多少?
-Ans: 12
+```text
+12
+```
+
 2. 請問該如何disable alignment?
-Ans: In GCC you can use __attribute__((packed))
+```text
+In GCC you can use __attribute__((packed))
+```
 
 ```c
 struct Alignment
@@ -594,7 +605,9 @@ struct Alignment
 ```
 
 3. Disable alignment後, sizeof(struct Alignment)的值是多少?
-Ans: 9
+```text
+9
+```
 
 [reference](https://stackoverflow.com/questions/40642765/how-to-tell-gcc-to-disable-padding-inside-struct)
 
@@ -605,8 +618,10 @@ Ans: 9
 // ---------------------------------------------
 // Define a macro can tell the element number inside a static array?
 // ---------------------------------------------
-Ans:
+```
+```c
 ARRAY_SIZE(a) sizeof((a))/sizeof((a)[0])
+```
 
 + Question.7
 
@@ -626,7 +641,6 @@ ARRAY_SIZE(a) sizeof((a))/sizeof((a)[0])
 // ---------------------------------------------
 ```
 
-Ans:
 Program Stack
 1. The program stack is an area of memory that supports the execution of functions and
 is normally shared with the heap.
