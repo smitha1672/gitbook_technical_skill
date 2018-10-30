@@ -1,6 +1,7 @@
 # Summary
 
 * [OS](content/os/os.md)
+* [C Technique](content/c_technique/c_technique.md)
 * [Data Structure](content/datastructure/ds.md)
 * [leetcode](content/leetcode/leetcode.md)
 * [hardware](content/hardware/hardware.md)
