@@ -98,7 +98,7 @@ Eve 6   2.30
 
 ### volatile
 
-[reference.1](http://mropengate.blogspot.com/2017/08/cc-c.html)
+[reference.1](http://mropengate.blogspot.com/2017/08/cc-c.html),
 [reference.2](https://rmbconsulting.us/publications/a-c-test-the-0x10-best-questions-for-would-be-embedded-programmers/)
 
 由於嵌入式系統常處理 I/O、中斷、即時操作系統 (RTOS) 相關的問題，因此在嵌入式系統開發中 volatile
@@ -382,7 +382,7 @@ printf("%zu", member_size(Parent,text));
 ### Get array size
 
 ```c
-#define ARRAY_SIZE(a)   (sizeof((a)) / sizeof((a)[0]))
+#define ARRAY_SIZE(a) (sizeof((a)) / sizeof((a)[0]))
 ```
 
 ### union and sturct
@@ -629,7 +629,7 @@ Disable alignment後, sizeof(struct Alignment)的值是多少?
 // ---------------------------------------------
 ```
 ```c
-ARRAY_SIZE(a) sizeof((a))/sizeof((a)[0])
+ARRAY_SIZE(a) (sizeof((a))/sizeof((a)[0]))
 ```
 
 + Question.7
