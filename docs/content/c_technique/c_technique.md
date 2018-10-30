@@ -98,9 +98,9 @@ Eve 6   2.30
 
 ### volatile
 
-```text
-http://mropengate.blogspot.com/2017/08/cc-c.html
-https://rmbconsulting.us/publications/a-c-test-the-0x10-best-questions-for-would-be-embedded-programmers/
+[reference.1](http://mropengate.blogspot.com/2017/08/cc-c.html)
+<br>
+[reference.2](https://rmbconsulting.us/publications/a-c-test-the-0x10-best-questions-for-would-be-embedded-programmers/)
 
 由於嵌入式系統常處理 I/O、中斷、即時操作系統 (RTOS) 相關的問題，因此在嵌入式系統開發中 volatile
 尤為重要。被 volatile 修飾的變數代表它可能會被不預期的更新，因此告知編譯器不對它涉及的地方做最佳化，
@@ -110,7 +110,6 @@ volatile 常見的應用：
 修飾中斷處理程式中 (ISR) 中可能被修改的全域變數。
 修飾多執行緒 (multi-threaded) 的全域變數。
 設備的硬體暫存器 (如狀態暫存器)
-```
 
 ### pointer
 
@@ -303,7 +302,7 @@ while (...) {
   continue;   /*go to while*/
 }
 ```
-### for (initial variable; judge expression; execute code)
+### for
 
 + for (initial variable; judge expression; execute code)
 
@@ -456,6 +455,215 @@ void foo(void) {
 unsigned int的答案是輸出是 "> 6".
 當表達式中存在有符號類型和無符號類型時所有的操作數都自動轉換為無符號類型(unsigned)。因此-20變成了一個非常大的正整數，所以該表達式計算出的結果大於6.
 這一點對於應當頻繁用到無符號數據類型的嵌入式系統來說是非常重要的。如果你答錯了這個問題，你也就到了得不到這份工作的邊緣。
+```
+
++ Question.2
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+union _a
+{
+    unsigned int x;
+    char y[4];
+    unsigned short z;
+};
+
+int main(void)
+{
+    union _a A;
+
+    A.y[0] = 0x0a;
+    A.y[1] = 0x0b;
+    A.y[2] = 0x0c;
+    A.y[3] = 0x0d;
+    A.z = 0xAA;
+    A.x = 0x11223344;
+
+    printf("%ld\n", sizeof(A));
+    printf("%x\n", A.y[1]);
+}
+```
+sizeof(A) = ?
+Ans: 4
+
+在little endian cpu中, A.y[1]的值將會是?
+Ans: 0x33
+
+在big endian cpu中, A.y[1]的值將會是?
+Ans: 0x22
+
++ Question.3
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+#define CALC(x,y) x*y
+
+int main(void)
+{
+    int i;
+    i = CALC(5+5, 6+6);
+    printf("%d\n", i);
+}
+```
+
+i 的值將會是?
+Ans: 41
+
+請將上題的CALC 改用inline function實作, 請寫出實作?
+inline int CALC(int x, int y) { return (x*y); }
+
+使用inline function後, i 的值將會是?
+ANS: 120
+
++ Question.4
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int Action1(int x);
+int Action1(int x)
+{
+    return (x*2);
+}
+
+int Action2(int x);
+int Action2(int x)
+{
+    return (x<<1);
+}
+
+int main (void)
+{
+    // 這邊缺少函式指標陣列的宣告
+
+    a[0] = Action1;
+    a[1] = Action2;
+
+    printf("%d\n", a[0](4));
+    printf("%d\n", a[1](5));
+}
+```
+
+1. 麻煩將a這個函式指標陣列的宣告補上
+Ans: int (*a[2]) (int x);
+2. 請問兩個printf的結果是?
+Ans:
+8
+10
+
++ Question.5
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Alignment
+{
+    char a;
+    short int e;
+    char c;
+    char d;
+    int b;
+};
+
+int main(void)
+{
+    printf("%ld\n", sizeof(struct Alignment));
+}
+```
+
+1. 請問在"32bit cpu,有開啟Alignment"功能的狀況下,sizeof(struct Alignment)的值將會是多少?
+Ans: 12
+2. 請問該如何disable alignment?
+Ans: In GCC you can use __attribute__((packed))
+
+```c
+struct Alignment
+{
+    char a;
+    short int e;
+    char c;
+    char d;
+    int b;
+} __attribute__((packed));
+```
+
+3. Disable alignment後, sizeof(struct Alignment)的值是多少?
+Ans: 9
+
+[reference](https://stackoverflow.com/questions/40642765/how-to-tell-gcc-to-disable-padding-inside-struct)
+
++ Question.6
+
+```c
+// C-Quiz 6
+// ---------------------------------------------
+// Define a macro can tell the element number inside a static array?
+// ---------------------------------------------
+Ans:
+ARRAY_SIZE(a) sizeof((a))/sizeof((a)[0])
+
++ Question.7
+
+```c
+// C-Quiz 7
+// ---------------------------------------------
+// 請聊聊 volatile 跟他的用途?
+// ---------------------------------------------
+```
+
++ Question.8
+
+```
+// C-Quiz 8
+// ---------------------------------------------
+// 請聊聊 stack / heap 跟他的用途?
+// ---------------------------------------------
+```
+
+Ans:
+Program Stack
+1. The program stack is an area of memory that supports the execution of functions and
+is normally shared with the heap.
+
+2. program stack tends to occupy the lower part of this region, while the heap uses the
+upper part
+
+3. The program stack holds stack frames, sometimes called activation records or activation
+frames. Stack frames hold the parameters and local variables of a function. 
+
+Heap
+1. The heap manages dynamic memory and is discussed
+
+As functions are called, their stack frames are pushed onto the stack and the stack grows
+“upward.” When a function terminates, its stack frame is popped off the program stack.
+The memory used by the stack frame is not cleared and may eventually be overridden
+by another stack frame when it is pushed onto the program stack.
+
+When memory is dynamically allocated, it comes from the heap, which tends to grow
+“downward.” The heap will fragment as memory is allocated and then deallocated. Al‐
+though the heap tends to grow downward, this is a general direction. Memory can be
+allocated from anywhere within the heap.
+
++ Question.9
+
+```c
+// ---------------------------------------------
+// 請聊聊 static 跟他的用途?
+// ---------------------------------------------
+```
+
++ Question.10
+
+```c
+// ---------------------------------------------
+// 請聊聊 extern 跟他的用途?
+// ---------------------------------------------
 ```
 
 ## Astyle
