@@ -129,7 +129,7 @@ int (*a[10])(int); // 一個有10個指標的陣列，該指標指向一個函�
 void (*fptr)(type_a, type_b) = &func;
 ```
 
-+ interruption fucntion
+### interruption fucntion
 
 ```c
 __interrupt double compute_area(double radius) {
