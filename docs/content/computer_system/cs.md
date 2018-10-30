@@ -1,4 +1,12 @@
 #
+## Virtual Memory
+
+<img src="https://bayanbox.ir/view/581244719208138556/virtual-memory.jpg"
+width="100%"
+height="100%"
+alt="virtual memory"
+align=center />
+
 ## Archive File (\*.a)
 + Create an archive with the ar command (archive command (ar))
 
