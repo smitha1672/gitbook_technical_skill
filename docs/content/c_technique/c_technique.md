@@ -1,9 +1,9 @@
 #
 ## C Technique
 
-+ [Structure and Pointer](https://www.programiz.com/c-programming/c-structures-pointers)
+### [Structure and Pointer](https://www.programiz.com/c-programming/c-structures-pointers)
 
-Referencing pointer to another address to access the memory
++ Referencing pointer to another address to access the memory
 
 ```c
 #include <stdio.h>
@@ -31,14 +31,14 @@ int main()
 }
 ```
 
-Using -> operator to access structure pointer member
++ Using -> operator to access structure pointer member
 
 ```text
 (*personPtr).age is same as personPtr->age
 (*personPtr).weight is same as personPtr->weight
 ```
 
-Accessing structure member through pointer using dynamic memory allocation
++ Accessing structure member through pointer using dynamic memory allocation
 
 ```c
 #include <stdio.h>
@@ -79,7 +79,7 @@ int main()
 }
 ```
 
-Output
++ Output
 
 ```text
 Enter number of persons: 2
@@ -96,7 +96,7 @@ Adam    2   3.20
 Eve 6   2.30
 ```
 
-volatile
+### volatile
 
 ```text
 http://mropengate.blogspot.com/2017/08/cc-c.html
@@ -112,7 +112,7 @@ volatile 常見的應用：
 設備的硬體暫存器 (如狀態暫存器)
 ```
 
-+ pointer
+### pointer
 
 ```text
 int a; // 一個整型數
@@ -125,25 +125,10 @@ int (*a)(int); // 一個指向函數的指標，該函數有一個整數型參�
 int (*a[10])(int); // 一個有10個指標的陣列，該指標指向一個函數，該函數有一個整數型參數並返回一個整數
 ```
 
-+ function pointer
+### function pointer
 
 ```c
 void (*fptr)(type_a, type_b) = &func;
-```
-
-+ Question
-
-```c
-void foo(void) {
-    unsigned int a = 6;
-    int b = -20;
-    (a+b > 6) ? puts("> 6") : puts("<= 6");
-}
-```
-```text
-unsigned int的答案是輸出是 "> 6".
-當表達式中存在有符號類型和無符號類型時所有的操作數都自動轉換為無符號類型(unsigned)。因此-20變成了一個非常大的正整數，所以該表達式計算出的結果大於6.
-這一點對於應當頻繁用到無符號數據類型的嵌入式系統來說是非常重要的。如果你答錯了這個問題，你也就到了得不到這份工作的邊緣。
 ```
 
 + interruption fucntion
@@ -162,7 +147,7 @@ __interrupt double compute_area(double radius) {
 如果你丟掉了第三和第四點，我不會太為難你的。但如果你能得到後兩點，那麼你的被雇用前景越來越光明了。
 ```
 
-+ Using inline
+### Using inline
 
 其作用是將fucntion展開, 把fucntion的程式碼copy到每一個call place,
 這樣在call function的過程就可以直接execute function code, 而不發生
@@ -181,7 +166,7 @@ int main(void) {
 }
 ```
 
-+ Using a Union to Represent a Value in Multiple Ways
+### Using a Union to Represent a Value in Multiple Ways
 
 ```c
 typedef union _conversion {
@@ -209,7 +194,7 @@ int isPositive3(float number) {
 }
 ```
 
-+ Strict Aliasing Keyword
+### Strict Aliasing Keyword
 
 ```text
 Strict aliasing is another form of aliasing. Strict aliasing does not allow a pointer of one
@@ -231,7 +216,7 @@ it can be turned off. The GCC compiler has the following compiler options:
 -Wstrict-aliasing to warn of strict aliasing-related problems
 ```
 
-+ Determining the Endianness of a Machine
+### Determining the Endianness of a Machine
 
 ```c
 int num = 0x12345678;
@@ -247,7 +232,7 @@ Output:
 103: 12 /*little-endian*/
 ```
 
-+ Accessing a Port
+### Accessing a Port
 
 ```c
 /*
@@ -265,7 +250,7 @@ unsigned int volatile * const port = (unsigned int *) PORT
 value = *port;  // read from the port
 ```
 
-+ Accessing a Special Purpose Address
+### Accessing a Special Purpose Address
 
 ```c
 #define VIDEO_BASE 0xB8000
@@ -273,7 +258,7 @@ int *video = (int *) VIDEO_BASE;
 *video = 'A';
 ```
 
-+ Setting a Start Address for the Array Used by Heap4
+### Setting a Start Address for the Array Used by Heap4
 
 ```c
 /*Using GCC syntax*/
@@ -283,7 +268,7 @@ uint8_t ucHeap[configTOTAL_HEAP_SIZE] __attribute__ ((section(".my_heap"))); /*.
 uint8_t ucHeap[configTOTAL_HEAP_SIZE ] @ 0x20000000;
 ```
 
-+ Bit Manipulation
+### Bit Manipulation
 
 ```c
 #define BIT_MASK(bitn) \
@@ -305,7 +290,9 @@ uint8_t ucHeap[configTOTAL_HEAP_SIZE ] @ 0x20000000;
     data ^= (-binary ^ data) & (1UL << bitn)
 ```
 
-+ while (some condition)
+### while
+
++ some condition
 
 ```c
 while (...) {
@@ -316,13 +303,15 @@ while (...) {
   continue;   /*go to while*/
 }
 ```
+### for (initial variable; judge expression; execute code)
+
 + for (initial variable; judge expression; execute code)
 
 ```c
 for (int counter = 1; counter < 11; counter ++)
 ```
 
-+ if
+### if
 
 ```c
 if (intput > 0)
@@ -334,11 +323,13 @@ else
 classify = (input)? "postive": "negative";
 ```
 
-+ Print memory address
+### Print memory address
 
 ```c
 printf("x %p\n", &x); /*%p is meaning: showing x address as HEX format output*/
 ```
+
+### How to read pointer
 
 + const int\*, const int \* const, and int const \*
 
@@ -370,7 +361,7 @@ height="70%"
 alt="const pointer to int"
 align=center />
 
-+ Get struct member size
+### Get struct member size
 
 ```c
 #define member_size(type, member) sizeof(((type *)0)->member)
@@ -392,13 +383,13 @@ typedef struct
 printf("%zu", member_size(Parent,text));
 ```
 
-+ Get array size
+### Get array size
 
 ```c
 #define ARRAY_SIZE(a)   (sizeof((a)) / sizeof((a)[0]))
 ```
 
-+ union and sturct
+### union and sturct
 <br> **union**: 提供memory足以存放最大SIZE的空間
 <br> union initialize
 
@@ -425,7 +416,7 @@ struct bick_t {
 } bick = {.height = 17, .gears = 21};
 ```
 
-+ array pointer
+### array pointer
 
 ```c
 void print_pointer_array(int *p[])
@@ -448,6 +439,23 @@ void main(void)
   p[2] = mag;
   print_pointer_array(p);
 }
+```
+
+### Question
+
++ Question.1
+
+```c
+void foo(void) {
+    unsigned int a = 6;
+    int b = -20;
+    (a+b > 6) ? puts("> 6") : puts("<= 6");
+}
+```
+```text
+unsigned int的答案是輸出是 "> 6".
+當表達式中存在有符號類型和無符號類型時所有的操作數都自動轉換為無符號類型(unsigned)。因此-20變成了一個非常大的正整數，所以該表達式計算出的結果大於6.
+這一點對於應當頻繁用到無符號數據類型的嵌入式系統來說是非常重要的。如果你答錯了這個問題，你也就到了得不到這份工作的邊緣。
 ```
 
 ## Astyle
