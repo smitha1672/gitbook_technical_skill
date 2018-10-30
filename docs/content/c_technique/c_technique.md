@@ -137,14 +137,13 @@ __interrupt double compute_area(double radius) {
     printf("\nArea = %f"， area);  return area;
 }
 ```
-```text
+
 1. ISR 不能返回一個值。如果你不懂這個，那麼你不會被雇用的.
 2. ISR 不能傳遞參數。如果你沒有看到這一點，你被雇用的機會等同第一項.
 3. 在許多的處理器/編譯器中，浮點一般都是不可重入的。有些處理器/編譯器需要讓多餘的暫存器入棧(PUSH入堆疊),
 有些處理器/編譯器就是不允許在ISR中做浮點運算。此外，ISR應該是短而有效率的，在ISR中做浮點運算是不明智的.
 4. printf()經常有重入和性能上的問題。
 如果你丟掉了第三和第四點，我不會太為難你的。但如果你能得到後兩點，那麼你的被雇用前景越來越光明了。
-```
 
 ### Using inline
 
@@ -209,9 +208,9 @@ unsigned int result = (*ptrValue & 0x80000000) == 0; /*a good way is for judgeti
 
 If your compiler has an option to disable strict aliasing,
 it can be turned off. The GCC compiler has the following compiler options:
--fno-strict-aliasing to turn it off
--fstrict-aliasing to turn it on
--Wstrict-aliasing to warn of strict aliasing-related problems
+<br>-fno-strict-aliasing to turn it off
+<br>-fstrict-aliasing to turn it on
+<br>-Wstrict-aliasing to warn of strict aliasing-related problems
 
 ### Determining the Endianness of a Machine
 
@@ -387,8 +386,10 @@ printf("%zu", member_size(Parent,text));
 ```
 
 ### union and sturct
-<br> **union**: 提供memory足以存放最大SIZE的空間
-<br> union initialize
+
+`union`提供memory足以存放最大SIZE的空間
+
++ union initialize
 
 ```c
 typedef union {
@@ -403,7 +404,8 @@ quantity q = {4}; //set 4 to count
 /*set weight*/
 quantity q = {.weight=1.5};
 ```
-<br> structure initialize
+
++ structure initialize
 
 ```c
 struct bick_t {
@@ -562,13 +564,11 @@ int main (void)
 ```
 
 麻煩將a這個函式指標陣列的宣告補上?
-
 ```c
 int (*a[2]) (int x);
 ```
 
 請問兩個printf的結果是?
-
 ```text
 8
 10
