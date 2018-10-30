@@ -635,10 +635,10 @@ is normally shared with the heap.
 upper part
 
 3. The program stack holds stack frames, sometimes called activation records or activation
-frames. Stack frames hold the parameters and local variables of a function. 
+frames. Stack frames hold the parameters and local variables of a function.
 
 Heap
-1. The heap manages dynamic memory and is discussed
+The heap manages dynamic memory and is discussed
 
 As functions are called, their stack frames are pushed onto the stack and the stack grows
 “upward.” When a function terminates, its stack frame is popped off the program stack.
