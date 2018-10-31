@@ -66,12 +66,32 @@ main(void)
 
 ### Using Pointers to Support Linked List
 
-<br>
 <img src="Figure6_5_Linkedlisttypes.png"
 width="70%"
 height="70%"
 alt="Linked list types"
 align=center />
+
+<img src="Figure6_6_addHeadexample.png"
+width="70%"
+height="70%"
+alt="Added Head"
+align=center />
+
+In the `addHead` function listed below, memory is first allocated for the node and the data
+passed to the function is assigned to the structure’s data field. By passing the data as a
+pointer to void, the linked list is able to hold any type of data the user wants to use.
+
+Next, we check to see whether the linked list is empty. If so, we assign the tail pointer to
+the node and assign NULL to the node’s next field. If not, the node’s next pointer is
+assigned to the list’s head. Regardless, the list’s head is assigned to the node
+
+The `addTail` function is shown below. It starts by allocating memory for a new node
+and assigning the data to the data field. Since the node will always be added to the tail,
+the node’s next field is assigned to NULL. If the linked list is empty, then the head pointer
+will be NULL and head can be assigned to the new node. If it is not NULL, then the tail’s
+next pointer is assigned to the new node. Regardless, the linked list’s tail pointer is
+assigned to the node
 
 ```c
 typedef struct _employee {
