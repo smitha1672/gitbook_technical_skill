@@ -1,6 +1,96 @@
 #
 ## C Technique
 
+### Passing a Pointer to a Pointer
+
+When a pointer is passed to a function, `it is passed by value`. If we `want to modify the
+original pointer` and not the copy of the pointer, we need to pass it as a pointer to a
+pointer.
+
++ Right Way
+
+<img src="Figure3_7Passingapointertoapointer.png"
+width="70%"
+height="70%"
+alt="Passing a pointer to a pointer"
+align=center />
+
+```c
+void allocateArray(int **arr, int size, int value) {
+    *arr = (int*)malloc(size * sizeof(int));
+    if(*arr != NULL) {
+        for(int i=0; i<size; i++) {
+            *(*arr+i) = value;
+        }
+    }
+}
+
+void main(void) {
+    int *vector = NULL;
+    allocateArray(&vector, 5, 45);
+}
+```
+
++ Wrong Way
+
+<img src="Figure3_8Passingpointers.png"
+width="70%"
+height="70%"
+alt="Passing pointers"
+align=center />
+
+```c
+/*There is pool answer*/
+void allocateArray(int *arr, int size, int value) {
+    arr = (int*)malloc(size * sizeof(int));
+    if(arr != NULL) {
+        for(int i=0; i<size; i++) {
+            arr[i] = value;
+        }
+    }
+}
+
+void main(void) {
+    int *vector = NULL;
+    allocateArray(&vector, 5, 45);
+    printf("%p\n" , vector);
+}
+```
+
+### How to know stack and heap direction
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+void check(int depth) {
+    char c;
+    char *ptr = malloc(1);
+    printf("stack at %p, heap at %p\n", &c, ptr);
+    if (depth <= 0) return;
+    check(depth-1);
+}
+
+int main() {
+    check(10);
+    return 0;
+}
+```
+
+### Pointer to `void`
+
+A pointer to void will have the same representation and memory alignment as a
+pointer to `char`.
+
+A pointer to void will` never be equal to another pointer`. However, two void pointers
+assigned a NULL value will be equal.
+
+### NULL marco
+
+```c
+#define NULL ((void*)0)
+```
+
 ### [Structure and Pointer](https://www.programiz.com/c-programming/c-structures-pointers)
 
 + Referencing pointer to another address to access the memory
