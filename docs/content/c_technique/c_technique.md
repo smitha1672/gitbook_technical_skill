@@ -531,6 +531,10 @@ void main(void)
   print_pointer_array(p);
 }
 ```
+### Training
+
+[geeksforgeeks](https://www.geeksforgeeks.org/)
+<br>[codility](https://www.codility.com/)
 
 ### Question
 
