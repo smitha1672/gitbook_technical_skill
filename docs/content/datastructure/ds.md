@@ -85,6 +85,101 @@ main(void)
 }
 ```
 
++ Modified
+
+```c
+typedef struct _node_t{
+    void* data;
+    struct _node_t* next;
+} node_t;
+
+typedef struct _queue_t {
+    node_t* head;
+    node_t* tail;
+} queue_t;
+
+void*
+queue_create(void)
+{
+    queue_t* queue = (queue_t*)malloc(sizeof(queue_t));
+    return ((queue)? queue: NULL);
+}
+
+int
+queue_enqueue(void* queue, void* data)
+{
+    int iret = 0;
+    queue_t* qtmp = NULL;
+    node_t* node = NULL;
+    if (!queue || !data) {
+        iret = -1;
+        goto exit;
+    }
+    qtmp = (queue_t*)queue;
+    node = (node_t*)malloc(sizeof(node_t));
+    node->data = data;
+    if (qtmp->head == NULL) {
+        qtmp->tail = node;
+        node->next = NULL;
+    } else
+        node->next = qtmp->head;
+    qtmp->head = node;
+exit:
+    return iret;
+}
+
+int
+queue_dequeue(void* queue, void** data)
+{
+    int iret = 0;
+    queue_t* qtmp = NULL;
+    node_t* nodetmp = NULL;
+    if (!queue) {
+        iret = -1;
+        goto exit;
+    }
+    qtmp = (queue_t*)queue;
+    nodetmp = qtmp->head;
+    if (qtmp->head == NULL)
+        *data = NULL;
+    else if (qtmp->head == qtmp->tail) {
+        qtmp->head = qtmp->tail = NULL;
+        *data = nodetmp->data;
+        free(nodetmp);
+    } else {
+        while (nodetmp->next != qtmp->tail)
+            nodetmp = nodetmp->next;
+        qtmp->tail = nodetmp;
+        nodetmp = nodetmp->next;
+        qtmp->tail->next = NULL;
+        *data = nodetmp->data;
+        free(nodetmp);
+    }
+exit:
+    return (*data)? 1: 0;
+}
+
+void
+main(void)
+{
+    int loop = 100;
+    void* queue = queue_create();
+    int *penq = NULL;
+    int *pdeq = NULL;
+    for(; loop != 0; loop--) {
+        penq = (int*)malloc(sizeof(int));
+        *penq = loop;
+        printf("enqueue: addr(%p):num(%d)\n", penq, *penq);
+        queue_enqueue(queue, penq);
+    }
+    while(queue_dequeue(queue, (void**)&pdeq)) {
+        printf("dequeue: addr(%p):num(%d)\n", pdeq, *pdeq);
+        free(pdeq);
+        pdeq = NULL;
+    }
+}
+```
+
 ### Using Pointers to Support Linked List
 
 <img src="Figure6_5_Linkedlisttypes.png"
