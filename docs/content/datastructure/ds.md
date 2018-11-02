@@ -102,6 +102,10 @@ void*
 queue_create(void)
 {
     queue_t* queue = (queue_t*)malloc(sizeof(queue_t));
+    if (queue) {
+        queue->head = NULL;
+        queue->tail = NULL;
+    }
     return ((queue)? queue: NULL);
 }
 
