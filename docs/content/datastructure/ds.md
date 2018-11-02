@@ -3,22 +3,19 @@
 
 ### Using Pointers to Support a Queue
 
-An empty queue:
-NULL is returned
-
-A single node queue
-Handled by the else if statement
-
-A multiple node queue
-Handled by the else clause
-
-In the latter case, the tmp pointer is advanced node by node until it points to the node
+`An empty queue`
+<br>NULL is returned
+<br>`A single node queue`
+<br>Handled by the else if statement
+<br>`A multiple node queue`
+<br>Handled by the else clause
+<br>In the latter case, the tmp pointer is advanced node by node until it points to the node
 immediately preceding the tail node. Three operations are then performed in the fol‐
 lowing sequence:
-1. The tail is assigned to the tmp node
-2. The tmp pointer is advanced to the next node
-3. The tail’s next field is set to NULL to indicate there are no more nodes in the queue
-
+<br>1. The tail is assigned to the tmp node
+<br>2. The tmp pointer is advanced to the next node
+<br>3. The tail’s next field is set to NULL to indicate there are no more nodes in the queue
+<br>
 <img src="Figure6_8_dequeuefunctionexample.png"
 width="70%"
 height="70%"
