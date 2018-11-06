@@ -507,10 +507,32 @@ struct bick_t {
 } bick = {.height = 17, .gears = 21};
 ```
 
-### array pointer
+### Pointer Array
 
 ```c
-void print_pointer_array(int *p[])
+static int
+print_pointer_array_void(const void* const rawin[])
+{
+    printf("acc(%d,%d,%d)gyro(%d,%d,%d)mag(%d,%d,%d)hrm(%d,%d,%d)pre(%d)tmp(%d)dt(%d)logcnt(%d)\n",
+            (int)(*((float*)rawin[ACC]+0)*1000),
+            (int)(*((float*)rawin[ACC]+1)*1000),
+            (int)(*((float*)rawin[ACC]+2)*1000),
+            (int)(*((float*)rawin[GYR]+0)*1000),
+            (int)(*((float*)rawin[GYR]+1)*1000),
+            (int)(*((float*)rawin[GYR]+2)*1000),
+            (int)(*((float*)rawin[MAG]+0)*1000),
+            (int)(*((float*)rawin[MAG]+1)*1000),
+            (int)(*((float*)rawin[MAG]+2)*1000),
+            (int)*((float*)rawin[HEARTRATE]+0),
+            (int)*((float*)rawin[HEARTRATE]+1),
+            (int)*((float*)rawin[HEARTRATE]+2),
+            (int)(*((float*)rawin[PRESSURE]+0)*1000),
+            (int)(*((float*)rawin[TEMPERATURE]+0)*1000));
+
+    return 0;
+}
+
+void print_pointer_array_int(int *p[])
 {
   for(int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
@@ -528,7 +550,20 @@ void main(void)
   p[0] = acc;
   p[1] = gyro;
   p[2] = mag;
-  print_pointer_array(p);
+
+  const void* const rawin[PORT_RAWSENSORS_MAX] = {
+      mTask.rawsensfeedback.accelero_fb,
+      mTask.rawsensfeedback.gyroscope_fb,
+      mTask.rawsensfeedback.magneto_fb,
+      mTask.rawsensfeedback.pressure_fb,
+      mTask.rawsensfeedback.temperature_fb,
+      mTask.rawsensfeedback.proximity_fb,
+      mTask.rawsensfeedback.heartrate_fb,
+      &mTask.rawsensfeedback.gnss_fb
+  };
+
+  print_pointer_array_int(p);
+  print_pointer_array_void(rawin);
 }
 ```
 ### Training
