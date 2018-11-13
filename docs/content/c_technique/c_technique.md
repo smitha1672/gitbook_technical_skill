@@ -1,6 +1,39 @@
 #
 ## C Technique
 
+### Converting void pointers to function pointers.
+
+[Converting void pointers to function
+pointers](https://www.reddit.com/r/C_Programming/comments/63wyd7/converting_void_pointers_to_function_pointers/)
+
+```c
+void* voidptr = ...
+int (*fptr)(int);
+fptr = (int (*)(int))voidptr;
+
+void* voidptr = ...
+int (*fptr)(int);
+*(void**)(&fptr) = voidptr;
+
+#include <stdio.h>
+#include <stddef.h>
+
+typedef int (*fn_def)(void);
+
+int test1()
+{
+    printf("Test\n");
+}
+
+int main()
+{
+    void* fnvptr = (void*)&test1;
+    fn_def fnptr = (fn_def)fnvptr;
+    fnptr();
+}
+
+```
+
 ### Passing a Pointer to a Pointer
 
 When a pointer is passed to a function, `it is passed by value`. If we `want to modify the
