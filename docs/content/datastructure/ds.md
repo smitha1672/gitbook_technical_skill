@@ -316,6 +316,22 @@ exit:
     return NULL;
 }
 
+void*
+datalist_getnodedata(void* node)
+{
+    int iret = STATE_AVAILABLE;
+    node_t* pnode = (node_t*)node;;
+    if (!pnode) {
+        iret = -1;
+        goto exit;
+    }
+    return pnode->data;
+exit:
+    if (!IS_AVAILABLE(iret))
+        ALOGE("%s,l:%d,err:%d\n", __FUNCTION__, __LINE__, iret);
+    return NULL;
+}
+
 int
 datalist_deletenode(void* chain, void* data)
 {
