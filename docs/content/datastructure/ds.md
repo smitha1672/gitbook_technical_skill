@@ -100,6 +100,18 @@ exit:
     return (*data)? 1: 0;
 }
 
+static int
+apgnssinfo_dequeue(struct algocfg_apgnssinfo_t **gnssinfo)
+{
+    queue_dequeue(mgnssque, (void**)gnssinfo);
+    if (!*gnssinfo)
+        return STATE_UNAVAILABLE;
+    printf("GNSS TAKE %lld %lld ",
+            (uint64_t)((*gnssinfo)->latitude*1000000),
+            (uint64_t)((*gnssinfo)->longitude*1000000));
+    return STATE_AVAILABLE;
+}
+
 void
 main(void)
 {
