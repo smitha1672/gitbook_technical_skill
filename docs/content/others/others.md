@@ -1,3 +1,4 @@
+#
 ## Keyboard Shortcuts on Terminal <br>
 C-K (control-k): Pressed CTRL, and then press k <br>
 M-K (meta-k): Released ESC, and then press k
@@ -157,7 +158,6 @@ height="300"
 alt="samba client"
 align=center />
 
-
 **Refer as:**
 [samba setting on Ubuntu](https://www.arthurtoday.com/2015/04/ubuntu-server-share-folder-samba.html) and [samba directory on Windows](https://noob.tw/samba/)
 
@@ -176,7 +176,11 @@ F9 -  to create a new screen
 ALT+S -  make a separate  window
 ALT+f -  swith separate window
 ALT+q - leave a separate window
+Ctrl+a S - split terminal horizontally into regions
+Ctrl+a | -  split terminal vertically into regions
+Ctrl+a -remove  remove region |  Ctrl+a X is the same
 ```
+[Short Cut](http://www.pixelbeat.org/lkdb/screen.html)
 
 ## Useful Linux Command
 + Update Ubuntu
