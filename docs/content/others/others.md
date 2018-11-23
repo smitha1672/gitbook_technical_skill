@@ -169,6 +169,7 @@ sudo apt-get install screen
 ```
 ### [\.screensrc instance](https://github.com/smitha1672/note/blob/master/rc/.screenrc)
 ### Operation
++ [Short Cut](http://www.pixelbeat.org/lkdb/screen.html)
 ```text
 F7 -  to detach screen session (to background)
 F8 -  to kill current screen window
@@ -180,7 +181,13 @@ Ctrl+a S - split terminal horizontally into regions
 Ctrl+a | -  split terminal vertically into regions
 Ctrl+a -remove  remove region |  Ctrl+a X is the same
 ```
-[Short Cut](http://www.pixelbeat.org/lkdb/screen.html)
++ Copy and Paste from other Windows
+```text
+1. Ctrl+a [ - Into copy/scroll mode
+2. First preassed "space" key that is meaning to start copy, Second pressed "space" key that is
+meaning "copied done"
+3. To other windown to pressed "Ctrl+a ]" is pasted.
+```
 
 ## Useful Linux Command
 + Update Ubuntu
