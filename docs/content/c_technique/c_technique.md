@@ -1,52 +1,21 @@
 #
 ## C Technique
 
-### Converting void pointers to function pointers.
-
-[Converting void pointers to function
-pointers](https://www.reddit.com/r/C_Programming/comments/63wyd7/converting_void_pointers_to_function_pointers/)
+### [Converting void pointers to function pointers] (https://www.reddit.com/r/C_Programming/comments/63wyd7/converting_void_pointers_to_function_pointers/)
 
 ```c
 void* voidptr = ...
 int (*fptr)(int);
 fptr = (int (*)(int))voidptr;
-
-void* voidptr = ...
-int (*fptr)(int);
-*(void**)(&fptr) = voidptr;
-
-#include <stdio.h>
-#include <stddef.h>
-
-typedef int (*fn_def)(void);
-
-int test1()
-{
-    printf("Test\n");
-}
-
-int main()
-{
-    void* fnvptr = (void*)&test1;
-    fn_def fnptr = (fn_def)fnvptr;
-    fnptr();
-}
-
 ```
 
 ### Passing a Pointer to a Pointer
 
++ Right Way
+
 When a pointer is passed to a function, `it is passed by value`. If we `want to modify the
 original pointer` and not the copy of the pointer, we need to pass it as a pointer to a
 pointer.
-
-+ Right Way
-
-<img src="Figure3_7Passingapointertoapointer.png"
-width="70%"
-height="70%"
-alt="Passing a pointer to a pointer"
-align=center />
 
 ```c
 void allocateArray(int **arr, int size, int value) {
@@ -64,13 +33,13 @@ void main(void) {
 }
 ```
 
-+ Wrong Way
-
-<img src="Figure3_8Passingpointers.png"
+<img src="Figure3_7Passingapointertoapointer.png"
 width="70%"
 height="70%"
-alt="Passing pointers"
+alt="Passing a pointer to a pointer"
 align=center />
+
++ Wrong Way
 
 ```c
 /*There is pool answer*/
@@ -90,6 +59,12 @@ void main(void) {
 }
 ```
 
+<img src="Figure3_8Passingpointers.png"
+width="70%"
+height="70%"
+alt="Passing pointers"
+align=center />
+
 ### How to know stack and heap direction
 
 ```c
@@ -108,20 +83,6 @@ int main() {
     check(10);
     return 0;
 }
-```
-
-### Pointer to `void`
-
-A pointer to void will have the same representation and memory alignment as a
-pointer to `char`.
-
-A pointer to void will` never be equal to another pointer`. However, two void pointers
-assigned a NULL value will be equal.
-
-### NULL marco
-
-```c
-#define NULL ((void*)0)
 ```
 
 ### [Structure and Pointer](https://www.programiz.com/c-programming/c-structures-pointers)
@@ -167,7 +128,7 @@ int main()
 #include <stdio.h>
 #include <stdlib.h>
 struct person {
-int age;
+    int age;
     float weight;
     char name[30];
 };
@@ -217,6 +178,20 @@ Eve
 Displaying Information:
 Adam    2   3.20
 Eve 6   2.30
+```
+
+### Pointer to `void`
+
+A pointer to void will have the same representation and memory alignment as a
+pointer to `char`.
+
+A pointer to void will` never be equal to another pointer`. However, two void pointers
+assigned a NULL value will be equal.
+
+### NULL marco
+
+```c
+#define NULL ((void*)0)
 ```
 
 ### volatile
