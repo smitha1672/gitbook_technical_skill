@@ -3,27 +3,6 @@
 
 ### Using Pointers to Support a Queue
 
-`An empty queue`
-<br>NULL is returned
-<br>`A single node queue`
-<br>Handled by the else if statement
-<br>`A multiple node queue`
-<br>Handled by the else clause
-
-In the latter case, the tmp pointer is advanced node by node until it points to the node
-immediately preceding the tail node. Three operations are then performed in the fol‐
-lowing sequence:
-<br>1. The tail is assigned to the tmp node
-<br>2. The tmp pointer is advanced to the next node
-<br>3. The tail’s next field is set to NULL to indicate there are no more nodes in the queue
-
-
-<img src="Figure6_8_dequeuefunctionexample.png"
-width="70%"
-height="70%"
-alt="dequeue function example"
-align=center />
-
 ```c
 typedef struct _node_t{
     void* data;
@@ -133,97 +112,28 @@ main(void)
 }
 ```
 
-<!---
-```c
-typedef LinkedList Queue;
+`An empty queue`
+<br>NULL is returned
+<br>`A single node queue`
+<br>Handled by the else if statement
+<br>`A multiple node queue`
+<br>Handled by the else clause
 
-void
-initializeQueue(Queue* queue)
-{
-    initializeList(queue);
-}
+In the latter case, the tmp pointer is advanced node by node until it points to the node
+immediately preceding the tail node. Three operations are then performed in the fol‐
+lowing sequence:
+<br>1. The tail is assigned to the tmp node
+<br>2. The tmp pointer is advanced to the next node
+<br>3. The tail’s next field is set to NULL to indicate there are no more nodes in the queue
 
-void
-enqueue(Queue* queue, void* node)
-{
-    addHead(queue, node);
-}
 
-void*
-dequeue(Queue* queue)
-{
-    Node* tmp = queue->head;
-    void* data;
-    if (queue->head == NULL)
-        data = NULL;
-    else if (queue->head == queue->tail) {
-        queue->head = queue->tail = NULL;
-        data = tmp->data;
-        free(tmp);
-    } else {
-        while (tmp->next != queue->tail)
-            tmp = tmp->next;
-        queue->tail = tmp;
-        tmp = tmp->next;
-        queue->tail->next = NULL;
-        data = tmp->data;
-        free(tmp);
-    }
-    return data;
-}
-
-void
-main(void)
-{
-    Queue queue;
-    initializeQueue(&queue);
-    enqueue(&queue, samuel);
-    enqueue(&queue, sally);
-    enqueue(&queue, susan);
-    void* data = dequeue(&queue);
-    printf("Dequeued %s\n", ((Employee*) data)->name);
-    data = dequeue(&queue);
-    printf("Dequeued %s\n", ((Employee*) data)->name);
-    data = dequeue(&queue);
-    printf("Dequeued %s\n", ((Employee*) data)->name);
-    /*
-    The output of this sequence follows:
-    Dequeued Samuel
-    Dequeued Sally
-    Dequeued Susan
-    */
-}
-```
--->
+<img src="Figure6_8_dequeuefunctionexample.png"
+width="70%"
+height="70%"
+alt="dequeue function example"
+align=center />
 
 ### Using Pointers to Support Linked List
-
-<img src="Figure6_5_Linkedlisttypes.png"
-width="70%"
-height="70%"
-alt="Linked list types"
-align=center />
-
-<img src="Figure6_6_addHeadexample.png"
-width="70%"
-height="70%"
-alt="Added Head"
-align=center />
-
-In the `addHead` function listed below, memory is first allocated for the node and the data
-passed to the function is assigned to the structure’s data field. By passing the data as a
-pointer to void, the linked list is able to hold any type of data the user wants to use.
-
-Next, we check to see whether the linked list is empty. If so, we assign the tail pointer to
-the node and assign NULL to the node’s next field. If not, the node’s next pointer is
-assigned to the list’s head. Regardless, the list’s head is assigned to the node
-
-The `addTail` function is shown below. It starts by allocating memory for a new node
-and assigning the data to the data field. Since the node will always be added to the tail,
-the node’s next field is assigned to NULL. If the linked list is empty, then the head pointer
-will be NULL and head can be assigned to the new node. If it is not NULL, then the tail’s
-next pointer is assigned to the new node. Regardless, the linked list’s tail pointer is
-assigned to the node
 
 ```c
 typedef struct _node_t {
@@ -491,6 +401,34 @@ main(void)
     datalist_gothrough(list, gothrough);
 }
 ```
+
+<img src="Figure6_5_Linkedlisttypes.png"
+width="70%"
+height="70%"
+alt="Linked list types"
+align=center />
+
+<img src="Figure6_6_addHeadexample.png"
+width="70%"
+height="70%"
+alt="Added Head"
+align=center />
+
+In the `addHead` function listed below, memory is first allocated for the node and the data
+passed to the function is assigned to the structure’s data field. By passing the data as a
+pointer to void, the linked list is able to hold any type of data the user wants to use.
+
+Next, we check to see whether the linked list is empty. If so, we assign the tail pointer to
+the node and assign NULL to the node’s next field. If not, the node’s next pointer is
+assigned to the list’s head. Regardless, the list’s head is assigned to the node
+
+The `addTail` function is shown below. It starts by allocating memory for a new node
+and assigning the data to the data field. Since the node will always be added to the tail,
+the node’s next field is assigned to NULL. If the linked list is empty, then the head pointer
+will be NULL and head can be assigned to the new node. If it is not NULL, then the tail’s
+next pointer is assigned to the new node. Regardless, the linked list’s tail pointer is
+assigned to the node
+
 
 <!---
 ```c
