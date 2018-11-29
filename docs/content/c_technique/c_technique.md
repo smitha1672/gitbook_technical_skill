@@ -1,13 +1,14 @@
 #
 ## C Technique
 
-### [Converting void pointers to function pointers] (https://www.reddit.com/r/C_Programming/comments/63wyd7/converting_void_pointers_to_function_pointers/)
+### Converting void pointers to function pointers
 
 ```c
 void* voidptr = ...
 int (*fptr)(int);
 fptr = (int (*)(int))voidptr;
 ```
+[reference linked](https://www.reddit.com/r/C_Programming/comments/63wyd7/converting_void_pointers_to_function_pointers/)
 
 ### Passing a Pointer to a Pointer
 
