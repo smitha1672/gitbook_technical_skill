@@ -4,7 +4,37 @@
 + Mainline Branch Development
 + Branch-Per-Feature Deployment
 + State Branching
-+ Scheduled Deployment
++ Scheduled Deployment (GitFlow)
+
+<img src="gitflow_f38.png"
+width="90%"
+height="90%"
+alt=""
+align=center />
+
+<img src="gitflow_f39.png"
+width="90%"
+height="90%"
+alt=""
+align=center />
+
+<img src="gitflow_f310.png"
+width="90%"
+height="90%"
+alt=""
+align=center />
+
+<img src="gitflow_f311.png"
+width="90%"
+height="90%"
+alt=""
+align=center />
+
+<img src="gitflow_f312.png"
+width="90%"
+height="90%"
+alt=""
+align=center />
 
 ## add
 ```bash
