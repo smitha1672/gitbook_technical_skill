@@ -1,3 +1,10 @@
+#
+## Branching Strategies
+
++ Mainline Branch Development
++ Branch-Per-Feature Deployment
++ State Branching
++ Scheduled Deployment
 
 ## add
 ```bash
