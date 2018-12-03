@@ -1,6 +1,16 @@
 #
 ## C Technique
 
+### Marco printf
+
+```text
+#define ALOGD(f_, ...) \
+    do {\
+        printf((f_), __VA_ARGS__);\
+        printf("\n"); \
+    } while(0)
+```
+
 ### Converting void pointers to function pointers
 
 ```c
