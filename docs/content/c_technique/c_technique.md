@@ -1,6 +1,22 @@
 #
 ## C Technique
 
+### [Structure Padding](https://fresh2refresh.com/c-programming/c-structure-padding/)
+
+```text
+struct student
+{
+    int id1;
+    int id2;
+    char a;
+    char b;
+    float percentage;
+};
+```
+1 word is equal to 4 bytes for 32 bit processor and 8 bytes for 64 bit processor. So, 32 bit
+processor always reads 4 bytes at a time and 64 bit processor always reads 8 bytes at a time.
+This concept is very useful to increase the processor speed.
+
 ### Marco printf
 
 ```text
