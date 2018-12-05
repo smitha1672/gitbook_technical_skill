@@ -59,6 +59,37 @@ git worktree prune --dry-run
 git worktree prune --verbose
 git worktree list
 ```
+## Branches
+
++ Listing Branches
+
+```text
+Listing local branches
+$ git branch --list
+
+List all branches
+$ git branch --all
+
+List remote branches
+$ git branch --remotes
+```
+
++ Creating New Branches
+
+```text
+Switched to branch 'master'
+$ git checkout master
+
+create a new branch
+$ git branch 1-process_notes
+
+check out the new branch
+$ git checkout 1-process_notes
+
+Creating a new development branch from the master branch
+$ git checkout -b 1-process_notes master
+
+```
 
 ## push
 ```text
