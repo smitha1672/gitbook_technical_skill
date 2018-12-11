@@ -117,7 +117,52 @@ gcc -E main.c -o maine.c
 會產生符號表, 讓gdb 工具可以除錯
 ```
 
-## valgrid
+## [valgrid](http://www.valgrind.org/docs/manual/quick-start.html#quick-start.prepare)
+
++ Installation
+
+```bash
+$ sudo apt install valgrind
+```
+
++ Preparing your program
+
+Compile your program with `-g` to include debugging information so that Memcheck's error messages
+include exact line numbers. Using `-O0 is also a good idea`, if you can tolerate the slowdown. With
+-O1 line numbers in error messages can be inaccurate, although generally speaking running Memcheck
+on code compiled at -O1 works fairly well, and the speed improvement compared to running -O0 is
+quite significant. Use of -O2 and above is not recommended as Memcheck occasionally reports
+uninitialised-value errors which don't really exist.
+
++ Running your program under Memcheck
+
+```bash
+valgrind --leak-check=yes myprog arg1 arg2 #or
+valgrind --leak-check=full myprog arg1 arg2 #or
+cat ./src/slog1.csv | valgrind --leak-check=yes ./build/cwmAlgo
+```
+output:
+
+```text
+==4856==
+==4856== HEAP SUMMARY:
+==4856==     in use at exit: 22,716 bytes in 241 blocks
+==4856==   total heap usage: 58,485 allocs, 58,244 frees, 2,317,427 bytes allocated
+==4856==
+==4856== LEAK SUMMARY:
+==4856==    definitely lost: 0 bytes in 0 blocks
+==4856==    indirectly lost: 0 bytes in 0 blocks
+==4856==      possibly lost: 0 bytes in 0 blocks
+==4856==    still reachable: 22,716 bytes in 241 blocks
+==4856==         suppressed: 0 bytes in 0 blocks
+==4856== Reachable blocks (those to which a pointer was found) are not shown.
+==4856== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4856==
+==4856== For counts of detected and suppressed errors, rerun with: -v
+==4856== Use --track-origins=yes to see where uninitialised values come from
+==4856== ERROR SUMMARY: 6265 errors from 9 contexts (suppressed: 0 from 0)
+```
+
 ## Makefile
 <br> Only output error message on screen
 

@@ -36,7 +36,17 @@ height="90%"
 alt=""
 align=center />
 
+## stash
+
+```bash
+$ git stash #save current changed work directory
+$ git stash save "message" # save current changed work directory + message
+$ git list # showed all stash list
+$ git apply stash{x} # applied some stash point
+```
+
 ## add
+
 ```bash
 # add all modification files.
 git add -u .
