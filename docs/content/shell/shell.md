@@ -1,3 +1,4 @@
+#
 ## Shell Script
 + variable
 
@@ -65,7 +66,6 @@ word$ 待搜尋的字串(word)在行尾。
 #範例：grep -n 'oo[^t]' re.txt
 搜尋的字串可以是 (oog) (ood) 但不能是 (oot)。
 ```
-
 
 ## getopts
 <br> [reference link](https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash)
@@ -482,6 +482,42 @@ else
   echo "Project name is as below:"
   find . -path "*/misc/variant/*" -type d -print | sed 's/.\/chre\/firmware\/misc\/variant\///'
 fi
+```
+
+## GNU/Linux most wanted
+
++ executed multiple instruction
+
+```bash
+$ ./configure; make; make install
+```
+
++ File and Partition Sizes
+
+Show the total size on disk of files or
+directories (disk usage):
+
+```bash
+$ du -sh dir1 dir2 file1 file2
+```
+
+Number of bytes, words and lines in file:
+
+```bash
+$ wc file
+```
+
+Show the size, total space and free space of the
+current partition:
+
+```bash
+df -h .
+```
+
+Display these info for all partitions:
+
+```bash
+df -h
 ```
 
 ####
