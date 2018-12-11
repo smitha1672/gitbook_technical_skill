@@ -1,6 +1,8 @@
 #
 ## C Technique
 
+### [Advance Skill](https://shengwen1997.gitbooks.io/program_with_c/content/)
+
 ### [OOPS](https://shengwen1997.gitbooks.io/program_with_c/content/encapsulation.html)
 
 + Encapsulation
