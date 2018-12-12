@@ -225,6 +225,11 @@ help vimgrep                  查看vimgrep帮助
 + Open/Close a compare by:
 
 ```text
+]c next diff
+[c pervious diff
+dp diff put
+do diff get
+:diffupdate after you're made changed
 :windo diffthis # Open
 :windo diffoff # Close
 ```

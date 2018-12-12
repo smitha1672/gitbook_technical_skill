@@ -177,6 +177,7 @@ echo 'This is a book' | sed 's/ is/ IS/g'
 echo 'This is a book' | sed 's/\<is\>/IS/g'
 sed 's/\<is\>/IS/g' fileA
 sed 's/\<is\>/IS/g' fileA fileB fileC
+sed -i 's/\<is\>/IS/g' fileA fileB fileC # -i changed origin file
 ```
 將檔案"my_file.txt"中第 4-5 行中的字串"Google"改"Yahoo"並存檔為"new.txt"
 ```bash
