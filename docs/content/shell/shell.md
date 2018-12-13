@@ -156,7 +156,8 @@ sed -e '樣式命令1' -e '樣式命令2' -e '樣式命令3' -e '樣式命令4' 
 sed -f 樣式命令檔 檔案
 ```
 
-###用法
+### Example
+
 + insert
 
 ```text
@@ -166,8 +167,10 @@ sed -n 's/\(La\)/\1Oo/p' file
 sed "s/\(^\)/$var\/\1/g"
 ```
 
-### Modication String
++ Modication String
+
 將字串〝is〞改為〝IS〞(單字前沒加空隔)
+
 ```bash
 echo 'This is a book' | sed 's/is/IS/g'
 # +g: Replace all particular string.a to string.b
@@ -180,10 +183,12 @@ sed 's/\<is\>/IS/g' fileA fileB fileC
 sed -i 's/\<is\>/IS/g' fileA fileB fileC # -i changed origin file
 ```
 將檔案"my_file.txt"中第 4-5 行中的字串"Google"改"Yahoo"並存檔為"new.txt"
+
 ```bash
 cat my_file.txt | sed '4,5 s/Google/Yahoo/g' > new.txt
 sed '4,5 s/Google/Yahoo/g' < my_file.txt > new.txt
 ```
+
 如要搜尋和取代的樣板不只一個,可用選項"-e"或管線再處理。
 ```bash
 echo 'this is a apple' | sed 's/a/an/' | sed 's/apple/APPLE/'
@@ -191,6 +196,7 @@ echo 'this is a apple' | sed -e 's/a/an/' -e 's/apple/APPLE/'
 ```
 
 + window path to linux path
+
 ```bash
 echo '\project\w2\worktree' | sed 's/\\/\//g'
 ```
@@ -211,6 +217,13 @@ chmod u+x svn_export.sh
 cat list_algo.log | sed 's/\(^cwm\)/svn export --username smith.hu --password 123456 --non-interactive http:\/\/172.16.3.240\/svn\/common\/Algorithm\/CommonAlgo\/XP_NANO\/\1/g' >> svn_export.sh
 
 source svn_export.sh
+```
+
++ replace particular string in more files
+
+```bash
+files=$(grep -rw --include=*.{c,h} 'SET_ARRTIBUTE_REALTIME' ./ | awk '{print $1}' | sed 's/.$//')
+sed -i 's/\<SET_ARRTIBUTE_REALTIME\>/SET_ATTRIBUTE_REALTIME/g' $files
 ```
 
 [ref.1](http://wanggen.myweb.hinet.net/ach3/ach3.html?MywebPageId=2018251532505598264#option)

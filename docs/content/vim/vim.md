@@ -225,13 +225,19 @@ help vimgrep                  查看vimgrep帮助
 + Open/Close a compare by:
 
 ```text
-]c next diff
-[c pervious diff
-dp diff put
-do diff get
+]c               - advance to the next block with differences
+[c               - reverse search for the previous block with differences
+do (diff obtain) - bring changes from the other file to the current file
+dp (diff put)    - send changes from the current file to the other file
+zo               - unfold/unhide text
+zc               - refold/rehide text
+zr               - unfold both files completely
+zm               - fold both files completely
 :diffupdate after you're made changed
 :windo diffthis # Open
 :windo diffoff # Close
+:%diffput
+:%diffget
 ```
 
 ## Tag list
