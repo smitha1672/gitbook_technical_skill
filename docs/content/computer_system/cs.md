@@ -167,6 +167,8 @@ output:
 <br> Only output error message on screen
 
 ```text
+make 2>&1 | tee filetokeepitin.txt
+
 make 1 > build.log
 1 meaning standard output
 2 meaning standard error output
