@@ -36,6 +36,13 @@ height="90%"
 alt=""
 align=center />
 
+## Ignoring Files
+
+```bash
+# set gitignore path
+$ git config --global core.excludesfile ~/.gitignore
+```
+
 ## stash
 
 ```bash
