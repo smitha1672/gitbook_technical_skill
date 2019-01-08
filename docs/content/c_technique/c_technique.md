@@ -3,6 +3,21 @@
 
 ### [Advance Skill](https://shengwen1997.gitbooks.io/program_with_c/content/)
 
+### [Wrap Printf](https://stackoverflow.com/questions/20639632/how-to-wrap-printf-into-a-function-or-macro)
+
+```c
+#include <stdarg.h>
+#include <stdio.h>
+
+void my_printf(const char *fmt, ...)
+{
+    va_list args;
+    va_start(args, fmt);
+    vprintf(fmt, args);
+    va_end(args);
+}
+```
+
 ### [OOPS](https://shengwen1997.gitbooks.io/program_with_c/content/encapsulation.html)
 
 + Encapsulation
