@@ -580,3 +580,21 @@ main(void)
 }
 ```
 -->
+
+## Question
+
++ [Data Structure Using C 1.3.1.a](https://www.geeksforgeeks.org/sum-of-the-series-1-12-123-1234-1234-n/)
+
+```c
+for (i = 1; i <= n; i++)
+    for(j = i; j <=n; j++)
+        for (k = j; k <=n; k++)
+            x++;    // x = ?
+```
+n = 3
+i = (1,2,3)
+j = ((1,2,3), (2,3), (3))
+k = (((1,2,3), (2,3), (2)), ((1,2), (3)), (3))
+x=10
+
+
