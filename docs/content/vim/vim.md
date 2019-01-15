@@ -1,9 +1,32 @@
+#
 # VIM
 ## Installation
 ```bash
 sudo apt-get install vim
 ```
 <br>[\.vimrc Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
+
+## [Simple commands to remove unwanted whitespace](http://vim.wikia.com/wiki/Remove_unwanted_spaces)
+
+```text
+:%s/\s\+$//e
+```
+
+## [Highlight Unwanted Spaces](http://vim.wikia.com/wiki/Highlight_unwanted_spaces)
+
+```text
+" Show all tabs:
+/\t
+
+" Show trailing whitespace:
+/\s\+$
+
+" Show trailing whitespace only after some text (ignores blank lines):
+/\S\zs\s\+$
+
+" Show spaces before a tab:
+/ \+\ze\t
+```
 
 ## Search patterns
 [linking](http://vim.wikia.com/wiki/Search_patterns)
@@ -15,7 +38,6 @@ sudo apt-get install vim
 \t: meaning TAB
 \r: meaning newline
 ```
-
 + Change only whole words exactly matching 'foo' to 'bar'; ask for confirmation.
 
 ```text
