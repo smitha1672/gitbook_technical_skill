@@ -1,6 +1,124 @@
 #
 ## Data Structure
 
+### Array
+
++ One Dimesion Array
+
+A(0: u-1)
+
+```text
+Get A(i) address, A(i) = lo + i * d
+lo: start address of array
+i: index
+d: size of data
+
+if arrary is A(t:u), and A(i)=lo + (i-t)*d
+```
+
++ Two Dimensions Array
+
+A[0: u1-1, 0:u2-1], [Reference 2D array](https://www.dyclassroom.com/c/c-pointers-and-two-dimensional-array)
+
+```text
+As Row:
+Get A(i, j) address, A(i, j) = lo + i*u2d + j*d = lo + (i*u2 + j)*d
+
+As Column:
+Get A(i, j) address, A(i, i) = lo + j*u1*d + i*d = lo + (j*u1 + i)*d
+```
+
+A(l1:u1, l2:u2)
+
+```text
+As Row:
+Get A(i, j) address, A(i, j) = lo + (i-l1)*n*d + (j-l2)*d
+n = u2-l2+1;
+
+As Column:
+Get A(i, j) address, A(i, i) = lo + (j-l2)*m*d + (i-l1)*d
+m = u1-l1+1
+```
+
+```c
+/*Passing a Multidimensional Array*/
+void display2DArrayUnknownSizePtrPtr(int** arr, int rows, int cols) {
+    for(int i=0; i<rows; i++)
+        for(int j=0; j<cols; j++)
+            printf("%d ", *(*arr + i*cols + j));
+    printf("\n");
+}
+
+void display2DArrayUnknownSizePtr(int* arr, int rows, int cols) {
+    for(int i=0; i<rows; i++)
+        for(int j=0; j<cols; j++)
+            printf("%d ", *(arr + (i*cols) + j));
+    printf("\n");
+}
+
+void main() {
+    int matrix[2][5] = {
+        {1, 2, 3, 4, 5},
+        {6, 7, 8, 9, 10}
+    };
+    int* pa = matrix;
+    display2DArrayUnknownSizePtrPtr(&pa, 2, 5);
+    display2DArrayUnknownSizePtr(matrix, 2, 5);
+}
+```
+
++ Dynamically Allocating a Two-Dimensional Array
+
+Allocating Potentially Noncontiguous Memory
+
+<img src="Figure4_15_Noncontiguousallocation.png"
+width="70%"
+height="70%"
+alt="Allocating Potentially Noncontiguous Memory"
+align=center />
+
+```c
+/*Allocating Potentially Noncontiguous Memory*/
+void main()
+{
+    int rows = 2;
+    int columns = 5;
+    int **matrix = (int **)malloc(rows * sizeof(int *));
+    for (int i = 0; i < rows; i++) {
+        matrix[i] = (int *)malloc(columns * sizeof(int));
+    }
+    for(int i=0; i<rows; i++)
+        for(int j=0; j<columns; j++)
+            matrix[i][j] = j;
+    for(int i=0; i<rows; i++)
+        for(int j=0; j<columns; j++)
+            printf("%d ", matrix[i][j]);
+}
+```
+
+Allocating Contiguous Memory
+
+<img src="Figure4_16_Contiguousallocationwithtwomalloccalls.png"
+width="70%"
+height="70%"
+alt="Contiguous allocation with two malloc calls"
+align=center />
+
+```c
+int rows = 2;
+int columns = 5;
+int **matrix = (int **)malloc(rows * sizeof(int *));
+matrix[0] = (int *) malloc(rows * columns * sizeof(int));
+for (int i = 1; i < rows; i++)
+    matrix[i] = matrix[0] + i * columns;
+```
+
++ Three Dimesion Array
+
+```text
+TODO
+```
+
 ### Using Pointers to Support a Queue
 
 ```c
