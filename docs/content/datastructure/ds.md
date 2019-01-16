@@ -8,24 +8,24 @@
 Infix to Postfix
 <br>
 <img src="http://interactivepython.org/runestone/static/pythonds/_images/moveright.png"
-width="70%"
-height="70%"
+width="50%"
+height="50%"
 alt="infix to postfix"
 align=center />
 <br>
 Infix to prefix
 <br>
 <img src="http://interactivepython.org/runestone/static/pythonds/_images/moveleft.png"
-width="70%"
-height="70%"
+width="50%"
+height="50%"
 alt="infix to prefix"
 align=center />
 <br>
 Infix to prefix and postfix
 <br>
 <img src="http://interactivepython.org/runestone/static/pythonds/_images/moveleft.png"
-width="70%"
-height="70%"
+width="50%"
+height="50%"
 alt="infix to prefix and postfix"
 align=center />
 <br>
@@ -37,7 +37,8 @@ height="70%"
 alt="postfix in stack"
 align=center />
 
-[reference.1](http://interactivepython.org/runestone/static/pythonds/BasicDS/InfixPrefixandPostfixExpressions.html)
+[reference.stack](http://interactivepython.org/runestone/static/pythonds/BasicDS/InfixPrefixandPostfixExpressions.html)
+[reference.C Operator Precedence](https://en.cppreference.com/w/c/language/operator_precedence)
 <br>
 
 + [Stack | Set 2 (Infix to Postfix)](https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix/)
