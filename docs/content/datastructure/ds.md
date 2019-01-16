@@ -1,7 +1,43 @@
 #
 ## Data Structure
 
-## Sort
+### Sort
+
++ Conversion of Infix Expressions to Prefix and Postfix
+
+Infix to Postfix
+
+<img src="http://interactivepython.org/runestone/static/pythonds/_images/moveright.png"
+width="70%"
+height="70%"
+alt="infix to postfix"
+align=center />
+
+Infix to prefix
+
+<img src="http://interactivepython.org/runestone/static/pythonds/_images/moveleft.png"
+width="70%"
+height="70%"
+alt="infix to prefix"
+align=center />
+
+Infix to prefix and postfix
+
+<img src="http://interactivepython.org/runestone/static/pythonds/_images/moveleft.png"
+width="70%"
+height="70%"
+alt="infix to prefix and postfix"
+align=center />
+
+How to work in statck
+
+<img src="http://interactivepython.org/runestone/static/pythonds/_images/intopost.png"
+width="70%"
+height="70%"
+alt="postfix in stack"
+align=center />
+
+[reference.1](http://interactivepython.org/runestone/static/pythonds/BasicDS/InfixPrefixandPostfixExpressions.html)
 
 + [insertion sort](https://www.geeksforgeeks.org/insertion-sort/)
 
