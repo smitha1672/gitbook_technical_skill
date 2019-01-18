@@ -5,7 +5,7 @@
 
 + [insertion](https://www.geeksforgeeks.org/insertion-sort/)
 
-<img src="https://youtu.be/OGzPmgsI-pQ"
+<img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/insertionsort.png"
 width="50%"
 height="50%"
 alt="insertion sort"
