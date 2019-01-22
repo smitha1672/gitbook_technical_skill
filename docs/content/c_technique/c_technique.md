@@ -679,6 +679,14 @@ void main(void)
   print_pointer_array_void(rawin);
 }
 ```
+### How to get stack, bss address
+
+```c
+extern const int __stack, _bss_end;
+int startAddr = (int)&__stack;
+int endAddr = (int)&_bss_end;
+```
+
 ### Training
 
 [geeksforgeeks](https://www.geeksforgeeks.org/)
