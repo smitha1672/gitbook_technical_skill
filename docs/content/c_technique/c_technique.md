@@ -471,6 +471,74 @@ uint8_t ucHeap[configTOTAL_HEAP_SIZE ] @ 0x20000000;
 
 ### Bit Manipulation
 
+0s/1s a sequence of 1s or 0s.
+
+x ^ 0s = x
+x ^ 1s = ~x
+x ^ x = 0
+
+x & 0s = 0
+x & 1s = x
+x & x = x
+
+x | 0s = x
+x | 1s = 1s
+x | x = x
+
++ Get Bit
+
+```c
+boolean getbit(int num, int i) {
+    return ((num & (1 << i)) != 0)
+}
+```
+
++ Set Bit
+
+```c
+int setBit(int num, int i) {
+    return num | (1<<i);
+}
+```
+
++ Clear Bit
+
+```c
+int clearBit(int num, int i)
+{
+    int mask = ~(1<<i);
+    return num & mask;
+}
+```
+
+To clear all bits from the most significant bit through i(inclusive)
+
+```c
+int clearBitsMSBthroughI(int num, int i) {
+    int mask = (1<<i)-1;
+    return num & mask;
+}
+```
+
+To clear all bits from i through 0(inclusive)
+
+```c
+int clearBitsIthrough0(int num, int i) {
+    int mask = (-1<<(i+1));
+    return num & mask;
+}
+```
+
+Update Bit
+
+```c
+int updateBit(int num, int i, boolean bitIs1) {
+    int value = bitIs1? 1 :0;
+    int mask = ~(1<<i);
+    return (num&mask) | (value<<i);
+}
+```
+
 ```c
 #define BIT_MASK(bitn) \
     ((1U << (bitn)) - 1)
