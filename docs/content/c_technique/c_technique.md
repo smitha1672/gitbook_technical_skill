@@ -473,6 +473,7 @@ uint8_t ucHeap[configTOTAL_HEAP_SIZE ] @ 0x20000000;
 
 0s/1s a sequence of 1s or 0s.
 
+```text
 x ^ 0s = x
 x ^ 1s = ~x
 x ^ x = 0
@@ -484,6 +485,7 @@ x & x = x
 x | 0s = x
 x | 1s = 1s
 x | x = x
+```
 
 + Get Bit
 
