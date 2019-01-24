@@ -1,7 +1,359 @@
 #
 ## Data Structure
 
+### Recursion
+
++ [fibonacci](https://www.geeksforgeeks.org/program-for-nth-fibonacci-number/)
+
+```text
+Fn = Fn-1 + Fn-2
+
+F0 = 0 and F1 = 1
+```
+
+```text
+Method 1 ( Use recursion )
+A simple method that is a direct recursive implementation mathematical recurrence relation given
+above.
+```
+```c
+#include<stdio.h>
+int fib(int n)
+{
+    if (n <= 1)
+        return n;
+    return fib(n-1) + fib(n-2);
+}
+
+int main ()
+{
+    int n = 9;
+    printf("%d", fib(n));
+    getchar();
+    return 0;
+}
+```
+
+```text
+Method 2 ( Use Dynamic Programming )
+We can avoid the repeated work done is the method 1 by storing the Fibonacci numbers calculated so
+far.
+```
+```c
+#include<stdio.h>
+
+int fib(int n)
+{
+    /* Declare an array to store Fibonacci numbers. */
+    int f[n+2]; // 1 extra to handle case, n = 0
+    int i;
+
+    /* 0th and 1st number of the series are 0 and 1*/
+    f[0] = 0;
+    f[1] = 1;
+
+    for (i = 2; i <= n; i++)
+    {
+        /* Add the previous 2 numbers in the series
+           and store it */
+        f[i] = f[i-1] + f[i-2];
+    }
+
+    return f[n];
+}
+
+int main ()
+{
+    int n = 9;
+    printf("%d", fib(n));
+    getchar();
+    return 0;
+}
+```
+
++ [tower of hanoi](https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/)
+
+```text
+Take an example for 2 disks :
+Let rod 1 = 'A', rod 2 = 'B', rod 3 = 'C'.
+
+Step 1 : Shift first disk from 'A' to 'B'.
+Step 2 : Shift second disk from 'A' to 'C'.
+Step 3 : Shift first disk from 'B' to 'C'.
+
+The pattern here is :
+Shift 'n-1' disks from 'A' to 'B'.
+Shift last disk from 'A' to 'C'.
+Shift 'n-1' disks from 'B' to 'C'.
+
+Image illustration for 3 disks :
+```
+
+<img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/tower-of-hanoi.png"
+width="50%"
+height="50%"
+alt="tower of hanoi"
+align=center />
+
+```c
+#include <stdio.h>
+
+// C recursive function to solve tower of hanoi puzzle
+void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod)
+{
+    if (n == 1)
+    {
+        printf("\n Move disk 1 from rod %c to rod %c", from_rod, to_rod);
+        return;
+    }
+    towerOfHanoi(n-1, from_rod, aux_rod, to_rod);
+    printf("\n Move disk %d from rod %c to rod %c", n,
+            from_rod, to_rod);
+    towerOfHanoi(n-1, aux_rod, to_rod, from_rod);
+}
+
+int main()
+{
+    int n = 4; // Number of disks
+    towerOfHanoi(n, 'A', 'C', 'B'); // A, B and C are names of rods
+    return 0;
+}
+```
+
++ GCD
+
+```text
+Program to find GCD or HCF of two numbers:
+
+A simple solution is to find all prime factors of both numbers, then find intersection of all
+factors present in both numbers. Finally return product of elements in the intersection.
+
+An efficient solution is to use Euclidean algorithm which is the main algorithm used for this
+purpose. The idea is, GCD of two numbers doesn’t change if smaller number is subtracted from a
+bigger number.
+```
+
+```c
+// C program to find GCD of two numbers
+#include <stdio.h>
+
+// Recursive function to return gcd of a and b
+int gcd(int a, int b)
+{
+    // Everything divides 0
+    if (a == 0)
+        return b;
+    if (b == 0)
+        return a;
+
+    // base case
+    if (a == b)
+        return a;
+
+    // a is greater
+    if (a > b)
+        return gcd(a-b, b);
+    return gcd(a, b-a);
+}
+
+// Driver program to test above function
+int main()
+{
+    int a = 98, b = 56;
+    printf("GCD of %d and %d is %d ", a, b, gcd(a, b));
+    return 0;
+}
+```
+
+```c
+// C program to find GCD of two numbers
+#include <stdio.h>
+
+// Recursive function to return gcd of a and b
+int gcd(int a, int b)
+{
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+
+// Driver program to test above function
+int main()
+{
+    int a = 98, b = 56;
+    printf("GCD of %d and %d is %d ", a, b, gcd(a, b));
+    return 0;
+}
+```
+
 ### Sort
+
++ [Selection Sort](https://www.geeksforgeeks.org/selection-sort/)
+<img src="https://www.geeksforgeeks.org/wp-content/uploads/Merge-Sort-Tutorial.png"
+width="50%"
+height="50%"
+alt="Selection sort"
+align=center />
+
+```text
+Runtime: O(n^2) average and worst case, memory: O(1)
+```
+
+```c
+// C program for implementation of selection sort
+#include <stdio.h>
+
+void
+swap(int* xp, int* yp)
+{
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+
+void
+selectionSort(int arr[], int n)
+{
+    int i, j, min_idx;
+    // One by one move boundary of unsorted subarray
+    for (i = 0; i < n-1; i++) {
+        // Find the minimum element in unsorted array
+        min_idx = i;
+        for (j = i+1; j < n; j++)
+            if (arr[j] < arr[min_idx])
+                min_idx = j;
+        // Swap the found minimum element with the first element
+        swap(&arr[min_idx], &arr[i]);
+    }
+}
+
+/* Function to print an array */
+void
+printArray(int arr[], int size)
+{
+    int i;
+    for (i=0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+// Driver program to test above functions
+int
+main()
+{
+    int arr[] = {64, 25, 12, 22, 11};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    selectionSort(arr, n);
+    printf("Sorted array: \n");
+    printArray(arr, n);
+    return 0;
+}
+```
+
++ [Merg sort](https://www.geeksforgeeks.org/merge-sort/)
+
+<img src="https://www.geeksforgeeks.org/wp-content/uploads/Merge-Sort-Tutorial.png"
+width="50%"
+height="50%"
+alt="merge sort"
+align=center />
+
+```text
+Runtime: O(nlog(n)) average and worst case, memory: O(1)
+```
+
+```c
+/* C program for Merge Sort */
+#include<stdlib.h>
+#include<stdio.h>
+
+// Merges two subarrays of arr[].
+// First subarray is arr[l..m]
+// Second subarray is arr[m+1..r]
+void
+merge(int arr[], int l, int m, int r)
+{
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    /* create temp arrays */
+    int L[n1], R[n2];
+    /* Copy data to temp arrays L[] and R[] */
+    for (i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[m + 1+ j];
+    /* Merge the temp arrays back into arr[l..r]*/
+    i = 0; // Initial index of first subarray
+    j = 0; // Initial index of second subarray
+    k = l; // Initial index of merged subarray
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+    /* Copy the remaining elements of L[], if there
+    are any */
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    /* Copy the remaining elements of R[], if there
+    are any */
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+/* l is for left index and r is right index of the
+sub-array of arr to be sorted */
+void
+mergeSort(int arr[], int l, int r)
+{
+    if (l < r) {
+        // Same as (l+r)/2, but avoids overflow for
+        // large l and h
+        int m = l+(r-l)/2;
+        // Sort first and second halves
+        mergeSort(arr, l, m);
+        mergeSort(arr, m+1, r);
+        merge(arr, l, m, r);
+    }
+}
+
+/* UTILITY FUNCTIONS */
+/* Function to print an array */
+void
+printArray(int A[], int size)
+{
+    int i;
+    for (i=0; i < size; i++)
+        printf("%d ", A[i]);
+    printf("\n");
+}
+
+/* Driver program to test above functions */
+int
+main()
+{
+    int arr[] = {12, 11, 13, 5, 6, 7};
+    int arr_size = sizeof(arr)/sizeof(arr[0]);
+    printf("Given array is \n");
+    printArray(arr, arr_size);
+    mergeSort(arr, 0, arr_size - 1);
+    printf("\nSorted array is \n");
+    printArray(arr, arr_size);
+    return 0;
+}
+```
 
 + [insertion](https://www.geeksforgeeks.org/insertion-sort/)
 
