@@ -190,12 +190,6 @@ int main()
 
 + [Selection Sort](https://www.geeksforgeeks.org/selection-sort/)
 
-<img src="https://www.geeksforgeeks.org/wp-content/uploads/Merge-Sort-Tutorial.png"
-width="50%"
-height="50%"
-alt="Selection sort"
-align=center />
-
 ```text
 Runtime: O(n^2) average and worst case, memory: O(1)
 ```
