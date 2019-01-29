@@ -1,4 +1,13 @@
 #
+# Code Traning Resource
+[1.HackerRank](https://www.hackerrank.com/)<br>
+[2.Lintcode](https://www.lintcode.com/)<br>
+[3.Leetcode](https://leetcode.com/)<br>
+
+```text
+https://blog.techbridge.cc/2018/07/07/resrc-for-swe/
+```
+
 ## Leetcode
 ## [8. String to Integer atoi](https://leetcode.com/problems/string-to-integer-atoi/description/)
 <!--- limiation line
