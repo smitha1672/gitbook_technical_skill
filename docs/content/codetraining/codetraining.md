@@ -1,5 +1,5 @@
 #
-# Code Traning Resource
+## Code Traning Resource
 [1.HackerRank](https://www.hackerrank.com/)<br>
 [2.Lintcode](https://www.lintcode.com/)<br>
 [3.Leetcode](https://leetcode.com/)<br>
