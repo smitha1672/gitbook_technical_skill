@@ -3,7 +3,7 @@
 * [OS](content/os/os.md)
 * [C Technique](content/c_technique/c_technique.md)
 * [Data Structure](content/datastructure/ds.md)
-* [leetcode](content/leetcode/leetcode.md)
+* [codetraining](content/codetraining/codetraining.md)
 * [hardware](content/hardware/hardware.md)
 * [ble](content/ble/ble.md)
 * [computer system](content/computer_system/cs.md)
