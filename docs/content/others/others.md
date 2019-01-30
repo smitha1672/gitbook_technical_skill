@@ -1,4 +1,12 @@
 #
+## [How To Set Up Time Synchronization on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-time-synchronization-on-ubuntu-16-04)
+
+```text
+$ date
+$ timedatectl list-timezones
+$ sudo timedatectl set-timezone Asia/Taipei
+```
+
 ## Keyboard Shortcuts on Terminal <br>
 C-K (control-k): Pressed CTRL, and then press k <br>
 M-K (meta-k): Released ESC, and then press k
