@@ -3,6 +3,34 @@
 
 ### [Advance Skill](https://shengwen1997.gitbooks.io/program_with_c/content/)
 
+### Scanf
+
++ [What does scanf(“%*[\n] %[^\n]”, input_string); do?](https://stackoverflow.com/questions/45278383/what-does-scanf-n-n-input-string-do)
+
+```text
+The %[\n] directive tells scanf() to match newline characters, and the * flag signals that no
+assignment should be made, so %*[\n] skips over any leading newline characters (assuming there is at
+least one leading \n character: more on this in a moment). There is a space following this first
+directive, so zero or more whitespace characters are skipped before the final %[^\n] directive,
+which matches characters until a newline is encountered. These are stored in input_string[], and the
+newline character is left behind in the input stream. Subsequent calls using this format string will
+skip over this remaining newline character.
+```
+
+```c
+int i2 = 0;
+double dd = 0.0f;
+char str[100];
+
+// Read and save an integer, double, and String to your variables.
+scanf("%d", &i2);
+scanf("%lf", &dd);
+scanf("%*[\n] %[^\n]", str);
+
+// Print the sum of the double variables on a new line.
+printf("%.01lf\n", d+dd);
+```
+
 ### [Wrap Printf](https://stackoverflow.com/questions/20639632/how-to-wrap-printf-into-a-function-or-macro)
 
 ```c
