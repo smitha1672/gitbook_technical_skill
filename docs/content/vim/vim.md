@@ -6,7 +6,19 @@ sudo apt-get install vim
 ```
 <br>[\.vimrc Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
 
-## [Simple commands to remove unwanted whitespace](http://vim.wikia.com/wiki/Remove_unwanted_spaces)
+## [Simple commands to remove unwanted]
+
++ Remove unwanted newline of a starded line
+
+```text
+search newline with a head of line
+/^\n
+
+removed a newline with head of lines
+:%s/^\n//gc
+```
+
++ [Remove unwanted whitespace](http://vim.wikia.com/wiki/Remove_unwanted_spaces)
 
 ```text
 :%s/\s\+$//e
