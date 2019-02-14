@@ -851,6 +851,8 @@ int main()
 
 ### Array
 
+[content](https://www.geeksforgeeks.org/array-data-structure/)
+
 + One Dimesion Array
 
 A(0: u-1)
@@ -968,6 +970,13 @@ TODO
 ```
 
 ### Linked List
+#### Singly Linked List
+
+[content](https://www.geeksforgeeks.org/data-structures/linked-list/singly-linked-list/)
+
+#### Doubly Linked List
+
+[content](https://www.geeksforgeeks.org/data-structures/linked-list/doubly-linked-list/)
 
 + Merge two sorted list
 
