@@ -6,7 +6,7 @@ sudo apt-get install vim
 ```
 <br>[\.vimrc Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
 
-## [Simple commands to remove unwanted]
+## Simple commands to remove unwanted
 
 + Remove unwanted newline of a starded line
 
