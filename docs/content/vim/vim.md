@@ -8,6 +8,13 @@ sudo apt-get install vim
 
 ## Simple commands to remove unwanted
 
++ [Delete all lines containing a pattern](http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern )
+
+```text
+# For example, to delete all lines containing "profile" (remove the /d to show the lines that the command will delete)
+:g/profile/d
+```
+
 + Remove unwanted newline of a starded line
 
 ```text
@@ -38,13 +45,6 @@ removed a newline with head of lines
 
 " Show spaces before a tab:
 / \+\ze\t
-```
-
-+ [Delete all lines containing a pattern](http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern )
-
-```text
-# For example, to delete all lines containing "profile" (remove the /d to show the lines that the command will delete)
-:g/profile/d
 ```
 
 ## Search patterns
