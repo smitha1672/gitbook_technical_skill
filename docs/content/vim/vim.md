@@ -193,6 +193,11 @@ L - 將cursor移到screen 的最底行.
 :syntax on(off)
 ```
 
+```text
+# disable expandtab
+:set noexpandtab
+```
+
 + [vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
 
 ```text
