@@ -169,6 +169,33 @@ align=center />
 **Refer as:**
 [samba setting on Ubuntu](https://www.arthurtoday.com/2015/04/ubuntu-server-share-folder-samba.html) and [samba directory on Windows](https://noob.tw/samba/)
 
+### Samba Mount
+
++ smbmount
+
+```text
+smbmount -o username="Username",password="Password" //IP/share /mnt/smb
+smbumount /mnt/smb
+```
+
++ mount
+
+```text
+mount -t smbfs -o username="Username",password="Password" //IP/share /mnt/smb
+umount /mnt/smb
+```
+
++ cifs
+
+```text
+mount -t cifs -o username="Username",password="Password" //IP/share /mnt/smb
+umount /mnt/smb
+```
+
+```text
+mount.cifs -o username="Username",password="Password" //IP/share /mnt/smb
+umount.cifs /mnt/smb
+```
 
 ## Screen
 ### [Installation](https://blog.gtwang.org/linux/screen-command-examples-to-manage-linux-terminals/)
