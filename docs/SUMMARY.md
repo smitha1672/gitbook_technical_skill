@@ -2,6 +2,7 @@
 
 * [OS](content/os/os.md)
 * [C Technique](content/c_technique/c_technique.md)
+* [C++ Technique](content/cpp_technique/cpp_technique.md)
 * [Data Structure](content/datastructure/ds.md)
 * [codetraining](content/codetraining/codetraining.md)
 * [hardware](content/hardware/hardware.md)
