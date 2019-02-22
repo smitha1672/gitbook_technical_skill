@@ -3,7 +3,41 @@
 
 ## String
 
-+ C++ printf with std::string?
++ copy std::string into std::vector<char>
+
+```text
+std::vector has a constructor that takes two iterators. You can use that:
+
+std::string str = "hello";
+std::vector<char> data(str.begin(), str.end());
+If you already have a vector and want to add the characters at the end, you need a back inserter:
+
+std::string str = "hello";
+std::vector<char> data = /* ... */;
+std::copy(str.begin(), str.end(), std::back_inserter(data));
+```
+
++ print string with printf and vector
+
+```text
+std::vector<char> vec;
+vec.push_back('t');
+vec.push_back('e');
+vec.push_back('s');
+vec.push_back('t');
+vec.push_back('\0');
+std::ostringstream vts;
+if (!vec.empty()) {
+    std::copy(vec.begin(), vec.end(), std::ostream_iterator<char>(vts));
+    // Now add the last element with no
+    // delimiter
+    vts << vec.back();
+}
+std::string s = vts.str();
+printf("%s\n", s.c_str());
+```
+
++ printf with std::string?
 
 ```c
 #include <iostream>
