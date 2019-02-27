@@ -31,6 +31,28 @@ scanf("%*[\n] %[^\n]", str);
 printf("%.01lf\n", d+dd);
 ```
 
++ scanf string
+
+```c
+char str[256] = {0};
+scanf("%s", str);
+```
+
+### 4 bytes alignment
+
+```c
+pnum = (const uint8_t*)(pbuf+i);
+pnum += (((((uint32_t)pnum)+3)&~3)-((uint32_t)pnum));
+```
+
+### String
+
+```text
+
+char str[3] = {'0', '1', '\0'};
+strlen(str); /*'\0' = strlen*/
+```
+
 ### [Wrap Printf](https://stackoverflow.com/questions/20639632/how-to-wrap-printf-into-a-function-or-macro)
 
 ```c
