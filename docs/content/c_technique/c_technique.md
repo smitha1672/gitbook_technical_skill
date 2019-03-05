@@ -3,6 +3,20 @@
 
 ### [Advance Skill](https://shengwen1997.gitbooks.io/program_with_c/content/)
 
+### [Meaning of char arr\[0\], ZERO array](https://stackoverflow.com/questions/3607859/meaning-of-char-arr0)
+
+```c
+struct pkt {
+    int pk_type;
+    int tag;
+    int magic_num;
+    char data[0];  <-------- what does this mean ???
+}__attribute__((packed));
+
+my_pkt = malloc( sizeof( struct pkt ) + 50 );
+then my_pkt->data points to the beginning of a 50-byte general-purpose buffer.
+```
+
 ### Scanf
 
 + [What does scanf(“%*[\n] %[^\n]”, input_string); do?](https://stackoverflow.com/questions/45278383/what-does-scanf-n-n-input-string-do)
@@ -48,7 +62,6 @@ pnum += (((((uint32_t)pnum)+3)&~3)-((uint32_t)pnum));
 ### String
 
 ```text
-
 char str[3] = {'0', '1', '\0'};
 strlen(str); /*'\0' = strlen*/
 ```
