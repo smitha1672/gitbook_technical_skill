@@ -534,6 +534,39 @@ Display these info for all partitions:
 df -h
 ```
 
+## Use Case
+
++ change enum to string and enum number
+
+```text
+typedef enum {
+    SET_INVAILD = 0x00010000,
+    SET_AOUT_LOGON,
+    SET_AOUT_LOGOFF,
+    SET_RAWSENS_LOGON,
+    SET_RAWSENS_LOGOFF,
+    SET_DSET_LOGON,
+    SET_DSET_LOGOFF,
+    SET_ONESECTICK,
+
+awk '/SET/{print $1, $1}' attribute_structure.h | sed -n '/^SET/p' > t1.log
+cat t1.log | sed -n 's/\(^\)/{"/p' | sed -n 's/\(,\)/",/p' | sed -n 's/\(,$\)/},/p'
+
+Output:
+
+{"SET_AOUT_LOGON", SET_AOUT_LOGON},
+{"SET_AOUT_LOGOFF", SET_AOUT_LOGOFF},
+{"SET_RAWSENS_LOGON", SET_RAWSENS_LOGON},
+{"SET_RAWSENS_LOGOFF", SET_RAWSENS_LOGOFF},
+{"SET_DSET_LOGON", SET_DSET_LOGON},
+{"SET_DSET_LOGOFF", SET_DSET_LOGOFF},
+{"SET_ONESECTICK", SET_ONESECTICK},
+{"SET_ATTRIBUTE_OP_START=0x00020000", SET_ATTRIBUTE_OP_START=0x00020000},
+{"SET_ATTRIBUTE_ACTIVATED", SET_ATTRIBUTE_ACTIVATED},
+{"SET_ATTRIBUTE_DEACTIVATED", SET_ATTRIBUTE_DEACTIVATED},
+
+```
+
 ####
 
 ####
