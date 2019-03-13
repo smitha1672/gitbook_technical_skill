@@ -538,6 +538,12 @@ Display these info for all partitions:
 df -h
 ```
 
++ Comparing 2 directories
+
+```text
+diff -r dir1 dir2
+```
+
 ## Changed enum to string and enum number
 
 ```text
@@ -568,15 +574,6 @@ Output:
 {"SET_ATTRIBUTE_DEACTIVATED", SET_ATTRIBUTE_DEACTIVATED},
 
 ```
-
-## Diff
-
-+ Comparing 2 directories
-
-```text
-diff -r dir1 dir2
-```
-
 
 ####
 
