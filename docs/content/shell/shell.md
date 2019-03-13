@@ -544,6 +544,13 @@ df -h
 diff -r dir1 dir2
 ```
 
++ Copy directories recursively
+
+```bash
+$ cp -r sourcedir/ destdir/
+$ rsync -a sourcedir/ destdir/
+```
+
 ## Changed enum to string and enum number
 
 ```text

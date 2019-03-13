@@ -36,6 +36,12 @@ height="90%"
 alt=""
 align=center />
 
+## clean untracked files and directories
+
+```bash
+$ git clean -f or -d or -fd
+```
+
 ## Ignoring Files
 
 ```bash
@@ -63,6 +69,7 @@ git add -f file.o
 ```
 
 ## worktree
+
 ```text
 # List Worktree
 git worktree list

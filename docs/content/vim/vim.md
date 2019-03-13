@@ -1,6 +1,7 @@
 #
 ## VIM
 ## Installation
+
 ```bash
 sudo apt-get install vim
 ```
@@ -282,8 +283,9 @@ zm               - fold both files completely
 :diffupdate after you're made changed
 :windo diffthis # Open
 :windo diffoff # Close
-:%diffput
-:%diffget
+:%diffput       - put a whole file
+:%diffget       - get a whole file
+:1, $d          - delete from line 1 to line $
 ```
 
 ## Tag list

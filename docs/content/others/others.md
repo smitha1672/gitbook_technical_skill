@@ -199,6 +199,7 @@ umount.cifs /mnt/smb
 
 ## Screen
 ### [Installation](https://blog.gtwang.org/linux/screen-command-examples-to-manage-linux-terminals/)
+
 ```bash
 sudo apt-get install screen
 ```
@@ -224,6 +225,12 @@ Ctrl+a -remove  remove region |  Ctrl+a X is the same
 2 First preassed "space" key that is meaning to start copy, Second pressed "space" key that is
 meaning "copied done"
 3 To other windown to pressed "Ctrl+a ]" is pasted.
+```
+
++ Kill
+
+```bash
+$ screen -X -S [session] guit
 ```
 
 ## Useful Linux Command
