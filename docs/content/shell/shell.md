@@ -1,5 +1,6 @@
 #
 ## Shell Script
+
 + variable
 
 ```bash
@@ -444,16 +445,19 @@ Command format. The basic command format is:
 zip options archive inpath inpath ...
 
 #### archive all the source files in the current directory and its subdirectories
+
 ```bash
 find ./out/mt2523_watch/watch_ref_design -maxdepth 1 -type f -print | \
 zip -j source -@
 ```
+
 ```bash
 find ./chre/firmware -type f -name "os.checked.*" -print | \
 zip -j w2_cmh1000_fw_v15_1804Bxxx -@ #-j: junk-path
 ```
 
 #### Achive 2 image files in zip file
+
 ```bash
 GIT_TAG=$1
 
@@ -534,9 +538,7 @@ Display these info for all partitions:
 df -h
 ```
 
-## Use Case
-
-+ change enum to string and enum number
+## Changed enum to string and enum number
 
 ```text
 typedef enum {
@@ -566,6 +568,15 @@ Output:
 {"SET_ATTRIBUTE_DEACTIVATED", SET_ATTRIBUTE_DEACTIVATED},
 
 ```
+
+## Diff
+
++ Comparing 2 directories
+
+```text
+diff -r dir1 dir2
+```
+
 
 ####
 
