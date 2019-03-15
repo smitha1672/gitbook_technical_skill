@@ -36,6 +36,8 @@ height="90%"
 alt=""
 align=center />
 
+## 
+
 ## clean untracked files and directories
 
 ```bash
@@ -96,6 +98,7 @@ git worktree prune --dry-run
 git worktree prune --verbose
 git worktree list
 ```
+
 ## Branches
 
 + Listing Branches
@@ -129,6 +132,7 @@ $ git checkout -b 1-process_notes master
 ```
 
 ## push
+
 ```text
 # Uploading local branch to origin branch
 git push origin local/foo
@@ -153,11 +157,38 @@ git origin remote/foo
 git pull origin remote/foo:local/bar
 ```
 
+## format-patch
+
+[format patch reference](https://mijingo.com/blog/creating-and-applying-patch-files-in-git)
+
+```text
+# Create patch files with a branch
+$ git format-patch <branch> -o <destpath>
+
+# Specifying a Single Commit
+$ git format-patch a_big_feature_branch -1 1ecb5853f53ef0a75a633ffef6c67efdea3560c4 -o patches
+  outgoing/0001-a-nice-change-that-i-d-like-to-include-on-production.patch
+```
+
+## am
+
+```text
+$ git am [-i] [-3] ...
+$ git am -i patches/*.patch
+$ git am patches/fix...patch
+```
+
 ## remote
 
 ```text
 # add a url to remote
 git remote add "remote name" url_address
+
+# rename
+git remote rename <old name> <new name>
+
+# set new url
+git remote set-url <remote name> <newurl>
 ```
 
 ## 將多個提交合而為一之後在合併
