@@ -404,8 +404,37 @@ if [ $iram_unchunk -ne 0 ]; then
   echo "Pad $iram_pad_size ZERO bytes to $IRAM_FILE_NAME"
 fi
 ```
-## mount
-### Mount a NAS directory
+
+## Mount
+
+[smbmount, mount cifs](http://www.vixual.net/blog/archives/228)
+
++ smbmount
+
+```bash
+smbmount -o username="Username",password="Password" //IP/share /mnt/smb
+smbumount /mnt/smb
+```
+
++ mount
+
+```bash
+mount -t smbfs -o username="Username",password="Password" //IP/share /mnt/smb
+umount /mnt/smb
+```
+
++ cifs
+
+```bash
+mount -t cifs -o username="Username",password="Password" //IP/share /mnt/smb
+umount /mnt/smb
+
+mount.cifs -o username="Username",password="Password" //IP/share /mnt/smb
+umount.cifs /mnt/smb
+```
+
++ cifs with a NAS directory
+
 ```bash
 sudo mount -t cifs -o username=smith.hu,password=123456 //172.16.3.220/cwm_rd_nasvr/Document_Center/AE/Personal/Smith/ ./mnt/ae/
 ```
@@ -501,6 +530,19 @@ else
   find . -path "*/misc/variant/*" -type d -print | sed 's/.\/chre\/firmware\/misc\/variant\///'
 fi
 ```
+
+## RAR extract
+
+```text
+# apt-get install unrar
+
+$ unrar e file.rar # current directory
+$ unrar x file.rar # Extract files with full path.
+$ unrar l file.rar
+$ unrar t file.rar
+```
+
+## 7z extract
 
 ## GNU/Linux most wanted
 
