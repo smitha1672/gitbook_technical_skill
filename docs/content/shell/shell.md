@@ -159,6 +159,12 @@ sed -f 樣式命令檔 檔案
 
 ### Example
 
++ Replace nanohub: to newline
+
+```text
+cat fail.log | sed 's/nanohub:/\n/g'
+```
+
 + insert
 
 ```text
