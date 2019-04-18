@@ -9,11 +9,14 @@ sudo apt-get install vim
 
 ## Simple commands to remove unwanted
 
-+ [Delete all lines containing a pattern](http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern )
++ [Delete all lines containing a pattern](http://support.moonpoint.com/software/editors/vi/remove-lines-string.php)
 
 ```text
 # For example, to delete all lines containing "profile" (remove the /d to show the lines that the command will delete)
 :g/profile/d
+
+# apply the command to lines 100 to the last line, I could use the command below, since the dollar sign indicates the last line
+: 100,$ g/dog/d
 ```
 
 + Remove unwanted newline of a starded line
