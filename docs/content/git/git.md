@@ -36,9 +36,18 @@ height="90%"
 alt=""
 align=center />
 
-## 
+## Advance skill
 
-## clean untracked files and directories
++ Get a file from a commit
+
+```text
+git cat-file -p e51bdf2:./project_info/hisense/la672c/release_note.txt > test.log
+git show e51bdf2:./project_info/hisense/la672c/release_note.txt > test.log
+```
+
+## clean
+
++ clean untracked files and directories
 
 ```bash
 $ git clean -f or -d or -fd
@@ -191,11 +200,19 @@ git remote rename <old name> <new name>
 git remote set-url <remote name> <newurl>
 ```
 
-## 將多個提交合而為一之後在合併
+## Merge
+
++ Combined more commits in a commit
 
 ```bash
 git branch
 git merge --squash topic
 git commit
+```
+
++ Merge a branch and no commit
+
+```text
+git merge <branch> --no-commit
 ```
 
