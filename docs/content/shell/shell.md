@@ -599,7 +599,9 @@ $ cp -r sourcedir/ destdir/
 $ rsync -a sourcedir/ destdir/
 ```
 
-## Changed enum to string and enum number
+## My Experience 
+
++ Changed enum to string and enum number
 
 ```text
 typedef enum {
@@ -628,6 +630,65 @@ Output:
 {"SET_ATTRIBUTE_ACTIVATED", SET_ATTRIBUTE_ACTIVATED},
 {"SET_ATTRIBUTE_DEACTIVATED", SET_ATTRIBUTE_DEACTIVATED},
 
+```
++ Grip I wanted string
+
+```text
+log file:
+
+*       output[0] = accumulated steps every second          (steps)
+*       output[1] = accumulated distance                    (meters)
+*       output[2] = accumulated calories based on config    (Kcal)
+*       output[3] = activity type                           (0: none, 1: static, 2: walk, 3:run, 4:stair_up, 5:stair_down)
+*       output[4] = frequency                               (steps/minute)
+*       output[5] = step length                             (meters)
+*       output[6] = pace                                    (minutes/Km)
+*       output[7] = speed                                   (Km/hr)
+*       output[8] = current elevation                       (meters)
+*       output[9] = elevation changes                       (meters)
+*       output[10] = floor changes                          (floors)
+*       output[11] = accumulated calories from BMR          (Kcal)
+*       output[12] = accumulated calories from MET          (Kcal)
+*       output[13] = accumulated calories from HR           (Kcal)
+// for debug
+*       output[14] = accumulated steps                      (steps)
+*       output[15] = accumulated all possible steps         (steps)
+*       output[16] = filtered steps                         (steps)
+*       output[17] = current step window                    (steps)
+```
+
+```text
+output:
+
+float accumulated_steps_every_second;
+float accumulated_distance;
+float accumulated_calories_based_on_config;
+float activity_type;
+float frequency;
+float step_length;
+float pace;
+float speed;
+float current_elevation;
+float elevation_changes;
+float floor_changes;
+float accumulated_calories_from_BMR;
+float accumulated_calories_from_MET;
+float accumulated_calories_from_HR;
+float accumulated_steps;
+float accumulated_all_possible_steps;
+float filtered_steps;
+float current_step_window;
+```
+
+```bash
+awk -F\= '{print $2}' log | sed -e '/^$/d' -e 's/^ //g' | awk -F\( '{print $1}' | sed -e 's/\s\+$//g' -e 's/ /_/g' -e 's/^/float /g' -e 's/$/;/g'
+
+or
+
+awk -F\= '{print $2}' log | \
+sed -e '/^$/d' -e 's/^ //g' | \
+awk -F\( '{print $1}' | \
+sed -e 's/\s\+$//g' -e 's/ /_/g' -e 's/^/float /g' -e 's/$/;/g'
 ```
 
 ####
