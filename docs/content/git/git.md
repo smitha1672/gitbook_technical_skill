@@ -38,9 +38,13 @@ align=center />
 
 ## Advance skill
 
-+ Get a file from a commit
++ Get a file from a particular commit
 
 ```text
+# list commit for a particular file
+git rev-list <branch name> -- data.c
+
+# Get file
 git cat-file -p e51bdf2:./project_info/hisense/la672c/release_note.txt > test.log
 git show e51bdf2:./project_info/hisense/la672c/release_note.txt > test.log
 ```
