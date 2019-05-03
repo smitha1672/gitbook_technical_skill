@@ -7,6 +7,25 @@
 ```text
 https://blog.techbridge.cc/2018/07/07/resrc-for-swe/
 ```
+
+### [Multiply Matrices N x N](https://practice.geeksforgeeks.org/problems/multiply-matrices/1/?ref=self)
+
+```text
+/*Complete the function below*/
+void multiply(int A[][100], int B[][100], int C[][100], int N)
+{
+      //add code here.
+      for (int i = 0; i < N; i++) {
+          for (int j = 0; j < N; j++) {
+            int sum = 0;
+            for (int k = 0; k < N; k++)
+                sum = sum + A[i][k] * B[k][j];
+            C[i][j] = sum;
+          }
+      }
+}
+```
+
 ### [Rotate bits of a number](https://www.geeksforgeeks.org/rotate-bits-of-an-integer/)
 
 ```text
