@@ -3,6 +3,43 @@
 
 ### [Advance Skill](https://shengwen1997.gitbooks.io/program_with_c/content/)
 
+### [How to compile 32-bit program on 64-bit gcc in C and C++](https://www.geeksforgeeks.org/compile-32-bit-program-64-bit-gcc-c-c/)
+
+```text
+For C language:
+sudo apt-get install gcc-multilib
+For C++ language:
+sudo apt-get install g++-multilib
+```
+
+```text
+// C program to demonstrate difference
+// in output in 32-bit and 64-bit gcc
+// File name: geek.c
+#include<stdio.h>
+int main()
+{
+    printf("Size = %lu", sizeof(size_t));
+}
+```
+
+Compile the above program in Linux by these two different commands,
+Default 64-bit compilation,
+
+```text
+Input: gcc -m64 geek.c -o out
+Output: ./out
+Size = 8
+```
+
+Forced 32-bit compilation,
+
+```text
+Input: gcc -m32 geek.c -o out
+Output: ./out
+Size = 4
+```
+
 ### [Convert a 32 bits to float value](https://stackoverflow.com/questions/11611787/convert-a-32-bits-to-float-value/11632523#11632523)
 
 ```text
@@ -548,7 +585,6 @@ uint8_t ucHeap[configTOTAL_HEAP_SIZE ] @ 0x20000000;
 #define INT_BITS 32
 int leftRotate(int n, unsigned int d)
 {
-
     /* In n<<d, last d bits are 0. To
        put first 3 bits of n at
        last, do bitwise or of n<<d
