@@ -542,7 +542,32 @@ uint8_t ucHeap[configTOTAL_HEAP_SIZE ] @ 0x20000000;
 
 ### Bit Manipulation
 
-0s/1s a sequence of 1s or 0s.
++ [Rotate bits of a number](https://www.geeksforgeeks.org/rotate-bits-of-an-integer/)
+
+```text
+#define INT_BITS 32
+int leftRotate(int n, unsigned int d)
+{
+
+    /* In n<<d, last d bits are 0. To
+       put first 3 bits of n at
+       last, do bitwise or of n<<d
+       with n >>(INT_BITS - d) */
+    return (n << d)|(n >> (INT_BITS - d));
+}
+
+/*Function to right rotate n by d bits*/
+int rightRotate(int n, unsigned int d)
+{
+    /* In n>>d, first d bits are 0.
+       To put last 3 bits of at
+       first, do bitwise or of n>>d
+       with n <<(INT_BITS - d) */
+    return (n >> d)|(n << (INT_BITS - d));
+}
+```
+
++ 0s/1s a sequence of 1s or 0s.
 
 ```text
 x ^ 0s = x
