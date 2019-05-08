@@ -3,6 +3,14 @@
 
 ### [Advance Skill](https://shengwen1997.gitbooks.io/program_with_c/content/)
 
+### [Convert a 32 bits to float value](https://stackoverflow.com/questions/11611787/convert-a-32-bits-to-float-value/11632523#11632523)
+
+```text
+float source_float = 1234.5678f ;
+uint32_t transport_bits = *((uint32_t*)&source_float);
+float destination_float = *((float*)&transport_bits);
+```
+
 ### [Meaning of char arr\[0\], ZERO array](https://stackoverflow.com/questions/3607859/meaning-of-char-arr0)
 
 ```c
