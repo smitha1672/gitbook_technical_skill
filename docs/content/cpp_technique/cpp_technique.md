@@ -3,6 +3,23 @@
 
 [GeeksforGeeks](https://www.geeksforgeeks.org/c-plus-plus/)
 
+## [vector in C++ STL]
+
+[ref.1](http://larry850806.github.io/2016/06/06/STL2/)
+
++ insert and erase
+
+```text
+int arr[] = {1, 2, 3, 4, 5};
+vector<int> vec(arr, arr+5);    //vec = [1, 2, 3, 4, 5]
+vec.insert(vec.begin(), 0); //vec = [0, 1, 2, 3, 4, 5]
+vec.insert(vec.end(), 3, 100); //vec = [0, 1, 2, 3, 4, 5, 100, 100, 100]
+vec.erase(vec.begin()); //vec = [1, 2, 3, 4, 5, 100, 100, 100]
+vec.erase(vec.end()-1); //vec = [1, 2, 3, 4, 5, 100, 100]
+vec.erase(vec.begin(), vec.begin() + 5); //vec = [100, 100];
+cout << vec.size() << endl; //size = 2
+```
+
 ## [algorithms library in C++ STL](https://www.geeksforgeeks.org/algorithms-library-c-stl/)
 
 + [std::reverse() in C++](https://www.geeksforgeeks.org/stdreverse-in-c/)
