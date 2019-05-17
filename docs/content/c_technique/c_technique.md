@@ -3,6 +3,40 @@
 
 ### [Advance Skill](https://shengwen1997.gitbooks.io/program_with_c/content/)
 
+### [Comparison of float and double variables](https://stackoverflow.com/questions/3988821/comparison-of-float-and-double-variables)
+
+```text
+//compares if the float f1 is equal with f2 and returns 1 if true and 0 if false
+int compare_float(float f1, float f2)
+{
+    float precision = 0.00001;
+    if (((f1 - precision) < f2) && ((f1 + precision) > f2))
+        return 1;
+    else
+        return 0;
+}
+
+//or
+float epsilon = 0.000000001;
+float a = 0.7;
+double b = 0.7;
+
+if (abs(a - b) < epsilon)
+    // they are close enough to be equal.
+
+//or
+bool fequal(float a, float b)
+{
+    return fabs(a-b) < epsilon;
+}
+
+//used
+if (compare_float(x1,x2)) {
+    //do something if equal
+} else {
+}
+```
+
 ### [How to compile 32-bit program on 64-bit gcc in C and C++](https://www.geeksforgeeks.org/compile-32-bit-program-64-bit-gcc-c-c/)
 
 ```text
