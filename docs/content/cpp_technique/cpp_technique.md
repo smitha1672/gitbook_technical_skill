@@ -3,6 +3,58 @@
 
 [GeeksforGeeks](https://www.geeksforgeeks.org/c-plus-plus/)
 
+## [Array sum in C++ STL](https://www.geeksforgeeks.org/array-sum-in-cpp-stl/)
+
+```text
+In C++, we can quickly find array sum using accumulate()
+
+#include <vector>
+#include <numeric>
+#include <iostream>
+
+using namespace std;
+
+// User defined function that returns sum of
+// arr[] using accumulate() library function.
+int
+arraySum(int a[], int n)
+{
+    int initial_sum = 0;
+    return accumulate(a, a+n, initial_sum);
+}
+
+int
+main()
+{
+    int a[] = {5, 10, 15} ;
+    int n = sizeof(a)/sizeof(a[0]);
+    cout << arraySum(a, n) << endl; // output: 30
+    return 0;
+}
+
+//or
+
+// User defined function that returns sum of
+// arr[] using accumulate() library function.
+int
+arraySum(vector<int>& v)
+{
+    int initial_sum = 0;
+    return accumulate(v.begin(), v.end(), initial_sum);
+}
+
+int
+main()
+{
+    vector<int> v;
+    v.push_back(5);
+    v.push_back(10);
+    v.push_back(15);
+    cout << arraySum(v) << endl;
+    return 0;
+}
+```
+
 ## [How to find the maximum element of a Vector using STL in C++](https://www.geeksforgeeks.org/how-to-find-the-maximum-element-of-a-vector-using-stl-in-c/)
 
 ```text
