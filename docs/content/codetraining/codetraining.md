@@ -107,7 +107,7 @@ main(void)
 ```
 
 ## Leetcode
-## [Binary Search 67 Problems] (https://github.com/smitha1672/note/blob/dev-leetcode-google/cSkillTraning/leetcode/readme.md)
+## [Binary Search 67 Problems](https://github.com/smitha1672/note/blob/dev-leetcode-google/cSkillTraning/leetcode/readme.md)
 
 ## [8. String to Integer atoi](https://leetcode.com/problems/string-to-integer-atoi/description/)
 <!--- limiation line
