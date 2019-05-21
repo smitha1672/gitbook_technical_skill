@@ -3,6 +3,62 @@
 
 [GeeksforGeeks](https://www.geeksforgeeks.org/c-plus-plus/)
 
+## [How to find the maximum element of a Vector using STL in C++](https://www.geeksforgeeks.org/how-to-find-the-maximum-element-of-a-vector-using-stl-in-c/)
+
+```text
+#include <vector>
+#include <algorithm>
+#include <iostream>
+
+int
+example_1(void)
+{
+    using namespace std;
+    // Get the vector
+    int arr[] = { 1, 45, 54, 71, 76, 12 };
+    vector<int> a(arr, arr+(sizeof(arr)/sizeof(arr[0])));
+    // Print the vector
+    cout << "Example1 Vector: ";
+    for (int i = 0; i < a.size(); i++)
+        cout << a[i] << " ";
+    cout << endl;
+    // Find the max element
+    cout << "\nMax Element = "
+        << *max_element(a.begin(), a.end()) << endl; // Output: 76
+    return 0;
+}
+
+int
+example_2(void)
+{
+    // Get the vector
+    int arr[] = { 1, 45, 54, 71, 76, 12 };
+    std::vector<int> a(arr, arr+(sizeof(arr)/sizeof(arr[0])));
+    // Print the vector
+    std::cout << "Eample2 Vector: ";
+    for (int i = 0; i < a.size(); i++)
+        std::cout << a[i] << " ";
+    std::cout << std::endl;
+    // Find the max element
+    std::cout << "\nMax Element = "
+        << *std::max_element(a.begin(), a.end()) << std::endl; // Output: 76
+    return 0;
+}
+
+int
+example_3(void)
+{
+    using namespace std;
+    int v[] = { 'a', 'c', 'k', 'd', 'e', 'f', 'h' };
+    // Finding the maximum value between the first and the
+    // fourth element
+    int* i1;
+    i1 = std::max_element(v, v + 4);
+    cout << char(*i1) << "\n"; // output: k
+    return 0;
+}
+```
+
 ## [Range-based for loop in C++](https://www.geeksforgeeks.org/range-based-loop-c/)
 
 ```text
