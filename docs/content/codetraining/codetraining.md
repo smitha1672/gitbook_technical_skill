@@ -107,12 +107,7 @@ main(void)
 ```
 
 ## Leetcode
-## [Binary Search 67 Problems] (https://leetcode.com/tag/binary-search/)
-
-| # | Title | Source | Difficulty | Solution Reference | Checked | Progressive |
-|---| ----- | ------ | ---------- | ------------------ | ------  | ----------- |
-|852|[Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array)|C++|Easy|[Solution Reference](https://www.cnblogs.com/grandyang/p/10527596.html)|0|1/67|
-|475|[Heaters](https://leetcode.com/problems/heaters)|C++|Easy|[Solution Reference](https://www.cnblogs.com/grandyang/p/6181626.html)|0|2/67|
+## [Binary Search 67 Problems] (https://github.com/smitha1672/note/blob/dev-leetcode-google/cSkillTraning/leetcode/readme.md)
 
 ## [8. String to Integer atoi](https://leetcode.com/problems/string-to-integer-atoi/description/)
 <!--- limiation line
