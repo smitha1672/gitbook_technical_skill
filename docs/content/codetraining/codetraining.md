@@ -111,10 +111,8 @@ main(void)
 
 | # | Title | Source | Difficulty | Solution Reference | Checked | Progressive |
 |---| ----- | ------ | ---------- | ------------------ | ------  | ----------- |
-|852|[Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array)|C++|Easy|
-[Solution Reference](https://www.cnblogs.com/grandyang/p/10527596.html)|0|1/67|
-|475|[Heaters](https://leetcode.com/problems/heaters)|C++|Easy|
-[Solution Reference](https://www.cnblogs.com/grandyang/p/6181626.html)|0|2/67|
+|852|[Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array)|C++|Easy|[Solution Reference](https://www.cnblogs.com/grandyang/p/10527596.html)|0|1/67|
+|475|[Heaters](https://leetcode.com/problems/heaters)|C++|Easy|[Solution Reference](https://www.cnblogs.com/grandyang/p/6181626.html)|0|2/67|
 
 ## [8. String to Integer atoi](https://leetcode.com/problems/string-to-integer-atoi/description/)
 <!--- limiation line
