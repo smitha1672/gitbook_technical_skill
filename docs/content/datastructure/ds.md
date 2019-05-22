@@ -3,6 +3,20 @@
 
 ### Binary Search Tree
 
+<img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwijx5PHs67iAhWFwrwKHQYxBV4QjRx6BAgBEAU&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D5lQD0IRS8fE&psig=AOvVaw1WGHCsCD2CRGy8ij_6GORx&ust=1558589029544498"
+width="50%"
+height="50%"
+alt="BST Insert a Node Implementation-1"
+align=center />
+
+<br>
+<img src="https://i2.wp.com/algorithms.tutorialhorizon.com/files/2016/03/Insert-Node-into-Single-Threaded-Binary-Tree.png?ssl=1"
+width="50%"
+height="50%"
+alt="BST Insert a Node Implementation-2"
+align=center />
+
+
 + [Insert a node in Binary Search Tree Iteratively](https://www.geeksforgeeks.org/insert-a-node-in-binary-search-tree-iteratively/)
 
 ```cpp
