@@ -15,6 +15,19 @@
 
 + Use std::map when
 
+<img src="https://1.bp.blogspot.com/-irj_g2Xr7E8/VmU8mlBPOVI/AAAAAAAA_K4/sIdTgAMLUxE/s1600/27.4.png"
+width="70%"
+height="70%"
+alt="map key and value"
+align=center />
+
+<img src="https://3.bp.blogspot.com/-p2D7ql_iuFE/VmU7pe7zQrI/AAAAAAAA_Ks/WC3G3ADrKBE/s1600/27.7.png"
+width="70%"
+height="70%"
+alt="map iterator"
+align=center />
+
+
 ```text
 # You need ordered data.
 # You would have to print/access the data (in sorted order).
