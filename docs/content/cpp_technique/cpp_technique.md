@@ -3,6 +3,123 @@
 
 [GeeksforGeeks](https://www.geeksforgeeks.org/c-plus-plus/)
 
+## [map function in C++ CTL]
+
++ `upper_bound`
+
+```text
+which returns an iterator pointing to the immediate next element just greater than k.
+
+Syntax:
+    map_name.upper_bound(key)
+```
+
+```text
+#include <map>
+
+int main()
+{
+    using namespace std;
+    // initialize container
+    map<int, int> mp;
+
+    // insert elements in random order
+    mp.insert({ 12, 30 });
+    mp.insert({ 11, 10 });
+    mp.insert({ 15, 50 });
+    mp.insert({ 14, 40 });
+
+    // when 11 is present
+    auto it = mp.upper_bound(11);
+    cout << "The upper bound of key 11 is ";
+    cout << (*it).first << " " << (*it).second << endl;
+
+    // when 13 is not present
+    it = mp.upper_bound(13);
+    cout << "The upper bound of key 13 is ";
+    cout << (*it).first << " " << (*it).second << endl;
+
+    // when 17 is exceeds the maximum key, so size
+    // of mp is returned as key and value as 0.
+    it = mp.upper_bound(17);
+    cout << "The upper bound of key 17 is ";
+    cout << (*it).first << " " << (*it).second;
+    return 0;
+}
+
+After map:
+11 10
+12 30 < key:11 upper bound
+14 40 < key:13 upper bound
+15 50
+-- -- < key:17 upper bound
+
+Output:
+The upper bound of key 11 is 12 30
+The upper bound of key 13 is 14 40
+The upper bound of key 17 is 4 0
+```
+
++ `lower_bound`
+
+```text
+which returns an iterator pointing to the key in the container which is equivalent to k passed in the parameter.
+
+Syntax:
+    map_name.lower_bound(key)
+```
+
+```text
+// C++ function for illustration
+// map::lower_bound() function
+#include <map>
+
+int main()
+{
+    using namespace std;
+
+    // initialize container
+    map<int, int> mp;
+
+    // insert elements in random order
+    mp.insert({ 2, 30 });
+    mp.insert({ 1, 10 });
+    mp.insert({ 5, 50 });
+    mp.insert({ 4, 40 });
+    for (auto it = mp.begin(); it != mp.end(); it++) {
+        cout << (*it).first << " " << (*it).second << endl;
+    }
+
+    // when 2 is present
+    auto it = mp.lower_bound(2);
+    cout << "The lower bound of key 2 is ";
+    cout << (*it).first << " " << (*it).second << endl;
+
+    // when 3 is not present
+    // points to next greater after 3
+    it = mp.lower_bound(3);
+    cout << "The lower bound of key 3 is ";
+    cout << (*it).first << " " << (*it).second;
+
+    // when 6 exceeds
+    it = mp.lower_bound(6);
+    cout << "\nThe lower bound of key 6 is ";
+    cout << (*it).first << " " << (*it).second;
+    return 0;
+}
+
+Output:
+1 10
+2 30 < key:2 lower bound
+4 40 < key:3 lower bound
+5 50
+- -- < key:6 lower bound
+The lower bound of key 2 is 2 30
+The lower bound of key 3 is 4 40
+The lower bound of key 6 is 4 0
+```
+
+
 ## [map vs unordered_map in C++](https://www.geeksforgeeks.org/map-vs-unordered_map-c/)
 
 | Title | map | unordered_map |
