@@ -13,6 +13,73 @@
 |Insertion Time|log(n) + Rebalance|Same as search|
 |Deletion time|log(n) + Rebalance|Same as search|
 
++ Use std::map when
+
+```text
+# You need ordered data.
+# You would have to print/access the data (in sorted order).
+# You need predecessor/successor of elements.
+# See advantages of BST over Hash Table for more cases.
+```
+
+```text
+#include <map>
+int main()
+{
+    // Ordered map
+    std::map<int, int> order;
+
+    // Mapping values to keys
+    order[5] = 10;
+    order[3] = 5;
+    order[20] = 100;
+    order[1] = 1;
+
+    // Iterating the map and printing ordered values
+    for (auto i = order.begin(); i != order.end(); i++) {
+        std::cout << i->first << " : " << i->second << '\n';
+    }
+}
+
+Output:
+1 : 1
+3 : 5
+5 : 10
+20 : 100
+```
+
++ Use std::unordered_map when
+
+```text
+# You need to keep count of some data (Example – strings) and no ordering is required.
+# You need single element access i.e. no traversal.
+```
+
+```text
+#include <unordered_map>
+int main()
+{
+    // Unordered map
+    std::unordered_map<int, int> order;
+
+    // Mapping values to keys
+    order[5] = 10;
+    order[3] = 5;
+    order[20] = 100;
+    order[1] = 1;
+
+    // Iterating the map and printing unordered values
+    for (auto i = order.begin(); i != order.end(); i++) {
+        std::cout << i->first << " : " << i->second << '\n';
+    }
+}
+
+Output :
+1 : 1
+3 : 5
+20 : 100
+5 : 10
+```
 
 ## [Iterators in C++ STL](https://www.geeksforgeeks.org/iterators-c-stl/)
 
