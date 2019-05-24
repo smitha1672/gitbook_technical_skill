@@ -13,6 +13,41 @@ https://blog.techbridge.cc/2018/07/07/resrc-for-swe/
 
 ### [378. Kth Smallest Element in a Sorted Matrix](https://github.com/smitha1672/note/blob/master/cSkillTraning/leetcode/_378_Kth_Smallest_Element_in_a_Sorted_Matrix/main.cpp)
 
+[2D vector in C++ with user defined size](https://www.geeksforgeeks.org/2d-vector-in-cpp-with-user-defined-size/)
+
+```text
+// C++ code to demonstrate 2D vector
+#include <iostream>
+#include <vector> // for 2D vector
+using namespace std;
+
+int main()
+{
+    // Initializing 2D vector "vect" with
+    // values
+    vector<vector<int> > vect{ { 1, 2, 3 },
+                               { 4, 5, 6 },
+                               { 7, 8, 9 } };
+
+    // Displaying the 2D vector
+    // vect.size() is 3
+    // vect[i].size() is 3
+    for (int i = 0; i < vect.size(); i++) {
+        for (int j = 0; j < vect[i].size(); j++)
+            cout << vect[i][j] << " ";
+        cout << endl;
+    }
+
+    return 0;
+}
+
+Outout :
+
+1 2 3
+4 5 6
+7 8 9
+```
+
 [`std::distance`](https://en.cppreference.com/w/cpp/iterator/distance)
 
 ```text
