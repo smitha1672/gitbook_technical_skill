@@ -11,6 +11,52 @@
 https://blog.techbridge.cc/2018/07/07/resrc-for-swe/
 ```
 
+### [378. Kth Smallest Element in a Sorted Matrix](https://github.com/smitha1672/note/blob/master/cSkillTraning/leetcode/_378_Kth_Smallest_Element_in_a_Sorted_Matrix/main.cpp)
+
+[`std::distance`](https://en.cppreference.com/w/cpp/iterator/distance)
+
+```text
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+int main()
+{
+    std::vector<int> v{ 3, 1, 4 };
+    std::cout << "distance(first, last) = "
+        << std::distance(v.begin(), v.end()) << '\n'
+        << "distance(last, first) = "
+        << std::distance(v.end(), v.begin()) << '\n';
+    //the behavior is undefined (until C++11)
+}
+Output:
+
+distance(first, last) = 3
+distance(last, first) = -3
+```
+
+[`std::upper_bound`](https://en.cppreference.com/w/cpp/algorithm/upper_bound)
+
+```text
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+int main()
+{
+    std::vector<int> data = { 1, 1, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6 };
+
+    auto lower = std::lower_bound(data.begin(), data.end(), 4);
+    auto upper = std::upper_bound(data.begin(), data.end(), 4);
+
+    std::copy(lower, upper, std::ostream_iterator<int>(std::cout, " "));
+}
+Output:
+
+4 4 4
+```
+
 ### [Multiply Matrices N x N](https://practice.geeksforgeeks.org/problems/multiply-matrices/1/?ref=self)
 
 ```text
