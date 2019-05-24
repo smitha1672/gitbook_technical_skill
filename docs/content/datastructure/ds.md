@@ -1,6 +1,103 @@
 #
 ## Data Structure
 
+### Search
+
++ [Binary Search](https://www.geeksforgeeks.org/binary-search/)
+
+<img src="https://introcs.cs.princeton.edu/java/42sort/images/bisection.png"
+width="50%"
+height="50%"
+alt="binary search 1"
+align=center />
+
+<img src="https://introcs.cs.princeton.edu/java/42sort/images/20questions.png"
+width="50%"
+height="50%"
+alt="binary search 2"
+align=center />
+
+Inverting an increasing function f(x). Given a value y, our task is to find a value x such that f(x) = y.
+We start with an interval (lo, hi) known to contain x and use the following recursive strategy:
+
+```text
+1. Compute mid = lo + (hi − lo) / 2
+2. Base case: If (hi − lo) is less than δ, then return mid as an estimate of x
+3. Recursive step: otherwise, test whether f(mid) > y. If so, look for x in (lo, mid); if not look for x in (mid, hi).
+```
+
++ Recursive/ lterative implementation of Binary Search
+
+```c
+int
+binarySearch(int arr[], int l, int r, int x)
+{
+    if (r >= l) {
+        int mid = l + (r - l) / 2;
+        // If the element is present at the middle
+        // itself
+        if (arr[mid] == x)
+            return mid;
+        // If element is smaller than mid, then
+        // it can only be present in left subarray
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        // Else the element can only be present
+        // in right subarray
+        return binarySearch(arr, mid + 1, r, x);
+    }
+    // We reach here when element is not
+    // present in array
+    return -1;
+}
+
+int
+main(void)
+{
+    int arr[] = { 2, 3, 4, 10, 40 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int x = 10;
+    int result = binarySearch(arr, 0, n - 1, x);
+    (result == -1) ? printf("Element is not present in array"):\
+        printf("Element is present at index %d", result);
+    return 0;
+}
+```
+
+```c
+int
+binarySearch(int arr[], int l, int r, int x)
+{
+    while (l <= r) {
+        int m = l + (r - l) / 2;
+        // Check if x is present at mid
+        if (arr[m] == x)
+            return m;
+        // If x greater, ignore left half
+        if (arr[m] < x)
+            l = m + 1;
+        // If x is smaller, ignore right half
+        else
+            r = m - 1;
+    }
+    // if we reach here, then element was
+    // not present
+    return -1;
+}
+
+int
+main(void)
+{
+    int arr[] = { 2, 3, 4, 10, 40 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int x = 10;
+    int result = binarySearch(arr, 0, n - 1, x);
+    (result == -1) ? printf("Element is not present" " in array"):\
+        printf("Element is present at ""index %d", result);
+    return 0;
+}
+```
+
 ### Binary Search Tree
 
 + [Insert a node in Binary Search Tree Iteratively](https://www.geeksforgeeks.org/insert-a-node-in-binary-search-tree-iteratively/)
@@ -10,7 +107,6 @@ width="50%"
 height="50%"
 alt="BST Insert a Node Implementation"
 align=center />
-
 
 ```cpp
 // C++ program to demonstrate insert operation
@@ -508,89 +604,6 @@ main()
     printArray(arr, n);
     return 0;
 }
-```
-
-### Search
-
-+ [Binary Search](https://www.geeksforgeeks.org/binary-search/)
-
-<img src="https://www.geeksforgeeks.org/wp-content/uploads/Binary-Search.png"
-width="50%"
-height="50%"
-alt="binary search"
-align=center />
-
-+ Recursive/ lterative implementation of Binary Search
-
-```c
-int
-binarySearch(int arr[], int l, int r, int x)
-{
-    if (r >= l) {
-        int mid = l + (r - l) / 2;
-        // If the element is present at the middle
-        // itself
-        if (arr[mid] == x)
-            return mid;
-        // If element is smaller than mid, then
-        // it can only be present in left subarray
-        if (arr[mid] > x)
-            return binarySearch(arr, l, mid - 1, x);
-        // Else the element can only be present
-        // in right subarray
-        return binarySearch(arr, mid + 1, r, x);
-    }
-    // We reach here when element is not
-    // present in array
-    return -1;
-}
-
-int
-main(void)
-{
-    int arr[] = { 2, 3, 4, 10, 40 };
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int x = 10;
-    int result = binarySearch(arr, 0, n - 1, x);
-    (result == -1) ? printf("Element is not present in array"):\
-        printf("Element is present at index %d", result);
-    return 0;
-}
-```
-
-```c
-int
-binarySearch(int arr[], int l, int r, int x)
-{
-    while (l <= r) {
-        int m = l + (r - l) / 2;
-        // Check if x is present at mid
-        if (arr[m] == x)
-            return m;
-        // If x greater, ignore left half
-        if (arr[m] < x)
-            l = m + 1;
-        // If x is smaller, ignore right half
-        else
-            r = m - 1;
-    }
-    // if we reach here, then element was
-    // not present
-    return -1;
-}
-
-int
-main(void)
-{
-    int arr[] = { 2, 3, 4, 10, 40 };
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int x = 10;
-    int result = binarySearch(arr, 0, n - 1, x);
-    (result == -1) ? printf("Element is not present" " in array"):\
-        printf("Element is present at ""index %d", result);
-    return 0;
-}
-
 ```
 
 ### Stack and Queue
