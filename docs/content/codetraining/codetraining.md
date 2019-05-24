@@ -13,6 +13,13 @@ https://blog.techbridge.cc/2018/07/07/resrc-for-swe/
 
 ### [378. Kth Smallest Element in a Sorted Matrix](https://github.com/smitha1672/note/blob/master/cSkillTraning/leetcode/_378_Kth_Smallest_Element_in_a_Sorted_Matrix/main.cpp)
 
+<img src="leetcode_378.png"
+width="100%"
+height="100%"
+alt="leetcode 378"
+align=center />
+
+
 [2D vector in C++ with user defined size](https://www.geeksforgeeks.org/2d-vector-in-cpp-with-user-defined-size/)
 
 ```text
