@@ -188,6 +188,72 @@ int main() {
 }
 ```
 
++ [How do you implement a Class in C?](https://stackoverflow.com/questions/1403890/how-do-you-implement-a-class-in-c)
+
+That depends on the exact "object-oriented" feature-set you want to have.
+If you need stuff like overloading and/or virtual methods, you probably need to include function pointers in structures:
+
+```text
+typedef struct {
+      float (*computeArea)(const ShapeClass *shape);
+} ShapeClass;
+
+float shape_computeArea(const ShapeClass *shape)
+{
+      return shape->computeArea(shape);
+}
+```
+
+This would let you implement a class, by "inheriting" the base class, and implementing a suitable function:
+
+```text
+typedef struct {
+    ShapeClass shape;
+    float width, height;
+} RectangleClass;
+
+static float rectangle_computeArea(const ShapeClass *shape)
+{
+    const RectangleClass *rect = (const RectangleClass *) shape;
+    return rect->width * rect->height;
+}
+```
+
+This of course requires you to also implement a constructor, that makes sure the function pointer is properly set up.
+Normally you'd dynamically allocate memory for the instance, but you can let the caller do that, too:
+
+```text
+void rectangle_new(RectangleClass *rect)
+{
+    rect->width = rect->height = 0.f;
+    rect->shape.computeArea = rectangle_computeArea;
+}
+```
+
+If you want several different constructors, you will have to "decorate" the function names, you can't have more than one `rectangle_new()` function:
+
+```text
+void rectangle_new_with_lengths(RectangleClass *rect, float width, float height)
+{
+    rectangle_new(rect);
+    rect->width = width;
+    rect->height = height;
+}
+```
+
+Here's a basic example showing usage:
+
+```text
+int main(void)
+{
+    RectangleClass r1;
+
+    rectangle_new_with_lengths(&r1, 4.f, 5.f);
+    printf("rectangle r1's area is %f units square\n", shape_computeArea(&r1));
+    return 0;
+}
+```
+
 ### [Variable Arguments](https://www.tutorialspoint.com/cprogramming/c_variable_arguments.htm)
 
 ```c
