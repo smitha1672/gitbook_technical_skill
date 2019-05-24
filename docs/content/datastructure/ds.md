@@ -1,9 +1,7 @@
 #
 ## Data Structure
 
-### Search
-
-+ [Binary Search](https://www.geeksforgeeks.org/binary-search/)
+### Binary Search
 
 <img src="https://introcs.cs.princeton.edu/java/42sort/images/bisection.png"
 width="50%"
