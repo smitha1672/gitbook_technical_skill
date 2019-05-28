@@ -123,7 +123,8 @@ p = bar
 ```
 
 ## sed
-### 正規表示式
+### Regular Expressions
+
 + . 1點代表一個char
 
 ```text
