@@ -24,6 +24,8 @@ We start with an interval (lo, hi) known to contain x and use the following recu
 3. Recursive step: otherwise, test whether f(mid) > y. If so, look for x in (lo, mid); if not look for x in (mid, hi).
 ```
 
+[LeetCode Binary Search Summary](https://www.cnblogs.com/grandyang/p/6854825.html)
+
 + Recursive/ lterative implementation of Binary Search
 
 ```c
