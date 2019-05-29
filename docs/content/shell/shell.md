@@ -160,6 +160,24 @@ sed -f 樣式命令檔 檔案
 
 ### Example
 
++ Create a shell script for `sed` changed
+
+```shell
+cat amh_opcode_v1.txt | sed '/^,/d' | \
+awk -F, '{print "grep -rw --include=*.c " "'"'"'"$1 "'"'"'" " | \
+awk -F: '"'"'{print $1}'"'"' " "| xargs sed -i " "'"'"'s/\<"$1"\>/"$2"/g'"'"'"}' > test.sh
+```
+
+```text
+cat test.sh
+
+grep -rw --include=*.c 'SET_ATTRIBUTE_RELEASECOUNTER' | awk -F: '{print $1}' | xargs sed -i 's/\<SET_ATTRIBUTE_RELEASECOUNTER\>/SET_SERI_RELEASE_COUNTER/g'
+grep -rw --include=*.c 'SET_ATTRIBUTE_ABSOLUTEIDLINGTIME' | awk -F: '{print $1}' | xargs sed -i 's/\<SET_ATTRIBUTE_ABSOLUTEIDLINGTIME\>/SET_SERI_ABSOLUTE_IDLING_TIME/g'
+grep -rw --include=*.c 'SET_ATTRIBUTE_ANGLETHRESHOLD' | awk -F: '{print $1}' | xargs sed -i 's/\<SET_ATTRIBUTE_ANGLETHRESHOLD\>/SET_SERI_ANGLE_THRESHOLD/g'
+grep -rw --include=*.c 'SET_ATTRIBUTE_SEDENTARYDBG' | awk -F: '{print $1}' | xargs sed -i 's/\<SET_ATTRIBUTE_SEDENTARYDBG\>/SET_SERI_DBG/g'
+grep -rw --include=*.c 'SET_ATTRIBUTE_ARSLEEPON' | awk -F: '{print $1}' | xargs sed -i 's/\<SET_ATTRIBUTE_ARSLEEPON\>/SET_SLEP_ON/g'
+```
+
 + Replace nanohub: to newline
 
 ```text
