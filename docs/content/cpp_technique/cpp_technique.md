@@ -3,6 +3,39 @@
 
 [GeeksforGeeks](https://www.geeksforgeeks.org/c-plus-plus/)
 
+## [2D vector in C++ with user defined size](https://www.geeksforgeeks.org/2d-vector-in-cpp-with-user-defined-size/)
+
+```text
+// C++ code to demonstrate 2D vector
+#include <iostream>
+#include <vector> // for 2D vector
+using namespace std;
+
+int main()
+{
+    // Initializing 2D vector "vect" with
+    // values
+    vector<vector<int> > vect{ { 1, 2, 3 },
+                               { 4, 5, 6 },
+                               { 7, 8, 9 } };
+
+    // Displaying the 2D vector
+    for (int i = 0; i < vect.size(); i++) {
+        for (int j = 0; j < vect[i].size(); j++)
+            cout << vect[i][j] << " ";
+        cout << endl;
+    }
+
+    return 0;
+}
+
+Outout :
+
+1 2 3
+4 5 6
+7 8 9
+```
+
 ## [std::`back_inserter`](https://www.geeksforgeeks.org/stdback_inserter-in-cpp/)
 
 `std::back_inserter` constructs a back-insert iterator that inserts new elements at the end of the container to which it is applied. It is defined inside the header file.
