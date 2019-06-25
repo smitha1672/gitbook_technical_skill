@@ -36,6 +36,25 @@ height="90%"
 alt=""
 align=center />
 
+## archive
+
++ [example](https://tosbourn.com/using-git-to-create-an-archive-of-changed-files/)
+
+```text
+git archive -o update.zip HEAD
+git diff --name-only HEAD^
+git archive -o update.zip HEAD $(git diff --name-only HEAD^)`
+```
+
+## diff
+
++ listed only the files names that changed between two commits
+
+```text
+git diff --name-only SHA1 SHA2
+git diff --name-only HEAD~10 HEAD~5
+```
+
 ## Advance skill
 
 + Get a file from a particular commit
