@@ -469,6 +469,9 @@ sudo mount -t cifs -o username=smith.hu,password=123456 //172.16.3.220/cwm_rd_na
 [Linux man page](https://linux.die.net/man/1/unzip)
 ```bash
 unzip letters
+
+# Let's now extract the zip file into that folder
+unzip /path/to/file.zip -d temp_for_zip_extract
 ```
 To use unzip to extract all members of the archive letters.zip into the **current directory** and **subdirectories**, creating any subdirectories as necessary
 
