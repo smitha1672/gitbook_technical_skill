@@ -38,12 +38,45 @@ align=center />
 
 ## archive
 
-+ [example](https://tosbourn.com/using-git-to-create-an-archive-of-changed-files/)
++ Created an archive of the entire repository
 
 ```text
 git archive -o update.zip HEAD
-git diff --name-only HEAD^
-git archive -o update.zip HEAD $(git diff --name-only HEAD^)`
+```
+
++ archive only changes made between two commits
+
+```text
+git archive --output=<file> HEAD $(git diff --name-only commit1SHA commit2SHA)
+<file> can be demo.zip
+```
+
++ I don't know when these commands can be used
+
+```text
+git archive --output=files.tar HEAD $(git diff-tree -r --no-commit-id --name-only
+--diff-filter=ACMRT HEAD)
+
+git archive --format=zip --output=files.zip HEAD $(git diff-tree -r --no-commit-id --name-only
+--diff-filter=ACMRT HEAD)
+```
+
+# diff-tree
+
++ list all changed
+
+```text
+git diff-tree -r --no-commit-id --name-only --diff-filter=ACMRT HEAD
+or
+git diff-tree -r --no-commit-id --name-only --diff-filter=ACMRT commit1SHA commit2SHA
+or
+git diff-tree -r --no-commit-id --name-only --diff-filter=ACMRT commit1SHA..commit2SHA
+
+A = Added
+C = Copied
+M = Modified
+R = Renamed
+T = Changed
 ```
 
 ## diff
