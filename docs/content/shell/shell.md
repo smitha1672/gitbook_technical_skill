@@ -160,6 +160,20 @@ sed -f 樣式命令檔 檔案
 
 ### Example
 
++ replace one or more white space to any character
+
+```bash
+cat word.txt | sed 's/[ ][ ]*/,/g'
+or
+cat word.txt | sed 's/\s\+/,/g' \s: white space, +: one or more times
+```
+
++ delete newline
+
+```bash
+sed '/^$/d'
+```
+
 + Create a shell script for `sed` changed
 
 ```shell

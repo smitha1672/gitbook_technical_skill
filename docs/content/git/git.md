@@ -48,7 +48,16 @@ git archive -o update.zip HEAD
 
 ```text
 git archive --output=<file> HEAD $(git diff --name-only commit1SHA commit2SHA)
-<file> can be demo.zip
+# <file> can be demo.zip
+``
+
++ subdirectory
+
+```text
+git archive -o ../subarchive.zip HEAD:subdir
+
+git archive --format=tar HEAD:subdir | tar t
+git archive --format=tar HEAD subdir | tar t
 ```
 
 + I don't know when these commands can be used
@@ -233,6 +242,12 @@ $ git format-patch <branch> -o <destpath>
 # Specifying a Single Commit
 $ git format-patch a_big_feature_branch -1 1ecb5853f53ef0a75a633ffef6c67efdea3560c4 -o patches
   outgoing/0001-a-nice-change-that-i-d-like-to-include-on-production.patch
+```
+
++ format-patch for a single file
+
+```text
+git format-patch -1 origin/master test/test_module.c
 ```
 
 ## am
