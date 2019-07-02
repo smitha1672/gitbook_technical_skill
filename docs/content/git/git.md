@@ -36,6 +36,23 @@ height="90%"
 alt=""
 align=center />
 
+# ls-tree
+
++ list all files for a specific branch
+
+```text
+git ls-tree -r master --name-only
+
+-r: option will let it recurse into subdirectories and print each file currently under version
+control.
+```
+
++ list of all files that ever existed
+
+```text
+git log --pretty=format: --name-only --diff-filter=A  | sort -u
+```
+
 ## archive
 
 + Created an archive of the entire repository
