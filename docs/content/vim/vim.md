@@ -7,6 +7,23 @@ sudo apt-get install vim
 ```
 <br>[\.vimrc Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
 
+## Inserting
+
+To insert some text repeatedly in Vim, say you want to insert '-' for 30 times.
+Its Real simple to do that in Vim
+Follow this sequence for inserting 30 '-' s in Vim
+
+```text
+30i - <ESC>
+```
+
+Thats it, you can use this to repeat any text in simple steps.
+Consider inserting 'Hello' 3 times
+
+```text
+3i Hello <ESC>
+```
+
 ## Simple commands to remove unwanted
 
 + [Delete all lines containing a pattern](http://support.moonpoint.com/software/editors/vi/remove-lines-string.php)
