@@ -688,6 +688,14 @@ uint8_t ucHeap[configTOTAL_HEAP_SIZE ] @ 0x20000000;
 
 ### Bit Manipulation
 
++ 2's complement Process
+
+adc is 24 bits 2's complement
+
+```text
+new_adc = (adc & 0x800000)? (0xFF000000 | adc): (adc);
+```
+
 + [Rotate bits of a number](https://www.geeksforgeeks.org/rotate-bits-of-an-integer/)
 
 ```text

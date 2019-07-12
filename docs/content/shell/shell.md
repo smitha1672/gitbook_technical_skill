@@ -479,14 +479,20 @@ sudo mount -t cifs -o username=smith.hu,password=123456 //172.16.3.220/cwm_rd_na
 ```
 
 ## ZIP/ UNZIP
+
 ### unzip
 [Linux man page](https://linux.die.net/man/1/unzip)
+
 ```bash
 unzip letters
-
-# Let's now extract the zip file into that folder
-unzip /path/to/file.zip -d temp_for_zip_extract
 ```
+
+Let's now extract the zip file into that folder/directory
+
+```bash
+unzip /path/to/file.zip -d folder
+```
+
 To use unzip to extract all members of the archive letters.zip into the **current directory** and **subdirectories**, creating any subdirectories as necessary
 
 ```bash
@@ -582,6 +588,7 @@ $ unrar e file.rar # current directory
 $ unrar x file.rar # Extract files with full path.
 $ unrar l file.rar
 $ unrar t file.rar
+$ unrar e /home/user/1.rar /home/user/Videos # extrace to folder
 ```
 
 ## 7z extract
