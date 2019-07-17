@@ -12,6 +12,19 @@ double is a 64 bit IEEE 754 double precision Floating Point Number (1 bit for th
 Let’s take a example(example taken from here) :
 For a quadratic equation x2 – 4.0000000 x + 3.9999999 = 0, the exact roots to 10 significant digits are, r1 = 2.000316228 and r2 = 1.999683772
 
+### [C empty struct — what does this mean/do?](https://stackoverflow.com/questions/24685399/c-empty-struct-what-does-this-mean-do)
+
+```text
+GCC permits a C structure to have no members:
+
+struct empty {};
+The structure has size zero
+```
+
+```text
+typedef struct { } spinlock_t;
+```
+
 ### [Comparison of float and double variables](https://stackoverflow.com/questions/3988821/comparison-of-float-and-double-variables)
 
 ```text
