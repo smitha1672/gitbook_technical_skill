@@ -304,3 +304,12 @@ git commit
 git merge <branch> --no-commit
 ```
 
+# Trouble Shoot
+
++ [error: RPC failed; HTTP 400 curl 22 The requested URL returned error: 400 Bad Request](https://stackoverflow.com/questions/52142214/git-push-heroku-master-fails-by-http-400-curl-22-the-requested-url-returned-err)
+
+```text
+fixed:
+git config http.postBuffer 524288000
+```
+
