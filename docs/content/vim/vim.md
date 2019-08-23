@@ -26,6 +26,14 @@ Consider inserting 'Hello' 3 times
 
 ## Simple commands to remove unwanted
 
++ Remove ^M
+
+```text
+:%s/<Ctrl-V><Ctrl-M>/\r/g
+or
+:%s/<Ctrl-V><Ctrl-M>//g
+```
+
 + [Delete all lines containing a pattern](http://support.moonpoint.com/software/editors/vi/remove-lines-string.php)
 
 ```text
