@@ -36,6 +36,15 @@ height="90%"
 alt=""
 align=center />
 
+# [HTTP authentication](https://stackoverflow.com/questions/53914241/bash-script-adding-git-credentials-from-bash-script)
+
+```text
+git clone http://USERNAME:PASSWORD@some_git_server.com/project.git
+
+# bash or shell script example (delete a branch)
+git push http://USERNAME:PASSWORD@some_git_server.com/project.git :dbg-system-block-0c47903
+```
+
 # ls-tree
 
 + list all files for a specific branch
