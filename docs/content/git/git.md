@@ -1,5 +1,5 @@
 #
-## Branching Strategies
+# Branching Strategies
 
 + Mainline Branch Development
 + Branch-Per-Feature Deployment
@@ -36,13 +36,38 @@ height="90%"
 alt=""
 align=center />
 
-# [HTTP authentication](https://stackoverflow.com/questions/53914241/bash-script-adding-git-credentials-from-bash-script)
+# HTTP authentication
+
+[HTTP authentication](https://stackoverflow.com/questions/53914241/bash-script-adding-git-credentials-from-bash-script);
+[CONFIGURE GIT CREDENTIALS](https://cinhtau.net/2018/02/06/configure-git-credentials/)
 
 ```text
 git clone http://USERNAME:PASSWORD@some_git_server.com/project.git
 
 # bash or shell script example (delete a branch)
 git push http://USERNAME:PASSWORD@some_git_server.com/project.git :dbg-system-block-0c47903
+
+# CONFIGURE GIT CREDENTIALS
+
+git config --global credential.helper 'store --file ~/.my-credentials'
+
+git credential-store --file ~/.my-credentials store
+protocol=https
+host=gitlab.com
+username=cinhtau
+password=a-magic-password
+
+git credential-store --file ~/.my-credentials store
+protocol=https
+host=git-codecommit.us-east-1.amazonaws.com
+username=cinhtau-at-4711
+password=another-magic-password
+
+git credential-store --file ~/.my-credentials store
+protocol=https
+host=github.com
+username=cinhtau
+password=mapper-magic
 ```
 
 # ls-tree
@@ -62,7 +87,7 @@ control.
 git log --pretty=format: --name-only --diff-filter=A  | sort -u
 ```
 
-## archive
+# archive
 
 + Created an archive of the entire repository
 
@@ -114,7 +139,7 @@ R = Renamed
 T = Changed
 ```
 
-## diff
+# diff
 
 + listed only the files names that changed between two commits
 
@@ -123,7 +148,7 @@ git diff --name-only SHA1 SHA2
 git diff --name-only HEAD~10 HEAD~5
 ```
 
-## Advance skill
+# Advance skill
 
 + Get a file from a particular commit
 
@@ -136,7 +161,7 @@ git cat-file -p e51bdf2:./project_info/hisense/la672c/release_note.txt > test.lo
 git show e51bdf2:./project_info/hisense/la672c/release_note.txt > test.log
 ```
 
-## clean
+# clean
 
 + clean untracked files and directories
 
@@ -157,14 +182,14 @@ If you also need to delete the local tag, use:
 git tag --delete tagname
 ```
 
-## Ignoring Files
+# Ignoring Files
 
 ```bash
 # set gitignore path
 $ git config --global core.excludesfile ~/.gitignore
 ```
 
-## stash
+# stash
 
 ```bash
 $ git stash #save current changed work directory
@@ -173,7 +198,7 @@ $ git list # showed all stash list
 $ git apply stash{x} # applied some stash point
 ```
 
-## add
+# add
 
 ```bash
 # add all modification files.
@@ -183,7 +208,7 @@ git add -u .
 git add -f file.o
 ```
 
-## worktree
+# worktree
 
 ```text
 # List Worktree
@@ -199,7 +224,7 @@ git worktree prune --verbose
 git worktree list
 ```
 
-## Branches
+# Branches
 
 + Listing Branches
 
@@ -231,7 +256,7 @@ $ git checkout -b 1-process_notes master
 
 ```
 
-## push
+# push
 
 ```text
 # Uploading local branch to origin branch
@@ -244,7 +269,7 @@ git push origin local/branch:remote/branch
 git push origin :foo
 ```
 
-## pull
+# pull
 
 ```text
 # 下載origin 儲存庫上所有分支的變更內容
@@ -257,7 +282,7 @@ git origin remote/foo
 git pull origin remote/foo:local/bar
 ```
 
-## format-patch
+# format-patch
 
 [format patch reference](https://mijingo.com/blog/creating-and-applying-patch-files-in-git)
 
@@ -276,7 +301,7 @@ $ git format-patch a_big_feature_branch -1 1ecb5853f53ef0a75a633ffef6c67efdea356
 git format-patch -1 origin/master test/test_module.c
 ```
 
-## am
+# am
 
 ```text
 $ git am [-i] [-3] ...
@@ -284,7 +309,7 @@ $ git am -i patches/*.patch
 $ git am patches/fix...patch
 ```
 
-## remote
+# remote
 
 ```text
 # add a url to remote
@@ -297,7 +322,7 @@ git remote rename <old name> <new name>
 git remote set-url <remote name> <newurl>
 ```
 
-## Merge
+# Merge
 
 + Combined more commits in a commit
 
