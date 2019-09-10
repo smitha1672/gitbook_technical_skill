@@ -394,6 +394,12 @@ int main()
 
 ### Sort
 
+<img src="https://he-s3.s3.amazonaws.com/media/uploads/c950295.png"
+width="50%"
+height="50%"
+alt="Sorting And Searching Algorithms - Time Complexities Cheat Sheet"
+align=center />
+
 + [Selection Sort](https://www.geeksforgeeks.org/selection-sort/)
 
 ```text
