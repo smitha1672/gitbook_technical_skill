@@ -227,7 +227,7 @@ v1 = 1 2 3
 v2 = 3 2 1
 ```
 
-## [map function in C++ CTL]
+## [map function in C++ CTL](https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/)
 
 + `upper_bound`
 
@@ -622,7 +622,7 @@ G e e k s
 {3, 3}
 ```
 
-## [vector in C++ STL]
+## [vector in C++ STL](https://www.geeksforgeeks.org/vector-in-cpp-stl/)
 
 [ref.1](http://larry850806.github.io/2016/06/06/STL2/)
 
