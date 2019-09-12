@@ -1,5 +1,6 @@
 # C ++
 
+[thispointer.com](https://thispointer.com/c-interview-questions/)
 [GeeksforGeeks](https://www.geeksforgeeks.org/c-plus-plus/)
 
 ## vector
@@ -61,13 +62,37 @@ int main (void)
 
 ```
 
-### [2D vector in C++ with user defined size](https://www.geeksforgeeks.org/2d-vector-in-cpp-with-user-defined-size/)
+### 2D vector in C++ with user defined size
 
 ```text
-TODO: initial 2D vector ways
+# https://thispointer.com/creating-a-matrix-using-2d-vector-in-c-vector-of-vectors/
+
+# Declaration of 2D vector or vector of vector in C++
+std::vector <std::vector<int> > vec2D
+
+# Initializing Vector of Vector – 2D vector
+
+std::vector <NUMBER OF ELEMENTS, VALUE OF EACH ELEMENT>
+std::vector<int> (4, 1)
+
+# Now to create a vector of 5 vectors in which each vector is initialized as above, we will use following syntax,
+std::vector <std::vector > vec2D(5, std::vector(4, 1));
+
+Output
+
+1 , 1 , 1 , 1 ,
+1 , 1 , 1 , 1 ,
+1 , 1 , 1 , 1 ,
+1 , 1 , 1 , 1 ,
+1 , 1 , 1 , 1 ,
+
+# Adding a new row in 2D vector
+vec2D.push_back(std::vector<int>(4, 11));
 ```
 
 ```text
+# https://www.geeksforgeeks.org/2d-vector-in-cpp-with-user-defined-size/
+
 // C++ code to demonstrate 2D vector
 #include <iostream>
 #include <vector> // for 2D vector
