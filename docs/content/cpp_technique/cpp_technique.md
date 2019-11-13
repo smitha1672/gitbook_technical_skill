@@ -5,7 +5,7 @@
 
 ## [Iterators](https://www.geeksforgeeks.org/iterators-c-stl/)
 
-### vector
+### with vector
 
 ```text
 vector<int> ar = { 1, 2, 3, 4, 5 };
@@ -16,6 +16,65 @@ vector<int>::iterator ptr;
 cout << "The vector elements are : ";
 for (ptr = ar.begin(); ptr < ar.end(); ptr++)
     cout << *ptr << " ";
+```
+
+## [Constructors](https://www.geeksforgeeks.org/constructors-c/#:~:targetText=A%20constructor%20is%20a%20member,member%20function%20of%20the%20class.)
+
+A constructor is a member function of a class which initializes objects of a class.
+In C++, Constructor is automatically called when object(instance of class) create.
+It is special member function of the class.
+
+```text
+1. Constructor has same name as the class itself
+2. Constructors don’t have return type
+3. A constructor is automatically called when an object is created.
+4. If we do not specify a constructor, C++ compiler generates a default constructor for us
+(expects no parameters and has an empty body).
+```
+
+```text
+class Box {
+public:
+    int l, b, h;
+public:
+    Box();
+    Box(int l, int b, int h);
+};
+
+/*
+Default Constructors:
+Default constructor is the constructor which doesn’t take any argument.
+It has no parameters.
+*/
+Box::Box()
+{
+    l = b = h = 0;
+}
+
+/*
+Parameterized Constructors:
+It is possible to pass arguments to constructors.
+Typically, these arguments help initialize an object when it is created.
+To create a parameterized constructor, simply add parameters to it the way you would to any other
+function.
+When you define the constructor’s body, use the parameters to initialize the object.
+*/
+Box::Box(int il, int ib, int ih)
+{
+    l = il;
+    b = ib;
+    h = ih;
+}
+
+int main(void)
+{
+    Box box1(1, 2, 3);
+    Box box2;
+    std::cout << box1.l << " "<< box2.l << "\n";
+    return 0;
+}
+
+output: 1 0
 ```
 
 ## Class
