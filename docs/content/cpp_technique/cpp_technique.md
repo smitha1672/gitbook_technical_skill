@@ -122,205 +122,13 @@ Outout :
 4 5 6
 7 8 9
 ```
-
-## [std::`back_inserter`](https://www.geeksforgeeks.org/stdback_inserter-in-cpp/)
-
-`std::back_inserter` constructs a back-insert iterator that inserts new elements at the end of the container to which it is applied. It is defined inside the header file.
-
-+ Example 1
-
-```text
-// C++ program to demonstrate std::back_inserter
-#include <iostream>
-#include <iterator>
-#include <vector>
-#include <algorithm>
-using namespace std;
-int main()
-{
-    // Declaring first container
-    vector<int> v1 = { 1, 2, 3 };
-
-    // Declaring second container for
-    // copying values
-    vector<int> v2 = { 4, 5, 6 };
-
-    // Using std::back_inserter inside std::copy
-    std::copy(v1.begin(), v1.end(), std::back_inserter(v2));
-    // v2 now contains 4 5 6 1 2 3
-
-    // Displaying v1 and v2
-    cout << "v1 = ";
-
-    int i;
-    for (i = 0; i < 3; ++i) {
-        cout << v1[i] << " ";
-    }
-
-    cout << "\nv2 = ";
-    for (i = 0; i < 6; ++i) {
-        cout << v2[i] << " ";
-    }
-
-    return 0;
-}
-
-Output:
-
-v1 = 1 2 3
-v2 = 4 5 6 1 2 3
-```
-
-+ Example 2
-
-No prior Knowledge of size of container required : One of the scenario where such a function can be extremely helpful is when we don’t know the size of the container,
-i.e., how many elements will be inserted into it, so one way is to make that container of extremely large size,
-but the most efficient way will be to use `std::back_inserter()` in such a case, without declaring the size of the container.
-
-```text
-// C++ program to demonstrate std::back_inserter
-#include <iostream>
-#include <iterator>
-#include <vector>
-#include <algorithm>
-using namespace std;
-int main()
-{
-    // Declaring first container
-    vector<int> v1 = { 1, 2, 3 };
-
-    // Declaring second container without specifying
-    // its size
-    vector<int> v2;
-
-    // Using std::back_inserter inside std::copy
-    std::copy(v1.begin(), v1.end(), std::back_inserter(v2));
-    // v2 now contains 1 2 3
-
-    // Displaying v1 and v2
-    cout << "v1 = ";
-
-    int i;
-    for (i = 0; i < 3; ++i) {
-        cout << v1[i] << " ";
-    }
-
-    cout << "\nv2 = ";
-    for (i = 0; i < 3; ++i) {
-        cout << v2[i] << " ";
-    }
-
-    return 0;
-}
-
-Output:
-
-v1 = 1 2 3
-v2 = 1 2 3
-```
-
-
-## [std::`front_inserter`](https://www.geeksforgeeks.org/stdfront_inserter-in-cpp/)
-
-`std::front_inserter` constructs a front-insert iterator that inserts new elements at the front of the
-container to which it is applied. It is defined inside the header file .
-
-+ With Dequeue
-
-```text
-#nclude <iostream>
-#include <iterator>
-#include <deque>
-#include <algorithm>
-using namespace std;
-int main()
-{
-    // Declaring first container
-    deque<int> v1 = { 1, 2, 3 };
-
-    // Declaring second container for
-    // copying values
-    deque<int> v2 = { 4, 5, 6 };
-
-    // Using std::front_inserter inside std::copy
-    std::copy(v1.begin(), v1.end(), std::front_inserter(v2));
-    // v2 now contains 3 2 1 4 5 6
-
-    // Displaying v1 and v2
-    cout << "v1 = ";
-
-    int i;
-    for (i = 0; i < 3; ++i) {
-        cout << v1[i] << " ";
-    }
-
-    cout << "\nv2 = ";
-    for (i = 0; i < 6; ++i) {
-        cout << v2[i] << " ";
-    }
-
-    return 0;
-}
-
-Output:
-v1 = 1 2 3
-v2 = 3 2 1 4 5 6
-```
-
-+ `Reversing a container`
-
-Now, since `std::front_inserter` inserts new elements at the beginning of the container, so we can perform the task of `reverse_copy()` just with the help of `copy()`,
-such that we will create another container which contains the `reverse of present container`.
-
-```text
-// C++ program to demonstrate std::front_inserter
-#include <iostream>
-#include <iterator>
-#include <deque>
-#include <algorithm>
-using namespace std;
-int main()
-{
-    // Declaring first container
-    deque<int> v1 = { 1, 2, 3 };
-
-    // Declaring second container
-    // for storing the reverse
-    deque<int> v2;
-
-    // Using std::front_inserter inside std::copy
-    std::copy(v1.begin(), v1.end(), std::front_inserter(v2));
-    // v2 now contains 3 2 1
-
-    // Displaying v1 and v2
-    cout << "v1 = ";
-
-    int i;
-    for (i = 0; i < 3; ++i) {
-        cout << v1[i] << " ";
-    }
-
-    cout << "\nv2 = ";
-    for (i = 0; i < 3; ++i) {
-        cout << v2[i] << " ";
-    }
-
-    return 0;
-}
-
-Output:
-
-v1 = 1 2 3
-v2 = 3 2 1
-```
-
-## [map function in C++ CTL](https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/)
+## map
+### [map function in C++ CTL](https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/)
 
 + `upper_bound`
 
 ```text
-which returns an iterator pointing to the immediate next element just greater than k.
-
+returns an iterator to the first element greater than the given key
 Syntax:
     map_name.upper_bound(key)
 ```
@@ -374,8 +182,8 @@ The upper bound of key 17 is 4 0
 + `lower_bound`
 
 ```text
-which returns an iterator pointing to the key in the container which is equivalent to k passed in the parameter.
-
+Returns an iterator pointing to the first element that is not less than
+ (i.e. greater or equal to) key.
 Syntax:
     map_name.lower_bound(key)
 ```
@@ -430,8 +238,7 @@ The lower bound of key 3 is 4 40
 The lower bound of key 6 is 4 0
 ```
 
-
-## [map vs unordered_map in C++](https://www.geeksforgeeks.org/map-vs-unordered_map-c/)
+### [map vs unordered_map in C++](https://www.geeksforgeeks.org/map-vs-unordered_map-c/)
 
 | Title | map | unordered_map |
 | ----- | --- | ------------  |
@@ -1018,4 +825,213 @@ g++ -std=c++11 main.cpp
 reinterpret_cast
 auto event
 static_cast<uint32_t>
+```
+
+## [std::`back_inserter`](https://www.geeksforgeeks.org/stdback_inserter-in-cpp/)
+
+`std::back_inserter` constructs a back-insert iterator that inserts new elements at the end of the container to which it is applied. It is defined inside the header file.
+
++ Example 1
+
+```text
+// C++ program to demonstrate std::back_inserter
+#include <iostream>
+#include <iterator>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    // Declaring first container
+    vector<int> v1 = { 1, 2, 3 };
+
+    // Declaring second container for
+    // copying values
+    vector<int> v2 = { 4, 5, 6 };
+
+    // Using std::back_inserter inside std::copy
+    std::copy(v1.begin(), v1.end(), std::back_inserter(v2));
+    // v2 now contains 4 5 6 1 2 3
+
+    // Displaying v1 and v2
+    cout << "v1 = ";
+
+    int i;
+    for (i = 0; i < 3; ++i) {
+        cout << v1[i] << " ";
+    }
+
+    cout << "\nv2 = ";
+    for (i = 0; i < 6; ++i) {
+        cout << v2[i] << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+v1 = 1 2 3
+v2 = 4 5 6 1 2 3
+```
+
++ Example 2
+
+No prior Knowledge of size of container required : One of the scenario where such a function can be extremely helpful is when we don’t know the size of the container,
+i.e., how many elements will be inserted into it, so one way is to make that container of extremely large size,
+but the most efficient way will be to use `std::back_inserter()` in such a case, without declaring the size of the container.
+
+```text
+// C++ program to demonstrate std::back_inserter
+#include <iostream>
+#include <iterator>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    // Declaring first container
+    vector<int> v1 = { 1, 2, 3 };
+
+    // Declaring second container without specifying
+    // its size
+    vector<int> v2;
+
+    // Using std::back_inserter inside std::copy
+    std::copy(v1.begin(), v1.end(), std::back_inserter(v2));
+    // v2 now contains 1 2 3
+
+    // Displaying v1 and v2
+    cout << "v1 = ";
+
+    int i;
+    for (i = 0; i < 3; ++i) {
+        cout << v1[i] << " ";
+    }
+
+    cout << "\nv2 = ";
+    for (i = 0; i < 3; ++i) {
+        cout << v2[i] << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+v1 = 1 2 3
+v2 = 1 2 3
+```
+
+
+## [std::`front_inserter`](https://www.geeksforgeeks.org/stdfront_inserter-in-cpp/)
+
+`std::front_inserter` constructs a front-insert iterator that inserts new elements at the front of the
+container to which it is applied. It is defined inside the header file .
+
++ With Dequeue
+
+```text
+#nclude <iostream>
+#include <iterator>
+#include <deque>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    // Declaring first container
+    deque<int> v1 = { 1, 2, 3 };
+
+    // Declaring second container for
+    // copying values
+    deque<int> v2 = { 4, 5, 6 };
+
+    // Using std::front_inserter inside std::copy
+    std::copy(v1.begin(), v1.end(), std::front_inserter(v2));
+    // v2 now contains 3 2 1 4 5 6
+
+    // Displaying v1 and v2
+    cout << "v1 = ";
+
+    int i;
+    for (i = 0; i < 3; ++i) {
+        cout << v1[i] << " ";
+    }
+
+    cout << "\nv2 = ";
+    for (i = 0; i < 6; ++i) {
+        cout << v2[i] << " ";
+    }
+
+    return 0;
+}
+
+Output:
+v1 = 1 2 3
+v2 = 3 2 1 4 5 6
+```
+
++ `Reversing a container`
+
+Now, since `std::front_inserter` inserts new elements at the beginning of the container, so we can perform the task of `reverse_copy()` just with the help of `copy()`,
+such that we will create another container which contains the `reverse of present container`.
+
+```text
+// C++ program to demonstrate std::front_inserter
+#include <iostream>
+#include <iterator>
+#include <deque>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    // Declaring first container
+    deque<int> v1 = { 1, 2, 3 };
+
+    // Declaring second container
+    // for storing the reverse
+    deque<int> v2;
+
+    // Using std::front_inserter inside std::copy
+    std::copy(v1.begin(), v1.end(), std::front_inserter(v2));
+    // v2 now contains 3 2 1
+
+    // Displaying v1 and v2
+    cout << "v1 = ";
+
+    int i;
+    for (i = 0; i < 3; ++i) {
+        cout << v1[i] << " ";
+    }
+
+    cout << "\nv2 = ";
+    for (i = 0; i < 3; ++i) {
+        cout << v2[i] << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+v1 = 1 2 3
+v2 = 3 2 1
+```
+
+## thread in C++
+### sleep for function to delay
+
+```text
+#include <thread>
+#include <chrono>
+
+int main (void)
+{
+    // Delay between two successive line print
+    const int sleepTime = 100;
+    while(true) {
+        this_thread::sleep_for(chrono::milliseconds(sleepTime));
+    }
+    return 0;
+}
 ```
