@@ -428,8 +428,6 @@ Output :
 5 : 10
 ```
 
-## [Iterators in C++ STL](https://www.geeksforgeeks.org/iterators-c-stl/)
-
 ## [Array sum in C++ STL](https://www.geeksforgeeks.org/array-sum-in-cpp-stl/)
 
 ```text
