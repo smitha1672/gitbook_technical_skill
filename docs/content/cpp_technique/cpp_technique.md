@@ -60,6 +60,29 @@ Operator Overloading can be done by using three approaches, they are:
 2. Overloading binary operator.
 3. Overloading binary operator using a `friend` function.
 
++ issue learning
+
+```text
+class Box {
+private:
+    ...
+public:
+    bool operator<(Box&);                       //Overloading binary operator
+    friend ostream& operator<<(ostream&, Box&); // Overloading binary operator using a friend function
+};
+
+bool Box::operator<(Box& B)
+{
+    return false;
+}
+
+ostream& Box::operator<<(ostream& out, Box& box) // building failure
+ostream& operator<<(ostream& out, Box& box) // building pass
+{
+    return out;
+}
+```
+
 
 ## [ITERATORS](https://www.geeksforgeeks.org/iterators-c-stl/)
 
