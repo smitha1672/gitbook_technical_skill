@@ -5,7 +5,7 @@
 
 ## [Iterators](https://www.geeksforgeeks.org/iterators-c-stl/)
 
-### with vector
+### vector
 
 ```text
 vector<int> ar = { 1, 2, 3, 4, 5 };
@@ -280,450 +280,7 @@ Outout :
 4 5 6
 7 8 9
 ```
-## map
-### [map function in C++ CTL](https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/)
-
-+ `upper_bound`
-
-```text
-returns an iterator to the first element greater than the given key
-Syntax:
-    map_name.upper_bound(key)
-```
-
-```text
-#include <map>
-
-int main()
-{
-    using namespace std;
-    // initialize container
-    map<int, int> mp;
-
-    // insert elements in random order
-    mp.insert({ 12, 30 });
-    mp.insert({ 11, 10 });
-    mp.insert({ 15, 50 });
-    mp.insert({ 14, 40 });
-
-    // when 11 is present
-    auto it = mp.upper_bound(11);
-    cout << "The upper bound of key 11 is ";
-    cout << (*it).first << " " << (*it).second << endl;
-
-    // when 13 is not present
-    it = mp.upper_bound(13);
-    cout << "The upper bound of key 13 is ";
-    cout << (*it).first << " " << (*it).second << endl;
-
-    // when 17 is exceeds the maximum key, so size
-    // of mp is returned as key and value as 0.
-    it = mp.upper_bound(17);
-    cout << "The upper bound of key 17 is ";
-    cout << (*it).first << " " << (*it).second;
-    return 0;
-}
-
-After map:
-11 10
-12 30 < key:11 upper bound
-14 40 < key:13 upper bound
-15 50
--- -- < key:17 upper bound
-
-Output:
-The upper bound of key 11 is 12 30
-The upper bound of key 13 is 14 40
-The upper bound of key 17 is 4 0
-```
-
-+ `lower_bound`
-
-```text
-Returns an iterator pointing to the first element that is not less than
- (i.e. greater or equal to) key.
-Syntax:
-    map_name.lower_bound(key)
-```
-
-```text
-// C++ function for illustration
-// map::lower_bound() function
-#include <map>
-
-int main()
-{
-    using namespace std;
-
-    // initialize container
-    map<int, int> mp;
-
-    // insert elements in random order
-    mp.insert({ 2, 30 });
-    mp.insert({ 1, 10 });
-    mp.insert({ 5, 50 });
-    mp.insert({ 4, 40 });
-    for (auto it = mp.begin(); it != mp.end(); it++) {
-        cout << (*it).first << " " << (*it).second << endl;
-    }
-
-    // when 2 is present
-    auto it = mp.lower_bound(2);
-    cout << "The lower bound of key 2 is ";
-    cout << (*it).first << " " << (*it).second << endl;
-
-    // when 3 is not present
-    // points to next greater after 3
-    it = mp.lower_bound(3);
-    cout << "The lower bound of key 3 is ";
-    cout << (*it).first << " " << (*it).second;
-
-    // when 6 exceeds
-    it = mp.lower_bound(6);
-    cout << "\nThe lower bound of key 6 is ";
-    cout << (*it).first << " " << (*it).second;
-    return 0;
-}
-
-Output:
-1 10
-2 30 < key:2 lower bound
-4 40 < key:3 lower bound
-5 50
-- -- < key:6 lower bound
-The lower bound of key 2 is 2 30
-The lower bound of key 3 is 4 40
-The lower bound of key 6 is 4 0
-```
-
-### [map vs unordered_map in C++](https://www.geeksforgeeks.org/map-vs-unordered_map-c/)
-
-| Title | map | unordered_map |
-| ----- | --- | ------------  |
-|Ordering|increasing order(By Default)|no ordering|
-|Implementation|Self balancing BST(Like Red-Black Tree)|Hash Table|
-|Search Time|log(n)|O(1) Average/O(n) Worst Case|
-|Insertion Time|log(n) + Rebalance|Same as search|
-|Deletion time|log(n) + Rebalance|Same as search|
-
-+ Use std::map when
-
-<img src="https://1.bp.blogspot.com/-irj_g2Xr7E8/VmU8mlBPOVI/AAAAAAAA_K4/sIdTgAMLUxE/s1600/27.4.png"
-width="70%"
-height="70%"
-alt="map key and value"
-align=center />
-
-<img src="https://3.bp.blogspot.com/-p2D7ql_iuFE/VmU7pe7zQrI/AAAAAAAA_Ks/WC3G3ADrKBE/s1600/27.7.png"
-width="70%"
-height="70%"
-alt="map iterator"
-align=center />
-
-
-```text
-# You need ordered data.
-# You would have to print/access the data (in sorted order).
-# You need predecessor/successor of elements.
-# See advantages of BST over Hash Table for more cases.
-```
-
-```text
-#include <map>
-int main()
-{
-    // Ordered map
-    std::map<int, int> order;
-
-    // Mapping values to keys
-    order[5] = 10;
-    order[3] = 5;
-    order[20] = 100;
-    order[1] = 1;
-
-    // Iterating the map and printing ordered values
-    for (auto i = order.begin(); i != order.end(); i++) {
-        std::cout << i->first << " : " << i->second << '\n';
-    }
-}
-
-Output:
-1 : 1
-3 : 5
-5 : 10
-20 : 100
-```
-
-+ Use std::unordered_map when
-
-```text
-# You need to keep count of some data (Example – strings) and no ordering is required.
-# You need single element access i.e. no traversal.
-```
-
-```text
-#include <unordered_map>
-int main()
-{
-    // Unordered map
-    std::unordered_map<int, int> order;
-
-    // Mapping values to keys
-    order[5] = 10;
-    order[3] = 5;
-    order[20] = 100;
-    order[1] = 1;
-
-    // Iterating the map and printing unordered values
-    for (auto i = order.begin(); i != order.end(); i++) {
-        std::cout << i->first << " : " << i->second << '\n';
-    }
-}
-
-Output :
-1 : 1
-3 : 5
-20 : 100
-5 : 10
-```
-
-## [Array sum in C++ STL](https://www.geeksforgeeks.org/array-sum-in-cpp-stl/)
-
-```text
-In C++, we can quickly find array sum using accumulate()
-
-#include <vector>
-#include <numeric>
-#include <iostream>
-
-using namespace std;
-
-// User defined function that returns sum of
-// arr[] using accumulate() library function.
-int
-arraySum(int a[], int n)
-{
-    int initial_sum = 0;
-    return accumulate(a, a+n, initial_sum);
-}
-
-int
-main()
-{
-    int a[] = {5, 10, 15} ;
-    int n = sizeof(a)/sizeof(a[0]);
-    cout << arraySum(a, n) << endl; // output: 30
-    return 0;
-}
-
-//or
-
-// User defined function that returns sum of
-// arr[] using accumulate() library function.
-int
-arraySum(vector<int>& v)
-{
-    int initial_sum = 0;
-    return accumulate(v.begin(), v.end(), initial_sum);
-}
-
-int
-main()
-{
-    vector<int> v;
-    v.push_back(5);
-    v.push_back(10);
-    v.push_back(15);
-    cout << arraySum(v) << endl;
-    return 0;
-}
-```
-
-## [How to find the maximum element of a Vector using STL in C++](https://www.geeksforgeeks.org/how-to-find-the-maximum-element-of-a-vector-using-stl-in-c/)
-
-```text
-#include <vector>
-#include <algorithm>
-#include <iostream>
-
-int
-example_1(void)
-{
-    using namespace std;
-    // Get the vector
-    int arr[] = { 1, 45, 54, 71, 76, 12 };
-    vector<int> a(arr, arr+(sizeof(arr)/sizeof(arr[0])));
-    // Print the vector
-    cout << "Example1 Vector: ";
-    for (int i = 0; i < a.size(); i++)
-        cout << a[i] << " ";
-    cout << endl;
-    // Find the max element
-    cout << "\nMax Element = "
-        << *max_element(a.begin(), a.end()) << endl; // Output: 76
-    return 0;
-}
-
-int
-example_2(void)
-{
-    // Get the vector
-    int arr[] = { 1, 45, 54, 71, 76, 12 };
-    std::vector<int> a(arr, arr+(sizeof(arr)/sizeof(arr[0])));
-    // Print the vector
-    std::cout << "Eample2 Vector: ";
-    for (int i = 0; i < a.size(); i++)
-        std::cout << a[i] << " ";
-    std::cout << std::endl;
-    // Find the max element
-    std::cout << "\nMax Element = "
-        << *std::max_element(a.begin(), a.end()) << std::endl; // Output: 76
-    return 0;
-}
-
-int
-example_3(void)
-{
-    using namespace std;
-    int v[] = { 'a', 'c', 'k', 'd', 'e', 'f', 'h' };
-    // Finding the maximum value between the first and the
-    // fourth element
-    int* i1;
-    i1 = std::max_element(v, v + 4);
-    cout << char(*i1) << "\n"; // output: k
-    return 0;
-}
-```
-
-## [Range-based for loop in C++](https://www.geeksforgeeks.org/range-based-loop-c/)
-
-```text
-for ( range_declaration : range_expression )
-    loop_statement
-
-Parameters :
-range_declaration :
-a declaration of a named variable, whose type is the
-type of the element of the sequence represented by
-range_expression, or a reference to that type.
-Often uses the auto specifier for automatic type
-deduction.
-
-range_expression :
-any expression that represents a suitable sequence
-or a braced-init-list.
-
-loop_statement :
-any statement, typically a compound statement, which
-is the body of the loop.
-```
-
-```text
-// Illustration of range-for loop
-// using CPP code
-#include <iostream>
-#include <vector>
-#include <map>
-
-//Driver
-int
-main()
-{
-    // Iterating over whole array
-    std::vector<int> v = {0, 1, 2, 3, 4, 5};
-    for (auto i : v)
-        std::cout << i << ' ';
-    std::cout << '\n';
-    // the initializer may be a braced-init-list
-    for (int n : {0, 1, 2, 3, 4, 5})
-        std::cout << n << ' ';
-    std::cout << '\n';
-    // Iterating over array
-    int a[] = {0, 1, 2, 3, 4, 5};
-    for (int n : a)
-        std::cout << n << ' ';
-    std::cout << '\n';
-    // Just running a loop for every array
-    // element
-    for (int n : a)
-        std::cout << "In loop" << ' ';
-    std::cout << '\n';
-    // Printing string characters
-    std::string str = "Geeks";
-    for (char c : str)
-        std::cout << c << ' ';
-    std::cout << '\n';
-    // Printing keys and values of a map
-    std::map <int, int> MAP({{1, 1}, {2, 2}, {3, 3}});
-    for (auto i : MAP)
-        std::cout << '{' << i.first << ", " << i.second << "}\n";
-}
-```
-
-```text
-Output:
-0 1 2 3 4 5
-0 1 2 3 4 5
-0 1 2 3 4 5
-In loop In loop In loop In loop In loop In loop
-G e e k s
-{1, 1}
-{2, 2}
-{3, 3}
-```
-
-## [vector in C++ STL](https://www.geeksforgeeks.org/vector-in-cpp-stl/)
-
-[ref.1](http://larry850806.github.io/2016/06/06/STL2/)
-
-+ insert and erase
-
-```text
-int arr[] = {1, 2, 3, 4, 5};
-vector<int> vec(arr, arr+5);    //vec = [1, 2, 3, 4, 5]
-vec.insert(vec.begin(), 0); //vec = [0, 1, 2, 3, 4, 5]
-vec.insert(vec.end(), 3, 100); //vec = [0, 1, 2, 3, 4, 5, 100, 100, 100]
-vec.erase(vec.begin()); //vec = [1, 2, 3, 4, 5, 100, 100, 100]
-vec.erase(vec.end()-1); //vec = [1, 2, 3, 4, 5, 100, 100]
-vec.erase(vec.begin(), vec.begin() + 5); //vec = [100, 100];
-cout << vec.size() << endl; //size = 2
-```
-
-## [algorithms library in C++ STL](https://www.geeksforgeeks.org/algorithms-library-c-stl/)
-
-+ [std::reverse() in C++](https://www.geeksforgeeks.org/stdreverse-in-c/)
-
-```text
-// CPP program to illustrate
-// std::reverse() function of STL
-#include<iostream>
-#include<algorithm>
-#include<vector>
-using namespace std;
-int main()
-{
-    vector <int> v ;
-    // Inserting elements in vector
-    for (int i = 0; i < 8; i++)
-        v.push_back(i+10);
-    cout << "Reverse only from index 5 to 7 in array:\n";
-    // Reversing elements from index 5 to index 7
-    reverse(v.begin() + 5, v.begin() + 8);
-    // Displaying elements of vector
-    vector <int> :: iterator it;
-    for (it = v.begin(); it != v.end(); it++)
-        cout << (*it) << " ";
-    // Reversing directly from beginning to end
-    cout << "\nReverse full array:\n";
-    int a[] = {4, 5, 6, 7};
-    std::reverse(std::begin(a), std::end(a));
-    // Print the array
-    std::cout << a[0] << a[1] << a[2] << a[3] << '\n';
-    return 0;
-}
-```
-
-## String
+## string
 
 + [C++ string class and its applications](https://www.geeksforgeeks.org/c-string-class-and-its-applications/)
 
@@ -972,6 +529,445 @@ int main ()
 }
 ```
 
+## [map](https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/)
+### upper bound
+
+```text
+returns an iterator to the first element greater than the given key
+Syntax:
+    map_name.upper_bound(key)
+```
+
+```text
+#include <map>
+
+int main()
+{
+    using namespace std;
+    // initialize container
+    map<int, int> mp;
+
+    // insert elements in random order
+    mp.insert({ 12, 30 });
+    mp.insert({ 11, 10 });
+    mp.insert({ 15, 50 });
+    mp.insert({ 14, 40 });
+
+    // when 11 is present
+    auto it = mp.upper_bound(11);
+    cout << "The upper bound of key 11 is ";
+    cout << (*it).first << " " << (*it).second << endl;
+
+    // when 13 is not present
+    it = mp.upper_bound(13);
+    cout << "The upper bound of key 13 is ";
+    cout << (*it).first << " " << (*it).second << endl;
+
+    // when 17 is exceeds the maximum key, so size
+    // of mp is returned as key and value as 0.
+    it = mp.upper_bound(17);
+    cout << "The upper bound of key 17 is ";
+    cout << (*it).first << " " << (*it).second;
+    return 0;
+}
+
+After map:
+11 10
+12 30 < key:11 upper bound
+14 40 < key:13 upper bound
+15 50
+-- -- < key:17 upper bound
+
+Output:
+The upper bound of key 11 is 12 30
+The upper bound of key 13 is 14 40
+The upper bound of key 17 is 4 0
+```
+
+### lower bound
+
+```text
+Returns an iterator pointing to the first element that is not less than
+ (i.e. greater or equal to) key.
+Syntax:
+    map_name.lower_bound(key)
+```
+
+```text
+// C++ function for illustration
+// map::lower_bound() function
+#include <map>
+
+int main()
+{
+    using namespace std;
+
+    // initialize container
+    map<int, int> mp;
+
+    // insert elements in random order
+    mp.insert({ 2, 30 });
+    mp.insert({ 1, 10 });
+    mp.insert({ 5, 50 });
+    mp.insert({ 4, 40 });
+    for (auto it = mp.begin(); it != mp.end(); it++) {
+        cout << (*it).first << " " << (*it).second << endl;
+    }
+
+    // when 2 is present
+    auto it = mp.lower_bound(2);
+    cout << "The lower bound of key 2 is ";
+    cout << (*it).first << " " << (*it).second << endl;
+
+    // when 3 is not present
+    // points to next greater after 3
+    it = mp.lower_bound(3);
+    cout << "The lower bound of key 3 is ";
+    cout << (*it).first << " " << (*it).second;
+
+    // when 6 exceeds
+    it = mp.lower_bound(6);
+    cout << "\nThe lower bound of key 6 is ";
+    cout << (*it).first << " " << (*it).second;
+    return 0;
+}
+
+Output:
+1 10
+2 30 < key:2 lower bound
+4 40 < key:3 lower bound
+5 50
+- -- < key:6 lower bound
+The lower bound of key 2 is 2 30
+The lower bound of key 3 is 4 40
+The lower bound of key 6 is 4 0
+```
+
+### [map vs unordered_map](https://www.geeksforgeeks.org/map-vs-unordered_map-c/)
+
+| Title | map | unordered_map |
+| ----- | --- | ------------  |
+|Ordering|increasing order(By Default)|no ordering|
+|Implementation|Self balancing BST(Like Red-Black Tree)|Hash Table|
+|Search Time|log(n)|O(1) Average/O(n) Worst Case|
+|Insertion Time|log(n) + Rebalance|Same as search|
+|Deletion time|log(n) + Rebalance|Same as search|
+
++ Use std::map when
+
+<img src="https://1.bp.blogspot.com/-irj_g2Xr7E8/VmU8mlBPOVI/AAAAAAAA_K4/sIdTgAMLUxE/s1600/27.4.png"
+width="70%"
+height="70%"
+alt="map key and value"
+align=center />
+
+<img src="https://3.bp.blogspot.com/-p2D7ql_iuFE/VmU7pe7zQrI/AAAAAAAA_Ks/WC3G3ADrKBE/s1600/27.7.png"
+width="70%"
+height="70%"
+alt="map iterator"
+align=center />
+
+```text
+# You need ordered data.
+# You would have to print/access the data (in sorted order).
+# You need predecessor/successor of elements.
+# See advantages of BST over Hash Table for more cases.
+```
+
+```text
+#include <map>
+int main()
+{
+    // Ordered map
+    std::map<int, int> order;
+
+    // Mapping values to keys
+    order[5] = 10;
+    order[3] = 5;
+    order[20] = 100;
+    order[1] = 1;
+
+    // Iterating the map and printing ordered values
+    for (auto i = order.begin(); i != order.end(); i++) {
+        std::cout << i->first << " : " << i->second << '\n';
+    }
+}
+
+Output:
+1 : 1
+3 : 5
+5 : 10
+20 : 100
+```
+
++ Use std::unordered_map when
+
+```text
+# You need to keep count of some data (Example – strings) and no ordering is required.
+# You need single element access i.e. no traversal.
+```
+
+```text
+#include <unordered_map>
+int main()
+{
+    // Unordered map
+    std::unordered_map<int, int> order;
+
+    // Mapping values to keys
+    order[5] = 10;
+    order[3] = 5;
+    order[20] = 100;
+    order[1] = 1;
+
+    // Iterating the map and printing unordered values
+    for (auto i = order.begin(); i != order.end(); i++) {
+        std::cout << i->first << " : " << i->second << '\n';
+    }
+}
+
+Output :
+1 : 1
+3 : 5
+20 : 100
+5 : 10
+```
+## algorithms
+### [Array sum in C++ STL](https://www.geeksforgeeks.org/array-sum-in-cpp-stl/)
+
+```text
+In C++, we can quickly find array sum using accumulate()
+
+#include <vector>
+#include <numeric>
+#include <iostream>
+
+using namespace std;
+
+// User defined function that returns sum of
+// arr[] using accumulate() library function.
+int
+arraySum(int a[], int n)
+{
+    int initial_sum = 0;
+    return accumulate(a, a+n, initial_sum);
+}
+
+int
+main()
+{
+    int a[] = {5, 10, 15} ;
+    int n = sizeof(a)/sizeof(a[0]);
+    cout << arraySum(a, n) << endl; // output: 30
+    return 0;
+}
+
+//or
+
+// User defined function that returns sum of
+// arr[] using accumulate() library function.
+int
+arraySum(vector<int>& v)
+{
+    int initial_sum = 0;
+    return accumulate(v.begin(), v.end(), initial_sum);
+}
+
+int
+main()
+{
+    vector<int> v;
+    v.push_back(5);
+    v.push_back(10);
+    v.push_back(15);
+    cout << arraySum(v) << endl;
+    return 0;
+}
+```
+
+### [How to find the maximum element of a Vector](https://www.geeksforgeeks.org/how-to-find-the-maximum-element-of-a-vector-using-stl-in-c/)
+
+```text
+#include <vector>
+#include <algorithm>
+#include <iostream>
+
+int
+example_1(void)
+{
+    using namespace std;
+    // Get the vector
+    int arr[] = { 1, 45, 54, 71, 76, 12 };
+    vector<int> a(arr, arr+(sizeof(arr)/sizeof(arr[0])));
+    // Print the vector
+    cout << "Example1 Vector: ";
+    for (int i = 0; i < a.size(); i++)
+        cout << a[i] << " ";
+    cout << endl;
+    // Find the max element
+    cout << "\nMax Element = "
+        << *max_element(a.begin(), a.end()) << endl; // Output: 76
+    return 0;
+}
+
+int
+example_2(void)
+{
+    // Get the vector
+    int arr[] = { 1, 45, 54, 71, 76, 12 };
+    std::vector<int> a(arr, arr+(sizeof(arr)/sizeof(arr[0])));
+    // Print the vector
+    std::cout << "Eample2 Vector: ";
+    for (int i = 0; i < a.size(); i++)
+        std::cout << a[i] << " ";
+    std::cout << std::endl;
+    // Find the max element
+    std::cout << "\nMax Element = "
+        << *std::max_element(a.begin(), a.end()) << std::endl; // Output: 76
+    return 0;
+}
+
+int
+example_3(void)
+{
+    using namespace std;
+    int v[] = { 'a', 'c', 'k', 'd', 'e', 'f', 'h' };
+    // Finding the maximum value between the first and the
+    // fourth element
+    int* i1;
+    i1 = std::max_element(v, v + 4);
+    cout << char(*i1) << "\n"; // output: k
+    return 0;
+}
+```
+
+## [Range-based for loop in C++](https://www.geeksforgeeks.org/range-based-loop-c/)
+
+```text
+for ( range_declaration : range_expression )
+    loop_statement
+
+Parameters :
+range_declaration :
+a declaration of a named variable, whose type is the
+type of the element of the sequence represented by
+range_expression, or a reference to that type.
+Often uses the auto specifier for automatic type
+deduction.
+
+range_expression :
+any expression that represents a suitable sequence
+or a braced-init-list.
+
+loop_statement :
+any statement, typically a compound statement, which
+is the body of the loop.
+```
+
+```text
+// Illustration of range-for loop
+// using CPP code
+#include <iostream>
+#include <vector>
+#include <map>
+
+//Driver
+int
+main()
+{
+    // Iterating over whole array
+    std::vector<int> v = {0, 1, 2, 3, 4, 5};
+    for (auto i : v)
+        std::cout << i << ' ';
+    std::cout << '\n';
+    // the initializer may be a braced-init-list
+    for (int n : {0, 1, 2, 3, 4, 5})
+        std::cout << n << ' ';
+    std::cout << '\n';
+    // Iterating over array
+    int a[] = {0, 1, 2, 3, 4, 5};
+    for (int n : a)
+        std::cout << n << ' ';
+    std::cout << '\n';
+    // Just running a loop for every array
+    // element
+    for (int n : a)
+        std::cout << "In loop" << ' ';
+    std::cout << '\n';
+    // Printing string characters
+    std::string str = "Geeks";
+    for (char c : str)
+        std::cout << c << ' ';
+    std::cout << '\n';
+    // Printing keys and values of a map
+    std::map <int, int> MAP({{1, 1}, {2, 2}, {3, 3}});
+    for (auto i : MAP)
+        std::cout << '{' << i.first << ", " << i.second << "}\n";
+}
+```
+
+```text
+Output:
+0 1 2 3 4 5
+0 1 2 3 4 5
+0 1 2 3 4 5
+In loop In loop In loop In loop In loop In loop
+G e e k s
+{1, 1}
+{2, 2}
+{3, 3}
+```
+
+## [vector in C++ STL](https://www.geeksforgeeks.org/vector-in-cpp-stl/)
+
+[ref.1](http://larry850806.github.io/2016/06/06/STL2/)
+
++ insert and erase
+
+```text
+int arr[] = {1, 2, 3, 4, 5};
+vector<int> vec(arr, arr+5);    //vec = [1, 2, 3, 4, 5]
+vec.insert(vec.begin(), 0); //vec = [0, 1, 2, 3, 4, 5]
+vec.insert(vec.end(), 3, 100); //vec = [0, 1, 2, 3, 4, 5, 100, 100, 100]
+vec.erase(vec.begin()); //vec = [1, 2, 3, 4, 5, 100, 100, 100]
+vec.erase(vec.end()-1); //vec = [1, 2, 3, 4, 5, 100, 100]
+vec.erase(vec.begin(), vec.begin() + 5); //vec = [100, 100];
+cout << vec.size() << endl; //size = 2
+```
+
+## [algorithms library in C++ STL](https://www.geeksforgeeks.org/algorithms-library-c-stl/)
+
++ [std::reverse() in C++](https://www.geeksforgeeks.org/stdreverse-in-c/)
+
+```text
+// CPP program to illustrate
+// std::reverse() function of STL
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+int main()
+{
+    vector <int> v ;
+    // Inserting elements in vector
+    for (int i = 0; i < 8; i++)
+        v.push_back(i+10);
+    cout << "Reverse only from index 5 to 7 in array:\n";
+    // Reversing elements from index 5 to index 7
+    reverse(v.begin() + 5, v.begin() + 8);
+    // Displaying elements of vector
+    vector <int> :: iterator it;
+    for (it = v.begin(); it != v.end(); it++)
+        cout << (*it) << " ";
+    // Reversing directly from beginning to end
+    cout << "\nReverse full array:\n";
+    int a[] = {4, 5, 6, 7};
+    std::reverse(std::begin(a), std::end(a));
+    // Print the array
+    std::cout << a[0] << a[1] << a[2] << a[3] << '\n';
+    return 0;
+}
+```
 
 ```text
 g++ -std=c++11 main.cpp
