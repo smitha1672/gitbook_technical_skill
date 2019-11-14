@@ -1,9 +1,15 @@
 # C ++
 
+```text
+g++ -std=c++11 main.cpp
+```
 [thispointer.com](https://thispointer.com/c-interview-questions/)
+<br>
 [GeeksforGeeks](https://www.geeksforgeeks.org/c-plus-plus/)
 
-## [Iterators](https://www.geeksforgeeks.org/iterators-c-stl/)
+## TODO
+
+## [ITERATORS](https://www.geeksforgeeks.org/iterators-c-stl/)
 
 ### vector
 
@@ -18,7 +24,7 @@ for (ptr = ar.begin(); ptr < ar.end(); ptr++)
     cout << *ptr << " ";
 ```
 
-## [Constructors](https://www.geeksforgeeks.org/constructors-c/#:~:targetText=A%20constructor%20is%20a%20member,member%20function%20of%20the%20class.)
+## [CONSTRUCTORS](https://www.geeksforgeeks.org/constructors-c/#:~:targetText=A%20constructor%20is%20a%20member,member%20function%20of%20the%20class.)
 
 A constructor is a member function of a class which initializes objects of a class.
 In C++, Constructor is automatically called when object(instance of class) create.
@@ -77,7 +83,7 @@ int main(void)
 output: 1 0
 ```
 
-## Class
+## CLASS
 
 The data members of `a class are private by default` and `the members of a structure are public by default`.
 
@@ -119,51 +125,11 @@ class SampleClass {
 };
 ```
 
-## stringstream
+## [VECTOR](https://www.geeksforgeeks.org/vector-in-cpp-stl/)
 
-```text
-clear() — to clear the stream
-str() — to get and set string object whose content is present in stream.
-operator << — add a string to the stringstream object.
-operator >> — read something from the stringstream object,
-```
+[ref.1](http://larry850806.github.io/2016/06/06/STL2/)
 
-### Example
-
-+ [to count frequencies of words](https://www.geeksforgeeks.org/stringstream-c-applications/)
-
-```text
-#include <bits/stdc++.h>
-
-using namespace std;
-
-void printFrequency(string st)
-{
-    // each word it mapped to it's frequency
-    map<string, int> FW;
-    stringstream ss(st); // Used for breaking words
-    string Word; // To store individual words
-
-    while (ss >> Word)
-        FW[Word]++;
-
-    map<string, int>::iterator m;
-    for (m = FW.begin(); m != FW.end(); m++)
-        cout << m->first << " -> "
-            << m->second << "\n";
-}
-
-int main(void)
-{
-    string s = "Geeks For Geeks Ide"
-    printFrequency(s);
-    return 0;
-}
-```
-
-## vector
-
-### [Initialize a vector in C++ with 5 different ways](https://www.geeksforgeeks.org/initialize-a-vector-in-cpp-different-ways/)
+### [initialize a vector with 5 different ways](https://www.geeksforgeeks.org/initialize-a-vector-in-cpp-different-ways/)
 
 ```text
 int main(void)
@@ -220,7 +186,7 @@ int main (void)
 
 ```
 
-### 2D vector in C++ with user defined size
+### 2D vector
 
 ```text
 # https://thispointer.com/creating-a-matrix-using-2d-vector-in-c-vector-of-vectors/
@@ -280,7 +246,21 @@ Outout :
 4 5 6
 7 8 9
 ```
-## string
+
+### insert and erase
+
+```text
+int arr[] = {1, 2, 3, 4, 5};
+vector<int> vec(arr, arr+5);    //vec = [1, 2, 3, 4, 5]
+vec.insert(vec.begin(), 0); //vec = [0, 1, 2, 3, 4, 5]
+vec.insert(vec.end(), 3, 100); //vec = [0, 1, 2, 3, 4, 5, 100, 100, 100]
+vec.erase(vec.begin()); //vec = [1, 2, 3, 4, 5, 100, 100, 100]
+vec.erase(vec.end()-1); //vec = [1, 2, 3, 4, 5, 100, 100]
+vec.erase(vec.begin(), vec.begin() + 5); //vec = [100, 100];
+cout << vec.size() << endl; //size = 2
+```
+
+## STRING
 
 + [C++ string class and its applications](https://www.geeksforgeeks.org/c-string-class-and-its-applications/)
 
@@ -529,7 +509,50 @@ int main ()
 }
 ```
 
-## [map](https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/)
+## STRINGSTREAM
+
+```text
+clear() — to clear the stream
+str() — to get and set string object whose content is present in stream.
+operator << — add a string to the stringstream object.
+operator >> — read something from the stringstream object,
+```
+
+### example
+
++ [to count frequencies of words](https://www.geeksforgeeks.org/stringstream-c-applications/)
+
+```text
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void printFrequency(string st)
+{
+    // each word it mapped to it's frequency
+    map<string, int> FW;
+    stringstream ss(st); // Used for breaking words
+    string Word; // To store individual words
+
+    while (ss >> Word)
+        FW[Word]++;
+
+    map<string, int>::iterator m;
+    for (m = FW.begin(); m != FW.end(); m++)
+        cout << m->first << " -> "
+            << m->second << "\n";
+}
+
+int main(void)
+{
+    string s = "Geeks For Geeks Ide"
+    printFrequency(s);
+    return 0;
+}
+```
+
+
+## [MAP](https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/)
 ### upper bound
 
 ```text
@@ -918,23 +941,6 @@ G e e k s
 {3, 3}
 ```
 
-## [vector in C++ STL](https://www.geeksforgeeks.org/vector-in-cpp-stl/)
-
-[ref.1](http://larry850806.github.io/2016/06/06/STL2/)
-
-+ insert and erase
-
-```text
-int arr[] = {1, 2, 3, 4, 5};
-vector<int> vec(arr, arr+5);    //vec = [1, 2, 3, 4, 5]
-vec.insert(vec.begin(), 0); //vec = [0, 1, 2, 3, 4, 5]
-vec.insert(vec.end(), 3, 100); //vec = [0, 1, 2, 3, 4, 5, 100, 100, 100]
-vec.erase(vec.begin()); //vec = [1, 2, 3, 4, 5, 100, 100, 100]
-vec.erase(vec.end()-1); //vec = [1, 2, 3, 4, 5, 100, 100]
-vec.erase(vec.begin(), vec.begin() + 5); //vec = [100, 100];
-cout << vec.size() << endl; //size = 2
-```
-
 ## [algorithms library in C++ STL](https://www.geeksforgeeks.org/algorithms-library-c-stl/)
 
 + [std::reverse() in C++](https://www.geeksforgeeks.org/stdreverse-in-c/)
@@ -967,16 +973,6 @@ int main()
     std::cout << a[0] << a[1] << a[2] << a[3] << '\n';
     return 0;
 }
-```
-
-```text
-g++ -std=c++11 main.cpp
-```
-
-```text
-reinterpret_cast
-auto event
-static_cast<uint32_t>
 ```
 
 ## [std::`back_inserter`](https://www.geeksforgeeks.org/stdback_inserter-in-cpp/)
