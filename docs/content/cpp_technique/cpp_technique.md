@@ -9,275 +9,308 @@ g++ -std=c++11 main.cpp
 
 ## TODO
 
-## [OVERLOADING](https://www.geeksforgeeks.org/operator-overloading-c/)
+## [INHERITANCE](https://www.geeksforgeeks.org/inheritance-in-c/)
 
-Following is the list of operators that cannot be overloaded.
+Modes of Inheritance
 
 ```text
-. (dot)
+1. Public mode
+2. Protected mode
+3. Private mode
+```
+
+Implementing inheritance Syntax
+
+```text
+class subclass_name : access_mode base_class_name
+{
+      //body of subclass
+};
+```
+
+Types of Inheritance
+
+```text
+1. Single Inheritance
+2. Multiple Inheritance
+3. Multilevel Inheritance
+4. Hierarchical Inheritance
+5. Hybrid (Virtual) Inheritance
+```
+
+### [ACCESS MODIFIERS Public/Private/Protected](https://www.geeksforgeeks.org/access-modifiers-in-c/#:~:targetText=Protected%3A%20Protected%20access%20modifier%20is,derived%20class)%20of%20that%20class.)
+
+To expalin Public/Private/Protected
+
+## [OVERLOADING](HTTPS://WWW.GEEKSFORGEEKS.ORG/OPERATOR-OVERLOADING-C/)
+
+FOLLOWING IS THE LIST OF OPERATORS THAT CANNOT BE OVERLOADED.
+
+```TEXT
+. (DOT)
 ::
 ?:
-sizeof
+SIZEOF
 ```
 
-### simple example
+### SIMPLE EXAMPLE
 
-```text
-#include<iostream>
-using namespace std;
+```TEXT
+#INCLUDE<IOSTREAM>
+USING NAMESPACE STD;
 
-class Complex {
-    private:
-        int real, imag;
-    public:
-        Complex(int r = 0, int i =0) {real = r; imag = i;}
+CLASS COMPLEX {
+    PRIVATE:
+        INT REAL, IMAG;
+    PUBLIC:
+        COMPLEX(INT R = 0, INT I =0) {REAL = R; IMAG = I;}
 
-        // This is automatically called when '+' is used with
-        // between two Complex objects
-        Complex operator + (Complex const &obj) {
-            Complex res;
-            res.real = real + obj.real;
-            res.imag = imag + obj.imag;
-            return res;
+        // THIS IS AUTOMATICALLY CALLED WHEN '+' IS USED WITH
+        // BETWEEN TWO COMPLEX OBJECTS
+        COMPLEX OPERATOR + (COMPLEX CONST &OBJ) {
+            COMPLEX RES;
+            RES.REAL = REAL + OBJ.REAL;
+            RES.IMAG = IMAG + OBJ.IMAG;
+            RETURN RES;
         }
-        void print() { cout << real
-            << " + i" << imag << endl; }
+        VOID PRINT() { COUT << REAL
+            << " + I" << IMAG << ENDL; }
 };
 
-int main()
+INT MAIN()
 {
-    Complex c1(10, 5), c2(2, 4);
-    Complex c3 = c1 + c2; // An example call to "operator+"
-    c3.print();
+    COMPLEX C1(10, 5), C2(2, 4);
+    COMPLEX C3 = C1 + C2; // AN EXAMPLE CALL TO "OPERATOR+"
+    C3.PRINT();
 }
 ```
 
-### [types of operator overloading](https://www.geeksforgeeks.org/types-of-operator-overloading-in-c/)
+### [TYPES OF OPERATOR OVERLOADING](HTTPS://WWW.GEEKSFORGEEKS.ORG/TYPES-OF-OPERATOR-OVERLOADING-IN-C/)
 
-Operator Overloading can be done by using three approaches, they are:
+OPERATOR OVERLOADING CAN BE DONE BY USING THREE APPROACHES, THEY ARE:
 
-1. Overloading unary operator.
-2. Overloading binary operator.
-3. Overloading binary operator using a `friend` function.
+1. OVERLOADING UNARY OPERATOR.
+2. OVERLOADING BINARY OPERATOR.
+3. OVERLOADING BINARY OPERATOR USING A `FRIEND` FUNCTION.
 
-+ issue learning
++ ISSUE LEARNING
 
-```text
-class Box {
-private:
+```TEXT
+CLASS BOX {
+PRIVATE:
     ...
-public:
-    bool operator<(Box&);                       //Overloading binary operator
-    friend ostream& operator<<(ostream&, Box&); // Overloading binary operator using a friend function
+PUBLIC:
+    BOOL OPERATOR<(BOX&);                       //OVERLOADING BINARY OPERATOR
+    FRIEND OSTREAM& OPERATOR<<(OSTREAM&, BOX&); // OVERLOADING BINARY OPERATOR USING A FRIEND FUNCTION
 };
 
-bool Box::operator<(Box& B)
+BOOL BOX::OPERATOR<(BOX& B)
 {
-    return false;
+    RETURN FALSE;
 }
 
-ostream& Box::operator<<(ostream& out, Box& box) // building failure
-ostream& operator<<(ostream& out, Box& box) // building pass
+OSTREAM& BOX::OPERATOR<<(OSTREAM& OUT, BOX& BOX) // BUILDING FAILURE
+OSTREAM& OPERATOR<<(OSTREAM& OUT, BOX& BOX) // BUILDING PASS
 {
-    return out;
+    RETURN OUT;
 }
 ```
 
 
-## [ITERATORS](https://www.geeksforgeeks.org/iterators-c-stl/)
+## [ITERATORS](HTTPS://WWW.GEEKSFORGEEKS.ORG/ITERATORS-C-STL/)
 
-### vector
+### VECTOR
 
-```text
-vector<int> ar = { 1, 2, 3, 4, 5 };
-// Declaring iterator to a vector
-vector<int>::iterator ptr;
+```TEXT
+VECTOR<INT> AR = { 1, 2, 3, 4, 5 };
+// DECLARING ITERATOR TO A VECTOR
+VECTOR<INT>::ITERATOR PTR;
 
-// Displaying vector elements using begin() and end()
-cout << "The vector elements are : ";
-for (ptr = ar.begin(); ptr < ar.end(); ptr++)
-    cout << *ptr << " ";
+// DISPLAYING VECTOR ELEMENTS USING BEGIN() AND END()
+COUT << "THE VECTOR ELEMENTS ARE : ";
+FOR (PTR = AR.BEGIN(); PTR < AR.END(); PTR++)
+    COUT << *PTR << " ";
 ```
 
-## [CONSTRUCTORS](https://www.geeksforgeeks.org/constructors-c/#:~:targetText=A%20constructor%20is%20a%20member,member%20function%20of%20the%20class.)
+## [CONSTRUCTORS](HTTPS://WWW.GEEKSFORGEEKS.ORG/CONSTRUCTORS-C/#:~:TARGETTEXT=A%20CONSTRUCTOR%20IS%20A%20MEMBER,MEMBER%20FUNCTION%20OF%20THE%20CLASS.)
 
-A constructor is a member function of a class which initializes objects of a class.
-In C++, Constructor is automatically called when object(instance of class) create.
-It is special member function of the class.
+A CONSTRUCTOR IS A MEMBER FUNCTION OF A CLASS WHICH INITIALIZES OBJECTS OF A CLASS.
+IN C++, CONSTRUCTOR IS AUTOMATICALLY CALLED WHEN OBJECT(INSTANCE OF CLASS) CREATE.
+IT IS SPECIAL MEMBER FUNCTION OF THE CLASS.
 
-```text
-1. Constructor has same name as the class itself
-2. Constructors don’t have return type
-3. A constructor is automatically called when an object is created.
-4. If we do not specify a constructor, C++ compiler generates a default constructor for us
-(expects no parameters and has an empty body).
+```TEXT
+1. CONSTRUCTOR HAS SAME NAME AS THE CLASS ITSELF
+2. CONSTRUCTORS DON’T HAVE RETURN TYPE
+3. A CONSTRUCTOR IS AUTOMATICALLY CALLED WHEN AN OBJECT IS CREATED.
+4. IF WE DO NOT SPECIFY A CONSTRUCTOR, C++ COMPILER GENERATES A DEFAULT CONSTRUCTOR FOR US
+(EXPECTS NO PARAMETERS AND HAS AN EMPTY BODY).
 ```
 
-```text
-class Box {
-public:
-    int l, b, h;
-public:
-    Box();
-    Box(int l, int b, int h);
+```TEXT
+CLASS BOX {
+PUBLIC:
+    INT L, B, H;
+PUBLIC:
+    BOX();
+    BOX(INT L, INT B, INT H);
 };
 
 /*
-Default Constructors:
-Default constructor is the constructor which doesn’t take any argument.
-It has no parameters.
+DEFAULT CONSTRUCTORS:
+DEFAULT CONSTRUCTOR IS THE CONSTRUCTOR WHICH DOESN’T TAKE ANY ARGUMENT.
+IT HAS NO PARAMETERS.
 */
-Box::Box()
+BOX::BOX()
 {
-    l = b = h = 0;
+    L = B = H = 0;
 }
 
 /*
-Parameterized Constructors:
-It is possible to pass arguments to constructors.
-Typically, these arguments help initialize an object when it is created.
-To create a parameterized constructor, simply add parameters to it the way you would to any other
-function.
-When you define the constructor’s body, use the parameters to initialize the object.
+PARAMETERIZED CONSTRUCTORS:
+IT IS POSSIBLE TO PASS ARGUMENTS TO CONSTRUCTORS.
+TYPICALLY, THESE ARGUMENTS HELP INITIALIZE AN OBJECT WHEN IT IS CREATED.
+TO CREATE A PARAMETERIZED CONSTRUCTOR, SIMPLY ADD PARAMETERS TO IT THE WAY YOU WOULD TO ANY OTHER
+FUNCTION.
+WHEN YOU DEFINE THE CONSTRUCTOR’S BODY, USE THE PARAMETERS TO INITIALIZE THE OBJECT.
 */
-Box::Box(int il, int ib, int ih)
+BOX::BOX(INT IL, INT IB, INT IH)
 {
-    l = il;
-    b = ib;
-    h = ih;
+    L = IL;
+    B = IB;
+    H = IH;
 }
 
-int main(void)
+INT MAIN(VOID)
 {
-    Box box1(1, 2, 3);
-    Box box2;
-    std::cout << box1.l << " "<< box2.l << "\n";
-    return 0;
+    BOX BOX1(1, 2, 3);
+    BOX BOX2;
+    STD::COUT << BOX1.L << " "<< BOX2.L << "\N";
+    RETURN 0;
 }
 
-output: 1 0
+OUTPUT: 1 0
 ```
 
 ## CLASS
 
-The data members of `a class are private by default` and `the members of a structure are public by default`.
+THE DATA MEMBERS OF `A CLASS ARE PRIVATE BY DEFAULT` AND `THE MEMBERS OF A STRUCTURE ARE PUBLIC BY DEFAULT`.
 
-It also has access specifiers, which restrict the access of member elements.
-The primarily used ones are the following:
-public: Public members (variables, methods) can be accessed from anywhere the code is visible.
-private: Private members can be accessed only by other member functions, and it can not be accessed outside of class.
+IT ALSO HAS ACCESS SPECIFIERS, WHICH RESTRICT THE ACCESS OF MEMBER ELEMENTS.
+THE PRIMARILY USED ONES ARE THE FOLLOWING:
+PUBLIC: PUBLIC MEMBERS (VARIABLES, METHODS) CAN BE ACCESSED FROM ANYWHERE THE CODE IS VISIBLE.
+PRIVATE: PRIVATE MEMBERS CAN BE ACCESSED ONLY BY OTHER MEMBER FUNCTIONS, AND IT CAN NOT BE ACCESSED OUTSIDE OF CLASS.
 
-Class can be represented in the form of
+CLASS CAN BE REPRESENTED IN THE FORM OF
 
-```text
-class ClassName {
-access_specifier1:
-    type1 val1;
-    type2 val2;
-    ret_type1 method1(type_arg1 arg1, type_arg2 arg2,...)
+```TEXT
+CLASS CLASSNAME {
+ACCESS_SPECIFIER1:
+    TYPE1 VAL1;
+    TYPE2 VAL2;
+    RET_TYPE1 METHOD1(TYPE_ARG1 ARG1, TYPE_ARG2 ARG2,...)
     ...
-access_specifier2:
-    type3 val3;
-    type4 val4;
-    ret_type2 method2(type_arg3 arg3, type_arg4 arg4,...)
+ACCESS_SPECIFIER2:
+    TYPE3 VAL3;
+    TYPE4 VAL4;
+    RET_TYPE2 METHOD2(TYPE_ARG3 ARG3, TYPE_ARG4 ARG4,...)
     ...
 };
 ```
 
-it's a common practice to make all variables private, and set/get them using public methods. For example:
+IT'S A COMMON PRACTICE TO MAKE ALL VARIABLES PRIVATE, AND SET/GET THEM USING PUBLIC METHODS. FOR EXAMPLE:
 
-```text
-class SampleClass {
-    private:
-        int val;
-    public:
-        void set(int a) {
-            val = a;
+```TEXT
+CLASS SAMPLECLASS {
+    PRIVATE:
+        INT VAL;
+    PUBLIC:
+        VOID SET(INT A) {
+            VAL = A;
         }
-        int get() {
-            return val;
+        INT GET() {
+            RETURN VAL;
         }
 };
 ```
 
-## [VECTOR](https://www.geeksforgeeks.org/vector-in-cpp-stl/)
+## [VECTOR](HTTPS://WWW.GEEKSFORGEEKS.ORG/VECTOR-IN-CPP-STL/)
 
-[ref.1](http://larry850806.github.io/2016/06/06/STL2/)
+[REF.1](HTTP://LARRY850806.GITHUB.IO/2016/06/06/STL2/)
 
-### [initialize a vector with 5 different ways](https://www.geeksforgeeks.org/initialize-a-vector-in-cpp-different-ways/)
+### [INITIALIZE A VECTOR WITH 5 DIFFERENT WAYS](HTTPS://WWW.GEEKSFORGEEKS.ORG/INITIALIZE-A-VECTOR-IN-CPP-DIFFERENT-WAYS/)
 
-```text
-int main(void)
+```TEXT
+INT MAIN(VOID)
 {
-    int n = 3;
+    INT N = 3;
 
-    // Create a vector of size n with
-    // all values as 10.
-    vector<int> vect(n, 10);
-    return 0;
+    // CREATE A VECTOR OF SIZE N WITH
+    // ALL VALUES AS 10.
+    VECTOR<INT> VECT(N, 10);
+    RETURN 0;
 }
 
-int main (void)
+INT MAIN (VOID)
 {
-    vector<int> vect {10, 20, 30};
+    VECTOR<INT> VECT {10, 20, 30};
     ...
-    return 0;
+    RETURN 0;
 }
 
-int main (void)
+INT MAIN (VOID)
 {
-    int arr[] = { 10, 20, 30 };
-    int n = sizeof(arr) / sizeof(arr[0]);
-    /*vect = 10, 20, 30*/
-    vector<int> vect(arr, arr + n);
+    INT ARR[] = { 10, 20, 30 };
+    INT N = SIZEOF(ARR) / SIZEOF(ARR[0]);
+    /*VECT = 10, 20, 30*/
+    VECTOR<INT> VECT(ARR, ARR + N);
     ...
-    return 0;
+    RETURN 0;
 }
 
-int main (void)
+INT MAIN (VOID)
 {
-    int arr[] = { 10, 20, 30 };
-    int n = sizeof(arr) / sizeof(arr[0]);
-    /*vect = 10, 20, 30*/
-    vector<int> vect(arr, arr + n);
+    INT ARR[] = { 10, 20, 30 };
+    INT N = SIZEOF(ARR) / SIZEOF(ARR[0]);
+    /*VECT = 10, 20, 30*/
+    VECTOR<INT> VECT(ARR, ARR + N);
     ...
-    return 0;
+    RETURN 0;
 }
 
-int main (void)
+INT MAIN (VOID)
 {
-    // Create an empty vector
-    vector<int> vect;
+    // CREATE AN EMPTY VECTOR
+    VECTOR<INT> VECT;
 
-    vect.push_back(10);
-    vect.push_back(20);
-    vect.push_back(30);
+    VECT.PUSH_BACK(10);
+    VECT.PUSH_BACK(20);
+    VECT.PUSH_BACK(30);
 
-    for (int x : vect)
-        cout << x << " ";
+    FOR (INT X : VECT)
+        COUT << X << " ";
 
-    return 0;
+    RETURN 0;
 }
 
 ```
 
-### 2D vector
+### 2D VECTOR
 
-```text
-# https://thispointer.com/creating-a-matrix-using-2d-vector-in-c-vector-of-vectors/
+```TEXT
+# HTTPS://THISPOINTER.COM/CREATING-A-MATRIX-USING-2D-VECTOR-IN-C-VECTOR-OF-VECTORS/
 
-# Declaration of 2D vector or vector of vector in C++
-std::vector <std::vector<int> > vec2D
+# DECLARATION OF 2D VECTOR OR VECTOR OF VECTOR IN C++
+STD::VECTOR <STD::VECTOR<INT> > VEC2D
 
-# Initializing Vector of Vector – 2D vector
+# INITIALIZING VECTOR OF VECTOR – 2D VECTOR
 
-std::vector <NUMBER OF ELEMENTS, VALUE OF EACH ELEMENT>
-std::vector<int> (4, 1)
+STD::VECTOR <NUMBER OF ELEMENTS, VALUE OF EACH ELEMENT>
+STD::VECTOR<INT> (4, 1)
 
-# Now to create a vector of 5 vectors in which each vector is initialized as above, we will use following syntax,
-std::vector <std::vector > vec2D(5, std::vector(4, 1));
+# NOW TO CREATE A VECTOR OF 5 VECTORS IN WHICH EACH VECTOR IS INITIALIZED AS ABOVE, WE WILL USE FOLLOWING SYNTAX,
+STD::VECTOR <STD::VECTOR > VEC2D(5, STD::VECTOR(4, 1));
 
-Output
+OUTPUT
 
 1 , 1 , 1 , 1 ,
 1 , 1 , 1 , 1 ,
@@ -285,975 +318,975 @@ Output
 1 , 1 , 1 , 1 ,
 1 , 1 , 1 , 1 ,
 
-# Adding a new row in 2D vector
-vec2D.push_back(std::vector<int>(4, 11));
+# ADDING A NEW ROW IN 2D VECTOR
+VEC2D.PUSH_BACK(STD::VECTOR<INT>(4, 11));
 ```
 
-```text
-# https://www.geeksforgeeks.org/2d-vector-in-cpp-with-user-defined-size/
+```TEXT
+# HTTPS://WWW.GEEKSFORGEEKS.ORG/2D-VECTOR-IN-CPP-WITH-USER-DEFINED-SIZE/
 
-// C++ code to demonstrate 2D vector
-#include <iostream>
-#include <vector> // for 2D vector
-using namespace std;
+// C++ CODE TO DEMONSTRATE 2D VECTOR
+#INCLUDE <IOSTREAM>
+#INCLUDE <VECTOR> // FOR 2D VECTOR
+USING NAMESPACE STD;
 
-int main()
+INT MAIN()
 {
-    // Initializing 2D vector "vect" with
-    // values
-    vector<vector<int> > vect{ { 1, 2, 3 },
+    // INITIALIZING 2D VECTOR "VECT" WITH
+    // VALUES
+    VECTOR<VECTOR<INT> > VECT{ { 1, 2, 3 },
                                { 4, 5, 6 },
                                { 7, 8, 9 } };
 
-    // Displaying the 2D vector
-    for (int i = 0; i < vect.size(); i++) {
-        for (int j = 0; j < vect[i].size(); j++)
-            cout << vect[i][j] << " ";
-        cout << endl;
+    // DISPLAYING THE 2D VECTOR
+    FOR (INT I = 0; I < VECT.SIZE(); I++) {
+        FOR (INT J = 0; J < VECT[I].SIZE(); J++)
+            COUT << VECT[I][J] << " ";
+        COUT << ENDL;
     }
 
-    return 0;
+    RETURN 0;
 }
 
-Outout :
+OUTOUT :
 
 1 2 3
 4 5 6
 7 8 9
 ```
 
-### insert and erase
+### INSERT AND ERASE
 
-```text
-int arr[] = {1, 2, 3, 4, 5};
-vector<int> vec(arr, arr+5);    //vec = [1, 2, 3, 4, 5]
-vec.insert(vec.begin(), 0); //vec = [0, 1, 2, 3, 4, 5]
-vec.insert(vec.end(), 3, 100); //vec = [0, 1, 2, 3, 4, 5, 100, 100, 100]
-vec.erase(vec.begin()); //vec = [1, 2, 3, 4, 5, 100, 100, 100]
-vec.erase(vec.end()-1); //vec = [1, 2, 3, 4, 5, 100, 100]
-vec.erase(vec.begin(), vec.begin() + 5); //vec = [100, 100];
-cout << vec.size() << endl; //size = 2
+```TEXT
+INT ARR[] = {1, 2, 3, 4, 5};
+VECTOR<INT> VEC(ARR, ARR+5);    //VEC = [1, 2, 3, 4, 5]
+VEC.INSERT(VEC.BEGIN(), 0); //VEC = [0, 1, 2, 3, 4, 5]
+VEC.INSERT(VEC.END(), 3, 100); //VEC = [0, 1, 2, 3, 4, 5, 100, 100, 100]
+VEC.ERASE(VEC.BEGIN()); //VEC = [1, 2, 3, 4, 5, 100, 100, 100]
+VEC.ERASE(VEC.END()-1); //VEC = [1, 2, 3, 4, 5, 100, 100]
+VEC.ERASE(VEC.BEGIN(), VEC.BEGIN() + 5); //VEC = [100, 100];
+COUT << VEC.SIZE() << ENDL; //SIZE = 2
 ```
 
 ## STRING
 
-+ [C++ string class and its applications](https://www.geeksforgeeks.org/c-string-class-and-its-applications/)
++ [C++ STRING CLASS AND ITS APPLICATIONS](HTTPS://WWW.GEEKSFORGEEKS.ORG/C-STRING-CLASS-AND-ITS-APPLICATIONS/)
 
-```text
-C++ string class has a lot of functions to handle string easily. Most useful of them are demonstrated in below code.
-// C++ program to demonstrate various function string class
-#include <bits/stdc++.h>
-using namespace std;
+```TEXT
+C++ STRING CLASS HAS A LOT OF FUNCTIONS TO HANDLE STRING EASILY. MOST USEFUL OF THEM ARE DEMONSTRATED IN BELOW CODE.
+// C++ PROGRAM TO DEMONSTRATE VARIOUS FUNCTION STRING CLASS
+#INCLUDE <BITS/STDC++.H>
+USING NAMESPACE STD;
 
-int
-main()
+INT
+MAIN()
 {
-    // various constructor of string class
-    // initialization by raw string
-    string str1("first string");
-    // initialization by another string
-    string str2(str1);
-    // initialization by character with number of occurence
-    string str3(5, '#');
-    // initialization by part of another string
-    string str4(str1, 6, 6); // from 6th index (second parameter)
-    // 6 characters (third parameter)
-    // initialization by part of another string : iteartor version
-    string str5(str2.begin(), str2.begin() + 5);
-    cout << str1 << endl;
-    cout << str2 << endl;
-    cout << str3 << endl;
-    cout << str4 << endl;
-    cout << str5 << endl;
-    // assignment operator
-    string str6 = str4;
-    // clear function deletes all character from string
-    str4.clear();
-    // both size() and length() return length of string and
-    // they work as synonyms
-    int len = str6.length(); // Same as "len = str6.size();"
-    cout << "Length of string is : " << len << endl;
-    // a particular character can be accessed using at /
-    // [] operator
-    char ch = str6.at(2); // Same as "ch = str6[2];"
-    cout << "third character of string is : " << ch << endl;
-    // front return first character and back returns last charcter
-    // of string
-    char ch_f = str6.front(); // Same as "ch_f = str6[0];"
-    char ch_b = str6.back(); // Same as below
-    // "ch_b = str6[str6.length() - 1];"
-    cout << "First char is : " << ch_f << ", Last char is : "
-        << ch_b << endl;
-    // c_str returns null terminated char array version of string
-    const char* charstr = str6.c_str();
-    printf("%s\n", charstr);
-    // append add the argument string at the end
-    str6.append(" extension");
-    // same as str6 += " extension"
-    // another version of append, which appends part of other
-    // string
-    str4.append(str6, 0, 6); // at 0th position 6 character
-    cout << str6 << endl;
-    cout << str4 << endl;
-    // find returns index where pattern is found.
-    // If pattern is not there it returns predefined
-    // constant npos whose value is -1
-    if (str6.find(str4) != string::npos)
-        cout << "str4 found in str6 at " << str6.find(str4)
-            << " pos" << endl;
-    else
-        cout << "str4 not found in str6" << endl;
-    // substr(a, b) function returns a substring of b length
-    // starting from index a
-    cout << str6.substr(7, 3) << endl;
-    // if second argument is not passed, string till end is
-    // taken as substring
-    cout << str6.substr(7) << endl;
-    // erase(a, b) deletes b characters at index a
-    str6.erase(7, 4);
-    cout << str6 << endl;
-    // iterator version of erase
-    str6.erase(str6.begin() + 5, str6.end() - 3);
-    cout << str6 << endl;
-    str6 = "This is a examples";
-    // replace(a, b, str) replaces b characters from a index by str
-    str6.replace(2, 7, "ese are test");
-    cout << str6 << endl;
-    return 0;
+    // VARIOUS CONSTRUCTOR OF STRING CLASS
+    // INITIALIZATION BY RAW STRING
+    STRING STR1("FIRST STRING");
+    // INITIALIZATION BY ANOTHER STRING
+    STRING STR2(STR1);
+    // INITIALIZATION BY CHARACTER WITH NUMBER OF OCCURENCE
+    STRING STR3(5, '#');
+    // INITIALIZATION BY PART OF ANOTHER STRING
+    STRING STR4(STR1, 6, 6); // FROM 6TH INDEX (SECOND PARAMETER)
+    // 6 CHARACTERS (THIRD PARAMETER)
+    // INITIALIZATION BY PART OF ANOTHER STRING : ITEARTOR VERSION
+    STRING STR5(STR2.BEGIN(), STR2.BEGIN() + 5);
+    COUT << STR1 << ENDL;
+    COUT << STR2 << ENDL;
+    COUT << STR3 << ENDL;
+    COUT << STR4 << ENDL;
+    COUT << STR5 << ENDL;
+    // ASSIGNMENT OPERATOR
+    STRING STR6 = STR4;
+    // CLEAR FUNCTION DELETES ALL CHARACTER FROM STRING
+    STR4.CLEAR();
+    // BOTH SIZE() AND LENGTH() RETURN LENGTH OF STRING AND
+    // THEY WORK AS SYNONYMS
+    INT LEN = STR6.LENGTH(); // SAME AS "LEN = STR6.SIZE();"
+    COUT << "LENGTH OF STRING IS : " << LEN << ENDL;
+    // A PARTICULAR CHARACTER CAN BE ACCESSED USING AT /
+    // [] OPERATOR
+    CHAR CH = STR6.AT(2); // SAME AS "CH = STR6[2];"
+    COUT << "THIRD CHARACTER OF STRING IS : " << CH << ENDL;
+    // FRONT RETURN FIRST CHARACTER AND BACK RETURNS LAST CHARCTER
+    // OF STRING
+    CHAR CH_F = STR6.FRONT(); // SAME AS "CH_F = STR6[0];"
+    CHAR CH_B = STR6.BACK(); // SAME AS BELOW
+    // "CH_B = STR6[STR6.LENGTH() - 1];"
+    COUT << "FIRST CHAR IS : " << CH_F << ", LAST CHAR IS : "
+        << CH_B << ENDL;
+    // C_STR RETURNS NULL TERMINATED CHAR ARRAY VERSION OF STRING
+    CONST CHAR* CHARSTR = STR6.C_STR();
+    PRINTF("%S\N", CHARSTR);
+    // APPEND ADD THE ARGUMENT STRING AT THE END
+    STR6.APPEND(" EXTENSION");
+    // SAME AS STR6 += " EXTENSION"
+    // ANOTHER VERSION OF APPEND, WHICH APPENDS PART OF OTHER
+    // STRING
+    STR4.APPEND(STR6, 0, 6); // AT 0TH POSITION 6 CHARACTER
+    COUT << STR6 << ENDL;
+    COUT << STR4 << ENDL;
+    // FIND RETURNS INDEX WHERE PATTERN IS FOUND.
+    // IF PATTERN IS NOT THERE IT RETURNS PREDEFINED
+    // CONSTANT NPOS WHOSE VALUE IS -1
+    IF (STR6.FIND(STR4) != STRING::NPOS)
+        COUT << "STR4 FOUND IN STR6 AT " << STR6.FIND(STR4)
+            << " POS" << ENDL;
+    ELSE
+        COUT << "STR4 NOT FOUND IN STR6" << ENDL;
+    // SUBSTR(A, B) FUNCTION RETURNS A SUBSTRING OF B LENGTH
+    // STARTING FROM INDEX A
+    COUT << STR6.SUBSTR(7, 3) << ENDL;
+    // IF SECOND ARGUMENT IS NOT PASSED, STRING TILL END IS
+    // TAKEN AS SUBSTRING
+    COUT << STR6.SUBSTR(7) << ENDL;
+    // ERASE(A, B) DELETES B CHARACTERS AT INDEX A
+    STR6.ERASE(7, 4);
+    COUT << STR6 << ENDL;
+    // ITERATOR VERSION OF ERASE
+    STR6.ERASE(STR6.BEGIN() + 5, STR6.END() - 3);
+    COUT << STR6 << ENDL;
+    STR6 = "THIS IS A EXAMPLES";
+    // REPLACE(A, B, STR) REPLACES B CHARACTERS FROM A INDEX BY STR
+    STR6.REPLACE(2, 7, "ESE ARE TEST");
+    COUT << STR6 << ENDL;
+    RETURN 0;
 }
 ```
 
-```text
-Output:
-first string
-first string
+```TEXT
+OUTPUT:
+FIRST STRING
+FIRST STRING
 #####
-string
-first
-Length of string is : 6
-third character of string is : r
-First char is : s, Last char is : g
-string
-string extension
-string
-str4 found in str6 at 0 pos
-ext
-extension
-string nsion
-strinion
-These are test examples
+STRING
+FIRST
+LENGTH OF STRING IS : 6
+THIRD CHARACTER OF STRING IS : R
+FIRST CHAR IS : S, LAST CHAR IS : G
+STRING
+STRING EXTENSION
+STRING
+STR4 FOUND IN STR6 AT 0 POS
+EXT
+EXTENSION
+STRING NSION
+STRINION
+THESE ARE TEST EXAMPLES
 ```
 
-```text
-On basis of above string function some application are written below :
-// C++ program to demonstrate uses of some string function
-#include <bits/stdc++.h>
-using namespace std;
+```TEXT
+ON BASIS OF ABOVE STRING FUNCTION SOME APPLICATION ARE WRITTEN BELOW :
+// C++ PROGRAM TO DEMONSTRATE USES OF SOME STRING FUNCTION
+#INCLUDE <BITS/STDC++.H>
+USING NAMESPACE STD;
 
-// this function returns floating point part of a number-string
-string
-returnFloatingPart(string str)
+// THIS FUNCTION RETURNS FLOATING POINT PART OF A NUMBER-STRING
+STRING
+RETURNFLOATINGPART(STRING STR)
 {
-    int pos = str.find(".");
-    if (pos == string::npos)
-        return "";
-    else
-        return str.substr(pos + 1);
+    INT POS = STR.FIND(".");
+    IF (POS == STRING::NPOS)
+        RETURN "";
+    ELSE
+        RETURN STR.SUBSTR(POS + 1);
 }
 
-// this function checks whether string contains all digit or not
-bool
-containsOnlyDigit(string str)
+// THIS FUNCTION CHECKS WHETHER STRING CONTAINS ALL DIGIT OR NOT
+BOOL
+CONTAINSONLYDIGIT(STRING STR)
 {
-    int l = str.length();
-    for (int i = 0; i < l; i++) {
-        if (str.at(i) < '0' || str.at(i) > '9')
-            return false;
+    INT L = STR.LENGTH();
+    FOR (INT I = 0; I < L; I++) {
+        IF (STR.AT(I) < '0' || STR.AT(I) > '9')
+            RETURN FALSE;
     }
-    // if we reach here all character are digits
-    return true;
+    // IF WE REACH HERE ALL CHARACTER ARE DIGITS
+    RETURN TRUE;
 }
 
-// this function replaces all single space by %20
-// Used in URLS
-string
-replaceBlankWith20(string str)
+// THIS FUNCTION REPLACES ALL SINGLE SPACE BY %20
+// USED IN URLS
+STRING
+REPLACEBLANKWITH20(STRING STR)
 {
-    string replaceby = "%20";
-    int n = 0;
-    // loop till all space are replaced
-    while ((n = str.find(" ", n)) != string::npos ) {
-        str.replace(n, 1, replaceby);
-        n += replaceby.length();
+    STRING REPLACEBY = "%20";
+    INT N = 0;
+    // LOOP TILL ALL SPACE ARE REPLACED
+    WHILE ((N = STR.FIND(" ", N)) != STRING::NPOS ) {
+        STR.REPLACE(N, 1, REPLACEBY);
+        N += REPLACEBY.LENGTH();
     }
-    return str;
+    RETURN STR;
 }
 
-// driver function to check above methods
-int
-main()
+// DRIVER FUNCTION TO CHECK ABOVE METHODS
+INT
+MAIN()
 {
-    string fnum = "23.342";
-    cout << "Floating part is : " << returnFloatingPart(fnum)
-        << endl;
-    string num = "3452";
-    if (containsOnlyDigit(num))
-        cout << "string contains only digit" << endl;
-    string urlex = "google com in";
-    cout << replaceBlankWith20(urlex) << endl;
-    return 0;
+    STRING FNUM = "23.342";
+    COUT << "FLOATING PART IS : " << RETURNFLOATINGPART(FNUM)
+        << ENDL;
+    STRING NUM = "3452";
+    IF (CONTAINSONLYDIGIT(NUM))
+        COUT << "STRING CONTAINS ONLY DIGIT" << ENDL;
+    STRING URLEX = "GOOGLE COM IN";
+    COUT << REPLACEBLANKWITH20(URLEX) << ENDL;
+    RETURN 0;
 }
 ```
 
-```text
-Output
-Floating part is : 342
-string contains only digit
-google%20com%20in
+```TEXT
+OUTPUT
+FLOATING PART IS : 342
+STRING CONTAINS ONLY DIGIT
+GOOGLE%20COM%20IN
 ```
 
-+ copy std::string into std::vector<char>
++ COPY STD::STRING INTO STD::VECTOR<CHAR>
 
-```text
-std::vector has a constructor that takes two iterators. You can use that:
+```TEXT
+STD::VECTOR HAS A CONSTRUCTOR THAT TAKES TWO ITERATORS. YOU CAN USE THAT:
 
-std::string str = "hello";
-std::vector<char> data(str.begin(), str.end());
-If you already have a vector and want to add the characters at the end, you need a back inserter:
+STD::STRING STR = "HELLO";
+STD::VECTOR<CHAR> DATA(STR.BEGIN(), STR.END());
+IF YOU ALREADY HAVE A VECTOR AND WANT TO ADD THE CHARACTERS AT THE END, YOU NEED A BACK INSERTER:
 
-std::string str = "hello";
-std::vector<char> data = /* ... */;
-std::copy(str.begin(), str.end(), std::back_inserter(data));
+STD::STRING STR = "HELLO";
+STD::VECTOR<CHAR> DATA = /* ... */;
+STD::COPY(STR.BEGIN(), STR.END(), STD::BACK_INSERTER(DATA));
 ```
 
-+ print string with printf and vector
++ PRINT STRING WITH PRINTF AND VECTOR
 
-```text
-std::vector<char> vec;
-vec.push_back('t');
-vec.push_back('e');
-vec.push_back('s');
-vec.push_back('t');
-vec.push_back('\0');
-std::ostringstream vts;
-if (!vec.empty()) {
-    std::copy(vec.begin(), vec.end(), std::ostream_iterator<char>(vts));
-    // Now add the last element with no
-    // delimiter
-    vts << vec.back();
+```TEXT
+STD::VECTOR<CHAR> VEC;
+VEC.PUSH_BACK('T');
+VEC.PUSH_BACK('E');
+VEC.PUSH_BACK('S');
+VEC.PUSH_BACK('T');
+VEC.PUSH_BACK('\0');
+STD::OSTRINGSTREAM VTS;
+IF (!VEC.EMPTY()) {
+    STD::COPY(VEC.BEGIN(), VEC.END(), STD::OSTREAM_ITERATOR<CHAR>(VTS));
+    // NOW ADD THE LAST ELEMENT WITH NO
+    // DELIMITER
+    VTS << VEC.BACK();
 }
-std::string s = vts.str();
-printf("%s\n", s.c_str());
+STD::STRING S = VTS.STR();
+PRINTF("%S\N", S.C_STR());
 ```
 
-+ printf with std::string?
++ PRINTF WITH STD::STRING?
 
-```c
-#include <iostream>
-#include <string>
-#include <stdio.h>
+```C
+#INCLUDE <IOSTREAM>
+#INCLUDE <STRING>
+#INCLUDE <STDIO.H>
 
-int main()
+INT MAIN()
 {
-    using namespace std;
+    USING NAMESPACE STD;
 
-    string myString = "Press ENTER to quit program!";
-    cout << "Come up and C++ me some time." << endl;
-    printf("Follow this command: %s", myString.c_str()); //note the use of c_str
-    cin.get();
+    STRING MYSTRING = "PRESS ENTER TO QUIT PROGRAM!";
+    COUT << "COME UP AND C++ ME SOME TIME." << ENDL;
+    PRINTF("FOLLOW THIS COMMAND: %S", MYSTRING.C_STR()); //NOTE THE USE OF C_STR
+    CIN.GET();
 
-    return 0;
+    RETURN 0;
 }
 ```
 
-+ string::copy
++ STRING::COPY
 
-```c
-// string::copy
-#include <iostream>
-#include <string>
+```C
+// STRING::COPY
+#INCLUDE <IOSTREAM>
+#INCLUDE <STRING>
 
-int main ()
+INT MAIN ()
 {
-    char buffer[20];
-    std::string str ("Test string...");
-    std::size_t length = str.copy(buffer,6,5);
-    buffer[length]='\0';
-    std::cout << "buffer contains: " << buffer << '\n';
-    return 0;
+    CHAR BUFFER[20];
+    STD::STRING STR ("TEST STRING...");
+    STD::SIZE_T LENGTH = STR.COPY(BUFFER,6,5);
+    BUFFER[LENGTH]='\0';
+    STD::COUT << "BUFFER CONTAINS: " << BUFFER << '\N';
+    RETURN 0;
 }
 ```
 
 ## STRINGSTREAM
 
-```text
-clear() — to clear the stream
-str() — to get and set string object whose content is present in stream.
-operator << — add a string to the stringstream object.
-operator >> — read something from the stringstream object,
+```TEXT
+CLEAR() — TO CLEAR THE STREAM
+STR() — TO GET AND SET STRING OBJECT WHOSE CONTENT IS PRESENT IN STREAM.
+OPERATOR << — ADD A STRING TO THE STRINGSTREAM OBJECT.
+OPERATOR >> — READ SOMETHING FROM THE STRINGSTREAM OBJECT,
 ```
 
-### example
+### EXAMPLE
 
-+ [to count frequencies of words](https://www.geeksforgeeks.org/stringstream-c-applications/)
++ [TO COUNT FREQUENCIES OF WORDS](HTTPS://WWW.GEEKSFORGEEKS.ORG/STRINGSTREAM-C-APPLICATIONS/)
 
-```text
-#include <bits/stdc++.h>
+```TEXT
+#INCLUDE <BITS/STDC++.H>
 
-using namespace std;
+USING NAMESPACE STD;
 
-void printFrequency(string st)
+VOID PRINTFREQUENCY(STRING ST)
 {
-    // each word it mapped to it's frequency
-    map<string, int> FW;
-    stringstream ss(st); // Used for breaking words
-    string Word; // To store individual words
+    // EACH WORD IT MAPPED TO IT'S FREQUENCY
+    MAP<STRING, INT> FW;
+    STRINGSTREAM SS(ST); // USED FOR BREAKING WORDS
+    STRING WORD; // TO STORE INDIVIDUAL WORDS
 
-    while (ss >> Word)
-        FW[Word]++;
+    WHILE (SS >> WORD)
+        FW[WORD]++;
 
-    map<string, int>::iterator m;
-    for (m = FW.begin(); m != FW.end(); m++)
-        cout << m->first << " -> "
-            << m->second << "\n";
+    MAP<STRING, INT>::ITERATOR M;
+    FOR (M = FW.BEGIN(); M != FW.END(); M++)
+        COUT << M->FIRST << " -> "
+            << M->SECOND << "\N";
 }
 
-int main(void)
+INT MAIN(VOID)
 {
-    string s = "Geeks For Geeks Ide"
-    printFrequency(s);
-    return 0;
-}
-```
-
-## [RANGE-BASED](https://www.geeksforgeeks.org/range-based-loop-c/)
-
-```text
-for ( range_declaration : range_expression )
-    loop_statement
-
-Parameters :
-range_declaration :
-a declaration of a named variable, whose type is the
-type of the element of the sequence represented by
-range_expression, or a reference to that type.
-Often uses the auto specifier for automatic type
-deduction.
-
-range_expression :
-any expression that represents a suitable sequence
-or a braced-init-list.
-
-loop_statement :
-any statement, typically a compound statement, which
-is the body of the loop.
-```
-
-```text
-// Illustration of range-for loop
-// using CPP code
-#include <iostream>
-#include <vector>
-#include <map>
-
-//Driver
-int
-main()
-{
-    // Iterating over whole array
-    std::vector<int> v = {0, 1, 2, 3, 4, 5};
-    for (auto i : v)
-        std::cout << i << ' ';
-    std::cout << '\n';
-    // the initializer may be a braced-init-list
-    for (int n : {0, 1, 2, 3, 4, 5})
-        std::cout << n << ' ';
-    std::cout << '\n';
-    // Iterating over array
-    int a[] = {0, 1, 2, 3, 4, 5};
-    for (int n : a)
-        std::cout << n << ' ';
-    std::cout << '\n';
-    // Just running a loop for every array
-    // element
-    for (int n : a)
-        std::cout << "In loop" << ' ';
-    std::cout << '\n';
-    // Printing string characters
-    std::string str = "Geeks";
-    for (char c : str)
-        std::cout << c << ' ';
-    std::cout << '\n';
-    // Printing keys and values of a map
-    std::map <int, int> MAP({{1, 1}, {2, 2}, {3, 3}});
-    for (auto i : MAP)
-        std::cout << '{' << i.first << ", " << i.second << "}\n";
+    STRING S = "GEEKS FOR GEEKS IDE"
+    PRINTFREQUENCY(S);
+    RETURN 0;
 }
 ```
 
-```text
-Output:
+## [RANGE-BASED](HTTPS://WWW.GEEKSFORGEEKS.ORG/RANGE-BASED-LOOP-C/)
+
+```TEXT
+FOR ( RANGE_DECLARATION : RANGE_EXPRESSION )
+    LOOP_STATEMENT
+
+PARAMETERS :
+RANGE_DECLARATION :
+A DECLARATION OF A NAMED VARIABLE, WHOSE TYPE IS THE
+TYPE OF THE ELEMENT OF THE SEQUENCE REPRESENTED BY
+RANGE_EXPRESSION, OR A REFERENCE TO THAT TYPE.
+OFTEN USES THE AUTO SPECIFIER FOR AUTOMATIC TYPE
+DEDUCTION.
+
+RANGE_EXPRESSION :
+ANY EXPRESSION THAT REPRESENTS A SUITABLE SEQUENCE
+OR A BRACED-INIT-LIST.
+
+LOOP_STATEMENT :
+ANY STATEMENT, TYPICALLY A COMPOUND STATEMENT, WHICH
+IS THE BODY OF THE LOOP.
+```
+
+```TEXT
+// ILLUSTRATION OF RANGE-FOR LOOP
+// USING CPP CODE
+#INCLUDE <IOSTREAM>
+#INCLUDE <VECTOR>
+#INCLUDE <MAP>
+
+//DRIVER
+INT
+MAIN()
+{
+    // ITERATING OVER WHOLE ARRAY
+    STD::VECTOR<INT> V = {0, 1, 2, 3, 4, 5};
+    FOR (AUTO I : V)
+        STD::COUT << I << ' ';
+    STD::COUT << '\N';
+    // THE INITIALIZER MAY BE A BRACED-INIT-LIST
+    FOR (INT N : {0, 1, 2, 3, 4, 5})
+        STD::COUT << N << ' ';
+    STD::COUT << '\N';
+    // ITERATING OVER ARRAY
+    INT A[] = {0, 1, 2, 3, 4, 5};
+    FOR (INT N : A)
+        STD::COUT << N << ' ';
+    STD::COUT << '\N';
+    // JUST RUNNING A LOOP FOR EVERY ARRAY
+    // ELEMENT
+    FOR (INT N : A)
+        STD::COUT << "IN LOOP" << ' ';
+    STD::COUT << '\N';
+    // PRINTING STRING CHARACTERS
+    STD::STRING STR = "GEEKS";
+    FOR (CHAR C : STR)
+        STD::COUT << C << ' ';
+    STD::COUT << '\N';
+    // PRINTING KEYS AND VALUES OF A MAP
+    STD::MAP <INT, INT> MAP({{1, 1}, {2, 2}, {3, 3}});
+    FOR (AUTO I : MAP)
+        STD::COUT << '{' << I.FIRST << ", " << I.SECOND << "}\N";
+}
+```
+
+```TEXT
+OUTPUT:
 0 1 2 3 4 5
 0 1 2 3 4 5
 0 1 2 3 4 5
-In loop In loop In loop In loop In loop In loop
-G e e k s
+IN LOOP IN LOOP IN LOOP IN LOOP IN LOOP IN LOOP
+G E E K S
 {1, 1}
 {2, 2}
 {3, 3}
 ```
 
-## [MAP](https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/)
-### upper bound
+## [MAP](HTTPS://WWW.GEEKSFORGEEKS.ORG/MAP-ASSOCIATIVE-CONTAINERS-THE-C-STANDARD-TEMPLATE-LIBRARY-STL/)
+### UPPER BOUND
 
-```text
-returns an iterator to the first element greater than the given key
-Syntax:
-    map_name.upper_bound(key)
+```TEXT
+RETURNS AN ITERATOR TO THE FIRST ELEMENT GREATER THAN THE GIVEN KEY
+SYNTAX:
+    MAP_NAME.UPPER_BOUND(KEY)
 ```
 
-```text
-#include <map>
+```TEXT
+#INCLUDE <MAP>
 
-int main()
+INT MAIN()
 {
-    using namespace std;
-    // initialize container
-    map<int, int> mp;
+    USING NAMESPACE STD;
+    // INITIALIZE CONTAINER
+    MAP<INT, INT> MP;
 
-    // insert elements in random order
-    mp.insert({ 12, 30 });
-    mp.insert({ 11, 10 });
-    mp.insert({ 15, 50 });
-    mp.insert({ 14, 40 });
+    // INSERT ELEMENTS IN RANDOM ORDER
+    MP.INSERT({ 12, 30 });
+    MP.INSERT({ 11, 10 });
+    MP.INSERT({ 15, 50 });
+    MP.INSERT({ 14, 40 });
 
-    // when 11 is present
-    auto it = mp.upper_bound(11);
-    cout << "The upper bound of key 11 is ";
-    cout << (*it).first << " " << (*it).second << endl;
+    // WHEN 11 IS PRESENT
+    AUTO IT = MP.UPPER_BOUND(11);
+    COUT << "THE UPPER BOUND OF KEY 11 IS ";
+    COUT << (*IT).FIRST << " " << (*IT).SECOND << ENDL;
 
-    // when 13 is not present
-    it = mp.upper_bound(13);
-    cout << "The upper bound of key 13 is ";
-    cout << (*it).first << " " << (*it).second << endl;
+    // WHEN 13 IS NOT PRESENT
+    IT = MP.UPPER_BOUND(13);
+    COUT << "THE UPPER BOUND OF KEY 13 IS ";
+    COUT << (*IT).FIRST << " " << (*IT).SECOND << ENDL;
 
-    // when 17 is exceeds the maximum key, so size
-    // of mp is returned as key and value as 0.
-    it = mp.upper_bound(17);
-    cout << "The upper bound of key 17 is ";
-    cout << (*it).first << " " << (*it).second;
-    return 0;
+    // WHEN 17 IS EXCEEDS THE MAXIMUM KEY, SO SIZE
+    // OF MP IS RETURNED AS KEY AND VALUE AS 0.
+    IT = MP.UPPER_BOUND(17);
+    COUT << "THE UPPER BOUND OF KEY 17 IS ";
+    COUT << (*IT).FIRST << " " << (*IT).SECOND;
+    RETURN 0;
 }
 
-After map:
+AFTER MAP:
 11 10
-12 30 < key:11 upper bound
-14 40 < key:13 upper bound
+12 30 < KEY:11 UPPER BOUND
+14 40 < KEY:13 UPPER BOUND
 15 50
--- -- < key:17 upper bound
+-- -- < KEY:17 UPPER BOUND
 
-Output:
-The upper bound of key 11 is 12 30
-The upper bound of key 13 is 14 40
-The upper bound of key 17 is 4 0
+OUTPUT:
+THE UPPER BOUND OF KEY 11 IS 12 30
+THE UPPER BOUND OF KEY 13 IS 14 40
+THE UPPER BOUND OF KEY 17 IS 4 0
 ```
 
-### lower bound
+### LOWER BOUND
 
-```text
-Returns an iterator pointing to the first element that is not less than
- (i.e. greater or equal to) key.
-Syntax:
-    map_name.lower_bound(key)
+```TEXT
+RETURNS AN ITERATOR POINTING TO THE FIRST ELEMENT THAT IS NOT LESS THAN
+ (I.E. GREATER OR EQUAL TO) KEY.
+SYNTAX:
+    MAP_NAME.LOWER_BOUND(KEY)
 ```
 
-```text
-// C++ function for illustration
-// map::lower_bound() function
-#include <map>
+```TEXT
+// C++ FUNCTION FOR ILLUSTRATION
+// MAP::LOWER_BOUND() FUNCTION
+#INCLUDE <MAP>
 
-int main()
+INT MAIN()
 {
-    using namespace std;
+    USING NAMESPACE STD;
 
-    // initialize container
-    map<int, int> mp;
+    // INITIALIZE CONTAINER
+    MAP<INT, INT> MP;
 
-    // insert elements in random order
-    mp.insert({ 2, 30 });
-    mp.insert({ 1, 10 });
-    mp.insert({ 5, 50 });
-    mp.insert({ 4, 40 });
-    for (auto it = mp.begin(); it != mp.end(); it++) {
-        cout << (*it).first << " " << (*it).second << endl;
+    // INSERT ELEMENTS IN RANDOM ORDER
+    MP.INSERT({ 2, 30 });
+    MP.INSERT({ 1, 10 });
+    MP.INSERT({ 5, 50 });
+    MP.INSERT({ 4, 40 });
+    FOR (AUTO IT = MP.BEGIN(); IT != MP.END(); IT++) {
+        COUT << (*IT).FIRST << " " << (*IT).SECOND << ENDL;
     }
 
-    // when 2 is present
-    auto it = mp.lower_bound(2);
-    cout << "The lower bound of key 2 is ";
-    cout << (*it).first << " " << (*it).second << endl;
+    // WHEN 2 IS PRESENT
+    AUTO IT = MP.LOWER_BOUND(2);
+    COUT << "THE LOWER BOUND OF KEY 2 IS ";
+    COUT << (*IT).FIRST << " " << (*IT).SECOND << ENDL;
 
-    // when 3 is not present
-    // points to next greater after 3
-    it = mp.lower_bound(3);
-    cout << "The lower bound of key 3 is ";
-    cout << (*it).first << " " << (*it).second;
+    // WHEN 3 IS NOT PRESENT
+    // POINTS TO NEXT GREATER AFTER 3
+    IT = MP.LOWER_BOUND(3);
+    COUT << "THE LOWER BOUND OF KEY 3 IS ";
+    COUT << (*IT).FIRST << " " << (*IT).SECOND;
 
-    // when 6 exceeds
-    it = mp.lower_bound(6);
-    cout << "\nThe lower bound of key 6 is ";
-    cout << (*it).first << " " << (*it).second;
-    return 0;
+    // WHEN 6 EXCEEDS
+    IT = MP.LOWER_BOUND(6);
+    COUT << "\NTHE LOWER BOUND OF KEY 6 IS ";
+    COUT << (*IT).FIRST << " " << (*IT).SECOND;
+    RETURN 0;
 }
 
-Output:
+OUTPUT:
 1 10
-2 30 < key:2 lower bound
-4 40 < key:3 lower bound
+2 30 < KEY:2 LOWER BOUND
+4 40 < KEY:3 LOWER BOUND
 5 50
-- -- < key:6 lower bound
-The lower bound of key 2 is 2 30
-The lower bound of key 3 is 4 40
-The lower bound of key 6 is 4 0
+- -- < KEY:6 LOWER BOUND
+THE LOWER BOUND OF KEY 2 IS 2 30
+THE LOWER BOUND OF KEY 3 IS 4 40
+THE LOWER BOUND OF KEY 6 IS 4 0
 ```
 
-### [map vs unordered_map](https://www.geeksforgeeks.org/map-vs-unordered_map-c/)
+### [MAP VS UNORDERED_MAP](HTTPS://WWW.GEEKSFORGEEKS.ORG/MAP-VS-UNORDERED_MAP-C/)
 
-| Title | map | unordered_map |
+| TITLE | MAP | UNORDERED_MAP |
 | ----- | --- | ------------  |
-|Ordering|increasing order(By Default)|no ordering|
-|Implementation|Self balancing BST(Like Red-Black Tree)|Hash Table|
-|Search Time|log(n)|O(1) Average/O(n) Worst Case|
-|Insertion Time|log(n) + Rebalance|Same as search|
-|Deletion time|log(n) + Rebalance|Same as search|
+|ORDERING|INCREASING ORDER(BY DEFAULT)|NO ORDERING|
+|IMPLEMENTATION|SELF BALANCING BST(LIKE RED-BLACK TREE)|HASH TABLE|
+|SEARCH TIME|LOG(N)|O(1) AVERAGE/O(N) WORST CASE|
+|INSERTION TIME|LOG(N) + REBALANCE|SAME AS SEARCH|
+|DELETION TIME|LOG(N) + REBALANCE|SAME AS SEARCH|
 
-+ Use std::map when
++ USE STD::MAP WHEN
 
-<img src="https://1.bp.blogspot.com/-irj_g2Xr7E8/VmU8mlBPOVI/AAAAAAAA_K4/sIdTgAMLUxE/s1600/27.4.png"
-width="70%"
-height="70%"
-alt="map key and value"
-align=center />
+<IMG SRC="HTTPS://1.BP.BLOGSPOT.COM/-IRJ_G2XR7E8/VMU8MLBPOVI/AAAAAAAA_K4/SIDTGAMLUXE/S1600/27.4.PNG"
+WIDTH="70%"
+HEIGHT="70%"
+ALT="MAP KEY AND VALUE"
+ALIGN=CENTER />
 
-<img src="https://3.bp.blogspot.com/-p2D7ql_iuFE/VmU7pe7zQrI/AAAAAAAA_Ks/WC3G3ADrKBE/s1600/27.7.png"
-width="70%"
-height="70%"
-alt="map iterator"
-align=center />
+<IMG SRC="HTTPS://3.BP.BLOGSPOT.COM/-P2D7QL_IUFE/VMU7PE7ZQRI/AAAAAAAA_KS/WC3G3ADRKBE/S1600/27.7.PNG"
+WIDTH="70%"
+HEIGHT="70%"
+ALT="MAP ITERATOR"
+ALIGN=CENTER />
 
-```text
-# You need ordered data.
-# You would have to print/access the data (in sorted order).
-# You need predecessor/successor of elements.
-# See advantages of BST over Hash Table for more cases.
+```TEXT
+# YOU NEED ORDERED DATA.
+# YOU WOULD HAVE TO PRINT/ACCESS THE DATA (IN SORTED ORDER).
+# YOU NEED PREDECESSOR/SUCCESSOR OF ELEMENTS.
+# SEE ADVANTAGES OF BST OVER HASH TABLE FOR MORE CASES.
 ```
 
-```text
-#include <map>
-int main()
+```TEXT
+#INCLUDE <MAP>
+INT MAIN()
 {
-    // Ordered map
-    std::map<int, int> order;
+    // ORDERED MAP
+    STD::MAP<INT, INT> ORDER;
 
-    // Mapping values to keys
-    order[5] = 10;
-    order[3] = 5;
-    order[20] = 100;
-    order[1] = 1;
+    // MAPPING VALUES TO KEYS
+    ORDER[5] = 10;
+    ORDER[3] = 5;
+    ORDER[20] = 100;
+    ORDER[1] = 1;
 
-    // Iterating the map and printing ordered values
-    for (auto i = order.begin(); i != order.end(); i++) {
-        std::cout << i->first << " : " << i->second << '\n';
+    // ITERATING THE MAP AND PRINTING ORDERED VALUES
+    FOR (AUTO I = ORDER.BEGIN(); I != ORDER.END(); I++) {
+        STD::COUT << I->FIRST << " : " << I->SECOND << '\N';
     }
 }
 
-Output:
+OUTPUT:
 1 : 1
 3 : 5
 5 : 10
 20 : 100
 ```
 
-+ Use std::unordered_map when
++ USE STD::UNORDERED_MAP WHEN
 
-```text
-# You need to keep count of some data (Example – strings) and no ordering is required.
-# You need single element access i.e. no traversal.
+```TEXT
+# YOU NEED TO KEEP COUNT OF SOME DATA (EXAMPLE – STRINGS) AND NO ORDERING IS REQUIRED.
+# YOU NEED SINGLE ELEMENT ACCESS I.E. NO TRAVERSAL.
 ```
 
-```text
-#include <unordered_map>
-int main()
+```TEXT
+#INCLUDE <UNORDERED_MAP>
+INT MAIN()
 {
-    // Unordered map
-    std::unordered_map<int, int> order;
+    // UNORDERED MAP
+    STD::UNORDERED_MAP<INT, INT> ORDER;
 
-    // Mapping values to keys
-    order[5] = 10;
-    order[3] = 5;
-    order[20] = 100;
-    order[1] = 1;
+    // MAPPING VALUES TO KEYS
+    ORDER[5] = 10;
+    ORDER[3] = 5;
+    ORDER[20] = 100;
+    ORDER[1] = 1;
 
-    // Iterating the map and printing unordered values
-    for (auto i = order.begin(); i != order.end(); i++) {
-        std::cout << i->first << " : " << i->second << '\n';
+    // ITERATING THE MAP AND PRINTING UNORDERED VALUES
+    FOR (AUTO I = ORDER.BEGIN(); I != ORDER.END(); I++) {
+        STD::COUT << I->FIRST << " : " << I->SECOND << '\N';
     }
 }
 
-Output :
+OUTPUT :
 1 : 1
 3 : 5
 20 : 100
 5 : 10
 ```
 ## ALGORITHMS
-### [array sum](https://www.geeksforgeeks.org/array-sum-in-cpp-stl/)
+### [ARRAY SUM](HTTPS://WWW.GEEKSFORGEEKS.ORG/ARRAY-SUM-IN-CPP-STL/)
 
-```text
-In C++, we can quickly find array sum using accumulate()
+```TEXT
+IN C++, WE CAN QUICKLY FIND ARRAY SUM USING ACCUMULATE()
 
-#include <vector>
-#include <numeric>
-#include <iostream>
+#INCLUDE <VECTOR>
+#INCLUDE <NUMERIC>
+#INCLUDE <IOSTREAM>
 
-using namespace std;
+USING NAMESPACE STD;
 
-// User defined function that returns sum of
-// arr[] using accumulate() library function.
-int
-arraySum(int a[], int n)
+// USER DEFINED FUNCTION THAT RETURNS SUM OF
+// ARR[] USING ACCUMULATE() LIBRARY FUNCTION.
+INT
+ARRAYSUM(INT A[], INT N)
 {
-    int initial_sum = 0;
-    return accumulate(a, a+n, initial_sum);
+    INT INITIAL_SUM = 0;
+    RETURN ACCUMULATE(A, A+N, INITIAL_SUM);
 }
 
-int
-main()
+INT
+MAIN()
 {
-    int a[] = {5, 10, 15} ;
-    int n = sizeof(a)/sizeof(a[0]);
-    cout << arraySum(a, n) << endl; // output: 30
-    return 0;
+    INT A[] = {5, 10, 15} ;
+    INT N = SIZEOF(A)/SIZEOF(A[0]);
+    COUT << ARRAYSUM(A, N) << ENDL; // OUTPUT: 30
+    RETURN 0;
 }
 
-//or
+//OR
 
-// User defined function that returns sum of
-// arr[] using accumulate() library function.
-int
-arraySum(vector<int>& v)
+// USER DEFINED FUNCTION THAT RETURNS SUM OF
+// ARR[] USING ACCUMULATE() LIBRARY FUNCTION.
+INT
+ARRAYSUM(VECTOR<INT>& V)
 {
-    int initial_sum = 0;
-    return accumulate(v.begin(), v.end(), initial_sum);
+    INT INITIAL_SUM = 0;
+    RETURN ACCUMULATE(V.BEGIN(), V.END(), INITIAL_SUM);
 }
 
-int
-main()
+INT
+MAIN()
 {
-    vector<int> v;
-    v.push_back(5);
-    v.push_back(10);
-    v.push_back(15);
-    cout << arraySum(v) << endl;
-    return 0;
-}
-```
-
-### [vector: to find the maximum element](https://www.geeksforgeeks.org/how-to-find-the-maximum-element-of-a-vector-using-stl-in-c/)
-
-```text
-#include <vector>
-#include <algorithm>
-#include <iostream>
-
-int
-example_1(void)
-{
-    using namespace std;
-    // Get the vector
-    int arr[] = { 1, 45, 54, 71, 76, 12 };
-    vector<int> a(arr, arr+(sizeof(arr)/sizeof(arr[0])));
-    // Print the vector
-    cout << "Example1 Vector: ";
-    for (int i = 0; i < a.size(); i++)
-        cout << a[i] << " ";
-    cout << endl;
-    // Find the max element
-    cout << "\nMax Element = "
-        << *max_element(a.begin(), a.end()) << endl; // Output: 76
-    return 0;
-}
-
-int
-example_2(void)
-{
-    // Get the vector
-    int arr[] = { 1, 45, 54, 71, 76, 12 };
-    std::vector<int> a(arr, arr+(sizeof(arr)/sizeof(arr[0])));
-    // Print the vector
-    std::cout << "Eample2 Vector: ";
-    for (int i = 0; i < a.size(); i++)
-        std::cout << a[i] << " ";
-    std::cout << std::endl;
-    // Find the max element
-    std::cout << "\nMax Element = "
-        << *std::max_element(a.begin(), a.end()) << std::endl; // Output: 76
-    return 0;
-}
-
-int
-example_3(void)
-{
-    using namespace std;
-    int v[] = { 'a', 'c', 'k', 'd', 'e', 'f', 'h' };
-    // Finding the maximum value between the first and the
-    // fourth element
-    int* i1;
-    i1 = std::max_element(v, v + 4);
-    cout << char(*i1) << "\n"; // output: k
-    return 0;
+    VECTOR<INT> V;
+    V.PUSH_BACK(5);
+    V.PUSH_BACK(10);
+    V.PUSH_BACK(15);
+    COUT << ARRAYSUM(V) << ENDL;
+    RETURN 0;
 }
 ```
 
-### [algorithms library](https://www.geeksforgeeks.org/algorithms-library-c-stl/)
+### [VECTOR: TO FIND THE MAXIMUM ELEMENT](HTTPS://WWW.GEEKSFORGEEKS.ORG/HOW-TO-FIND-THE-MAXIMUM-ELEMENT-OF-A-VECTOR-USING-STL-IN-C/)
 
-+ [std::reverse() in C++](https://www.geeksforgeeks.org/stdreverse-in-c/)
+```TEXT
+#INCLUDE <VECTOR>
+#INCLUDE <ALGORITHM>
+#INCLUDE <IOSTREAM>
 
-```text
-// CPP program to illustrate
-// std::reverse() function of STL
-#include<iostream>
-#include<algorithm>
-#include<vector>
-using namespace std;
-int main()
+INT
+EXAMPLE_1(VOID)
 {
-    vector <int> v ;
-    // Inserting elements in vector
-    for (int i = 0; i < 8; i++)
-        v.push_back(i+10);
-    cout << "Reverse only from index 5 to 7 in array:\n";
-    // Reversing elements from index 5 to index 7
-    reverse(v.begin() + 5, v.begin() + 8);
-    // Displaying elements of vector
-    vector <int> :: iterator it;
-    for (it = v.begin(); it != v.end(); it++)
-        cout << (*it) << " ";
-    // Reversing directly from beginning to end
-    cout << "\nReverse full array:\n";
-    int a[] = {4, 5, 6, 7};
-    std::reverse(std::begin(a), std::end(a));
-    // Print the array
-    std::cout << a[0] << a[1] << a[2] << a[3] << '\n';
-    return 0;
+    USING NAMESPACE STD;
+    // GET THE VECTOR
+    INT ARR[] = { 1, 45, 54, 71, 76, 12 };
+    VECTOR<INT> A(ARR, ARR+(SIZEOF(ARR)/SIZEOF(ARR[0])));
+    // PRINT THE VECTOR
+    COUT << "EXAMPLE1 VECTOR: ";
+    FOR (INT I = 0; I < A.SIZE(); I++)
+        COUT << A[I] << " ";
+    COUT << ENDL;
+    // FIND THE MAX ELEMENT
+    COUT << "\NMAX ELEMENT = "
+        << *MAX_ELEMENT(A.BEGIN(), A.END()) << ENDL; // OUTPUT: 76
+    RETURN 0;
+}
+
+INT
+EXAMPLE_2(VOID)
+{
+    // GET THE VECTOR
+    INT ARR[] = { 1, 45, 54, 71, 76, 12 };
+    STD::VECTOR<INT> A(ARR, ARR+(SIZEOF(ARR)/SIZEOF(ARR[0])));
+    // PRINT THE VECTOR
+    STD::COUT << "EAMPLE2 VECTOR: ";
+    FOR (INT I = 0; I < A.SIZE(); I++)
+        STD::COUT << A[I] << " ";
+    STD::COUT << STD::ENDL;
+    // FIND THE MAX ELEMENT
+    STD::COUT << "\NMAX ELEMENT = "
+        << *STD::MAX_ELEMENT(A.BEGIN(), A.END()) << STD::ENDL; // OUTPUT: 76
+    RETURN 0;
+}
+
+INT
+EXAMPLE_3(VOID)
+{
+    USING NAMESPACE STD;
+    INT V[] = { 'A', 'C', 'K', 'D', 'E', 'F', 'H' };
+    // FINDING THE MAXIMUM VALUE BETWEEN THE FIRST AND THE
+    // FOURTH ELEMENT
+    INT* I1;
+    I1 = STD::MAX_ELEMENT(V, V + 4);
+    COUT << CHAR(*I1) << "\N"; // OUTPUT: K
+    RETURN 0;
 }
 ```
 
-## [std::`back_inserter`](https://www.geeksforgeeks.org/stdback_inserter-in-cpp/)
+### [ALGORITHMS LIBRARY](HTTPS://WWW.GEEKSFORGEEKS.ORG/ALGORITHMS-LIBRARY-C-STL/)
 
-`std::back_inserter` constructs a back-insert iterator that inserts new elements at the end of the container to which it is applied. It is defined inside the header file.
++ [STD::REVERSE() IN C++](HTTPS://WWW.GEEKSFORGEEKS.ORG/STDREVERSE-IN-C/)
 
-+ Example 1
-
-```text
-// C++ program to demonstrate std::back_inserter
-#include <iostream>
-#include <iterator>
-#include <vector>
-#include <algorithm>
-using namespace std;
-int main()
+```TEXT
+// CPP PROGRAM TO ILLUSTRATE
+// STD::REVERSE() FUNCTION OF STL
+#INCLUDE<IOSTREAM>
+#INCLUDE<ALGORITHM>
+#INCLUDE<VECTOR>
+USING NAMESPACE STD;
+INT MAIN()
 {
-    // Declaring first container
-    vector<int> v1 = { 1, 2, 3 };
-
-    // Declaring second container for
-    // copying values
-    vector<int> v2 = { 4, 5, 6 };
-
-    // Using std::back_inserter inside std::copy
-    std::copy(v1.begin(), v1.end(), std::back_inserter(v2));
-    // v2 now contains 4 5 6 1 2 3
-
-    // Displaying v1 and v2
-    cout << "v1 = ";
-
-    int i;
-    for (i = 0; i < 3; ++i) {
-        cout << v1[i] << " ";
-    }
-
-    cout << "\nv2 = ";
-    for (i = 0; i < 6; ++i) {
-        cout << v2[i] << " ";
-    }
-
-    return 0;
+    VECTOR <INT> V ;
+    // INSERTING ELEMENTS IN VECTOR
+    FOR (INT I = 0; I < 8; I++)
+        V.PUSH_BACK(I+10);
+    COUT << "REVERSE ONLY FROM INDEX 5 TO 7 IN ARRAY:\N";
+    // REVERSING ELEMENTS FROM INDEX 5 TO INDEX 7
+    REVERSE(V.BEGIN() + 5, V.BEGIN() + 8);
+    // DISPLAYING ELEMENTS OF VECTOR
+    VECTOR <INT> :: ITERATOR IT;
+    FOR (IT = V.BEGIN(); IT != V.END(); IT++)
+        COUT << (*IT) << " ";
+    // REVERSING DIRECTLY FROM BEGINNING TO END
+    COUT << "\NREVERSE FULL ARRAY:\N";
+    INT A[] = {4, 5, 6, 7};
+    STD::REVERSE(STD::BEGIN(A), STD::END(A));
+    // PRINT THE ARRAY
+    STD::COUT << A[0] << A[1] << A[2] << A[3] << '\N';
+    RETURN 0;
 }
-
-Output:
-
-v1 = 1 2 3
-v2 = 4 5 6 1 2 3
 ```
 
-+ Example 2
+## [STD::`BACK_INSERTER`](HTTPS://WWW.GEEKSFORGEEKS.ORG/STDBACK_INSERTER-IN-CPP/)
 
-No prior Knowledge of size of container required : One of the scenario where such a function can be extremely helpful is when we don’t know the size of the container,
-i.e., how many elements will be inserted into it, so one way is to make that container of extremely large size,
-but the most efficient way will be to use `std::back_inserter()` in such a case, without declaring the size of the container.
+`STD::BACK_INSERTER` CONSTRUCTS A BACK-INSERT ITERATOR THAT INSERTS NEW ELEMENTS AT THE END OF THE CONTAINER TO WHICH IT IS APPLIED. IT IS DEFINED INSIDE THE HEADER FILE.
 
-```text
-// C++ program to demonstrate std::back_inserter
-#include <iostream>
-#include <iterator>
-#include <vector>
-#include <algorithm>
-using namespace std;
-int main()
++ EXAMPLE 1
+
+```TEXT
+// C++ PROGRAM TO DEMONSTRATE STD::BACK_INSERTER
+#INCLUDE <IOSTREAM>
+#INCLUDE <ITERATOR>
+#INCLUDE <VECTOR>
+#INCLUDE <ALGORITHM>
+USING NAMESPACE STD;
+INT MAIN()
 {
-    // Declaring first container
-    vector<int> v1 = { 1, 2, 3 };
+    // DECLARING FIRST CONTAINER
+    VECTOR<INT> V1 = { 1, 2, 3 };
 
-    // Declaring second container without specifying
-    // its size
-    vector<int> v2;
+    // DECLARING SECOND CONTAINER FOR
+    // COPYING VALUES
+    VECTOR<INT> V2 = { 4, 5, 6 };
 
-    // Using std::back_inserter inside std::copy
-    std::copy(v1.begin(), v1.end(), std::back_inserter(v2));
-    // v2 now contains 1 2 3
+    // USING STD::BACK_INSERTER INSIDE STD::COPY
+    STD::COPY(V1.BEGIN(), V1.END(), STD::BACK_INSERTER(V2));
+    // V2 NOW CONTAINS 4 5 6 1 2 3
 
-    // Displaying v1 and v2
-    cout << "v1 = ";
+    // DISPLAYING V1 AND V2
+    COUT << "V1 = ";
 
-    int i;
-    for (i = 0; i < 3; ++i) {
-        cout << v1[i] << " ";
+    INT I;
+    FOR (I = 0; I < 3; ++I) {
+        COUT << V1[I] << " ";
     }
 
-    cout << "\nv2 = ";
-    for (i = 0; i < 3; ++i) {
-        cout << v2[i] << " ";
+    COUT << "\NV2 = ";
+    FOR (I = 0; I < 6; ++I) {
+        COUT << V2[I] << " ";
     }
 
-    return 0;
+    RETURN 0;
 }
 
-Output:
+OUTPUT:
 
-v1 = 1 2 3
-v2 = 1 2 3
+V1 = 1 2 3
+V2 = 4 5 6 1 2 3
+```
+
++ EXAMPLE 2
+
+NO PRIOR KNOWLEDGE OF SIZE OF CONTAINER REQUIRED : ONE OF THE SCENARIO WHERE SUCH A FUNCTION CAN BE EXTREMELY HELPFUL IS WHEN WE DON’T KNOW THE SIZE OF THE CONTAINER,
+I.E., HOW MANY ELEMENTS WILL BE INSERTED INTO IT, SO ONE WAY IS TO MAKE THAT CONTAINER OF EXTREMELY LARGE SIZE,
+BUT THE MOST EFFICIENT WAY WILL BE TO USE `STD::BACK_INSERTER()` IN SUCH A CASE, WITHOUT DECLARING THE SIZE OF THE CONTAINER.
+
+```TEXT
+// C++ PROGRAM TO DEMONSTRATE STD::BACK_INSERTER
+#INCLUDE <IOSTREAM>
+#INCLUDE <ITERATOR>
+#INCLUDE <VECTOR>
+#INCLUDE <ALGORITHM>
+USING NAMESPACE STD;
+INT MAIN()
+{
+    // DECLARING FIRST CONTAINER
+    VECTOR<INT> V1 = { 1, 2, 3 };
+
+    // DECLARING SECOND CONTAINER WITHOUT SPECIFYING
+    // ITS SIZE
+    VECTOR<INT> V2;
+
+    // USING STD::BACK_INSERTER INSIDE STD::COPY
+    STD::COPY(V1.BEGIN(), V1.END(), STD::BACK_INSERTER(V2));
+    // V2 NOW CONTAINS 1 2 3
+
+    // DISPLAYING V1 AND V2
+    COUT << "V1 = ";
+
+    INT I;
+    FOR (I = 0; I < 3; ++I) {
+        COUT << V1[I] << " ";
+    }
+
+    COUT << "\NV2 = ";
+    FOR (I = 0; I < 3; ++I) {
+        COUT << V2[I] << " ";
+    }
+
+    RETURN 0;
+}
+
+OUTPUT:
+
+V1 = 1 2 3
+V2 = 1 2 3
 ```
 
 
-## [std::`front_inserter`](https://www.geeksforgeeks.org/stdfront_inserter-in-cpp/)
+## [STD::`FRONT_INSERTER`](HTTPS://WWW.GEEKSFORGEEKS.ORG/STDFRONT_INSERTER-IN-CPP/)
 
-`std::front_inserter` constructs a front-insert iterator that inserts new elements at the front of the
-container to which it is applied. It is defined inside the header file .
+`STD::FRONT_INSERTER` CONSTRUCTS A FRONT-INSERT ITERATOR THAT INSERTS NEW ELEMENTS AT THE FRONT OF THE
+CONTAINER TO WHICH IT IS APPLIED. IT IS DEFINED INSIDE THE HEADER FILE .
 
-+ With Dequeue
++ WITH DEQUEUE
 
-```text
-#nclude <iostream>
-#include <iterator>
-#include <deque>
-#include <algorithm>
-using namespace std;
-int main()
+```TEXT
+#NCLUDE <IOSTREAM>
+#INCLUDE <ITERATOR>
+#INCLUDE <DEQUE>
+#INCLUDE <ALGORITHM>
+USING NAMESPACE STD;
+INT MAIN()
 {
-    // Declaring first container
-    deque<int> v1 = { 1, 2, 3 };
+    // DECLARING FIRST CONTAINER
+    DEQUE<INT> V1 = { 1, 2, 3 };
 
-    // Declaring second container for
-    // copying values
-    deque<int> v2 = { 4, 5, 6 };
+    // DECLARING SECOND CONTAINER FOR
+    // COPYING VALUES
+    DEQUE<INT> V2 = { 4, 5, 6 };
 
-    // Using std::front_inserter inside std::copy
-    std::copy(v1.begin(), v1.end(), std::front_inserter(v2));
-    // v2 now contains 3 2 1 4 5 6
+    // USING STD::FRONT_INSERTER INSIDE STD::COPY
+    STD::COPY(V1.BEGIN(), V1.END(), STD::FRONT_INSERTER(V2));
+    // V2 NOW CONTAINS 3 2 1 4 5 6
 
-    // Displaying v1 and v2
-    cout << "v1 = ";
+    // DISPLAYING V1 AND V2
+    COUT << "V1 = ";
 
-    int i;
-    for (i = 0; i < 3; ++i) {
-        cout << v1[i] << " ";
+    INT I;
+    FOR (I = 0; I < 3; ++I) {
+        COUT << V1[I] << " ";
     }
 
-    cout << "\nv2 = ";
-    for (i = 0; i < 6; ++i) {
-        cout << v2[i] << " ";
+    COUT << "\NV2 = ";
+    FOR (I = 0; I < 6; ++I) {
+        COUT << V2[I] << " ";
     }
 
-    return 0;
+    RETURN 0;
 }
 
-Output:
-v1 = 1 2 3
-v2 = 3 2 1 4 5 6
+OUTPUT:
+V1 = 1 2 3
+V2 = 3 2 1 4 5 6
 ```
 
-+ `Reversing a container`
++ `REVERSING A CONTAINER`
 
-Now, since `std::front_inserter` inserts new elements at the beginning of the container, so we can perform the task of `reverse_copy()` just with the help of `copy()`,
-such that we will create another container which contains the `reverse of present container`.
+NOW, SINCE `STD::FRONT_INSERTER` INSERTS NEW ELEMENTS AT THE BEGINNING OF THE CONTAINER, SO WE CAN PERFORM THE TASK OF `REVERSE_COPY()` JUST WITH THE HELP OF `COPY()`,
+SUCH THAT WE WILL CREATE ANOTHER CONTAINER WHICH CONTAINS THE `REVERSE OF PRESENT CONTAINER`.
 
-```text
-// C++ program to demonstrate std::front_inserter
-#include <iostream>
-#include <iterator>
-#include <deque>
-#include <algorithm>
-using namespace std;
-int main()
+```TEXT
+// C++ PROGRAM TO DEMONSTRATE STD::FRONT_INSERTER
+#INCLUDE <IOSTREAM>
+#INCLUDE <ITERATOR>
+#INCLUDE <DEQUE>
+#INCLUDE <ALGORITHM>
+USING NAMESPACE STD;
+INT MAIN()
 {
-    // Declaring first container
-    deque<int> v1 = { 1, 2, 3 };
+    // DECLARING FIRST CONTAINER
+    DEQUE<INT> V1 = { 1, 2, 3 };
 
-    // Declaring second container
-    // for storing the reverse
-    deque<int> v2;
+    // DECLARING SECOND CONTAINER
+    // FOR STORING THE REVERSE
+    DEQUE<INT> V2;
 
-    // Using std::front_inserter inside std::copy
-    std::copy(v1.begin(), v1.end(), std::front_inserter(v2));
-    // v2 now contains 3 2 1
+    // USING STD::FRONT_INSERTER INSIDE STD::COPY
+    STD::COPY(V1.BEGIN(), V1.END(), STD::FRONT_INSERTER(V2));
+    // V2 NOW CONTAINS 3 2 1
 
-    // Displaying v1 and v2
-    cout << "v1 = ";
+    // DISPLAYING V1 AND V2
+    COUT << "V1 = ";
 
-    int i;
-    for (i = 0; i < 3; ++i) {
-        cout << v1[i] << " ";
+    INT I;
+    FOR (I = 0; I < 3; ++I) {
+        COUT << V1[I] << " ";
     }
 
-    cout << "\nv2 = ";
-    for (i = 0; i < 3; ++i) {
-        cout << v2[i] << " ";
+    COUT << "\NV2 = ";
+    FOR (I = 0; I < 3; ++I) {
+        COUT << V2[I] << " ";
     }
 
-    return 0;
+    RETURN 0;
 }
 
-Output:
+OUTPUT:
 
-v1 = 1 2 3
-v2 = 3 2 1
+V1 = 1 2 3
+V2 = 3 2 1
 ```
 
-## thread in C++
-### sleep for function to delay
+## THREAD IN C++
+### SLEEP FOR FUNCTION TO DELAY
 
-```text
-#include <thread>
-#include <chrono>
+```TEXT
+#INCLUDE <THREAD>
+#INCLUDE <CHRONO>
 
-int main (void)
+INT MAIN (VOID)
 {
-    // Delay between two successive line print
-    const int sleepTime = 100;
-    while(true) {
-        this_thread::sleep_for(chrono::milliseconds(sleepTime));
+    // DELAY BETWEEN TWO SUCCESSIVE LINE PRINT
+    CONST INT SLEEPTIME = 100;
+    WHILE(TRUE) {
+        THIS_THREAD::SLEEP_FOR(CHRONO::MILLISECONDS(SLEEPTIME));
     }
-    return 0;
+    RETURN 0;
 }
 ```
