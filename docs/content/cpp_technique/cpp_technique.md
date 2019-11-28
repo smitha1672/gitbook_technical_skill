@@ -1082,6 +1082,40 @@ int main()
 }
 ```
 
+## SKILL
+
+### cout float point
+
+```text
+#include <iomanip>      // std::setprecision
+using namespace std;
+
+int main (void)
+{
+    double pi = 3.14159, npi = -3.14159; 
+    cout << fixed << setprecision(0) << pi <<" "<<npi<<endl; 
+    cout << fixed << setprecision(1) << pi <<" "<<npi<<endl; 
+    cout << fixed << setprecision(2) << pi <<" "<<npi<<endl; 
+    cout << fixed << setprecision(3) << pi <<" "<<npi<<endl; 
+    cout << fixed << setprecision(4) << pi <<" "<<npi<<endl; 
+    cout << fixed << setprecision(5) << pi <<" "<<npi<<endl; 
+    cout << fixed << setprecision(6) << pi <<" "<<npi<<endl; 
+    return 0;
+}
+```
+
+Output
+
+```text
+3 -3
+3.1 -3.1
+3.14 -3.14
+3.142 -3.142
+3.1416 -3.1416
+3.14159 -3.14159
+3.141590 -3.141590
+```
+
 ## [std::`back_inserter`](https://www.geeksforgeeks.org/stdback_inserter-in-cpp/)
 
 `std::back_inserter` constructs a back-insert iterator that inserts new elements at the end of the container to which it is applied. It is defined inside the header file.
@@ -1177,7 +1211,6 @@ Output:
 v1 = 1 2 3
 v2 = 1 2 3
 ```
-
 
 ## [std::`front_inserter`](https://www.geeksforgeeks.org/stdfront_inserter-in-cpp/)
 
