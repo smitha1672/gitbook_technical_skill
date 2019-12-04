@@ -992,7 +992,7 @@ main()
 }
 ```
 
-### [vector: to find the maximum element](https://www.geeksforgeeks.org/how-to-find-the-maximum-element-of-a-vector-using-stl-in-c/)
+### [to find the maximum element](https://www.geeksforgeeks.org/how-to-find-the-maximum-element-of-a-vector-using-stl-in-c/)
 
 ```text
 #include <vector>
@@ -1048,9 +1048,41 @@ example_3(void)
 }
 ```
 
-### [algorithms library](https://www.geeksforgeeks.org/algorithms-library-c-stl/)
+### STL
 
-+ [std::reverse() in C++](https://www.geeksforgeeks.org/stdreverse-in-c/)
++ rotate
+
+```text
+1. left Rotation : To rotate left, we need to add the vector index. For example, you have to rotate
+vector left 3 times. The 3th index of vector becomes first element. vec.begin() + 3 will rotate
+vector 3 times left.
+
+2. Right Rotation : To rotate right, we need to subtract the vector index. For example, you have to
+rotate vector right 3 times. The 3th last index of vector becomes first element.
+vec.begin()+vec.size()-3 will rotate vector 3 times right.
+```
+
+```text
+#include <algorithm>
+
+int main(void)
+{
+    ...
+    // Rotate vector left 3 times.
+    int rotL=3;
+    // std::rotate function
+    std::rotate(vec1.begin(), vec1.begin()+rotL, vec1.end());
+
+    // Rotate vector right 4 times.
+    int rotR = 4;
+    // std::rotate function
+    std::rotate(vec2.begin(), vec2.begin()+vec2.size()-rotR, vec2.end());
+    return 0;
+}
+
+```
+
++ [reverse](https://www.geeksforgeeks.org/stdreverse-in-c/)
 
 ```text
 // CPP program to illustrate
