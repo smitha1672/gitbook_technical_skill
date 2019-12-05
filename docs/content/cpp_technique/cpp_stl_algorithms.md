@@ -1,8 +1,17 @@
 # STL ALGORITHMS
 ## PROVINCE OF HEAPS
 ### make_heap
+
+todo
+
 ### push_heap
+
+todo
+
 ### pop_heap
+
+todo
+
 ## SHORE OF SORTING
 ### sort
 
@@ -38,6 +47,9 @@ sort(arr, arr+n, greater<int>());
 ```
 
 ### partial_sort
+
+todo
+
 ### nth_element
 
 + first n smallest numbers
@@ -87,4 +99,10 @@ int main(void)
 ```
 
 ### sort_heap
+
+todo
+
 ### inplace_merge
+
+todo
+
