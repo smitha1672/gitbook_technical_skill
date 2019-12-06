@@ -1,4 +1,7 @@
 # STL ALGORITHMS
+
+[C++ reference](https://en.cppreference.com/w/)
+
 ## PROVINCE OF HEAPS
 ### make_heap
 
@@ -104,5 +107,36 @@ todo
 
 ### inplace_merge
 
-todo
+Complexity: O(N log N)
+
+inplace_merge(beg1, beg2, end) :
+This function is used to sort two consecutively placed sorted ranges in a single container.
+It takes 3 arguments, iterator to beginning of 1st sorted range,
+iterator to beginning of 2nd sorted range, and iterator to last position.
+
+```text
+/*Leetcode #88 Merge Sorted Array*/
+
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
+{
+    copy(nums2.begin(), nums2.end(), nums1.begin()+m);
+    inplace_merge(nums1.begin(), nums1.begin()+m, nums1.end());
+}
+
+int main()
+{
+    vector<int> nums1 = {1,2,3,0,0,0};
+    int m = 3;
+    vector<int> nums2 = {2,5,6};
+    int n = 3;
+    merge(nums1, m, nums2, n);
+    for(const int &num:nums1)
+        cout << num << " ";
+    cout << "\n";
+    return 0;
+}
+
+Output:
+1 2 2 3 5 6
+```
 
