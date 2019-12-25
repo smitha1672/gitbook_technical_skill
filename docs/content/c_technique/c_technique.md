@@ -701,6 +701,16 @@ uint8_t ucHeap[configTOTAL_HEAP_SIZE ] @ 0x20000000;
 
 ### Bit Manipulation
 
+#### swap endians
+
+```text
+/*swap 32bits endians*/
+#define SWAP_U32_ENDIANS(x) (((x) >> 24) | \
+        (((x) & 0x00FF0000) >> 8) | \
+        (((x) & 0x0000FF00) << 8) | \
+        ((x) << 24))
+```
+
 + 2's complement Process
 
 adc is 24 bits 2's complement
