@@ -7,6 +7,8 @@ C++ compiler: g++ -lpthread pthread1.c
 
 # MESSAGE QUEUES
 
+[posix.4 mqueue](https://users.pja.edu.pl/~jms/qnx/help/watcom/clibref/mq_overview.html)
+
 ## EXAMPLE SERVER and CLIENT
 
 [github](https://github.com/smitha1672/note/tree/master/cSkillTraning/linux_mqueue)
