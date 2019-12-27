@@ -1,5 +1,13 @@
 #
-## C Technique
+## C TECHNIQUE
+
+### SCREEN CLEAR
+
+```text
+printf("\033[H\033[J");
+```
+
++ [ANSI/VT100 Terminal Control Escape Sequences](http://www.termsys.demon.co.uk/vtansi.htm)
 
 ### [Advance Skill](https://shengwen1997.gitbooks.io/program_with_c/content/)
 
