@@ -13,8 +13,8 @@ C++ compiler: g++ -lpthread pthread1.c
 
 ## EXAMPLE SERVER and CLIENT
 
-[github](https://github.com/smitha1672/note/tree/master/cSkillTraning/linux_mqueue)
-[link](https://stackoverflow.com/questions/3056307/how-do-i-use-mqueue-in-a-c-program-on-a-linux-based-system)
+[github](https://github.com/smitha1672/note/tree/master/cSkillTraning/linux_mqueue)<br/>
+[link](https://stackoverflow.com/questions/3056307/how-do-i-use-mqueue-in-a-c-program-on-a-linux-based-system)<br/>
 
 # [SEMAPHORES]
 
