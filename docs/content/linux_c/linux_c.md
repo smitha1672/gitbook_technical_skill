@@ -10,10 +10,9 @@ C++ compiler: g++ -lpthread pthread1.c
 # IPC
 ## MESSAGE QUEUES
 
-[posix.4 mqueue](https://users.pja.edu.pl/~jms/qnx/help/watcom/clibref/mq_overview.html)
-
-[mqueue, github](https://github.com/smitha1672/note/tree/master/cSkillTraning/linux_mqueue)<br/>
-[link](https://stackoverflow.com/questions/3056307/how-do-i-use-mqueue-in-a-c-program-on-a-linux-based-system)<br/>
+[posix.4 mqueue](https://users.pja.edu.pl/~jms/qnx/help/watcom/clibref/mq_overview.html) <br/>
+[mqueue, github](https://github.com/smitha1672/note/tree/master/cSkillTraning/linux_mqueue) <br/>
+[link](https://stackoverflow.com/questions/3056307/how-do-i-use-mqueue-in-a-c-program-on-a-linux-based-system)
 
 ## PIPE or FIFO
 
