@@ -1,5 +1,4 @@
-#
-## Shell Script
+# SHELL SCRIPT
 
 + variable
 
@@ -24,8 +23,17 @@ if [ -n $1 ]; then
   ehco "if \$1 is not empty
 fi
 ```
+
+## KILL PROCESS
+
+[Command Line](https://www.linux.com/tutorials/how-kill-process-command-line/)<br/>
+
+## Display Web Page Content In Terminal
+
+[Bash](https://www.cyberciti.biz/faq/unix-linux-get-the-contents-of-a-webpage-in-a-terminal/)<br/>
+
 ### 基礎正規表示法
-<br> [reference link](https://dywang.csie.cyut.edu.tw/dywang/linuxProgram/node33.html)
+<br/> [reference link](https://dywang.csie.cyut.edu.tw/dywang/linuxProgram/node33.html)
 ```text
 ^word 待搜尋的字串(word)在行首。
 #範例：grep -n '^#' re.txt
@@ -69,7 +77,7 @@ word$ 待搜尋的字串(word)在行尾。
 ```
 
 ## getopts
-<br> [reference link](https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash)
+<br/> [reference link](https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash)
 ```bash
 #!/bin/bash
 
@@ -98,7 +106,7 @@ fi
 echo "s = ${s}"
 echo "p = ${p}"
 ```
-<br> Example runs:
+<br/> Example runs:
 
 ```text
 $ ./myscript.sh
@@ -370,14 +378,14 @@ grep -rn --include=*.c 'pattern' ./
 grep -rl --include=*.{c,h} 'SENS*' ./
 grep -Ern --include=*.{c,h} 'pattern1|pattern2' ./ # Multi-pattern match
 ```
-**[-R, -r, --recursive]**  <br>
-**[-n, --line-number]**   <br>
-**[-L, --files-without-match]**   <br>
-**[-l, --files-with-matches]**    <br>
-**[-w, --word-regexp]** - whole word has been match   <br>
-**[-c, --count]**   <br>
-**[-v, --invert-match]**    <br>
-**[--exclude-dir=DIR]**   <br>
+**[-R, -r, --recursive]**  <br/>
+**[-n, --line-number]**   <br/>
+**[-L, --files-without-match]**   <br/>
+**[-l, --files-with-matches]**    <br/>
+**[-w, --word-regexp]** - whole word has been match   <br/>
+**[-c, --count]**   <br/>
+**[-v, --invert-match]**    <br/>
+**[--exclude-dir=DIR]**   <br/>
 
 ## awk
 ```bash
