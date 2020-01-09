@@ -10,14 +10,51 @@ C++ compiler: g++ -lpthread pthread1.c
 # IPC
 ## MESSAGE QUEUES
 
-[posix.4 mqueue](https://users.pja.edu.pl/~jms/qnx/help/watcom/clibref/mq_overview.html) <br />  
-[mqueue, github](https://github.com/smitha1672/note/tree/master/cSkillTraning/linux_mqueue) <br />  
+[posix.4-mqueue](https://users.pja.edu.pl/~jms/qnx/help/watcom/clibref/mq_overview.html) <br/>
+[mqueue-github](https://github.com/smitha1672/note/tree/master/cSkillTraning/linux_mqueue) <br/>
 [link](https://stackoverflow.com/questions/3056307/how-do-i-use-mqueue-in-a-c-program-on-a-linux-based-system)
 
 ## PIPE or FIFO
 
-[mkfifo, GeeksforGeeks](https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/) <br />  
-[mkfifo, github](https://github.com/smitha1672/note/tree/master/cSkillTraning/linux/mkfifo) <br />  
+[mkfifo, GeeksforGeeks](https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/) <br/>
+[mkfifo, github](https://github.com/smitha1672/note/tree/master/cSkillTraning/linux/mkfifo) <br/>
+
+## MSG
+
+[msg-ex1](https://www.itread01.com/content/1542371232.html)<br/>
+[msg-ex2-geeksforgeeks](https://www.geeksforgeeks.org/ipc-using-message-queues/)
+
+```
+IPC_RMID
+IPC_CREAT|0666
+IPC_EXCL
+```
+
+```text
+#include <string.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+
+// structure for message queue
+struct mesg_buffer {
+    long mesg_type;
+    char mesg_text[100];
+} message;
+
+// ftok to generate unique key
+key = ftok("progfile", 65);
+...
+mqid = msgget(MSGKEY,IPC_EXCL);
+...
+mqid = msgget(MSGKEY,IPC_CREAT|0666);
+...
+ret=msgrcv(mqid,&msg,sizeof(struct msgstru),1,0); /*1 has been to match mesg_type*/
+...
+msgsnd(msgid, &message, sizeof(message), 0);
+...
+msgctl(mqid,IPC_RMID,0); /*delete message fifo*/
+```
 
 # [SEMAPHORES]
 
