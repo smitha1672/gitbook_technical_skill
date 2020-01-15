@@ -343,6 +343,17 @@ This concept is very useful to increase the processor speed.
     } while(0)
 ```
 
+```text
+#define _DBG    1
+#ifndef _TRACE_PRINT
+#define _TRACE_PRINT(msg, arg...) \
+    do {\
+        if (_DBG) \
+            printf("%s:%s(%d): " msg, __FILE__, __FUNCTION__, __LINE__, ##arg); \
+    } while (0)
+#endif
+```
+
 ### Converting void pointers to function pointers
 
 ```c
