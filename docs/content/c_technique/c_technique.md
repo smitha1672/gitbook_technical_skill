@@ -1,5 +1,16 @@
-#
-## C TECHNIQUE
+# C TECHNIQUE
+
+## STDOUT, STDERR, STDIN, FREOPEN
+
+```text
+FILE *fp;
+printf("This text is redirected to stdout");
+
+fp = freopen("file.txt", "w+", stdout); /*stdount can be stderr*/
+printf("This text is redirected to file.txt");
+
+fclose(fp);
+```
 
 ### SCREEN CLEAR
 
@@ -1301,61 +1312,4 @@ allocated from anywhere within the heap.
 // 請聊聊 extern 跟他的用途?
 // ---------------------------------------------
 ```
-
-## Astyle
-
-```text
-apt-get install astyle
-```
-
-+ Normally usage
-
-```text
-astyle --style=linux -pHk3 *.c/*.h
-```
-
-+ astylerc
-
-```text
-# this line is a comment
---style=linux      # this is a line-end comment
-
-# Insert space padding around operators.
---pad-oper
-
-# Insert space padding between a header (e.g. 'if', 'for', 'while'...)
---pad-header
-
-# Attach a pointer or reference operator (*, &, or ^) to either the variable type (left) or variable name (right), or place it between the type and name (middle).
---align-pointer=name
-
-# This option will align references separate from pointers.
---align-reference=name
-
-# Do not retain a backup of the original file
---suffix=none
-
-# Indent 'switch' blocks so that the 'case X:'
---indent-switches
-
-# Indent using # spaces per indent.
---indent=spaces=4
-
-# Delete empty lines within a function or method.
---delete-empty-lines
-
-#Set the minimal indent that is added when a header is built of multiple lines.
---min-conditional-indent=0
-
-# Indent a maximal # spaces in a continuous statement,
---max-instatement-indent=40
-
-# The option max-code-length will break a line if the code exceeds # characters.
---max-code-length=80
---break-after-logical
-```
-
-[Quick Start](http://astyle.sourceforge.net/astyle.html#_Quick_Start)
-
-
 

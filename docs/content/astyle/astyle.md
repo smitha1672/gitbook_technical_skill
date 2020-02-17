@@ -1,4 +1,7 @@
 # ASTYLE
+
+[Quick Start](http://astyle.sourceforge.net/astyle.html#_Quick_Start)
+
 ## INSTALL
 
 ```text
@@ -10,7 +13,7 @@ $ cd astyle/build/gcc
 $ make (output: /home/smith/tmp/astyle/build/gcc/bin/astyle)
 ```
 
-## link astyle
+## LINK ASTYLE
 
 ```text
 $ mkdir -p /home/smith/usr/bin
@@ -25,4 +28,10 @@ $ echo $PATH
 
 $ astyle -V
 # output Artistic Style Version 3.1
+```
+
+## EXAMPLE
+
+```text
+astyle --style=linux -pHk3 *.c/*.h
 ```

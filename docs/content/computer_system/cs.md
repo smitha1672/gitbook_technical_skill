@@ -163,14 +163,6 @@ output:
 ==4856== ERROR SUMMARY: 6265 errors from 9 contexts (suppressed: 0 from 0)
 ```
 
-## [GDB](http://puremonkey2010.blogspot.com/2010/07/gdb-gdb.html)
-
-+ set break on the C file
-
-```text
-break xxx.c:line number
-```
-
 ## Makefile
 <br> Only output error message on screen
 
