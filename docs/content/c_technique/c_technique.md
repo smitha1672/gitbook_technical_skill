@@ -1,6 +1,53 @@
 # C TECHNIQUE
 
-## STDOUT, STDERR, STDIN, FREOPEN
+# FILE WITH STDOUT, STDERR
+
++ fprint to file
+
+```text
+/*syslog.h header file*/
+extern FILE* fp_trace;
+
+#ifndef FILE_LOG
+#define FILE_LOG(msg, arg...) \
+    do {\
+        fprintf(fp_trace, "$ap_info:%s:%s(%d): " msg, __FILE__, __FUNCTION__, __LINE__, ##arg); \
+    } while (0)
+#endif
+
+
+#include <stdio.h>
+#include <time.h>
+
+FILE* fp_trace = NULL;
+
+void example(void)
+{
+    time_t t = time(NULL);
+    char file_string[256] = {0};
+    struct tm tm = *localtime(&t);
+
+    /*create file name with localtime*/
+    sprintf(file_string, "ap_%d-%02d-%02d-%02d-%02d-%02d.log",
+            tm.tm_year + 1900,
+            tm.tm_mon + 1,
+            tm.tm_mday,
+            tm.tm_hour,
+            tm.tm_min,
+            tm.tm_sec);
+
+    fp_trace = fopen(file_string, "w");
+
+    FILE_LOG("\n");
+
+    fclose(fp_trace);
+}
+
+```
+
++ STDOUT
+
+stdout can be change to stderr
 
 ```text
 FILE *fp;
@@ -12,7 +59,25 @@ printf("This text is redirected to file.txt");
 fclose(fp);
 ```
 
-### SCREEN CLEAR
+# TIME DURATION MEASUREMEMNT
+
+```text
+#include <time.h>
+
+struct timespec before, after;
+long elapsed_nsecs;
+
+clock_gettime(CLOCK_REALTIME, &before);
+
+/* handle connection */
+
+clock_gettime(CLOCK_REALTIME, &after);
+elapsed_nsecs = (after.tv_sec - before.tv_sec) * 1000000000 +
+                (after.tv_nsec - before.tv_nsec);
+
+```
+
+# SCREEN CLEAR
 
 ```text
 printf("\033[H\033[J");
@@ -78,7 +143,7 @@ if (compare_float(x1,x2)) {
 }
 ```
 
-### [How to compile 32-bit program on 64-bit gcc in C and C++](https://www.geeksforgeeks.org/compile-32-bit-program-64-bit-gcc-c-c/)
+# [HOW TO COMPILE 32-BIT PROGRAM ON 64-BIT GCC IN C AND C++](https://www.geeksforgeeks.org/compile-32-bit-program-64-bit-gcc-c-c/)
 
 ```text
 For C language:
@@ -115,7 +180,7 @@ Output: ./out
 Size = 4
 ```
 
-### [Convert a 32 bits to float value](https://stackoverflow.com/questions/11611787/convert-a-32-bits-to-float-value/11632523#11632523)
+# [CONVERT A 32 BITS TO FLOAT VALUE](https://stackoverflow.com/questions/11611787/convert-a-32-bits-to-float-value/11632523#11632523)
 
 ```text
 float source_float = 1234.5678f ;

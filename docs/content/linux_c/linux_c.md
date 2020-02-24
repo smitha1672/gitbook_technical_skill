@@ -1,3 +1,35 @@
+# CRITIAL SECTIONS
+
++ SIGNAL
+
+```text
+#include <signal.h>
+
+static sigset_t v_sigset_mask;
+static sigset_t v_sigset_orimask;
+
+static int _vcore_critial_section_entry(void)
+{
+    return (sigprocmask(SIG_BLOCK, &v_sigset_mask, &v_sigset_orimask));
+}
+
+static int _vcore_critial_section_exit(void)
+{
+    return (sigprocmask(SIG_SETMASK, &v_sigset_orimask, NULL));
+}
+
+void signal_setup(void)
+{
+    int iret = 0;
+
+    /*kill -l is able to know how signal infor*/
+    iret = sigaction(36, &act_new, NULL); /*36: SIGRTMIN+2*/
+    sigemptyset(&v_sigset_mask);
+    sigaddset(&v_sigset_mask, 36);
+}
+
+```
+
 # PTHREAD
 ## [posix thread doc](https://www.cs.cmu.edu/afs/cs/academic/class/15492-f07/www/pthreads.html)
 
