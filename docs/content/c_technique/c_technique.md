@@ -1,5 +1,20 @@
 # C TECHNIQUE
 
+# WRITING YOUR OWN FREE FUNCTION
+
+```text
+#define safeFree(p) safeFree((void**)&(p))
+
+void safeFree(void **pp)
+{
+    if (pp != NULL && *pp != NULL) {
+        free(*pp);
+        *pp = NULL;
+    }
+}
+
+```
+
 # FILE WITH STDOUT, STDERR
 
 + fprint to file
