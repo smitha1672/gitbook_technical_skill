@@ -1,3 +1,37 @@
+# VIRTUAL TIME BEFORE
+
+```text
+#include <stdio.h>
+#include <time.h>
+
+#define NSEC_PER_SEC    1000000000L
+
+#define time_after(a,b) ((long)((b) - (a)) < 0)
+#define time_before(a,b) time_after(b,a)
+
+static unsigned long _vcore_virtual_jiffies(void)
+{
+    struct timespec time;
+    clock_gettime(CLOCK_REALTIME, &time);
+    return ((time.tv_sec * NSEC_PER_SEC) + time.tv_nsec);
+}
+
+#define jiffies (_vcore_virtual_jiffies())
+
+int main(void)
+{
+    int i = 0;
+    long before = jiffies;
+    long after = 0;
+    unsigned long end = (jiffies + (1000000ll*75));
+    for (i = 0; time_before(jiffies, end); i++) {
+    }
+    after = jiffies;
+    printf("%lld\n", after - before);
+    return 0;
+}
+```
+
 # CRITIAL SECTIONS
 
 + SIGNAL
@@ -88,7 +122,7 @@ msgsnd(msgid, &message, sizeof(message), 0);
 msgctl(mqid,IPC_RMID,0); /*delete message fifo*/
 ```
 
-# [SEMAPHORES]
+# SEMAPHORES
 
 For `Synchronizing Threads`
 
