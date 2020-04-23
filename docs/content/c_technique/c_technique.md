@@ -1,5 +1,15 @@
 # C TECHNIQUE
 
+# COMPILER ERROR TROUBLE SHOOTING
+
++ expected ';', ',' or ')' before numeric constant
+
+```text
+#define BR 12345
+
+void example(int BT){}
+```
+
 # WRITING YOUR OWN FREE FUNCTION
 
 ```text
