@@ -24,15 +24,18 @@ if [ -n $1 ]; then
 fi
 ```
 
-## KILL PROCESS
+# KILL PROCESS
 
 [Command Line](https://www.linux.com/tutorials/how-kill-process-command-line/)<br/>
 
-## Display Web Page Content In Terminal
+# DISPLAY WEB PAGE CONTENT IN TERMINAL
 
 [Bash](https://www.cyberciti.biz/faq/unix-linux-get-the-contents-of-a-webpage-in-a-terminal/)<br/>
 
-### 基礎正規表示法
+# REGULAR EXPRESSIONS
+
+<br/> [practice](https://regexone.com/)
+
 <br/> [reference link](https://dywang.csie.cyut.edu.tw/dywang/linuxProgram/node33.html)
 ```text
 ^word 待搜尋的字串(word)在行首。
