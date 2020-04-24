@@ -1,5 +1,11 @@
-#
-## Synaptic Phone View Question(Tony)
+# INTERVIEW MATERIAL
+
+```text
+https://github.com/aforarup/interview
+
+```
+
+# Synaptic Phone View Question(Tony)
 + Explained what is differet with MPU and MCU.
 + What is interrupt latancy
 + How to avoid task to occupy resource.
