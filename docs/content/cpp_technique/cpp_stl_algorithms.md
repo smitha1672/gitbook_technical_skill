@@ -2,18 +2,75 @@
 
 [C++ reference](https://en.cppreference.com/w/)
 
-## PROVINCE OF HEAPS
-### make_heap
+# PROVINCE OF HEAPS
 
-todo
+make_heap, push_heap, pop_heap
 
-### push_heap
+The heap can be either Max Heap or Min Heap.
 
-todo
+```text
+vector<int>v1{4, 10, 3, 5, 1};
 
-### pop_heap
+        4
+      /   \
+    10     3
+   /  \
+  5    1
 
-todo
+std::make_heap(v1.begin(), v1.end());
+
+Max-Heap v1: 10 5 3 4 1
+          10
+        /    \
+       5      3
+     /   \
+    4     1
+
+v1.push_back(6);
+Input v1: 10 5 3 4 1 6
+
+        10
+       /  \
+      5    3
+     / \  /
+    4  1  6
+
+push_heap(v1.begin(), v1.end());
+
+        10
+       /   \
+      5     6
+     / \   /
+    4   1 3
+
+Outpu v1: 10 5 6 4 1 3
+
+Input v1: 10 5 6 4 1 3
+pop_heap(v1.begin(), v1.end());
+
+         6
+       /   \
+      5     3
+     / \   /
+    4   1 10
+Output v1: 6 5 3 4 1 10
+```
+
+MIN-HEAP: std::make_heap(v2.begin(), v2.end(), std::greater<int>())
+
+```text
+vector<int>v1{4, 10, 3, 5, 1};
+std::make_heap(v2.begin(), v2.end(), std::greater<int>());
+
+Min-Heap v1: 1 4 3 5 10
+          1
+        /    \
+       4      3
+     /   \
+    5     10
+
+Output v1 = {1, 4, 3, 5, 10}
+```
 
 ## SHORE OF SORTING
 ### sort
