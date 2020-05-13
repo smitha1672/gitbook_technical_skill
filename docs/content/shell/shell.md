@@ -358,6 +358,11 @@ xargs mkdir -p < dirs.txt #to create the directories on the destination.
   xargs -I {} cp -rf --parents {} $DEST_DIR
   cp -f --parents $SRC_DIR/project/mt2523_hdk/apps/phicomm_w2/src/sys_init.c $DEST_DIR
 ```
+
+```text
+find ./Templates -type f -name "*.h" -or -name "*.c" | xargs -i cp --parents {} ./test/
+```
+
 + Import \*.c; \*.h from particular path to vim
 
 ```bash
