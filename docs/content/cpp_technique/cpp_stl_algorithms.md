@@ -2,9 +2,9 @@
 
 [C++ reference](https://en.cppreference.com/w/)
 
-# PROVINCE OF HEAPS
+# HEAPS
 
-make_heap, push_heap, pop_heap
+`make_heap`, `push_heap`, `pop_heap`
 
 The heap can be either Max Heap or Min Heap.
 
@@ -72,8 +72,11 @@ Min-Heap v1: 1 4 3 5 10
 Output v1 = {1, 4, 3, 5, 10}
 ```
 
-## SHORE OF SORTING
-### sort
+# SORTING
+
+`sort`, `partial_sort`, `nth_element`, `sort_heap` and `inplace_merge`
+
+## sort
 
 + general using
 

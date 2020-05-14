@@ -30,8 +30,41 @@ $ astyle -V
 # output Artistic Style Version 3.1
 ```
 
-## EXAMPLE
+## HOW TO USE
 
 ```text
 astyle --style=linux -pHk3 *.c/*.h
 ```
+
+## STYLE
+
+### ATTACH RETURN TYPE
+
+```text
+--attach-return-type      / -xf
+--attach-return-type-decl / -xh
+```
+
+```text
+void
+Foo(bool isFoo);
+becomes:
+
+void Foo(bool isFoo);
+```
+
+### BREAK RETURN TYPE
+
+```text
+--break-return-type      / -xB
+--break-return-type-decl / -xD
+```
+
+```text
+void Foo(bool isFoo);
+becomes:
+
+void
+Foo(bool isFoo);
+```
+

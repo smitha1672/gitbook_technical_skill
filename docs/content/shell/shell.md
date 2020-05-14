@@ -335,6 +335,14 @@ echo "generate CMH1000 firmware array header files $out_dram_h $out_iram_h"
 </code></pre>
 
 ## find
+
++ Copy File Include Directory Structure
+
+```text
+find ./Templates -type f -name "*.h" -or -name "*.c" |\
+xargs -i cp --parents {} ./test/
+```
+
 + Find all file in particular path or exclude particular path
 
 ```bash
@@ -357,10 +365,6 @@ xargs mkdir -p < dirs.txt #to create the directories on the destination.
   find $SRC_DIR -type f \( -name sensor_manager.c -or -name sensor_manager.h \) |\
   xargs -I {} cp -rf --parents {} $DEST_DIR
   cp -f --parents $SRC_DIR/project/mt2523_hdk/apps/phicomm_w2/src/sys_init.c $DEST_DIR
-```
-
-```text
-find ./Templates -type f -name "*.h" -or -name "*.c" | xargs -i cp --parents {} ./test/
 ```
 
 + Import \*.c; \*.h from particular path to vim
