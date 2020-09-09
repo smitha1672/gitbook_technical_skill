@@ -498,9 +498,7 @@ umount.cifs /mnt/smb
 sudo mount -t cifs -o username=smith.hu,password=123456 //172.16.3.220/cwm_rd_nasvr/Document_Center/AE/Personal/Smith/ ./mnt/ae/
 ```
 
-## ZIP/ UNZIP
-
-### unzip
+# UNZIP
 [Linux man page](https://linux.die.net/man/1/unzip)
 
 ```bash
@@ -537,11 +535,29 @@ unzip -l file.zip #To do a singly quiet listing
 unzip -ql file.zip #To do a doubly quiet listing
 ```
 
-### zip
+# ZIP
 Command format. The basic command format is:
 zip options archive inpath inpath ...
 
-#### archive all the source files in the current directory and its subdirectories
+[How to zip folder on linux](https://devconnected.com/how-to-zip-folder-on-linux/)
+
+## ZIP.3 folder
+
+```text
+$ zip -r <output_file> <folder_1> <folder_2> ... <folder_n>
+```
+
+```text
+$ zip -r temp.zip Documents
+```
+
+If you want to zip folders in the current working directory, you would run the following command
+
+```text
+$ find . -maxdepth 1 -type d -exec zip archive.zip {} +
+```
+
+## ZIP.2 archive all the source files in the current directory and its subdirectories
 
 ```bash
 find ./out/mt2523_watch/watch_ref_design -maxdepth 1 -type f -print | \
@@ -553,7 +569,7 @@ find ./chre/firmware -type f -name "os.checked.*" -print | \
 zip -j w2_cmh1000_fw_v15_1804Bxxx -@ #-j: junk-path
 ```
 
-#### Achive 2 image files in zip file
+## ZIP.1  Achive 2 image files in zip file
 
 ```bash
 GIT_TAG=$1
