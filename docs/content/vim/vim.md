@@ -1,11 +1,10 @@
-#
-## VIM
+# VIM
 ## Installation
 
 ```bash
 sudo apt-get install vim
 ```
-<br>[\.vimrc Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
+<br/>[\.vimrc Instance](https://github.com/smitha1672/note/blob/master/rc/.vimrc)
 
 ## Inserting
 
@@ -36,11 +35,13 @@ or
 
 + [Delete all lines containing a pattern](http://support.moonpoint.com/software/editors/vi/remove-lines-string.php)
 
+For example, to delete all lines containing "profile" (remove the /d to show the lines that the command will delete)
 ```text
-# For example, to delete all lines containing "profile" (remove the /d to show the lines that the command will delete)
 :g/profile/d
+```
 
-# apply the command to lines 100 to the last line, I could use the command below, since the dollar sign indicates the last line
+<br/>Apply the command to lines 100 to the last line, I could use the command below, since the dollar sign indicates the last line
+```text
 : 100,$ g/dog/d
 ```
 
