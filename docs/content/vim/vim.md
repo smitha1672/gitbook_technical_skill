@@ -36,11 +36,13 @@ or
 + [Delete all lines containing a pattern](http://support.moonpoint.com/software/editors/vi/remove-lines-string.php)
 
 For example, to delete all lines containing "profile" (remove the /d to show the lines that the command will delete)
+
 ```text
 :g/profile/d
 ```
 
 <br/>Apply the command to lines 100 to the last line, I could use the command below, since the dollar sign indicates the last line
+
 ```text
 : 100,$ g/dog/d
 ```
@@ -317,7 +319,8 @@ zm               - fold both files completely
 :1, $d          - delete from line 1 to line $
 ```
 
-## Tag list
+# Tag list
+
 + Installation
 Tag list is able to dowload from the [linking](https://sourceforge.net/projects/vim-taglist/files/) and refer as
 [instance] (http://eeepage.info/tag-vim-source-insight/)
@@ -330,6 +333,10 @@ $ sudo apt-get install exuberant-ctags
 
 ```text
 $ ctags -R -h ".h.c...etc"
-# CTRL + ] :go to defintion
-# CTRL + t :go to back
+$ vi -t <search variable or function name>
+:ts # tags list
+:tp # tags preview
+:tn # tags next
+CTRL + ] :go to defintion
+CTRL + t :go to back
 ```
