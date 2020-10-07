@@ -148,6 +148,16 @@ git diff --name-only SHA1 SHA2
 git diff --name-only HEAD~10 HEAD~5
 ```
 
++ checked a specific file diff with branch
+
+```text
+# master branch
+git diff master~5 master <file name>
+
+# different branch
+git diff br-1 br-2 <file name>
+```
+
 # Advance skill
 
 + Get a file from a particular commit
@@ -169,7 +179,7 @@ git show e51bdf2:./project_info/hisense/la672c/release_note.txt > test.log
 $ git clean -f or -d or -fd
 ```
 
-## tag
+# tag
 
 ```text
 You just need to push an 'empty' reference to the remote tag name:
