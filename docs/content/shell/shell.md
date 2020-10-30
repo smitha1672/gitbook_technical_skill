@@ -37,6 +37,7 @@ fi
 <br/> [practice](https://regexone.com/)
 
 <br/> [reference link](https://dywang.csie.cyut.edu.tw/dywang/linuxProgram/node33.html)
+
 ```text
 ^word 待搜尋的字串(word)在行首。
 #範例：grep -n '^#' re.txt
@@ -133,8 +134,8 @@ s = 90
 p = bar
 ```
 
-## sed
-### Regular Expressions
+# sed
+## sed Regular Expressions
 
 + . 1點代表一個char
 
@@ -168,8 +169,14 @@ sed '樣式命令' 檔案
 sed -e '樣式命令1' -e '樣式命令2' -e '樣式命令3' -e '樣式命令4' 檔案
 sed -f 樣式命令檔 檔案
 ```
+## sed showed file line n1: line n2
 
-### Example
+```text
+sed -n '1000,3000p' filename
+```
+
+
+## sed Example
 
 + replace one or more white space to any character
 
