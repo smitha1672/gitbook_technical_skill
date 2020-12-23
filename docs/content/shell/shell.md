@@ -82,6 +82,7 @@ word$ 待搜尋的字串(word)在行尾。
 
 ## getopts
 <br/> [reference link](https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash)
+
 ```bash
 #!/bin/bash
 
@@ -132,6 +133,42 @@ p = foo
 $ ./myscript.sh -s 90 -p bar
 s = 90
 p = bar
+```
+# ENVIRONMENTAL VARIABLES
+## env
+
+env is used to show environmental variables.
+
+```text
+$ env
+
+PATH=/home/smith/bin:/home/smith/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+MAIL=/var/mail/smith
+STY=3525.pts-8.ubuntu
+QT_QPA_PLATFORMTHEME=appmenu-qt5
+PWD=/home/smith/workspace/practice/hackerank/dynamic_array
+LANG=en_US.UTF-8
+HOME=/home/smith
+SHLVL=2
+LOGNAME=smith
+WINDOW=1
+SSH_CONNECTION=192.168.189.1 62439 192.168.189.128 22
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+LESSOPEN=| /usr/bin/lesspipe %s
+XDG_RUNTIME_DIR=/run/user/1000
+LESSCLOSE=/usr/bin/lesspipe %s %s
+_=/usr/bin/env
+```
+## unset
+
+unset is used to clear environmental variables.
+
+## export
+
+To add a environmental variables.
+
+```text
+export TEST="Test..."
 ```
 
 # sed
