@@ -382,8 +382,7 @@ C++ string class has a lot of functions to handle string easily. Most useful of 
 #include <bits/stdc++.h>
 using namespace std;
 
-int
-main()
+int main()
 {
     // various constructor of string class
     // initialization by raw string
