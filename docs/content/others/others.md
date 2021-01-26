@@ -1,4 +1,10 @@
-#
+# Ubuntu
+## 1 list all the packages
+
+```text
+apt list --installed
+```
+
 ## [How To Set Up Time Synchronization on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-time-synchronization-on-ubuntu-16-04)
 
 ```text
@@ -270,7 +276,7 @@ sudo apt-get remove --purge texlive-full
 ssh smith@192.168.131.128
 ```
 
-## windows + Ubuntu 安裝
+## windows + Ubuntu install
 [ref.1 link](https://www.xmind.net/m/J5mt/)
 <br> [ref.2 link](https://read01.com/jND7m.html#.W1wvzdIzaUk)
 
