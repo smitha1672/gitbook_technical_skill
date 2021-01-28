@@ -1,5 +1,6 @@
 # Summary
 
+* [system manipulation](content/system_manipulation/system_manipulation.md)
 * [OS](content/os/os.md)
 * [C Technique](content/c_technique/c_technique.md)
 * [C++ Technique](content/cpp_technique/cpp_technique.md)
@@ -25,4 +26,3 @@
 * [raspberry pi3](content/raspberry/raspberry.md)
 <!--* [Building Root]-->
 * [windows cross compiler](content/window_cross_compiler/window_cross_compiler.md)
-* [others](content/others/others.md)
