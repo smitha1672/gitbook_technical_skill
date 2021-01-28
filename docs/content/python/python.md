@@ -1,3 +1,7 @@
+# Python Installation
+
+[ref.1](https://www.itread01.com/content/1541040331.html)
+
 # Trouble Shoot
 ## TS.1 No module named numpy
 
@@ -23,6 +27,15 @@ SyntaxError: invalid syntax
 - curl -O https://bootstrap.pypa.io/2.7/get-pip.py
 - python get-pip.py
 - python -m pip install --upgrade "pip < 21.0"
+```
+
+## TS.2 Cannot python
+
+```text
+$ whereis python
+$ rm /usr/bin/python
+$ ln -s /usr/bin/python3.4 /usr/local/bin/python
+$ ln -s /usr/bin/python3.4 /usr/bin/python
 ```
 
 

@@ -1,5 +1,6 @@
-## Ubuntu
-### Trouble Shootinng
+# System Manipulation
+# Ubuntu
+## Trouble Shootinng
 
 case: python2 is removed <br/>
 [ref.](https://www.itread01.com/content/1541040331.html)
@@ -8,7 +9,7 @@ case: python2 is removed <br/>
 sudo apt-get install ubuntu-minimal ubuntu-standard ubuntu-desktop
 ```
 
-### Packages
+## Packages
 
 List all the packages
 
@@ -16,7 +17,7 @@ List all the packages
 apt list --installed
 ```
 
-### PPA
+## PPA
 
 List PPA Repositories
 
@@ -36,7 +37,6 @@ Add PPA with add-apt-repository
 ```text
 sudo add-apt-repository ppa:fkrull/deadsnakes
 ```
-
 
 ## [How To Set Up Time Synchronization on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-time-synchronization-on-ubuntu-16-04)
 

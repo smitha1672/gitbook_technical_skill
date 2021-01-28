@@ -23,6 +23,11 @@ if [ -n $1 ]; then
   ehco "if \$1 is not empty
 fi
 ```
+# Curl
+
+```text
+$ curl -O https://bootstrap.pypa.io/2.7/get-pip.py
+```
 
 # KILL PROCESS
 
