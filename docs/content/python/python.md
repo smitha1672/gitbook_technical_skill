@@ -1,6 +1,8 @@
 # Python Installation
 
-[ref.1](https://www.itread01.com/content/1541040331.html)
+[ref.1](https://www.itread01.com/content/1541040331.html) <br/>
+[ref.2](https://nbanzyme.medium.com/how-to-install-python3-in-ubuntu-16-04-19656ce4d326)<br/>
+[ref.3](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04)
 
 # Trouble Shoot
 ## TS.1 No module named numpy
