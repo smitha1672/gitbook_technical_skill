@@ -220,6 +220,12 @@ sed -n '1000,3000p' filename
 
 ## sed Example
 
++ rename files or directory with spaces
+
+```text
+rename 's/ /_/g' *
+```
+
 + replace one or more white space to any character
 
 ```bash
