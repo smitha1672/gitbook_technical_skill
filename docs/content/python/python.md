@@ -1,4 +1,11 @@
-# Python Installation
+# Python
+
+# Resource
+
+[Tutorial.1](https://docs.python.org/3/tutorial/appetite.html) <br/>
+[Data Structure](https://www.tutorialspoint.com/python_data_structure/index.htm) <br/>
+
+# Installation
 
 [ref.1](https://www.itread01.com/content/1541040331.html) <br/>
 [ref.2](https://nbanzyme.medium.com/how-to-install-python3-in-ubuntu-16-04-19656ce4d326)<br/>
