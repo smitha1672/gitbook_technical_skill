@@ -117,6 +117,13 @@ gcc -E main.c -o maine.c
 會產生符號表, 讓gdb 工具可以除錯
 ```
 
+<br\>
+<img src="gcc_params-1.png"
+width="80%"
+height="80%"
+alt="gcc -<parameters>"
+align=center />
+
 ## [valgrid](http://www.valgrind.org/docs/manual/quick-start.html#quick-start.prepare)
 
 + Installation
