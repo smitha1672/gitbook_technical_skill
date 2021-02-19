@@ -230,6 +230,19 @@ L - 將cursor移到screen 的最底行.
 :set noexpandtab
 ```
 
+```text
+# enable/disable highlight search (hlsearch)
+:set hlsearch
+:nohlsearch
+:hi col1 ctermfg=232 ctermbg=170
+:syntax match col1 /<pattern>/
+```
+
+```text
+# set textwidth
+:set textwidth=500
+```
+
 + [vim buffers and windows](https://www.openfoundry.org/tw/tech-column/2383-vim--buffers-and-windows)
 
 ```text
@@ -340,7 +353,7 @@ $ vi -t <search variable or function name>
 CTRL + ] :go to defintion
 CTRL + t :go to back
 ```
-# Traning Game
+## Traning Game
 
 [VIM Game](https://vim-adventures.com/)
 
