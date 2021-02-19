@@ -340,3 +340,7 @@ $ vi -t <search variable or function name>
 CTRL + ] :go to defintion
 CTRL + t :go to back
 ```
+# Traning Game
+
+[VIM Game](https://vim-adventures.com/)
+
