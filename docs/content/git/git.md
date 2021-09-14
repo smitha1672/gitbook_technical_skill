@@ -36,6 +36,19 @@ height="90%"
 alt=""
 align=center />
 
+# SSH Agnet One Time Passphrase
+
+[Manual](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)<br/>
+
+```text
+# start the ssh-agent in the background
+$ eval "$(ssh-agent -s)"
+
+$ ssh-add ~/.ssh/id_ed25519
+```
+
+[Auto-launching](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/working-with-ssh-key-passphrases)<br/>
+
 # HTTP authentication
 
 [HTTP authentication](https://stackoverflow.com/questions/53914241/bash-script-adding-git-credentials-from-bash-script);
