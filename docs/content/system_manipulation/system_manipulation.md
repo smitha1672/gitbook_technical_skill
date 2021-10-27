@@ -344,3 +344,14 @@ chown -R $USER:$USER /var/run/screen
 ```
 
 This will allow a typical user/or group full access, and will be more secure
+
+
+# Trouble Shooting
+
+* Windows 11 miss internet connection
+    1) Command Prompt Run as administrator <br/>
+    2) type `netsh winsock reset`       <br/>
+    3) restart computer <br/>
+
+
+
