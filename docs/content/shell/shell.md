@@ -23,6 +23,23 @@ if [ -n $1 ]; then
   ehco "if \$1 is not empty
 fi
 ```
+
+# tee
+
+* [ref](https://www.onejar99.com/linux-command-tee/)
+
+Output result to sceen and file
+
+```text
+$ ls | tee result.txt
+or
+$ ls | tee -a result.txt
+or
+$ ls | tee -a result.txt | grep aws
+or
+$ ls xxx 2>&1 | tee result.txt
+```
+
 # Curl
 
 ```text
