@@ -226,6 +226,10 @@ L - 將cursor移到screen 的最底行.
 ```
 
 ```text
+# enable expandtab: Tab to speace
+:set expandtab
+
+
 # disable expandtab
 :set noexpandtab
 ```
